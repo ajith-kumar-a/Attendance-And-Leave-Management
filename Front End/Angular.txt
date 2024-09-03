@@ -1,0 +1,238 @@
+
+// to install angular 
+npm i -g @angular/cli
+
+// it will show angular version 
+ng v
+
+// create angular project
+
+1. npx ng new --no-standalone projectname
+2. cd projectname
+3. code .(press enter key)
+4. npx ng serve -o // this will start angular project in development mode and display output on browser on localhost:4200
+
+*Angular : it is application designing and development platform for creating efficient and sofisticated single page application 
+  	     - angular work on component and modules 
+
+*Component:
+	- it is partial part of angular app
+	- it can be any part of application which we can reuse  multiple time.
+
+node_module		: all library or dependency will install in this folder.
+package.json	: it will keep entry of install all library or package.
+package-lock.json : it will hold details information of install library.
+README.md 		: it will worklike guid manual.
+gitignore 		: it is use to store file and folder to ignore while push data on github
+
+Note 	: in angular 'App' is root component
+
+Q. How to create Component
+ng generate component componentName
+ng g c componentName
+
+ng g c dataBinding
+ng g c foldername/dataBinding.
+
+Q. How to display individual component view or output.
+	- copy component selector name from its 'ts' file and write selector name as tag where you want
+
+*dataBinding: access data from one file to another in same component
+	1. interpolation {{}} 		: ts => html
+	2. property Binding []		: ts => html (here we set attribute value)
+	3. event Binding () 		: html = > ts (here we call event)
+	4. Two-way data Binding [()]: ts <=> html (to perform Two-way DataBinding)
+
+	- to perform Two-way DataBinding we use ngModel directory , but ngModel directory is not part of core angular
+	- it is part of form modules, so first we have to import 'form's Module in your root module(app.module.ts).
+	then and only then we can use ngModel directory
+
+Task : create a component with name ToggleImg in task folder in which you have to toggle image on single button click
+
+*Directives : it is use to perform dom manipulation(change dom layout) and change appearance and behaviour of dom element 
+	1. Structural Directives : it is use to change dom element layout	
+							 - it is denoted by * symbol.
+				     - *ngIf	    : it will display dom element when it get true value otherwise not.
+					 - *ngFor		: it is use to itreate or repeate dom element.
+					 - *ngSwitchCase: it is use to display dom element on choice
+					 
+	2. Attribute Directives  : it is use to change appearance and behaviour of dom element.
+					- ngStyle 	: it is use to apply css property conditionaly.
+					- ngClass 	: it is use to apply css classes conditional.
+
+	3. Custome Directives	 : developer can write logic to create custom Directives
+					- to create custome Directives we have command
+					- ng generate directive directiveName
+
+
+ng-template	: it is directive which is use to display dom element conditionaly.
+
+*Pipe : in angular pipe is use to transform property without changing its orginal value.
+	  - to use pipe we use | symbol
+	  - there are three types of pipe 
+
+	  1. inbuilt pipe 		: pipe provided by angular.
+	  2. custom pipe		: pipe developed by developer for use in project
+			// Q. how to create Pipe
+				- ng generate pipe foldername/pipename
+
+	  3. third party pipe	: pipe developed by third party vender.
+
+
+Q. how to use bootstrap in angular
+
+	step1: install bootstrap
+		- npx npm i bootstrap
+	step2: go to angular.json file and import bootstrap file path in styl;e section
+		-  "node_modules/bootstrap/dist/css/bootstrap.min.css"
+
+	step3: terminate angular project and restart it
+
+==============================================================================================================
+
+14 / 6 /24
+
+*Routing	: navigation of component.
+			- display component output and view by writtin its path in browser url
+			- to will display component output under  <router-outlet> </router-outlet> directoyr
+			- routing is array object containing property with value
+			- in angular root routing module name is app-routing-module.ts
+
+
+*Create angForm , rtf , utdf , pageNotFound, mainDashboard
+
+* Types of routing
+	1. naming routing			: we write component rouiting path in browser url to display component output
+	
+	2. default routing 			: display component output by default means, keep its path value blank in rouiting
+								- try to keep default routing first in order.
+
+	3. redirect routing 		: display component output by writing different path name.
+
+	4. parameterize routing		: passing parameter with path name to display component output
+
+	5. child routing			: define one routing inside another routing
+								- FOR THIS in parent routing we have to use childeren property
+								- in parent routing component html file we must write <router-outlet> </router-outlet>
+
+	6. wildcard routing			: display component output, when userwrite wrong path in browser url.
+								- in this we write * as value in routing path
+								- wildcard routing must last routing , router define below to it never work.
+
+
+*Form Validation in angular
+*In angular there are two ways to perform from Validation
+	1. by using UTDF(user template driven Form):
+	- when we have to perfoem simple and small formvalidation in that case we use utdf.
+	- in utdf Validation in html file.
+	- in this we use ngModel model directive.
+
+	2. By using RTF(Reactive Templet Form);
+		- when we have write complex logic to perform form validation in that case we use rtf.
+		- in rtf validation perforn in ts file
+		- to rtf validation first we have to import Reactive Form Module in root Module.
+		- in rtf we form validation we use two classes
+			1. FormGroup	: it will hold call formcontrol data in it.as well as it track status of form 
+			2. FormControl	: it will track status and validation of individual input control.
+
+step1 : import Reactive Form Module is root module(app.modules.ts) form FormsModules
+step2 : import FormGroup and FormControl class in etf component
+
+States								Class if true		Class if false
+
+The control has been visited.		ng-touched		ng-untouched
+The control's value has changed.	ng-dirty		ng-pristine
+The control's value is valid.		ng-valid		ng-invalid
+
+
+1. ngOnChanges		:
+2. ngOnInIt			: after your component ended
+
+
+*Service : in angular service is special class with extra power.
+		- we can share data with multiple component
+		- we can implement bussiness logic init.
+		- we can perform external cummunication(fetch data from server).
+
+To create service
+ng g service serviceName;
+
+* How to access service Data into any components.
+	-to access data from service to component for that in component constructor we have to create instance of service class then we can accessservice data into component
+
+*Creating Service class instance in component constructor is called dependency injuction 
+
+
+*How to create REST fake application
+dummy server : json-server
+npm i -g json-server
+
+database : json database
+- we create json database file
+
+*How to upload db.json file on json-server
+cd src/app/shared/database (pressEnter)
+
+json-server --watch -p 8888 db.json
+
+
+*To make request from service to server we have to create instance of HttpClint class in service. but HttpClient class is not part of core angular. it is part of HttpClientModule.for this first we have to import HttpClientModule in our module
+
+*To make request from service to server  we have to create instance of HttpClient class in service constructor
+
+==============================================================================================================================
+17 / 06 /24
+
+*Use of Concurrently library
+npm i -g concurrently
+
+"json-server":"cd src/app/shared/dataBase && json-server --watch -p 8888 db.json",
+"start-dev"
+
+3> terminate or restart angular project
+npm run start-dev
+
+*display server data into table
+*use of font-awesome
+step1 : npm i font-awesome
+step2 : in angular.js file in style array write
+		- "font-awesome/css/font-awesome.min.css";
+step3 : restart angular project
+step4 : copy icon code from font-awesome official website and paste it in angular project
+
+
+*Angular Material : it provide inbuild UI component for angular application
+https://material.angular.io/
+
+Q. How to us Angular Material
+step1 : ng add @angular/material
+step2 : restart angular Project
+step3 : import angular material component in root module.
+
+*Guard : it prevent to display component view or output.
+ng g guard shared/Guards/auth
+
+Login
+
+to buid execuitable file
+ng build --prod
+
+compiler are available 
+	- jit
+	- aot 
+
+8 life cycle
+	1.ngOnChanges
+	2.ngOnInIt
+	3.ngDoCheck
+	4.ngAfterContainInit
+	5.ngAfterContainCheck
+	6.ngAfterViewInit
+	7.ngAfterViewCheck
+	8.ngOnDestroy
+
+to Perform unit Texting
+	- Karma
+
+to perfoem End-to-End testing 
+	- jasmin

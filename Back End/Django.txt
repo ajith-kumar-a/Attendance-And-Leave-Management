@@ -1,0 +1,339 @@
+Framework :
+    -> it is a structure that you can build software on it 
+    -> Using Framework Saves time and reduces the risk of error'S
+    -> you don't need to configure it (it creates a directory structure)
+
+Libraries Vs Framework
+    -> Library (collection of pre-written code that )can be used to perform common task)
+    -> User / programmer is calling the code
+
+Framework :
+    -> in Framework it is the code in the Framework thats call the code
+
+______________________________________________________________________________________________________________________________
+
+Django:
+    -> open-source web Framework written in python that allows you to create web application
+    -> supported by an independent foundation (Django software foundation)
+    -> Django is primarilyy a backend framework, it has feature that allows it to handle frontend development as well 
+
+Why Django:
+    -> set-up easy
+    -> ready-to-user interface for administration activities
+
+
+______________________________________________________________________________________________________________________________
+
+Python Package index(PyPi)
+       -> Repository of software for the python programming language
+       -> (helps you to find and install software developed and shared by python community)
+
+
+ ______________________________________________________________________________________________________________________________
+
+
+______________________________________________________________________________________________________________________________
+ step - 1 : pip install virtualenvwrapper-win  -> it is used to giving the command for creating environment 
+
+ step - 2 : mkvirtualenv myproject
+
+ step - 3 : workon myproject
+
+ step - 4 : pip install django or pip install -r req.txt
+
+
+    step 1 :   django-admin startproject schedule
+    step 2 :   cd schedule
+    step 3 :   django-admin startapp month
+
+ step - 5 : cd myproject
+
+ step - 6 : python manage.py runserver
+
+Create a Django App :
+    -> python manage.py startapp myapp
+
+
+
+Django makes use of a directory structure to arrange different parts of the web application
+>schedule
+  schdedule -->  __init__.py
+               settings.py
+               urls.py
+               wsgi.py
+          asgi.py
+       manage.py
+manage.py : 
+->command-line utility for our project
+->the file contains the code for running the server,makemigrations ... and several commands
+->it lets you to interact with your project
+
+settings.py :
+    -> typically used to store configuration information in django
+    -> default database is set here
+ 
+__init__.py 
+    -> empty file, function of this file tells python interpreter that is directory ha Package
+
+urls.py :
+    -> used to provide you the address of the particular Package
+
+wsgi.py (web server gateway interface)
+    -> it is the way how servers interact with the applications
+    asgi.py()
+
+
+ step 1:     mkvirtualenv myproject
+ step 2 :    pip install django
+ step 3 :    django-admin startproject schedule
+ step 4 :    cd schedule
+ step 5 :    django-admin startapp month
+
+ step 6 : deactivate
+
+ mkvirtualenv mysite
+
+using xampp server
+    Step: 1 – Xammp server create database
+
+    Step 2 – In the environment where you have install Django
+
+    (in the same environment pip install mysqlclient ==2.2.0)
+
+    Step 3 – create a project
+
+    Step 4 – settings.py
+
+    DATABASES = {
+
+    'default': {
+
+        'ENGINE': 'django.db.backends.mysql',
+
+        'NAME': 'bookmanagement',
+
+        'PORT': '3306',
+
+        'USER': 'root',
+
+        'PASSWORD':'',
+
+        'HOST':'localhost'
+
+    }
+
+    }
+
+    Write connectivity code
+
+    Step5 : py manage.py migrate
+
+    Step6: Install app : ‘author’
+
+    Step7 : Django-admin startapp author
+
+    Step8 : models.py structure
+
+    Step 9: makemigrations and migrate
+
+
+    ______________________________________________________________________________________________________________________________
+
+[16:42] Kasturi (Guest)
+    (urls) E:\DjangoCh\bookstore>py manage.py shell
+
+    Python 3.9.10 (tags/v3.9.10:f2f3f53, Jan 17 2022, 15:14:21) [MSC v.1929 64 bit (AMD64)] on win32
+
+    Type "help", "copyright", "credits" or "license" for more information.
+
+    (InteractiveConsole)
+
+    >>> from author.models import Author
+
+    >>> Author.objects.all()
+
+    <QuerySet []>
+
+    for create: 
+        kas = Author.objects.create(first_name='Chetan',last_name='Bhagat',age=34)
+
+    Update :
+         from author.models import Author
+        >>> Author.objects.all()
+        <QuerySet [<Author: jk and Rowling>, <Author: Chetan and Bhagat>]>
+        >>> jk = Author.objects.all()[0]
+        >>> jk.first_name
+        'jk'
+        >>> jk.city='Pune'
+        >>> jk.city
+        'Pune'
+        >>> jk.rating =2
+        >>> jk.rating
+        2
+        >>> jk.save()
+
+    Filter : 
+        author.objects.get(rating=2) 
+        <author: Full Name :  Ajith and Avudayappan>
+
+        [10:30] Kasturi (Guest)
+        >>> from author.models import Author
+        >>> Author.objects.all()
+        <QuerySet [<Author: Author object (1)>, <Author: Author object (2)>]>
+        >>>
+        >>> Author.objects.get(rating=2)
+        <Author: jk and Rowling>
+        >>> Author.objects.filter(city='Pune')
+        <QuerySet [<Author: jk and Rowling>, <Author: Chetan and Bhagat>]>
+        >>>>>> Author.objects.filter(city='Pune',rating=2)
+        <QuerySet [<Author: jk and Rowling>]>
+        >>>
+        
+        [10:31] Kasturi (Guest)
+        >>>> Author.objects.filter(rating__lt=4)
+        <QuerySet [<Author: jk and Rowling>]>
+        >>> Author.objects.filter(rating__gt=4)
+        <QuerySet [<Author: Chetan and Bhagat>]>
+        >>>
+    
+    Q Condition :
+        -> from django.db.models import Q
+        ->  author.objects.filter(Q(rating__lt=3) | Q(city = 'Chennai')) 
+        ->  author.objects.filter(Q(rating__lt=3) & Q(city = 'Chennai')) 
+
+
+
+
+Templates:
+    Step: 1 Installed App : Write the App name
+    Or
+    DIR=[
+    BASE_DIR / ‘Appname’ / ‘templates’
+    ]
+
+
+
+
+
+
+Base View
+Generic Display Views:
+TemplateView
+DetailView
+ListView
+Generic Editing Views:
+CreateView
+UpdateView
+DeletView
+
+
+
+
+
+
+
+______________________________________________________________________________________________________________________________
+cardinality = relationship like one to one , one to many 
+
+
+
+
+
+
+
+
+
+
+
+______________________________________________________________________________________________________________________________
+
+Documentations :
+    -> https://docs.djangoproject.com/en/5.1/topics/templates/
+    -> https://docs.djangoproject.com/en/5.0/ref/templates/builtins/
+    -> https://docs.djangoproject.com/en/5.1/topics/class-based-views/
+
+    -> https://pypi.org/project/drf-yasg/#c-swagger-settings-and-redoc-settings
+    -> https://www.django-rest-framework.org/
+
+    -> https://django-rest-framework-simplejwt.readthedocs.io/en/latest/
+    -> https://django-rest-framework-simplejwt.readthedocs.io/en/latest/settings.html
+
+______________________________________________________________________________________________________________________________
+
+Application Programming Interface(API)
+
+An API is a software intermediary that allows two or more application to talk to each other.
+
+    API :
+        Private: It can be used within the organization
+        Partner : It can be used within Bussiness Partners
+        Public : It can be used any third party developers
+ 
+WEB API:
+    An API, which is interface for web is called as web API (request and response)
+
+    How web API works:
+        Client makes HTTP request to API
+        API will communicate to web application/Database
+        API returns Data to client
+    
+REST:
+    Architectural guideline to develop web API
+    API developed using REST is known as REST API/RESTful API
+
+    API :
+        API is nothing but URL which we can integrate into any frontend application
+        when we hit the url along with some parameters and request method then it will return expected response
+
+CRUD OPERATIONs:
+    GET METHOD : To fetch the data(Http request method)
+    POST: To add the data
+    GET(id) :Specific data fetch
+    PUT: To update all fields
+    PATCH : To update sepcific field
+    DELETE : Specific field delete
+ 
+React(axios)
+
+
+drf-yasg 1.21.7
+Automated generation of real Swagger/OpenAPI 2.0 schemas from Django Rest Framework code.
+settings.py
+SWAGGER_SETTINGS = {
+   'SECURITY_DEFINITIONS': {
+       'basic': {
+           'type': 'basic'
+       }
+   },
+   ...
+}
+In settings.py:
+INSTALLED_APPS = [
+   ...
+   'django.contrib.staticfiles',  # required for serving swagger ui's css/js files
+   'drf_yasg',
+   ...
+­­­­
+Urls.py
+from django.contrib import admin
+from django.urls import path
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+ 
+schema_view = get_schema_view(
+  openapi.Info(
+     title="Book API",
+     default_version='v1',
+     description="About Bookstore which will perform CRUD",
+     terms_of_service="https://127.0.0.1:8000/",
+     contact=openapi.Contact(email="kpbagde@gmail.com"),
+     license=openapi.License(name="BSD License"),
+  ),
+  public=True,
+#    permission_classes=(permissions.AllowAny,),
+)
+ 
+urlpatterns = [
+   path('admin/', admin.site.urls),
+   path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+]
