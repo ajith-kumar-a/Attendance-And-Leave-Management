@@ -28,7 +28,7 @@ import { ApplyleaveComponent } from './components/applyleave/applyleave.componen
     AppComponent,
     StudentsComponent,
     LoginComponent,
-    StudentsComponent,
+    
     AttendanceMarkingComponent,
     AttendanceSummaryComponent,
     ViewattendanceComponent,
