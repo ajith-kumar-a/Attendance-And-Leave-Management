@@ -235,4 +235,4 @@ to Perform unit Texting
 	- Karma
 
 to perfoem End-to-End testing 
-	- jasmin
+	- jasmin.....

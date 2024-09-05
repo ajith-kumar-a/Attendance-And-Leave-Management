@@ -1,0 +1,19 @@
+{
+    "user_details": [
+      {
+        "name": "John Doe",
+        "rollno": "12345",
+        "email": "john.doe@example.com",
+        "role": "student",
+        "profilePicture": "assets/images/john.jpg"
+      },
+      {
+        "name": "Jane Smith",
+        "rollno": "67890",
+        "email": "jane.smith@example.com",
+        "role": "teacher",
+        "profilePicture": "assets/images/jane.jpg"
+      }
+    ]
+  }
+  
