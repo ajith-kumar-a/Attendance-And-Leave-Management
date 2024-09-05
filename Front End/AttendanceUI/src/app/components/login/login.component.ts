@@ -1,46 +1,56 @@
-// import { Component } from '@angular/core';
-
-// @Component({
-//   selector: 'app-login',
-//   templateUrl: './login.component.html',
-//   styleUrl: './login.component.css'
-// })
-// export class LoginComponent {
-
-// }
 
 import { Component } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router'; // Import Router for navigation
+// import { AuthService } from '../../services/auth.service';
+// import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  username: string = '';
-  password: string = '';
-  errorMessage: string = '';
-  successMessage: string = '';
 
-  constructor(private authService: AuthService, private router: Router) {}
+  signupUsers: any[] = [];
 
-  login(): void {
-    this.authService.login(this.username, this.password).subscribe({
-      next: (response) => {
-        // Handle successful login
-        this.successMessage = 'Login successful!';
-        this.errorMessage = '';
+  signupObj: any = {
+    userName: '',
+    email: '',
+    password: ''
+  };
 
-        // Optional: Redirect to another page upon successful login
-        this.router.navigate(['/dashboard']); // Replace '/dashboard' with the route you want to navigate to
-      },
-      error: (error) => {
-        // Handle login error
-        this.errorMessage = 'Login failed. Please check your username and password.';
-        this.successMessage = '';
-      }
-    });
+  loginObj: any = {
+    userName: '',
+    password: ''
+  };
+
+  constructor() {}
+
+  ngOnInit(): void {
+    const localData = localStorage.getItem('signUpUsers');
+    if(localData != null){
+      this.signupUsers = JSON.parse(localData)
+    }
+  }
+
+  onSignUp() {
+    this.signupUsers.push(this.signupObj);
+    localStorage.setItem('signUpUsers',JSON.stringify(this.signupUsers))
+    this.signupObj = {
+      userName: '',
+      email: '',
+      password: ''
+    };
+  }
+  onLogin() {
+    const isUserExist = this.signupUsers.find(m => m.userName == this.loginObj.userName && m.password == this.loginObj.password)
+    if( isUserExist != undefined){
+      alert('user Login Sucessfully')
+    }else{
+      alert('Wrong Credentails')
+    }
+    console.log(isUserExist)
+  
+
   }
 }
+

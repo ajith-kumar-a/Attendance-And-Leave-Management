@@ -15,9 +15,9 @@ import { LoginComponent } from './components/login/login.component';
 // import { DashboardComponent } from './dashboard/dashboard.component'; // Import your dashboard component
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
-  { path: '**', redirectTo: '/login' }
+  // { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '/login', component: LoginComponent },
+  // { path: '**', redirectTo: '/login' }
 ];
 
 @NgModule({
