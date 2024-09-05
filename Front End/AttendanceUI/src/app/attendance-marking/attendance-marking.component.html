@@ -1,0 +1,35 @@
+<!-- <p>attendance-marking works!</p> -->
+<div class="attendance-marking">
+    <h2>Mark Attendance</h2>
+    <label for="class">Select Class:</label>
+    <select id="class" [(ngModel)]="selectedClass">
+      <option *ngFor="let class of classes" [value]="class">{{ class }}</option>
+    </select>
+  
+    <label for="date">Select Date:</label>
+    <input type="date" id="date" [(ngModel)]="selectedDate" />
+  
+    <table>
+      <thead>
+        <tr>
+          <th>Student Name</th>
+          <th>Attendance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of students">
+          <td>{{ student.name }}</td>
+          <td>
+            <select [(ngModel)]="student.attendance">
+              <option value="Present">Present</option>
+              <option value="Absent">Absent</option>
+              <option value="Late">Late</option>
+            </select>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <button (click)="submitAttendance()">Submit Attendance</button>
+  </div>
+  
