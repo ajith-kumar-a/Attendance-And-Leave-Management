@@ -1,25 +1,20 @@
-// import { NgModule } from '@angular/core';
-// import { RouterModule, Routes } from '@angular/router';
-
-// const routes: Routes = [];
-
-// @NgModule({
-//   imports: [RouterModule.forRoot(routes)],
-//   exports: [RouterModule]
-// })
-// export class AppRoutingModule { }
-
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AttendanceMarkingComponent } from './components/attendance-marking/attendance-marking.component';
+import { AttendanceSummaryComponent } from './components/attendance-summary/attendance-summary.component';
+import { StudentsComponent } from './components/students/students.component';
 import { LoginComponent } from './components/login/login.component';
 import { ApplyleaveComponent } from './components/applyleave/applyleave.component';
 // import { DashboardComponent } from './dashboard/dashboard.component'; // Import your dashboard component
 
+
+
 const routes: Routes = [
-  // { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: '/leave', component: ApplyleaveComponent },
-  // { path: '**', redirectTo: '/login' }
+  { path: 'students', component: StudentsComponent },
+  { path: 'attendance-marking', component: AttendanceMarkingComponent },
+  { path: 'attendance-summary', component: AttendanceSummaryComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' }, // Default route
 ];
 
 @NgModule({
