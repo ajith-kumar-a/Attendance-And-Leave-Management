@@ -1,0 +1,58 @@
+
+.header {
+    background-color: #3c93ea; /* Light background color */
+    padding: 10px 20px;
+    border-bottom: 1px solid #4f6880;
+}
+.header .navbar-brand img {
+    height: 40px; /* Adjust logo size */
+    width: auto;
+}
+.header .navbar-text {
+    font-size: 1.5rem; /* Adjust company name font size */
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.header .dropdown-menu {
+    min-width: 150px; /* Adjust dropdown menu width */
+}
+.header .btn-signout {
+    margin-left: 10px;
+}
+.profile-container {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+}
+.profile-pic {
+    width: 100%;
+    max-width: 200px; /* Increased profile picture size */
+    border-radius: 50%;
+}
+.profile-info {
+    margin-left: 20px;
+}
+.profile-info table {
+    width: 100%;
+}
+.profile-info td {
+    padding: 8px;
+    border-top: 1px solid #dee2e6;
+}
+.profile-info th {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 2px solid #dee2e6;
+}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .profile-container {
+        text-align: center;
+    }
+    .profile-info {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}

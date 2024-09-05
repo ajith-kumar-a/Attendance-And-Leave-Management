@@ -1,0 +1,70 @@
+<header class="header">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <!-- Logo on the left -->
+            <div class="col-4 col-md-3">
+                <a class="navbar-brand" href="#">
+                    <img src="your-logo.png" alt="Logo"> <!-- Replace with your logo -->
+                </a>
+            </div>
+
+            <!-- Centered Company Name -->
+            <div class="col-4 col-md-6 text-center">
+                <span class="navbar-text">GAP institutions</span>
+            </div>
+
+            <!-- Dropdown and Signout Button on the right -->
+            <div class="col-4 col-md-3 d-flex justify-content-end align-items-center">
+                <div class="dropdown me-3">
+                    <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Name
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><button class="dropdown-item" type="button">View Attendance</button></li>
+                        <li><button class="dropdown-item" type="button">Apply Leave</button></li>
+                        <li><button class="dropdown-item" type="button">Leave Status</button></li>
+                    </ul>
+                </div>
+                <button class="btn btn-danger btn-signout d-none d-md-block">Sign Out</button> <!-- Hide on small screens -->
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <div class="profile-container d-flex flex-column flex-md-row align-items-center">
+        <!-- Profile Picture -->
+        <img src="profile-picture.jpg" alt="Profile Picture" class="profile-pic">
+
+        <!-- User Details -->
+        <div class="profile-info mt-3 mt-md-0">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th>Name</th>
+                        <td>John Doe</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>john.doeexample.com</td>
+                    </tr>
+                    <tr>
+                        <th>Role</th>
+                        <td>Software Engineer</td>
+                    </tr>
+                    <tr>
+                        <th>Admission Date</th>
+                        <td>January 1, 2024</td>
+                    </tr>
+                    <tr>
+                        <th>Roll Number</th>
+                        <td>123456</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Bootstrap JS and dependencies -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+
