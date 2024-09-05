@@ -1,0 +1,15 @@
+<!-- <p>attendance-summary works!</p> -->
+<div class="attendance-summary">
+    <h2>Attendance Summary</h2>
+    <label for="summary-period">Select Period:</label>
+    <select id="summary-period" [(ngModel)]="selectedPeriod">
+      <option value="Daily">Daily</option>
+      <option value="Weekly">Weekly</option>
+      <option value="Monthly">Monthly</option>
+    </select>
+  
+    <p>Display attendance summary for the selected period here.</p>
+  
+    <button (click)="generateAbsenteeReport()">Generate Absentee Report</button>
+  </div>
+  
