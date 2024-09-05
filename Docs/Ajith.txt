@@ -1,0 +1,22 @@
+SetUp AttendenceAPi :
+    -> mkvirtualenv Attendanceapi
+    -> workon Attendanceapi
+    -> cd back end 
+    -> pip install -r req.txt
+
+
+Creating Apps :
+    -> django-admin startapp Roles
+    -> django-admin startapp Attendance
+    -> django-admin startapp LeaveRequest
+    -> django-admin startapp Permissions
+    -> django-admin startapp LeaveTypes
+
+
+
+step to connect api 
+
+   -  npm install @auth0/angular-jwt
+    - ng generate service services/auth
+    - ng generate interceptor interceptors/auth
+    - ng generate component components/login
