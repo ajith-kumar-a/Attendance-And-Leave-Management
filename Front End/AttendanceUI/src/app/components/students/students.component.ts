@@ -13,7 +13,7 @@ export class StudentsComponent implements OnInit {
   constructor(private AuthService: AuthService) {}
 
   ngOnInit(): void {
-    this.AuthService.getUserDetails().subscribe(
+    this.AuthService.getUserDetails('userme').subscribe(
       (data) => {
         this.user = data.data;
         console.log('Full user object:', this.user);
