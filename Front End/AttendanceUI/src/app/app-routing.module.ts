@@ -5,6 +5,8 @@ import { AttendanceSummaryComponent } from './components/attendance-summary/atte
 import { StudentsComponent } from './components/students/students.component';
 import { LoginComponent } from './components/login/login.component';
 import { ApplyleaveComponent } from './components/applyleave/applyleave.component';
+import { TeacherDashboardComponent } from './components/teacher-dashboard/teacher-dashboard.component';
+import { TeacherLeavestatusComponent } from './components/teacher-leavestatus/teacher-leavestatus.component';
 // import { DashboardComponent } from './dashboard/dashboard.component'; // Import your dashboard component
 
 
@@ -12,8 +14,10 @@ import { ApplyleaveComponent } from './components/applyleave/applyleave.componen
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'students', component: StudentsComponent },
+  { path: 'teacher', component:TeacherDashboardComponent},
   { path: 'attendance-marking', component: AttendanceMarkingComponent },
   { path: 'attendance-summary', component: AttendanceSummaryComponent },
+  { path: 'teacher-leavestatus', component: TeacherLeavestatusComponent},
   { path: '', redirectTo: '/login', pathMatch: 'full' }, // Default route
 ];
 
