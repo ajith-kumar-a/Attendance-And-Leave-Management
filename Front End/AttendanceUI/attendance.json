@@ -1,0 +1,21 @@
+[
+    {
+      "id": 1,
+      "date": "2024-07-07",
+      "leaveType": "Sick Leave",
+      "remark": "Approved by Admin"
+    },
+    {
+      "id": 2,
+      "date": "2024-07-08",
+      "leaveType": "Casual Leave",
+      "remark": "Pending"
+    },
+    {
+      "id": 3,
+      "date": "2024-07-10",
+      "leaveType": "Casual Leave",
+      "remark": "Pending"
+    }
+  ]
+  
