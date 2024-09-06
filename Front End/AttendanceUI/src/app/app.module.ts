@@ -36,6 +36,7 @@ import { ApplyleaveComponent } from './components/applyleave/applyleave.componen
     AttendanceSummaryComponent,
     ViewattendanceComponent,
     ApplyleaveComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -44,7 +45,7 @@ import { ApplyleaveComponent } from './components/applyleave/applyleave.componen
     FormsModule,
     CommonModule,
     HttpClientModule, // Add HttpClientModule here
-    CommonModule,
+   
    
     // NgbNavModule,
 

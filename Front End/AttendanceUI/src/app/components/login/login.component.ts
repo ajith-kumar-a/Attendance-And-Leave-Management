@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
       next: (res: any) => {
         console.log('res', res);
         localStorage.setItem('access', res.access);
-        this.route.navigateByUrl('/dashboard');
+        this.route.navigateByUrl('/students');
       },
       error: (err) => {
         console.error('Login error', err);
