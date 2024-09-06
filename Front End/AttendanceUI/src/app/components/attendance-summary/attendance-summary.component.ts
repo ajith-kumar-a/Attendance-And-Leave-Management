@@ -1,41 +1,30 @@
-import { Component, OnInit } from '@angular/core';
-import { AttendanceService } from './attendance.service';
-
-interface Attendance {
-  id: number;
-  date: string;
-  leaveType: string;
-  remark: string;
-}
+import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-attendance-summary',
   templateUrl: './attendance-summary.component.html',
   styleUrls: ['./attendance-summary.component.css']
 })
-export class AttendanceSummaryComponent implements OnInit {
-  attendanceData: Attendance[] = [];
-  filteredAttendance: Attendance[] = [];
+export class AttendanceSummaryComponent {
   startDate: string = '';
   endDate: string = '';
+  attendanceData: any[] = [];
+  private apiUrl = 'assets/attendance.json';  // Path to the JSON file
 
-  constructor(private attendanceService: AttendanceService) {}
+  constructor(private http: HttpClient) { }
 
-  ngOnInit(): void {
-    this.attendanceService.getAttendance().subscribe((data) => {
-      this.attendanceData = data;
-    });
-  }
+  fetchAttendance() {
+    this.http.get<any[]>(this.apiUrl).subscribe(data => {
+      // Optionally filter data based on the date range
+      this.attendanceData = data.filter(record => {
+        const recordDate = new Date(record.date);
+        const start = new Date(this.startDate);
+        const end = new Date(this.endDate);
 
-  applyFilter(): void {
-    if (this.startDate && this.endDate) {
-      const start = new Date(this.startDate).getTime();
-      const end = new Date(this.endDate).getTime();
-
-      this.filteredAttendance = this.attendanceData.filter(item => {
-        const itemDate = new Date(item.date).getTime();
-        return itemDate >= start && itemDate <= end;
+        return (!this.startDate || recordDate >= start) &&
+               (!this.endDate || recordDate <= end);
       });
-    }
+    });
   }
 }

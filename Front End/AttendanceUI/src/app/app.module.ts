@@ -40,7 +40,7 @@ import { ApplyleaveComponent } from './components/applyleave/applyleave.componen
     // NgbNavModule,
     FormsModule,
     CommonModule,
-    HttpClientModule, // Add HttpClientModule here
+    HttpClientModule, 
     CommonModule,
    
     // NgbNavModule,
