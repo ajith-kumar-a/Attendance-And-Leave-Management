@@ -1,0 +1,64 @@
+<div class="base">
+<div class="container">
+    <div class="text">
+        <span>Apply Leave </span>
+    </div>
+    <form>
+        <div class="form-row">
+            <div class="input-data">
+                <input type="text" required>
+                <div class="underline"></div>
+                <label for="">Full Name</label>
+            </div>
+            <div class="input-data">
+                <input type="text" required>
+                <div class="underline"></div>
+                <label for="">Student ID</label>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="input-data">
+                <input type="email" required>
+                <div class="underline"></div>
+                <label for="">Email Address</label>
+            </div>
+            
+            <!-- Corrected Dropdown for Leave Type -->
+            <div class="input-data">
+                <select class="form-control" required>
+                    <option value="" disabled selected>Select Leave Type</option>
+                    <option value="sick">Sick Leave</option>
+                    <option value="casual">Casual Leave</option>
+                    <option value="annual">Annual Leave</option>
+                </select>
+                <div class="underline"></div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="input-data textarea">
+                <textarea rows="8" cols="80" required></textarea>
+                <div class="underline"></div>
+                <label for="">Write your reason</label>
+            </div>
+        </div>
+
+        <!-- Submit and Cancel buttons -->
+        <div class="form-row submit-btn">
+            <div class="input-data">
+                <div class="inner"></div>
+                <input type="submit" value="Apply">
+            </div>
+           
+        </div>
+        <div class="form-row submit-btn">
+            <div class="input-data">
+                <div class="inner"></div>
+                <input type="submit" value="cancel ">
+            </div>
+           
+        </div>
+    </form>
+</div>
+</div>

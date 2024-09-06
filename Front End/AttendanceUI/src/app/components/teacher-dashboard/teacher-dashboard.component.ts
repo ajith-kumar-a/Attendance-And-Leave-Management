@@ -6,6 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './teacher-dashboard.component.css'
 })
 export class TeacherDashboardComponent {
-  teacherName: string = 'Prasanth Mani';
 
 }
