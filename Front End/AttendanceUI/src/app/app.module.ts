@@ -19,6 +19,7 @@ import { AttendanceMarkingComponent } from './components/attendance-marking/atte
 import { AttendanceSummaryComponent } from './components/attendance-summary/attendance-summary.component';
 import { ViewattendanceComponent } from './components/viewattendance/viewattendance.component';
 import { ApplyleaveComponent } from './components/applyleave/applyleave.component';
+import { StudentRegistrationComponent } from './components/student-registration/student-registration.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { ApplyleaveComponent } from './components/applyleave/applyleave.componen
     AttendanceSummaryComponent,
     ViewattendanceComponent,
     ApplyleaveComponent,
+    StudentRegistrationComponent,
     
   ],
   imports: [

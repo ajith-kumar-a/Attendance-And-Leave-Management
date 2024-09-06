@@ -6,17 +6,22 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://127.0.0.1:8000/api/userme';
+  private apiUrl = 'http://127.0.0.1:8000/api';
   constructor(private http: HttpClient) {}
 
   onLogin(obj: any): Observable<any> {
     return this.http.post('http://127.0.0.1:8000/api/token/', obj);
   }
 
-  getUserDetails(): Observable<any> {
+  getUserDetails(tableName: string): Observable<any> {
     const token = localStorage.getItem('access');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     
-    return this.http.get(this.apiUrl, { headers });
+    return this.http.get(`${this.apiUrl}/${tableName}`, { headers });
   }
+
+  addRecord(tableName:string,data:any){
+    return this.http.post(`${this.apiUrl}/${tableName}`,data);
+  }
+
 }
