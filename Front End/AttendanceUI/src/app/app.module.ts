@@ -14,13 +14,10 @@ import { LoginComponent } from './components/login/login.component';
 import { StudentsComponent } from './components/students/students.component';
 // import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { TeacherDashboardComponent } from './components/teacher-dashboard/teacher-dashboard.component';
-// import { PersonalInfoComponent } from './components/personal-info/personal-info.component';
-// import { ProfessionalInfoComponent } from './professional-info/professional-info.component';
 import { AttendanceMarkingComponent } from './components/attendance-marking/attendance-marking.component';
 import { AttendanceSummaryComponent } from './components/attendance-summary/attendance-summary.component';
 import { ViewattendanceComponent } from './components/viewattendance/viewattendance.component';
 import { ApplyleaveComponent } from './components/applyleave/applyleave.component';
-// import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({

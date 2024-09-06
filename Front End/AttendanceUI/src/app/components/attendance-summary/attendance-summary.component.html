@@ -1,47 +1,41 @@
 <div class="attendance-summary">
   <h2>Attendance Summary</h2>
 
-  <!-- Professor id -->
+  <!-- Professor Name and ID -->
   <div class="professor-id">
-    <p><strong>Professor ID:</strong> <span id="professor-id">P12345</span></p>
+    <p><strong>Professor Name:</strong> Prasanth Mani</p>
+    <p><strong>Professor ID:</strong> P12345</p>
   </div>
 
   <!-- Date Range Inputs -->
   <div class="date-range">
     <label for="start-date">Start Date:</label>
-    <input type="date" id="start-date" />
+    <input type="date" id="start-date" [(ngModel)]="startDate" />
 
     <label for="end-date">End Date:</label>
-    <input type="date" id="end-date" />
+    <input type="date" id="end-date" [(ngModel)]="endDate" />
   </div>
 
   <!-- Apply Button -->
-  <button class="btn-apply">Apply</button>
+  <button class="btn-apply" (click)="applyFilter()">Apply</button>
 
   <!-- Table for the Report -->
   <table class="attendance-table">
     <thead>
       <tr>
         <th>ID</th>
-        <th>Roll Number</th>
+        <th>Date</th>
         <th>Leave Type</th>
         <th>Remark</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>1</td>
-        <td>101</td>
-        <td>Sick Leave</td>
-        <td>Approved by Admin</td>
+      <tr *ngFor="let attendance of filteredAttendance">
+        <td>{{ attendance.id }}</td>
+        <td>{{ attendance.date }}</td>
+        <td>{{ attendance.leaveType }}</td>
+        <td>{{ attendance.remark }}</td>
       </tr>
-      <tr>
-        <td>2</td>
-        <td>102</td>
-        <td>Casual Leave</td>
-        <td>Pending</td>
-      </tr>
-      <!-- Add more rows if needed -->
     </tbody>
   </table>
 </div>
