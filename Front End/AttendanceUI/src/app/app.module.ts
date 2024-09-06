@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms'; // Import FormsModule here
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +13,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
 import { LoginComponent } from './components/login/login.component';
 import { StudentsComponent } from './components/students/students.component';
 // import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
 import { TeacherDashboardComponent } from './components/teacher-dashboard/teacher-dashboard.component';
 import { AttendanceMarkingComponent } from './components/attendance-marking/attendance-marking.component';
 import { AttendanceSummaryComponent } from './components/attendance-summary/attendance-summary.component';
@@ -25,22 +26,24 @@ import { ApplyleaveComponent } from './components/applyleave/applyleave.componen
     AppComponent,
     StudentsComponent,
     LoginComponent,
-    
+    TeacherDashboardComponent,
+    // PersonalInfoComponent,
+    // ProfessionalInfoComponent,
     AttendanceMarkingComponent,
     AttendanceSummaryComponent,
     ViewattendanceComponent,
     ApplyleaveComponent,
-    TeacherDashboardComponent
-
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    // NgbNavModule,
     FormsModule,
+    CommonModule,
+    HttpClientModule, // Add HttpClientModule here
     CommonModule,
    
     // NgbNavModule,
-    FormsModule,
 
   ],
   providers: [
@@ -51,3 +54,6 @@ import { ApplyleaveComponent } from './components/applyleave/applyleave.componen
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+
