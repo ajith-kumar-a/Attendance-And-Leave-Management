@@ -32,6 +32,9 @@ import { ApplyleaveComponent } from './components/applyleave/applyleave.componen
     TeacherDashboardComponent,
     // PersonalInfoComponent,
     // ProfessionalInfoComponent,
+=======
+    
+>>>>>>> dbb9c2294212e8dd42851430c99069e02fa4027e
     AttendanceMarkingComponent,
     AttendanceSummaryComponent,
     ViewattendanceComponent,
