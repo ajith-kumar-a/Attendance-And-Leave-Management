@@ -19,7 +19,7 @@ import { AttendanceMarkingComponent } from './components/attendance-marking/atte
 import { AttendanceSummaryComponent } from './components/attendance-summary/attendance-summary.component';
 import { ViewattendanceComponent } from './components/viewattendance/viewattendance.component';
 import { ApplyleaveComponent } from './components/applyleave/applyleave.component';
-import { StudentRegistrationComponent } from './components/student-registration/student-registration.component';
+import { TeacherLeavestatusComponent } from './components/teacher-leavestatus/teacher-leavestatus.component';
 
 
 @NgModule({
@@ -31,10 +31,10 @@ import { StudentRegistrationComponent } from './components/student-registration/
     // PersonalInfoComponent,
     // ProfessionalInfoComponent,
     AttendanceMarkingComponent,
-    AttendanceSummaryComponent,
+    // AttendanceSummaryComponent,
     ViewattendanceComponent,
     ApplyleaveComponent,
-    StudentRegistrationComponent,
+    TeacherLeavestatusComponent,
     
   ],
   imports: [
@@ -43,8 +43,8 @@ import { StudentRegistrationComponent } from './components/student-registration/
     // NgbNavModule,
     FormsModule,
     CommonModule,
-    HttpClientModule, // Add HttpClientModule here
-   
+    HttpClientModule, 
+    CommonModule,
    
     // NgbNavModule,
 
