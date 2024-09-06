@@ -30,7 +30,7 @@ import { ApplyleaveComponent } from './components/applyleave/applyleave.componen
     // PersonalInfoComponent,
     // ProfessionalInfoComponent,
     AttendanceMarkingComponent,
-    AttendanceSummaryComponent,
+    // AttendanceSummaryComponent,
     ViewattendanceComponent,
     ApplyleaveComponent,
     
