@@ -34,7 +34,7 @@ import { AttendanceSummaryComponent } from './attendance-summary/attendance-summ
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbNavModule
+    NgbNavModule,
     FormsModule,
     CommonModule
   ],
