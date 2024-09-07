@@ -1,0 +1,14 @@
+<div class="container">
+    <h1>Teacher Leave Status Checker</h1>
+    <form (ngSubmit)="checkStatus()">
+      <div class="form-group">
+        <label for="employeeId">Enter Employee ID:</label>
+        <input type="text" id="employeeId" [(ngModel)]="employeeId" name="employeeId" required>
+      </div>
+      <button type="submit">Check Status</button>
+    </form>
+    <div class="status-display">
+      {{ statusMessage }}
+    </div>
+  </div>
+  

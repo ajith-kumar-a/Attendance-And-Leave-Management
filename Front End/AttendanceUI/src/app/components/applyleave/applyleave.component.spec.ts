@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PersonalInfoComponent } from './personal-info.component';
+import { ApplyleaveComponent } from './applyleave.component';
 
-describe('PersonalInfoComponent', () => {
-  let component: PersonalInfoComponent;
-  let fixture: ComponentFixture<PersonalInfoComponent>;
+describe('ApplyleaveComponent', () => {
+  let component: ApplyleaveComponent;
+  let fixture: ComponentFixture<ApplyleaveComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [PersonalInfoComponent]
+      declarations: [ApplyleaveComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PersonalInfoComponent);
+    fixture = TestBed.createComponent(ApplyleaveComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

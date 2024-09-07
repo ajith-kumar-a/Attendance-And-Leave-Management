@@ -1,0 +1,40 @@
+<div class="attendance-summary">
+  <h2>Attendance Summary</h2>
+
+  <!-- Professor id -->
+  <div class="professor-id">
+    <p><strong>Professor ID:</strong> <span id="professor-id">P12345</span></p>
+  </div>
+
+  <!-- Date Range Inputs -->
+  <div class="date-range">
+    <label for="start-date">Start Date:</label>
+    <input type="date" id="start-date" [(ngModel)]="startDate" />
+
+    <label for="end-date">End Date:</label>
+    <input type="date" id="end-date" [(ngModel)]="endDate" />
+  </div>
+
+  <!-- Fetch Data Button -->
+  <button (click)="fetchAttendance()">Fetch Attendance</button>
+
+  <!-- Table for the Report -->
+  <table class="attendance-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Date</th>
+        <th>Leave Type</th>
+        <th>Remark</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let record of attendanceData">
+        <td>{{ record.id }}</td>
+        <td>{{ record.date }}</td>
+        <td>{{ record.leaveType }}</td>
+        <td>{{ record.remark }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

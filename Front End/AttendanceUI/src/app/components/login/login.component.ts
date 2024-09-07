@@ -1,56 +1,66 @@
-
-import { Component } from '@angular/core';
-// import { AuthService } from '../../services/auth.service';
-// import { Router } from '@angular/router'; 
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css'] // Corrected here
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
   signupUsers: any[] = [];
-
   signupObj: any = {
+    first_name : '',
+    last_name:'',
     userName: '',
     email: '',
-    password: ''
+    password: '',
+    password2:''
   };
-
   loginObj: any = {
-    userName: '',
+    username: '',
     password: ''
   };
 
-  constructor() {}
+  constructor(private accService: AuthService,private route:Router) {}
 
   ngOnInit(): void {
     const localData = localStorage.getItem('signUpUsers');
-    if(localData != null){
-      this.signupUsers = JSON.parse(localData)
+    if (localData != null) {
+      this.signupUsers = JSON.parse(localData);
     }
+
   }
 
   onSignUp() {
     this.signupUsers.push(this.signupObj);
-    localStorage.setItem('signUpUsers',JSON.stringify(this.signupUsers))
+    this.accService.addRecord('userregister',this.signupObj).subscribe(()=>{
+      this.signupObj = {
+        userName: '',
+        email: '',
+        password: ''
+      };
+      window.alert("Record Added Sucessfully");
+    })
+    localStorage.setItem('signUpUsers', JSON.stringify(this.signupUsers));
     this.signupObj = {
       userName: '',
       email: '',
       password: ''
     };
   }
-  onLogin() {
-    const isUserExist = this.signupUsers.find(m => m.userName == this.loginObj.userName && m.password == this.loginObj.password)
-    if( isUserExist != undefined){
-      alert('user Login Sucessfully')
-    }else{
-      alert('Wrong Credentails')
-    }
-    console.log(isUserExist)
-  
 
+  onLogin() {
+    this.accService.onLogin(this.loginObj).subscribe({
+      next: (res: any) => {
+        console.log('res', res);
+        localStorage.setItem('access', res.access);
+        this.route.navigateByUrl('/students');
+      },
+      error: (err) => {
+        console.error('Login error', err);
+      }
+    });
   }
 }
-

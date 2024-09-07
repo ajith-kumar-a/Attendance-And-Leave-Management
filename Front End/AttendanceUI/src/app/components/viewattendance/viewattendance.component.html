@@ -1,0 +1,73 @@
+<!-- Font Awesome CSS link -->
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" /> -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-1 col-md-10">
+            <div class="panel">
+                <!-- Panel Heading with Filters -->
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col col-sm-3 col-xs-12">
+                            <h4 class="title">Attendance <span>details</span></h4>
+                        </div>
+                        <div class="col-12 col-md-9 text-md-right text-center">
+                            <form id="filterForm" class="form-inline row justify-content-center justify-content-md-end">
+                                <div class="col-12 col-md-auto mb-2 mb-md-0">
+                                    <label for="startDate" class="mr-md-2">Start Date:</label>
+                                    <input type="date" id="startDate" name="startDate" class="form-control mx-2 mx-md-0" />
+                                </div>
+                                
+                                <div class="col-12 col-md-auto mb-2 mb-md-0">
+                                    <label for="endDate" class="mr-md-2">End Date:</label>
+                                    <input type="date" id="endDate" name="endDate" class="form-control mx-2 mx-md-0" />
+                                </div>
+                        
+                                <div class="col-12 col-md-auto">
+                                    <button type="button" id="applyFilter" class="btn btn-primary w-100">Apply</button>
+                                </div>
+                            </form>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <!-- Panel Body with Table -->
+                <div class="panel-body table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Role No</th>
+                                <th>Full name</th>
+                                <th>status</th>
+                                <th>Leave type</th>
+                                <th>Remarks</th>
+                            </tr>
+                        </thead>
+                        <tbody id="attendanceTable">
+                            <!-- Table rows here (filtered dynamically with JavaScript) -->
+                            <tr>
+                                <td>1</td>
+                                <td>Vincent Williamson</td>
+                                <td>31</td>
+                                <td>iOS Developer</td>
+                                <td>Sinaai-Waas</td>
+                                <td>
+                                    <ul class="action-list">
+                                        <li><a href="#" data-tip="edit"><i class="fa fa-edit"></i></a></li>
+                                        <li><a href="#" data-tip="delete"><i class="fa fa-trash"></i></a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <!-- Other rows... -->
+                        </tbody>
+                    </table>
+                </div>
+                
+               
+                 
+            </div>
+        </div>
+    </div>
+</div>

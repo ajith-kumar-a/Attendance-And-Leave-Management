@@ -1,0 +1,67 @@
+.attendance-marking {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  width: 60%; /* Half of the width */
+  height: 70vh; /* Half of the viewport height */
+  overflow-y: auto;
+  box-sizing: border-box;
+  margin: 0 auto;
+  border: 5px solid;
+  background-color: silver;
+  margin: auto;
+}
+h2 {
+  text-align: center;
+  color: #34495e;
+  margin-bottom: 20px;
+}
+label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+/* Dropdown background color and lighter border for attendance */
+select.present {
+  background-color: #d4edda; /* Light green for Present */
+  color: #155724;
+  border: 2px solid #c3e6cb; /* Lighter border for Present */
+}
+
+select.absent {
+  background-color: #f8d7da; /* Light red for Absent */
+  color: #721c24;
+  border: 2px solid #f5c6cb; /* Lighter border for Absent */
+}
+
+/* Styling the submit button */
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #218838;
+}
