@@ -49,6 +49,7 @@ urlpatterns = [
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     path('api/user',include('users.urls')),
     path('api/role',include('Roles.urls')),
+    path('api/Permissions',include('Permissions.urls')),
     path('api/token/',swagger_auto_schema(method='post',security=[])(TokenObtainPairView.as_view()),name='token_obtain_pair'),
     path('api/token/refresh/',swagger_auto_schema(method='post',security=[])(TokenRefreshView.as_view()),name='token_refresh')
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
