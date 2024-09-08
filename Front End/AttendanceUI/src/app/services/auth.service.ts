@@ -13,6 +13,11 @@ export class AuthService {
     return this.http.post('http://127.0.0.1:8000/api/token/', obj);
   }
 
+  getRoles(tableName: string) {
+    return this.http.get(`${this.apiUrl}/${tableName}`,  { headers: {} });
+  }
+  
+
   getUserDetails(tableName: string): Observable<any> {
     const token = localStorage.getItem('access');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);

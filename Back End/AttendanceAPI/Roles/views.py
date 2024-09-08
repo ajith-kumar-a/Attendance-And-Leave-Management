@@ -5,9 +5,39 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.exceptions import APIException
 from rest_framework.response import Response
 from rest_framework import status
+
+from rest_framework.views import APIView
+from rest_framework.permissions import AllowAny
+
+from rest_framework import permissions
+from rest_framework_simplejwt.authentication import JWTAuthentication
+
+class PublicRoleListView(APIView):
+    permission_classes = [AllowAny]  # Allow any user to access this view
+
+    def get(self, request, *args, **kwargs):
+        try:
+            # Get all Role objects
+            Role_objs = Role.objects.all()
+            # Serialize the data
+            serializer = RoleSerializer(Role_objs, many=True)
+            # Return the response with the data
+            return Response({
+                'status': status.HTTP_200_OK,
+                'data': serializer.data
+            })
+        except Exception as e:
+            print(e)
+            return Response({
+                'status': status.HTTP_500_INTERNAL_SERVER_ERROR,
+                'message': 'An error occurred while fetching roles'
+            })
+
  
 # Create your views here.
 class RoleViewset(ModelViewSet):
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
     queryset = Role.objects.all()
     serializer_class = RoleSerializer
  
