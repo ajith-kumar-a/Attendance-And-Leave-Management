@@ -20,6 +20,9 @@ import { AttendanceSummaryComponent } from './components/attendance-summary/atte
 import { ViewattendanceComponent } from './components/viewattendance/viewattendance.component';
 import { ApplyleaveComponent } from './components/applyleave/applyleave.component';
 import { TeacherLeavestatusComponent } from './components/teacher-leavestatus/teacher-leavestatus.component';
+import { RoleComponent } from './components/role/role.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { RoleShowComponent } from './components/role-show/role-show.component';
 
 
 @NgModule({
@@ -35,6 +38,9 @@ import { TeacherLeavestatusComponent } from './components/teacher-leavestatus/te
     ViewattendanceComponent,
     ApplyleaveComponent,
     TeacherLeavestatusComponent,
+    RoleComponent,
+    AdminComponent,
+    RoleShowComponent,
     
   ],
   imports: [

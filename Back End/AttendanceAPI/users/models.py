@@ -9,7 +9,7 @@ class User(AbstractUser):
     profile_picture = models.ImageField()
     created_at = models.DateTimeField(auto_now_add=True,null=True)
     updated_at = models.DateTimeField(null=True)
-    role = models.ForeignKey(Role,on_delete=models.CASCADE,null=True,related_name='users')
+    role_id = models.ForeignKey(Role,on_delete=models.CASCADE,null=True,related_name='users')
     full_name = models.SlugField(default='',db_index=True,editable=False)
     
     def save(self, *args, **kwargs):

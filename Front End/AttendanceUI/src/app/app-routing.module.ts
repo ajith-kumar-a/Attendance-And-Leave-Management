@@ -7,18 +7,29 @@ import { LoginComponent } from './components/login/login.component';
 import { ApplyleaveComponent } from './components/applyleave/applyleave.component';
 import { TeacherDashboardComponent } from './components/teacher-dashboard/teacher-dashboard.component';
 import { TeacherLeavestatusComponent } from './components/teacher-leavestatus/teacher-leavestatus.component';
+import { RoleComponent } from './components/role/role.component';
+import { AdminComponent } from './components/admin/admin.component';
 // import { DashboardComponent } from './dashboard/dashboard.component'; // Import your dashboard component
 
 
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'students', component: StudentsComponent },
-  { path: 'teacher', component:TeacherDashboardComponent},
+  { path: 'Student', component: StudentsComponent },
+  { path: 'Teacher', component:TeacherDashboardComponent},
+  { path: 'Admin', component:AdminComponent},
   { path: 'attendance-marking', component: AttendanceMarkingComponent },
   { path: 'attendance-summary', component: AttendanceSummaryComponent },
   { path: 'teacher-leavestatus', component: TeacherLeavestatusComponent},
   { path: '', redirectTo: '/login', pathMatch: 'full' }, // Default route
+
+
+
+  {path:"admin",component:AdminComponent,children:[
+    {path:"role",component:RoleComponent},
+   
+  ]}
+
 ];
 
 @NgModule({

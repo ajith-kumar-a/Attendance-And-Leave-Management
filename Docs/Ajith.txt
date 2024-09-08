@@ -20,3 +20,214 @@ step to connect api
     - ng generate service services/auth
     - ng generate interceptor interceptors/auth
     - ng generate component components/login
+
+
+
+
+views.py Attendance
+    from rest_framework import viewsets, permissions
+from rest_framework.response import Response
+from rest_framework import status as http_status
+from .models import AttendanceStatus
+from .serializers import AttendanceStatusSerializer
+from .serializers import AttendanceSerializer
+
+from .models import Attendance
+
+class AttendanceStatusViewSet(viewsets.ModelViewSet):
+    serializer_class = AttendanceStatusSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        # Return all records or filter if necessary
+        return AttendanceStatus.objects.all()
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        serializer = self.get_serializer(queryset, many=True)
+        return Response({
+            'status': http_status.HTTP_200_OK,
+            'data': serializer.data
+        })
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        if not serializer.is_valid():
+            return Response({
+                'status': http_status.HTTP_400_BAD_REQUEST,
+                'data': serializer.errors,
+                'message': 'Invalid Data'
+            })
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response({
+            'status': http_status.HTTP_201_CREATED,
+            'data': serializer.data,
+            'message': 'Attendance Status created successfully'
+        }, status=http_status.HTTP_201_CREATED, headers=headers)
+
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance)
+        return Response({
+            'status': http_status.HTTP_200_OK,
+            'data': serializer.data
+        })
+
+    def update(self, request, *args, **kwargs):
+        partial = kwargs.pop('partial', False)
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=request.data, partial=partial)
+        if not serializer.is_valid():
+            return Response({
+                'status': http_status.HTTP_400_BAD_REQUEST,
+                'data': serializer.errors,
+                'message': 'Invalid Data'
+            })
+        self.perform_update(serializer)
+        return Response({
+            'status': http_status.HTTP_200_OK,
+            'data': serializer.data,
+            'message': 'Attendance Status updated successfully'
+        })
+
+    def partial_update(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
+
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        self.perform_destroy(instance)
+        return Response({
+            'status': http_status.HTTP_204_NO_CONTENT,
+            'message': 'Attendance Status deleted successfully'
+        })
+    
+
+
+
+class AttendanceViewSet(viewsets.ModelViewSet):
+    serializer_class = AttendanceSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        # Return records for the current logged-in user
+        return Attendance.objects.filter(user_id=self.request.user)
+
+    def perform_create(self, serializer):
+        user = self.request.user
+        date = serializer.validated_data.get('date')
+
+        # Check if an attendance record already exists for the same date
+        if Attendance.objects.filter(user_id=user, date=date).exists():
+            raise ValidationError("Attendance record for this date already exists.")
+
+        serializer.save(user_id=user)
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        serializer = self.get_serializer(queryset, many=True)
+        return Response({
+            'status': http_status.HTTP_200_OK,
+            'data': serializer.data
+        })
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        if not serializer.is_valid():
+            return Response({
+                'status': http_status.HTTP_400_BAD_REQUEST,
+                'data': serializer.errors,
+                'message': 'Invalid Data'
+            })
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response({
+            'status': http_status.HTTP_201_CREATED,
+            'data': serializer.data,
+            'message': 'Attendance created successfully'
+        }, status=http_status.HTTP_201_CREATED, headers=headers)
+
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance)
+        return Response({
+            'status': http_status.HTTP_200_OK,
+            'data': serializer.data
+        })
+
+    def update(self, request, *args, **kwargs):
+        partial = kwargs.pop('partial', False)
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=request.data, partial=partial)
+        if not serializer.is_valid():
+            return Response({
+                'status': http_status.HTTP_400_BAD_REQUEST,
+                'data': serializer.errors,
+                'message': 'Invalid Data'
+            })
+        self.perform_update(serializer)
+        return Response({
+            'status': http_status.HTTP_200_OK,
+            'data': serializer.data,
+            'message': 'Attendance updated successfully'
+        })
+
+    def partial_update(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
+
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        self.perform_destroy(instance)
+        return Response({
+            'status': http_status.HTTP_204_NO_CONTENT,
+            'message': 'Attendance record deleted successfully'
+        })
+
+
+        from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import AttendanceViewSet, AttendanceStatusViewSet
+
+router = DefaultRouter()
+router.register(r'details', AttendanceViewSet, basename='attendance')
+router.register(r'status', AttendanceStatusViewSet, basename='attendance-status')
+
+urlpatterns = [
+    path('', include(router.urls)),
+]
+
+
+
+ser.py
+from rest_framework import serializers
+from .models import Attendance, AttendanceStatus
+from users.models import User
+
+class AttendanceStatusSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AttendanceStatus
+        fields = ['id', 'status']
+
+class AttendanceSerializer(serializers.ModelSerializer):
+    status = serializers.PrimaryKeyRelatedField(queryset=AttendanceStatus.objects.all())  # Nested serializer for status
+    user_id = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())  # Read-only field for user ID
+
+    class Meta:
+        model = Attendance
+        fields = ['id', 'user_id', 'date', 'status', 'remarks', 'login_time', 'logout_time']
+
+    def validate(self, data):
+        user = self.context['request'].user
+        date = data.get('date')
+
+        # Check if an attendance record already exists for the same date
+        if Attendance.objects.filter(user_id=user, date=date).exists():
+            raise serializers.ValidationError("Attendance record for this date already exists.")
+
+        return data
+
+    def create(self, validated_data):
+        user = self.context['request'].user
+        return Attendance.objects.create(user_id=user, **validated_data)
+
+

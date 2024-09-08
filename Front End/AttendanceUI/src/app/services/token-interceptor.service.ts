@@ -7,18 +7,25 @@ import { Observable } from 'rxjs';
 })
 export class TokenInterceptorService implements HttpInterceptor {
 
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // Retrieve the token (you might need to adapt this to your needs)
     const token = localStorage.getItem('token');
 
-    // Clone the request to add the new header
-    const authReq = req.clone({
-      setHeaders: {
-        Authorization: `Bearer ${token}`
-      }
-    });
+    if (request.url.includes('/rolepublic-role')) {
+      // If it's the roles API, do not add the Authorization header
+      return next.handle(request);
+    }
+
+    // For other requests, add the token to the headers
+    // if (token) {
+    //   request = request.clone({
+    //     setHeaders: {
+    //       Authorization: `Bearer ${token}`
+    //     }
+    //   });
+    // }
     
     // Pass the cloned request instead of the original request
-    return next.handle(authReq);
+    return next.handle(request);
   }
 }

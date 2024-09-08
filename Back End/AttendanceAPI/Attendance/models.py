@@ -16,7 +16,7 @@ class Attendance(models.Model):
     status = models.ForeignKey(AttendanceStatus,on_delete=models.CASCADE,related_name='attendances')
     remarks = models.CharField(max_length=255,null=True)
     login_time = models.DateTimeField(auto_now_add=True,null=True)
-    logout_time = models.DateTimeField()
+    logout_time = models.DateTimeField(null=True)
 
     def __str__(self) -> str:
         return f'{self.user_id} - {self.status}'

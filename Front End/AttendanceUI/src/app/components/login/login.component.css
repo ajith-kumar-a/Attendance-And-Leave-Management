@@ -88,3 +88,31 @@ button:hover{
 #chk:checked ~ .signup label{
 	transform: scale(.6);
 }
+
+
+/* Styling for the role dropdown */
+select {
+	width: 60%;
+	height: 26px;
+	margin: 20px auto;
+	/* padding: 12px; */
+	background: #e0dede;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	display: flex;
+	justify-content: center;
+	font-size: 1em;
+	color: #000 !important; /* Black text inside the dropdown */
+}
+
+/* Hover effect for the dropdown */
+select:hover {
+	background-color: #d5d5d5; /* Change background slightly on hover */
+}
+
+/* Style for options inside the dropdown */
+option {
+	font-size: 1em;
+	color: #000 !important;
+}

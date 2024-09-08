@@ -14,7 +14,6 @@ from drf_yasg.utils import swagger_auto_schema
 from rest_framework import permissions
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.views import APIView
-from drf_yasg.utils import swagger_auto_schema
 
 
  # Create your views here.
@@ -44,7 +43,7 @@ class RegisterUserAPIView(APIView):
         serializer.save()
         return Response({
             'status':status.HTTP_201_CREATED,
-            # 'data':serializer.data,
+            'data':serializer.data,
             'message':'User added successfully'
         })
  
