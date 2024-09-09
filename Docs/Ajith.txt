@@ -231,3 +231,4 @@ class AttendanceSerializer(serializers.ModelSerializer):
         return Attendance.objects.create(user_id=user, **validated_data)
 
 
+chk commit
