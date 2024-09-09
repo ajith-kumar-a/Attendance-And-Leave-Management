@@ -1,0 +1,225 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<!-- Header Section -->
+<header>
+    <div class="navbar">
+        <div class="logo">GAP INSTITUTE</div>
+        <nav>
+            <ul>
+                <li><a href="/landing">Home</a></li>
+                <li><a href="/Aboutus">About</a></li>
+                <li><a href="/course">Courses</a></li>
+                <li><a href="/login">Login/SignIn</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+    <!-- <div class="hero-section" [ngStyle]="{ 'background-image': 'url(' + backgroundImageUrl + ')' }"> -->
+    <div class="hero-section">
+        <h1>The Best Online Learning Platform</h1>
+        <p>Learn new skills from anywhere, anytime with our courses. Enroll now and start learning today!</p>
+        <div class="hero-buttons">
+            <a href="/course" class="btn">Browse Courses</a>
+            <!-- <a href="#" class="btn btn-secondary">Join Now</a> -->
+        </div>
+    </div>
+</header>
+
+<!-- About Section -->
+<section class="about">
+    <div class="about-text">
+        <h2>Welcome to Gap Institute</h2>
+        <p>Our platform is designed to provide high-quality education to everyone, no matter where you are. Join now and gain access to a variety of courses across multiple disciplines.</p>
+        <a href="#" class="btn">Contact Us</a>
+    </div>
+    <div class="about-image">
+        <img [src]="studentImage" alt="Student with Books">
+    </div>
+</section>
+
+ <!-- Features Section -->
+ <section class="features">
+    <div class="feature">
+        <h3>🎓 Skilled Instructors</h3>
+        <p>Learn from the best in the industry.</p>
+    </div>
+    <div class="feature">
+        <h3>💻 Online Classes</h3>
+        <p>Flexible learning at your own pace.</p>
+    </div>
+    <div class="feature">
+        <h3>🏠 Home Projects</h3>
+        <p>Work on projects from home to improve your skills.</p>
+    </div>
+    <div class="feature">
+        <h3>📚 Book Library</h3>
+        <p>Access a wide range of resources and books.</p>
+    </div>
+</section>
+
+
+ <!-- Course Categories Section -->
+ <section class="course-categories">
+    <h2>Courses Categories</h2>
+    <div class="categories-container">
+        <div class="category">
+            <img [src]="categoryImages.webDesign" alt="Web Design">
+            <h3>Web Design</h3>
+        </div>
+        <div class="category">
+            <img [src]="categoryImages.graphicDesign" alt="Graphic Design">
+            <h3>Graphic Design</h3>
+        </div>
+        <div class="category">
+            <img [src]="categoryImages.dataScience" alt="Data Science">
+            <h3>Data Science</h3>
+        </div>
+        <div class="category">
+            <img [src]="categoryImages.onlineMarketing" alt="Online Marketing">
+            <h3>Online Marketing</h3>
+        </div>
+        <div class="category">
+            <img [src]="categoryImages.ai" alt="Artificial Intelligence">
+            <h3>Artificial Intelligence</h3>
+        </div>
+    </div>
+</section>
+
+ <!-- Popular Courses Section -->
+ <section class="popular-courses">
+    <h2>Popular Courses</h2>
+    <div class="courses-container">
+        <div class="course">
+            <img [src]="courseImages.pythonFullStack" alt="Python Full Stack">
+            <h3>Python Full Stack</h3>
+            <p>₹15,000</p>
+            <a href="#" class="btn">Enroll Now</a>
+        </div>
+        <div class="course">
+            <img [src]="courseImages.javaFullStack" alt="Java Full Stack">
+            <h3>Java Full Stack</h3>
+            <p>₹14,500</p>
+            <a href="#" class="btn">Enroll Now</a>
+        </div>
+        <div class="course">
+            <img [src]="courseImages.dotnetFullStack" alt="Dotnet Full Stack">
+            <h3>Dotnet Full Stack</h3>
+            <p>₹16,000</p>
+            <a href="#" class="btn">Enroll Now</a>
+        </div>
+        <div class="course">
+            <img [src]="courseImages.dataScience" alt="Data Science">
+            <h3>Data Science</h3>
+            <p>₹18,000</p>
+            <a href="#" class="btn">Enroll Now</a>
+        </div>
+    </div>
+</section>
+<!-- Expert Instructors Section -->
+<section class="expert-instructors">
+    <h2>Expert Instructors</h2>
+    <div class="instructors-container">
+        <div class="instructor">
+            <img [src]="instructorImages.instructor1" alt="Instructor 1">
+            <h3>Ajith Kumar</h3>
+            <p>Dotnet Fullstack</p>
+            <a href="#" class="btn">View Profile</a>
+        </div>
+        <div class="instructor">
+            <img [src]="instructorImages.instructor2" alt="Instructor 2">               
+            <h3>Prasanth Mani</h3>
+            <p>Python Fullstack</p>
+            <a href="#" class="btn">View Profile</a>
+        </div>
+        <div class="instructor">
+            <img [src]="instructorImages.instructor3" alt="Instructor 3">                
+            <h3>Gokul</h3>
+            <p>Java Fullstack</p>
+            <a href="#" class="btn">View Profile</a>
+        </div>
+    </div>
+</section>
+<!-- testimonials.component.html -->
+<section class="testimonials">
+    <h2>Our Students Say!</h2>
+    <div class="testimonials-container">
+        <div *ngFor="let testimonial of testimonials" class="testimonial" [ngClass]="{'highlighted': testimonial.name === 'Client Name 2'}">
+            <img [src]="testimonial.image" alt="{{testimonial.name}}">
+            <h3>{{testimonial.name}}</h3>
+            <p>{{testimonial.profession}}</p>
+            <blockquote>
+                "{{testimonial.feedback}}"
+            </blockquote>
+        </div>
+    </div>
+</section>
+ <!-- Footer Start -->
+ <footer class="footer">
+    <div class="container">
+        <div class="footer-columns">
+            <!-- Column 1: Office Information -->
+            <div class="footer-column">
+                <h3 class="footer-heading">
+                    <img src="logo.png" alt="Edification Logo"> EDIFICATION
+                </h3>
+                <p class="footer-subheading">Education For Everyone</p>
+                <p class="footer-info">
+                    <strong>Head Office Address:</strong> <br>
+                    London Oxford Street, 012 United Kingdom.
+                </p>
+                <p class="footer-info">
+                    <strong>Office Address:</strong> <br>
+                    Siruseri, OMR, Chennai, India.
+                </p>
+                <p class="footer-info">
+                    <strong>Business Phone:</strong> <br>
+                    +91 76456 87890
+                </p>
+                <p class="footer-info">
+                    <strong>Business Email:</strong> <br>
+                    gapinstitute&#64;gmail.com <!-- Updated to use HTML entity for @ -->
+                </p>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com" target="_blank" class="social-icon">
+                        <i class="fab fa-facebook-f"></i>
+                        <span>Facebook</span>
+                    </a>
+                    <a href="https://twitter.com" target="_blank" class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                        <span>Twitter</span>
+                    </a>
+                    <a href="https://www.instagram.com" target="_blank" class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                        <span>Instagram</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Column 2: Institute Locations -->
+            <div class="footer-column">
+                <h3 class="footer-heading">Our Locations</h3>
+                <ul class="locations">
+                    <li>Chennai / Mumbai / Bengaluru</li>
+                    <li>Kolkata / Hyderabad / Delhi</li>
+                    <li>Ahmedabad / Pune / Jaipur</li>
+                    <li>Lucknow / Kanpur / Indore</li>
+                    <li>Chandigarh / Surat / Vadodara</li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Working Days & Hours -->
+            <div class="footer-column">
+                <h3 class="footer-heading">Working Days & Hours</h3>
+                <p>We are committed to providing the best service possible. Below are our working days and hours:</p>
+                <ul class="working-hours">
+                    <li><strong>Monday - Tuesday:</strong> 6:00 AM - 10:00 PM</li>
+                    <li><strong>Wednesday - Thursday:</strong> 8:00 AM - 6:00 PM</li>
+                    <li><strong>Friday:</strong> 3:00 PM - 8:00 PM</li>
+                    <li><strong>Sunday:</strong> 10:00 AM - 10:00 PM</li>
+                </ul>
+            </div>    
+        </div>
+    </div>
+</footer>
+<!-- Footer End -->
+
+<!-- Other sections... -->

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Gap Institute</title>
+    <link rel="stylesheet" href="aboutus.component.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">GAP INSTITUTE</div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="/Aboutus">About</a></li>
+                    <li><a href="#">Courses</a></li>
+                    <li><a href="/login">Login/SignIn</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <!-- Top Section -->
+        <div class="top-section">
+            <div class="left-image">
+                <img [src]="leftImage" alt="Gap Institute" />
+            </div>
+            <div class="middle-content">
+                <h2>About Gap Institute</h2>
+                <p>We are a premier institute offering world-class training in technology and management. Our courses are tailored to meet industry standards and help bridge the gap between education and professional excellence.</p>
+                <p>Our experienced faculty and comprehensive curriculum ensure a robust learning experience.</p>
+                <p>At Gap Institute, we prioritize hands-on training, real-world projects, and career readiness.</p>
+                <p>We work closely with leading companies to provide students with exceptional job opportunities.</p>
+                <p>Join us to transform your skills and career path with us!</p>
+            </div>
+            <div class="right-image">
+                <img [src]="rightImage" alt="Gap Institute" />
+            </div>
+        </div>
+
+        <!-- Founder Message Section -->
+        <!-- Founder Message Section -->
+        <div class="founder-message">
+            <h3>Message from the Founder</h3>
+            <p>"At Gap Institute, we believe in the power of education to unlock potential and create opportunities. Our mission is to inspire students to dream big, work hard, and never lose sight. We aim to cultivate a spirit of perseverance and self-confidence, knowing that these qualities are key.</p>
+            <p>We encourage our students to step out of their comfort zones, embrace new experiences, and turn every failure into a stepping stone. True achievement comes not just from academic excellence but from character, leadership, and responsibility.</p>
+            <p>Our institute is dedicated to nurturing both the mind and heart, ensuring that every student leaves with a strong sense of purpose and skills to succeed. Through teamwork, dedication, and constant drive to improve, we build the leaders of tomorrow. Your journey at Gap Institute is not just about learning—it’s about building a foundation for lifelong success."</p>
+            <p>– Founder, Gap Institute</p>
+        </div>
+
+        <!-- Left Side Image Section -->
+        <div class="left-side-image">
+            <img [src]="sideImage" alt="Institute Image" />
+        </div>
+
+
+    <!-- Mission and Vision Section -->
+<div class="mission-vision" [ngStyle]="{ 'background-image': 'url(' + backgroundImageUrl + ')' }">
+    <!-- Mission Section -->
+    <div class="mission">
+        <h2>Our Mission</h2>
+        <ul>
+            <li>To bridge the gap between theoretical knowledge and practical skills.</li>
+            <li>To provide industry-relevant education and hands-on training.</li>
+            <li>To prepare students for successful careers in the corporate world.</li>
+        </ul>
+    </div>
+
+    <!-- Vision Section -->
+    <div class="vision">
+        <h2>Our Vision</h2>
+        <ul>
+            <li>To be a globally recognized institute for skill development.</li>
+            <li>To empower students through innovative and quality education.</li>
+            <li>To foster lifelong learning and professional growth.</li>
+            <li>To collaborate with industry leaders to shape the future workforce.</li>
+        </ul>
+    </div>
+</div>
+
+
+
+        <!-- Brand Logos Section -->
+        <div class="brands">
+            <h3>Our Partners</h3>
+            <div class="brand-logos">
+                <img [src]="tcsLogo" alt="TCS Logo" class="brand-logo" />
+                <img [src]="cognizantLogo" alt="Cognizant Logo" class="brand-logo" />
+                <img [src]="atosLogo" alt="Atos Logo" class="brand-logo" />
+                <img [src]="hexawareLogo" alt="Hexaware Logo" class="brand-logo" />
+                <img [src]="changepondLogo" alt="Changepond Logo" class="brand-logo" />
+            </div>
+        </div>
+        </div>
+    <footer>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Gap Institute. All rights reserved.</p>
+        </div>
+    </footer>
+
+       
+</body>
+</html>

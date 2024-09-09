@@ -23,6 +23,9 @@ import { TeacherLeavestatusComponent } from './components/teacher-leavestatus/te
 import { RoleComponent } from './components/role/role.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { RoleShowComponent } from './components/role-show/role-show.component';
+import { LandingpageComponent } from './components/landingpage/landingpage.component';
+import { AboutusComponent } from './components/aboutus/aboutus.component';
+import { CourseDetailsComponent } from './components/course-details/course-details.component';
 
 
 @NgModule({
@@ -41,6 +44,9 @@ import { RoleShowComponent } from './components/role-show/role-show.component';
     RoleComponent,
     AdminComponent,
     RoleShowComponent,
+    LandingpageComponent,
+    AboutusComponent,
+    CourseDetailsComponent,
     
   ],
   imports: [

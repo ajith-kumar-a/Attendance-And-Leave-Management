@@ -23,6 +23,8 @@ export class TeacherDashboardComponent implements OnInit{
           console.log('Phone:', this.user.phone);
           console.log('Course:', this.user.course);
           console.log('Address:', this.user.address);
+          
+
           // Add more logs as needed based on the properties of the user object
         },
         (error) => {

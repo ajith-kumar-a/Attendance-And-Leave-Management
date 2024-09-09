@@ -9,6 +9,9 @@ import { TeacherDashboardComponent } from './components/teacher-dashboard/teache
 import { TeacherLeavestatusComponent } from './components/teacher-leavestatus/teacher-leavestatus.component';
 import { RoleComponent } from './components/role/role.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { LandingpageComponent } from './components/landingpage/landingpage.component';
+import { AboutusComponent } from './components/aboutus/aboutus.component';
+import { CourseDetailsComponent } from './components/course-details/course-details.component';
 // import { DashboardComponent } from './dashboard/dashboard.component'; // Import your dashboard component
 
 
@@ -21,7 +24,10 @@ const routes: Routes = [
   { path: 'attendance-marking', component: AttendanceMarkingComponent },
   { path: 'attendance-summary', component: AttendanceSummaryComponent },
   { path: 'teacher-leavestatus', component: TeacherLeavestatusComponent},
-  { path: '', redirectTo: '/login', pathMatch: 'full' }, // Default route
+  { path: '', component: LandingpageComponent},
+  { path: 'Aboutus', component: AboutusComponent},
+  { path: 'course', component: CourseDetailsComponent},
+  // { path: '', redirectTo: '/landing', pathMatch: 'full' }, // Default route
 
 
 
