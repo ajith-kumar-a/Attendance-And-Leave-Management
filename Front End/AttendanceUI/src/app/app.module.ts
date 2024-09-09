@@ -23,6 +23,7 @@ import { TeacherLeavestatusComponent } from './components/teacher-leavestatus/te
 import { RoleComponent } from './components/role/role.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { RoleShowComponent } from './components/role-show/role-show.component';
+import { LeaveStatusComponent } from './components/leave-status/leave-status.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { RoleShowComponent } from './components/role-show/role-show.component';
     RoleComponent,
     AdminComponent,
     RoleShowComponent,
+    LeaveStatusComponent,
     
   ],
   imports: [

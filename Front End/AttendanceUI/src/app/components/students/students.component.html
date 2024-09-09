@@ -20,9 +20,9 @@
                         {{user.first_name}}
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li><button class="dropdown-item" type="button">View Attendance</button></li>
-                        <li><button class="dropdown-item" type="button">Apply Leave</button></li>
-                        <li><button class="dropdown-item" type="button">Leave Status</button></li>
+                        <li><a href="/"><button class="dropdown-item" type="button">View Attendance</button></a></li>
+                        <li><a href="/apply-leave"><button class="dropdown-item" type="button">Apply Leave</button></a></li>
+                        <li><a href="/leave-status"><button class="dropdown-item" type="button">Leave Status</button></a></li>
                     </ul>
                 </div>
                 <button class="btn btn-danger btn-signout d-none d-md-block">Sign Out</button> <!-- Hide on small screens -->
@@ -163,39 +163,35 @@
                     </div>
                 </div>
                 
-                <!-- Panel Body with Table -->
-                <div class="panel-body table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>S.No</th>
-                                <th>Role No</th>
-                                <th>Full name</th>
-                                <th>status</th>
-                                <th>Leave type</th>
-                                <th>Remarks</th>
-                            </tr>
-                        </thead>
-                        <tbody id="attendanceTable">
-                            <!-- Table rows here (filtered dynamically with JavaScript) -->
-                            <tr>
-                                <td>1</td>
-                                <td>Vincent Williamson</td>
-                                <td>31</td>
-                                <td>iOS Developer</td>
-                                <td>Sinaai-Waas</td>
-                                <td>
-                                    <ul class="action-list">
-                                        <li><a href="#" data-tip="edit"><i class="fa fa-edit"></i></a></li>
-                                        <li><a href="#" data-tip="delete"><i class="fa fa-trash"></i></a></li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <!-- Other rows... -->
-                        </tbody>
-                    </table>
-                </div>
-                
+              <!-- Panel Body with Table -->
+        <!-- Panel Body with Table -->
+<div class="panel-body table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>S.No</th>
+        <th>Date</th>
+        <th>Status</th>
+        <th>Remarks</th>
+        <th>Login Time</th>
+        <th>Logout Time</th>
+      </tr>
+    </thead>
+    <tbody id="attendanceTable">
+      <!-- Use *ngFor to iterate over the attendance array -->
+      <tr *ngFor="let entry of attendance; let i = index">
+        <td>{{ i + 1 }}</td> <!-- Display serial number -->
+        <td>{{ entry.date }}</td> <!-- Display date -->
+        <td>{{ statusMap[entry.status_id - 1]?.status || 'Unknown' }}</td>
+        <td>{{ entry.remarks }}</td> <!-- Display remarks -->
+        <td>{{ entry.login_time }}</td> <!-- Display login time -->
+        <td>{{ entry.logout_time }}</td> <!-- Display logout time -->
+        
+      </tr>
+    </tbody>
+  </table>
+</div>
+
                
                  
             </div>

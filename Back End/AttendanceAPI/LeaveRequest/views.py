@@ -8,6 +8,9 @@ from rest_framework import status
 
 from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny
+from rest_framework.decorators import action
+from rest_framework.response import Response
+from rest_framework import status
 
 from rest_framework import permissions
 from rest_framework_simplejwt.authentication import JWTAuthentication
@@ -46,6 +49,22 @@ class LeaveRequestsViewset(ModelViewSet):
                 return LeaveRequestsSerializer
             return self.serializer_class
     
+    @action(detail=False, methods=['get'], url_path='by-user/(?P<user_id>\d+)')
+    def get_by_user(self, request, user_id=None):
+        try:
+            leave_requests = LeaveRequests.objects.filter(user_id=user_id)
+            serializer = self.get_serializer(leave_requests, many=True)
+            return Response({
+                'status': status.HTTP_200_OK,
+                'data': serializer.data
+            })
+        except Exception as e:
+            print(e)
+            return Response({
+                'status': status.HTTP_500_INTERNAL_SERVER_ERROR,
+                'message': 'An error occurred while fetching LeaveRequests by user_id'
+            })
+    
 #get all authors
     def list(self,request,pk=None):
         try:
@@ -62,28 +81,30 @@ class LeaveRequestsViewset(ModelViewSet):
                 'message':APIException.default_detail,
                 'status':APIException.status_code
             })
-    #add an author
-    def create(self,request,pk=None):
+   
+
+    def create(self, request, pk=None):
         try:
             serializer = self.get_serializer(data=request.data)
             if not serializer.is_valid():
                 return Response({
                     'status': status.HTTP_400_BAD_REQUEST,
-                    'data':serializer.errors,
-                    'message':'Inavlid Data'
+                    'data': serializer.errors,
+                    'message': 'Invalid Data'
                 })
             serializer.save()
             return Response({
                 'status': status.HTTP_201_CREATED,
                 'data': serializer.data,
-                'message': 'LeaveRequests created successfully'
+                'message': 'LeaveRequest created successfully'
             })
         except Exception as e:
-            print(e)
-            raise APIException({
-                'message':APIException.default_detail,
-                'status':APIException.status_code
+            print(f'Error: {e}')  # Print the full exception for debugging
+            return Response({
+                'status': status.HTTP_500_INTERNAL_SERVER_ERROR,
+                'message': 'An error occurred while creating LeaveRequest'
             })
+
     
     #update all fields of author
     def update(self,request,pk=None):

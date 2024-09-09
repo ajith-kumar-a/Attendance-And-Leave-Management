@@ -13,7 +13,7 @@ class AttendanceStatus(models.Model):
 class Attendance(models.Model):
     user_id = models.ForeignKey(User,on_delete=models.CASCADE,null=True,related_name='attendances')
     date = models.DateField(auto_now_add=True,null=True)
-    status = models.ForeignKey(AttendanceStatus,on_delete=models.CASCADE,related_name='attendances')
+    status_id = models.ForeignKey(AttendanceStatus,on_delete=models.CASCADE,related_name='attendances')
     remarks = models.CharField(max_length=255,null=True)
     login_time = models.DateTimeField(auto_now_add=True,null=True)
     logout_time = models.DateTimeField(null=True)

@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
   private apiUrl = 'http://127.0.0.1:8000/api';
+
   constructor(private http: HttpClient) {}
 
   onLogin(obj: any): Observable<any> {
@@ -27,6 +28,14 @@ export class AuthService {
 
   addRecord(tableName:string,data:any){
     return this.http.post(`${this.apiUrl}/${tableName}`,data);
+  }
+
+  getLeaveRequestDetails(tableName:string,userId: number): Observable<any> {
+
+    const token = localStorage.getItem('access');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.get(`${this.apiUrl}/${tableName}${userId}/`,  { headers });
   }
 
 }
