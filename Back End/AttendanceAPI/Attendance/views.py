@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from . models import Attendance,AttendanceStatus
-from .serializers import AttendanceSerializer,AttendanceStatusSerializer
+from .serializers import AttendanceSerializer,AttendanceStatusSerializer,aAttendanceSerializer,aAttendanceStatusSerializer
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.exceptions import APIException
 from rest_framework.response import Response
@@ -246,4 +246,75 @@ class AttendanceViewset(ModelViewSet):
             raise APIException({
                 'message':APIException.default_detail,
                 'status':APIException.status_code
+            })
+        
+# from rest_framework.decorators import action
+# from rest_framework.response import Response
+# from rest_framework import status
+# from rest_framework.viewsets import ModelViewSet
+# from django.db.models import Q
+# from users.models import User
+
+# class AttendanceViewset(ModelViewSet):
+#     authentication_classes = [JWTAuthentication]
+#     permission_classes = [permissions.IsAuthenticated]
+#     queryset = Attendance.objects.all()
+#     serializer_class = aAttendanceSerializer
+
+#     @action(detail=False, methods=['get'], url_path='by-role/(?P<role_id>\d+)/user/(?P<user_id>\d+)')
+#     def get_by_role_and_user(self, request, role_id=None, user_id=None):
+#         try:
+#             # Filter users by role_id
+#             users = User.objects.filter(role_id=role_id)
+#             user_ids = users.values_list('id', flat=True)
+
+#             # Filter attendances by user_ids and user_id
+#             attendances = Attendance.objects.filter(user_id__in=user_ids, user_id=user_id)
+            
+#             serializer = self.get_serializer(attendances, many=True)
+#             return Response({
+#                 'status': status.HTTP_200_OK,
+#                 'data': serializer.data,
+#                 'message': 'Attendance records retrieved successfully'
+#             })
+#         except Exception as e:
+#             print(e)
+#             return Response({
+#                 'status': status.HTTP_500_INTERNAL_SERVER_ERROR,
+#                 'message': 'An error occurred while fetching Attendances'
+#             })
+
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from django.shortcuts import get_object_or_404
+from .models import Attendance, User
+from .serializers import AttendanceSerializer
+
+class AttendanceByRoleView(APIView):
+    """
+    API endpoint that filters attendance records by role_id.
+    """
+
+    def get(self, request, role_id, *args, **kwargs):
+        try:
+            # Filter users by role_id
+            users = User.objects.filter(role_id=role_id)
+            user_ids = users.values_list('id', flat=True)
+
+            # Filter attendances by user_ids
+            attendances = Attendance.objects.filter(user_id__in=user_ids)
+            
+            serializer = AttendanceSerializer(attendances, many=True)
+            return Response({
+                'status': status.HTTP_200_OK,
+                'data': serializer.data,
+                'message': 'Attendance records retrieved successfully'
+            })
+        except Exception as e:
+            print(e)
+            return Response({
+                'status': status.HTTP_500_INTERNAL_SERVER_ERROR,
+                'message': 'An error occurred while fetching attendances'
             })

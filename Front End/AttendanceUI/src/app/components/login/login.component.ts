@@ -88,7 +88,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('access', res.access);
   
         // Step 2: Use the token to get user profile (which contains role_id)
-        this.accService.getUserDetails('userme').subscribe({
+        this.accService.getUserDetails('userme/').subscribe({
           next: (userRes: any) => {
             console.log('User profile response:', userRes.data.role_id,);
   

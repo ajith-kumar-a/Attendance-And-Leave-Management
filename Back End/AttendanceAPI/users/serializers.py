@@ -12,7 +12,7 @@ class UserSerializer(serializers.ModelSerializer):
     """UserSerializer to get user details using JWT authentication."""
     class Meta:
         model = User
-        fields = ["id", "first_name", "last_name", "username", "role_id", "email", "password"]
+        fields = ["id", "first_name", "last_name", "username", "role_id", "email","profile_picture"]
  
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -60,3 +60,33 @@ class RegisterSerializer(serializers.ModelSerializer):
         user.set_password(validated_data['password'])
         user.save()
         return user
+    
+
+class UserImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['profile_picture']
+
+
+
+class UserDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['username', 'first_name', 'last_name', 'email',  'role_id', 'created_at', 'updated_at']
+        
+        # Include all fields you want to allow updates for
+        extra_kwargs = {
+            'created_at': {'read_only': True},
+            'updated_at': {'read_only': True},
+        }
+
+    def update(self, instance, validated_data):
+        # Custom update logic, if needed
+        # instance.username = validated_data.get('username', instance.username)
+        # instance.first_name = validated_data.get('first_name', instance.first_name)
+        # instance.last_name = validated_data.get('last_name', instance.last_name)
+        # instance.email = validated_data.get('email', instance.email)
+        # instance.profile_picture = validated_data.get('profile_picture', instance.profile_picture)
+        # instance.role_id = validated_data.get('role_id', instance.role_id)
+        instance.save()
+        return instance

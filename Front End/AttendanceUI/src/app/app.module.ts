@@ -29,6 +29,8 @@ import { LandingpageComponent } from './components/landingpage/landingpage.compo
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { CourseDetailsComponent } from './components/course-details/course-details.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { AllUsersDetailsComponent } from './components/all-users-details/all-users-details.component';
+import { AllUserAttendanceDetailsComponent } from './components/all-user-attendance-details/all-user-attendance-details.component';
 
 
 @NgModule({
@@ -52,6 +54,8 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
     AboutusComponent,
     CourseDetailsComponent,
     ContactUsComponent,
+    AllUsersDetailsComponent,
+    AllUserAttendanceDetailsComponent,
     
   ],
   imports: [

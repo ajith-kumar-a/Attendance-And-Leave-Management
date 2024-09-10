@@ -46,5 +46,11 @@ export class AuthService {
   }
 
 
+  updateProfilePicture(userId: number, formData: FormData): Observable<any> {
+    const token = localStorage.getItem('access');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.put(`${this.apiUrl}/userapi/user/update-profile-picture/${userId}/`, formData, { headers });
+  }
+
 
 }

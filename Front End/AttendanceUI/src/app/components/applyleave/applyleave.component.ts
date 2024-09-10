@@ -19,7 +19,7 @@ export class ApplyleaveComponent implements OnInit {
   }
 
   fetchStudentDetails(): void {
-    this.authService.getUserDetails('userme').subscribe(
+    this.authService.getUserDetails('userme/').subscribe(
       (data) => {
         this.leaveData = {
           fullName: data.data.fullName,

@@ -150,9 +150,31 @@ AUTH_USER_MODEL = 'users.User'
 
 
 
+# import os
+
+
+# MEDIA_ROOT=os.path.join(BASE_DIR/'uploads')
+# MEDIA_URL ='/uploads/'
+
+# import os
+
+# # Base directory for the Django project
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# # Media files settings
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
+# MEDIA_URL = '/uploads/'
+
 import os
-MEDIA_ROOT=os.path.join(BASE_DIR/'uploads')
-MEDIA_URL ='/uploads/'
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+MEDIA_ROOT = BASE_DIR / 'uploads'
+MEDIA_URL = '/uploads/'
+
+# Other settings...
+
 
 
 SWAGGER_SETTINGS = {
