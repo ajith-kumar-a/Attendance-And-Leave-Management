@@ -26,6 +26,7 @@ import { RoleShowComponent } from './components/role-show/role-show.component';
 import { LandingpageComponent } from './components/landingpage/landingpage.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { CourseDetailsComponent } from './components/course-details/course-details.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { CourseDetailsComponent } from './components/course-details/course-detai
     LandingpageComponent,
     AboutusComponent,
     CourseDetailsComponent,
+    ContactUsComponent,
     
   ],
   imports: [

@@ -12,6 +12,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { LandingpageComponent } from './components/landingpage/landingpage.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { CourseDetailsComponent } from './components/course-details/course-details.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
 // import { DashboardComponent } from './dashboard/dashboard.component'; // Import your dashboard component
 
 
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: '', component: LandingpageComponent},
   { path: 'Aboutus', component: AboutusComponent},
   { path: 'course', component: CourseDetailsComponent},
+  { path: 'contact', component: ContactUsComponent},
   // { path: '', redirectTo: '/landing', pathMatch: 'full' }, // Default route
 
 

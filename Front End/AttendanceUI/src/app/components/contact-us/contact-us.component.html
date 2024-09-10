@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Font Awesome Kit -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="contact-us.component.css">
+</head>
+<body>
+    <div class="container">
+        <div class="contact-parent">
+            <div class="contact-child child1">
+                <p>
+                    <i class="fas fa-map-marker-alt"></i> Address <br />
+                    <span>Ash Lane 110<br />London, UK</span>
+                </p>
+                <p>
+                    <i class="fas fa-phone-alt"></i> Let's Talk <br />
+                    <span>0787878787</span>
+                </p>
+                <p>
+                    <i class="far fa-envelope"></i> General Support <br />
+                    <!-- <mailto:span>contact@example.com</span> -->
+                </p>
+            </div>
+            <div class="contact-child child2">
+                <div class="inside-contact">
+                    <h2>Contact Us</h2>
+                    <h3>
+                        <span id="confirm"></span>
+                    </h3>
+                    <p>Name *</p>
+                    <input id="txt_name" type="text" required="required">
+                    <p>Email *</p>
+                    <input id="txt_email" type="email" required="required">
+                    <p>Phone *</p>
+                    <input id="txt_phone" type="text" required="required">
+                    <p>Subject *</p>
+                    <input id="txt_subject" type="text" required="required">
+                    <p>Message *</p>
+                    <textarea id="txt_message" rows="4" cols="20" required="required"></textarea>
+                    <input type="submit" id="btn_send" value="SEND">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
