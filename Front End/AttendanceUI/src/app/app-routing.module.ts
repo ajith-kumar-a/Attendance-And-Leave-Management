@@ -9,6 +9,7 @@ import { TeacherDashboardComponent } from './components/teacher-dashboard/teache
 import { TeacherLeavestatusComponent } from './components/teacher-leavestatus/teacher-leavestatus.component';
 import { RoleComponent } from './components/role/role.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { LeaveStatusComponent } from './components/leave-status/leave-status.component';
 // import { DashboardComponent } from './dashboard/dashboard.component'; // Import your dashboard component
 
 
@@ -22,6 +23,9 @@ const routes: Routes = [
   { path: 'attendance-summary', component: AttendanceSummaryComponent },
   { path: 'teacher-leavestatus', component: TeacherLeavestatusComponent},
   { path: '', redirectTo: '/login', pathMatch: 'full' }, // Default route
+  {path: 'apply-leave',component:ApplyleaveComponent},
+  {path: 'leave-status',component:LeaveStatusComponent},
+  { path: 'leave-status/:userId', component: LeaveStatusComponent },
 
 
 

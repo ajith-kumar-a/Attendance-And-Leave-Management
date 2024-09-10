@@ -16,5 +16,5 @@ class LeaveRequests(models.Model):
     leave_type = models.ForeignKey(LeaveType,on_delete=models.CASCADE,related_name='leaveRequest')
     start_date = models.DateField()
     end_date = models.DateField()
-    status = models.ForeignKey(LeaveStatus,on_delete=models.CASCADE,related_name='leaveRequest')
+    status = models.ForeignKey(LeaveStatus,on_delete=models.CASCADE,related_name='leaveRequest',default=1,null=True)
     reason = models.TextField(null=True)
