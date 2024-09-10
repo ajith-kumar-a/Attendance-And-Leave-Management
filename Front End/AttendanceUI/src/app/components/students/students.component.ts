@@ -17,7 +17,7 @@ export class StudentsComponent implements OnInit {
     startDate: '',
     endDate: ''
   };
-
+  
   constructor(private AuthService: AuthService) {}
 
   ngOnInit(): void {
@@ -27,12 +27,40 @@ export class StudentsComponent implements OnInit {
   }
 
 
-  fetchStudentAttendance(userId: number): void {
+  fetchStudentAttendance(userId: number, startDate?: string, endDate?: string): void {
+    let apiurl:any =this.AuthService.getUserDetails(`Attendancedetail/by-user/${userId}/`);
+    let start = new Date(startDate as string);
+    let end = new Date(endDate as string);
+    let filteredAttendance = [];
+    // if (startDate && endDate ) {
+    //   apiurl += `?start_date=${startDate}&end_date=${endDate}`;
+    // }
+    
     this.AuthService.getUserDetails(`Attendancedetail/by-user/${userId}/`).subscribe(
-      (data) => {
-        this.attendance = data.data;
+      (data:any) => {
+        // console.log(data.data[0].date)
+        console.log(data.data.length)
+        console.log(start)
+        console.log(end)
+
+        for (let i = 0; i < data.data.length; i++) {
+         
+          let entryDate = new Date(data.data[i].date);
+          console.log(entryDate)
+          if (entryDate >= start && entryDate <= end) {
+            filteredAttendance.push(data.data[i]);
+          }
+          console.log(data.data[0].date);
+
+      }
+
+        this.attendance = filteredAttendance;
+
+
+        console.log(filteredAttendance)
+        console.log(this.attendance)
       },
-      (error) => {
+      (error:any) => {
         console.error('Error fetching attendance details', error);
       }
     );
@@ -40,7 +68,7 @@ export class StudentsComponent implements OnInit {
 
 
   fetchStudentDetails(){
-    this.AuthService.getUserDetails('userme').subscribe(
+    this.AuthService.getUserDetails('userme/').subscribe(
       (data) => {
         this.user = data.data;
         console.log('Full user object:', this.user);
@@ -66,4 +94,9 @@ export class StudentsComponent implements OnInit {
       }
     );
   }
+  applyFilter(): void {
+    this.fetchStudentAttendance(this.user.id, this.leaveRequest['startDate'], this.leaveRequest['endDate']);
+    console.log('hiiii      :',this.leaveRequest)
+  }
+
 }
