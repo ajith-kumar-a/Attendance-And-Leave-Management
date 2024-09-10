@@ -14,11 +14,11 @@
         <!-- Use *ngFor to iterate over the attendance array -->
         <tr *ngFor="let entry of leaveRequestDetails; let i = index">
           <td>{{ i + 1 }}</td> 
-          <td>{{ entry.leave_type }}</td> 
+          <td>{{ LeaveTypeMap[entry.id-1]?.type || 'Unknown' }}</td> 
           <td>{{ entry.reason }}</td>
           <td>{{ entry.start_date }}</td>
           <td>{{ entry.end_date }}</td>
-          <td>{{ entry.status }}</td> 
+          <td>{{ statusMap[entry.id-1]?.status || 'Unknown' }}</td>
 
         </tr>
       </tbody>

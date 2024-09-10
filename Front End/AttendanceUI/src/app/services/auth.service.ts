@@ -26,7 +26,9 @@ export class AuthService {
   }
 
   addRecord(tableName:string,data:any){
-    return this.http.post(`${this.apiUrl}/${tableName}`,data);
+    const token = localStorage.getItem('access');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post(`${this.apiUrl}/${tableName}`,data, { headers });
   }
 
   getLeaveRequestDetails(tableName:string,userId: number): Observable<any> {
