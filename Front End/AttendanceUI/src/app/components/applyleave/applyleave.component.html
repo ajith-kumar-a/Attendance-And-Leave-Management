@@ -1,69 +1,68 @@
 <div class="base">
-    <div class="container">
-      <div class="text">
-        <span>Apply Leave</span>
-      </div>
-      <form [formGroup]="leaveForm" (ngSubmit)="onSubmit()">
-        <div class="form-row">
-          <div class="input-data">
-            <input formControlName="fullName" type="text" required>
-            <div class="underline"></div>
-            <label for="fullName">Full Name</label>
-          </div>
-          <div class="input-data">
-            <input formControlName="studentId" type="text" required>
-            <div class="underline"></div>
-            <label for="studentId">Student ID</label>
-          </div>
-        </div>
-  
-        <div class="form-row">
-          <div class="input-data">
-            <input formControlName="email" type="email" required>
-            <div class="underline"></div>
-            <label for="email">Email Address</label>
-          </div>
-          <div class="input-data">
-            <select formControlName="leaveType" class="form-control" required>
-              <option value="" disabled>Select Leave Type</option>
-              <option value="1">Sick Leave</option>
-              <option value="2">Casual Leave</option>
-              <option value="3">Annual Leave</option>
-            </select>
-            <div class="underline"></div>
-          </div>
-        </div>
-  
-        <div class="form-row">
-          <div class="input-data textarea">
-            <textarea formControlName="reason" rows="8" cols="80" required></textarea>
-            <div class="underline"></div>
-            <label for="reason">Write your reason</label>
-          </div>
-        </div>
-  
-        <div class="form-row">
-          <div class="input-data">
-            <input formControlName="startDate" type="date" required>
-            <div class="underline"></div>
-            <label for="startDate">Start Date</label>
-          </div>
-          <div class="input-data">
-            <input formControlName="endDate" type="date" required>
-            <div class="underline"></div>
-            <label for="endDate">End Date</label>
-          </div>
-        </div>
-  
-        <div class="form-row submit-btn">
-          <div class="input-data">
-            <input type="submit" value="Apply">
-          </div>
-          <div class="input-data">
-            <button type="button" (click)="onCancel()">Cancel</button>
-          </div>
-        </div>
-      </form>
+  <div class="container">
+    <div class="text">
+      <span>Apply Leave</span>
     </div>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-row">
+        <div class="input-data">
+          <input [(ngModel)]="leaveData.fullName" name="fullName" type="text" required>
+          <div class="underline"></div>
+          <label for="fullName">Full Name</label>
+        </div>
+        <div class="input-data">
+          <input [(ngModel)]="leaveData.studentId" name="studentId" type="text" required>
+          <div class="underline"></div>
+          <label for="studentId">Student ID</label>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="input-data">
+          <input [(ngModel)]="leaveData.email" name="email" type="email" required>
+          <div class="underline"></div>
+          <label for="email">Email Address</label>
+        </div>
+        <div class="input-data">
+          <select [(ngModel)]="leaveData.leaveType" name="leaveType" class="form-control" required>
+            <option value="" disabled>Select Leave Type</option>
+            <option value="1">Sick Leave</option>
+            <option value="2">Casual Leave</option>
+            <option value="3">Annual Leave</option>
+          </select>
+          <div class="underline"></div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="input-data textarea">
+          <textarea [(ngModel)]="leaveData.reason" name="reason" rows="8" cols="80" required></textarea>
+          <div class="underline"></div>
+          <label for="reason">Write your reason</label>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="input-data">
+          <input [(ngModel)]="leaveData.startDate" name="startDate" type="date" required>
+          <div class="underline"></div>
+          <label for="startDate">Start Date</label>
+        </div>
+        <div class="input-data">
+          <input [(ngModel)]="leaveData.endDate" name="endDate" type="date" required>
+          <div class="underline"></div>
+          <label for="endDate">End Date</label>
+        </div>
+      </div>
+
+      <div class="form-row submit-btn">
+        <div class="input-data">
+          <input type="submit" value="Apply">
+        </div>
+        <div class="input-data">
+          <button type="button" (click)="onCancel()">Cancel</button>
+        </div>
+      </div>
+    </form>
   </div>
-  
+</div>
