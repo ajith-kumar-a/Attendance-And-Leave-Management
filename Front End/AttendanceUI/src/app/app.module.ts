@@ -23,6 +23,8 @@ import { TeacherLeavestatusComponent } from './components/teacher-leavestatus/te
 import { RoleComponent } from './components/role/role.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { RoleShowComponent } from './components/role-show/role-show.component';
+import { LeaveStatusComponent } from './components/leave-status/leave-status.component';
+import { ReactiveFormsModule } from '@angular/forms';
 import { LandingpageComponent } from './components/landingpage/landingpage.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { CourseDetailsComponent } from './components/course-details/course-details.component';
@@ -45,6 +47,7 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
     RoleComponent,
     AdminComponent,
     RoleShowComponent,
+    LeaveStatusComponent,
     LandingpageComponent,
     AboutusComponent,
     CourseDetailsComponent,
@@ -59,7 +62,7 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
     CommonModule,
     HttpClientModule, 
     CommonModule,
-   
+    ReactiveFormsModule,
     // NgbNavModule,
 
   ],

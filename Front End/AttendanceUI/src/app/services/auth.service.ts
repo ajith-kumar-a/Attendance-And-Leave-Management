@@ -29,4 +29,22 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/${tableName}`,data);
   }
 
+  getLeaveRequestDetails(tableName:string,userId: number): Observable<any> {
+
+    const token = localStorage.getItem('access');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.get(`${this.apiUrl}/${tableName}${userId}/`,  { headers });
+  }
+
+
+  postLeaveRequest(endPoint: string, userId: number, leaveData: any): Observable<any> {
+    const token = localStorage.getItem('access');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.post(`${this.apiUrl}/${endPoint}${userId}/`, leaveData, { headers });
+  }
+
+
+
 }

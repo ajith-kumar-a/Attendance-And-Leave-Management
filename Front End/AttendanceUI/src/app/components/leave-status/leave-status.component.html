@@ -1,0 +1,26 @@
+<div class="panel-body table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>S.No</th>
+          <th>Leave Type</th>
+          <th>Reason</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="attendanceTable">
+        <!-- Use *ngFor to iterate over the attendance array -->
+        <tr *ngFor="let entry of leaveRequestDetails; let i = index">
+          <td>{{ i + 1 }}</td> 
+          <td>{{ entry.leave_type }}</td> 
+          <td>{{ entry.reason }}</td>
+          <td>{{ entry.start_date }}</td>
+          <td>{{ entry.end_date }}</td>
+          <td>{{ entry.status }}</td> 
+
+        </tr>
+      </tbody>
+    </table>
+  </div>

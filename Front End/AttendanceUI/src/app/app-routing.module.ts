@@ -13,6 +13,7 @@ import { LandingpageComponent } from './components/landingpage/landingpage.compo
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { CourseDetailsComponent } from './components/course-details/course-details.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { LeaveStatusComponent } from './components/leave-status/leave-status.component';
 // import { DashboardComponent } from './dashboard/dashboard.component'; // Import your dashboard component
 
 
@@ -30,6 +31,10 @@ const routes: Routes = [
   { path: 'course', component: CourseDetailsComponent},
   { path: 'contact', component: ContactUsComponent},
   // { path: '', redirectTo: '/landing', pathMatch: 'full' }, // Default route
+  { path: '', redirectTo: '/login', pathMatch: 'full' }, // Default route
+  {path: 'apply-leave',component:ApplyleaveComponent},
+  {path: 'leave-status',component:LeaveStatusComponent},
+  { path: 'leave-status/:userId', component: LeaveStatusComponent },
 
 
 
