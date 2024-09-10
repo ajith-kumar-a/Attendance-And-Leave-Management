@@ -26,7 +26,9 @@ export class AuthService {
   }
 
   addRecord(tableName:string,data:any){
-    return this.http.post(`${this.apiUrl}/${tableName}`,data);
+    const token = localStorage.getItem('access');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post(`${this.apiUrl}/${tableName}`,data, { headers });
   }
 
   getLeaveRequestDetails(tableName:string,userId: number): Observable<any> {
@@ -43,6 +45,32 @@ export class AuthService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
     return this.http.post(`${this.apiUrl}/${endPoint}${userId}/`, leaveData, { headers });
+  }
+
+  // Profile pic 
+
+  // Update profile picture for a specific user
+  updateProfilePicture(rollno: string, imageData: string): Observable<any> {
+    // Fetch the current data, update, and then write back (mocked for frontend)
+    return new Observable(observer => {
+      this.http.get<any>(this.apiUrl).subscribe(data => {
+        const user = data.user_details.find((u: any) => u.rollno === rollno);
+        if (user) {
+          user.profilePicture = imageData;  // Update profile picture
+
+          // Ideally, we would send a PUT request to update the JSON file in the backend
+          this.http.put(this.apiUrl, data).subscribe(
+            () => {
+              observer.next(user);
+              observer.complete();
+            },
+            error => observer.error(error)
+          );
+        } else {
+          observer.error('User not found');
+        }
+      });
+    });
   }
 
 

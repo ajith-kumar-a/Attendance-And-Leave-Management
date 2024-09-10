@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { ChartData, ChartOptions,TooltipItem } from 'chart.js';
 
 @Component({
   selector: 'app-students',
@@ -20,7 +21,7 @@ export class StudentsComponent implements OnInit {
   baseUrl: string = 'http://172.17.7.109:8000';
 
   @ViewChild('fileInput') fileInput!: ElementRef; // Non-null assertion operator
-
+  
   constructor(private AuthService: AuthService) {}
 
   ngOnInit(): void {
@@ -44,16 +45,62 @@ export class StudentsComponent implements OnInit {
     );
   }
 
-  fetchStudentAttendance(userId: number): void {
+
+  fetchStudentAttendance(userId: number, startDate?: string, endDate?: string): void {
+    let apiurl:any =this.AuthService.getUserDetails(`Attendancedetail/by-user/${userId}/`);
+    let start = new Date(startDate as string);
+    let end = new Date(endDate as string);
+    let filteredAttendance = [];
+    // if (startDate && endDate ) {
+    //   apiurl += `?start_date=${startDate}&end_date=${endDate}`;
+    // }
+    
     this.AuthService.getUserDetails(`Attendancedetail/by-user/${userId}/`).subscribe(
-      (data) => {
-        this.attendance = data.data;
+      (data:any) => {
+        // console.log(data.data[0].date)
+        console.log(data.data.length)
+        console.log(start)
+        console.log(end)
+
+        for (let i = 0; i < data.data.length; i++) {
+         
+          let entryDate = new Date(data.data[i].date);
+          console.log(entryDate)
+          if (entryDate >= start && entryDate <= end) {
+            filteredAttendance.push(data.data[i]);
+          }
+          console.log(data.data[0].date);
+
+      }
+
+        this.attendance = filteredAttendance;
+
+
+        console.log(filteredAttendance)
+        console.log(this.attendance)
       },
-      (error) => {
+      (error:any) => {
         console.error('Error fetching attendance details', error);
       }
     );
   }
+
+
+  // fetchStudentDetails(){
+  //   this.AuthService.getUserDetails('userme').subscribe(
+  //     (data) => {
+  //       this.user = data.data;
+  //       console.log('Full user object:', this.user);
+  //       this.fetchStudentAttendance(this.user.id);
+
+
+  //     },
+  //     (error) => {
+  //       console.error('Error fetching user details', error);
+  //     }
+  //   );
+  // }
+ 
 
   fetchStatusDetails(): void {
     this.AuthService.getUserDetails('Attendancestatus/').subscribe(
@@ -89,4 +136,9 @@ export class StudentsComponent implements OnInit {
       );
     }
   }
+  applyFilter(): void {
+    this.fetchStudentAttendance(this.user.id, this.leaveRequest['startDate'], this.leaveRequest['endDate']);
+    console.log('hiiii      :',this.leaveRequest)
+  }
+
 }

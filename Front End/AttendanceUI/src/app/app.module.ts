@@ -4,9 +4,11 @@ import { FormsModule } from '@angular/forms'; // Import FormsModule here
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
+
+// import { NgApexchartsModule } from 'ng-apexcharts';
+// import { BaseChartDirective } from 'ng2-charts';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from './services/token-interceptor.service';
@@ -31,6 +33,7 @@ import { CourseDetailsComponent } from './components/course-details/course-detai
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { AllUsersDetailsComponent } from './components/all-users-details/all-users-details.component';
 import { AllUserAttendanceDetailsComponent } from './components/all-user-attendance-details/all-user-attendance-details.component';
+import { DummyComponent } from './components/dummy/dummy.component';
 
 
 @NgModule({
@@ -56,6 +59,7 @@ import { AllUserAttendanceDetailsComponent } from './components/all-user-attenda
     ContactUsComponent,
     AllUsersDetailsComponent,
     AllUserAttendanceDetailsComponent,
+    DummyComponent,
     
   ],
   imports: [
@@ -68,6 +72,9 @@ import { AllUserAttendanceDetailsComponent } from './components/all-user-attenda
     CommonModule,
     ReactiveFormsModule,
     // NgbNavModule,
+    // BaseChartDirective,
+    // NgApexchartsModule,
+
 
   ],
   providers: [
