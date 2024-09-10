@@ -6,11 +6,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://127.0.0.1:8000/api';
+  private apiUrl = 'http://172.17.7.109:8000/api';
   constructor(private http: HttpClient) {}
 
   onLogin(obj: any): Observable<any> {
-    return this.http.post('http://127.0.0.1:8000/api/token/', obj);
+    return this.http.post('http://172.17.7.109:8000/api/token/', obj);
   }
 
   getRoles(tableName: string) {
@@ -43,6 +43,32 @@ export class AuthService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
     return this.http.post(`${this.apiUrl}/${endPoint}${userId}/`, leaveData, { headers });
+  }
+
+  // Profile pic 
+
+  // Update profile picture for a specific user
+  updateProfilePicture(rollno: string, imageData: string): Observable<any> {
+    // Fetch the current data, update, and then write back (mocked for frontend)
+    return new Observable(observer => {
+      this.http.get<any>(this.apiUrl).subscribe(data => {
+        const user = data.user_details.find((u: any) => u.rollno === rollno);
+        if (user) {
+          user.profilePicture = imageData;  // Update profile picture
+
+          // Ideally, we would send a PUT request to update the JSON file in the backend
+          this.http.put(this.apiUrl, data).subscribe(
+            () => {
+              observer.next(user);
+              observer.complete();
+            },
+            error => observer.error(error)
+          );
+        } else {
+          observer.error('User not found');
+        }
+      });
+    });
   }
 
 

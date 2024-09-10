@@ -4,9 +4,11 @@ import { FormsModule } from '@angular/forms'; // Import FormsModule here
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
+
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { BaseChartDirective } from 'ng2-charts';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from './services/token-interceptor.service';
@@ -29,6 +31,7 @@ import { LandingpageComponent } from './components/landingpage/landingpage.compo
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { CourseDetailsComponent } from './components/course-details/course-details.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { DummyComponent } from './components/dummy/dummy.component';
 
 
 @NgModule({
@@ -52,6 +55,7 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
     AboutusComponent,
     CourseDetailsComponent,
     ContactUsComponent,
+    DummyComponent,
     
   ],
   imports: [
@@ -64,6 +68,9 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
     CommonModule,
     ReactiveFormsModule,
     // NgbNavModule,
+    BaseChartDirective,
+    NgApexchartsModule,
+
 
   ],
   providers: [

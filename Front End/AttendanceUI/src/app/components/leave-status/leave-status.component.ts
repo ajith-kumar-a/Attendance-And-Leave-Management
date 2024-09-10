@@ -13,7 +13,7 @@ export class LeaveStatusComponent implements OnInit {
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.authService.getUserDetails('userme').subscribe(
+    this.authService.getUserDetails('userme/').subscribe(
       user => {
         console.log('User Details:', user.data);
         this.userId = user.data.id;

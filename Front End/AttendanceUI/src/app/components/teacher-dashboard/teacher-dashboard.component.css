@@ -1,115 +1,103 @@
-
+/* Header Styles */
 .header {
-    background-color: #573b8a; /* Light background color */
+    background-color: #573b8a; /* Background color */
     padding: 10px 20px;
     border-bottom: 1px solid #4f6880;
 }
+
+.header .container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.header .row {
+    align-items: center;
+}
+
 .header .navbar-brand img {
-    height: 40px; /* Adjust logo size */
+    height: 40px; /* Logo size */
     width: auto;
 }
+
 .header .navbar-text {
-    font-size: 1.5rem; /* Adjust company name font size */
+    font-size: 1.5rem; /* Font size */
     font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
+    color: white;
 }
+
 .header .dropdown-menu {
-    min-width: 150px; /* Adjust dropdown menu width */
+    min-width: 150px; /* Dropdown menu width */
 }
+
 .header .btn-signout {
     margin-left: 10px;
 }
-.profile-container {
-    margin: 20px;
-    padding: 20px;
-    border: 1px solid #dee2e6;
-    border-radius: 8px;
-    background-color: #f8f9fa;
-}
+
+/* Profile Section */
 .profile-pic {
-    width: 100%;
-    max-width: 200px; /* Increased profile picture size */
+    width: 150px;
+    height: 150px;
+    border: 4px solid #573b8a; /* Border color */
     border-radius: 50%;
-}
-.profile-info {
-    margin-left: 20px;
-}
-.profile-info table {
-    width: 100%;
-}
-.profile-info td {
-    padding: 8px;
-    border-top: 1px solid #dee2e6;
-}
-.profile-info th {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 2px solid #dee2e6;
-}
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .profile-container {
-        text-align: center;
-    }
-    .profile-info {
-        margin-left: 0;
-        margin-top: 10px;
-    }
+    object-fit: cover;
+    margin-bottom: 15px;
 }
 
-/* user details */
-body{
-    margin-top:20px;
-    color: #1a202c;
-    text-align: left;
-    background-color: #e2e8f0;    
-}
-.main-body {
-    padding: 15px;
-}
-.card {
-    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+.btn-primary {
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #573b8a;
+    border: none;
+    color: white;
 }
 
+.btn-primary:hover {
+    background-color: #4a2e6e; /* Darker shade on hover */
+}
+
+/* Card Styles */
 .card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 0 solid rgba(0,0,0,.125);
-    border-radius: .25rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
 }
 
 .card-body {
-    flex: 1 1 auto;
-    min-height: 1px;
-    padding: 1rem;
+    padding: 20px;
 }
 
-.gutters-sm {
-    margin-right: -8px;
-    margin-left: -8px;
+.list-group-item {
+    border: none;
 }
 
-.gutters-sm>.col, .gutters-sm>[class*=col-] {
-    padding-right: 8px;
-    padding-left: 8px;
-}
-.mb-3, .my-3 {
-    margin-bottom: 1rem!important;
+.list-group-item .icon-inline {
+    color: #573b8a;
+    font-size: 1.2rem;
 }
 
-.bg-gray-300 {
-    background-color: #e2e8f0;
-}
-.h-100 {
-    height: 100%!important;
-}
-.shadow-none {
-    box-shadow: none!important;
+.btn-info {
+    background-color: #573b8a;
+    border: none;
 }
 
-/* qualification */
+.btn-info:hover {
+    background-color: #4a2e6e;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .header .navbar-text {
+        font-size: 1.2rem;
+    }
+
+    .profile-pic {
+        width: 120px;
+        height: 120px;
+    }
+
+    .btn-primary {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
