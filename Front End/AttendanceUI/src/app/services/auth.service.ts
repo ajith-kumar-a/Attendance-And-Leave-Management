@@ -47,32 +47,6 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/${endPoint}${userId}/`, leaveData, { headers });
   }
 
-  // Profile pic 
-
-  // Update profile picture for a specific user
-  // updateProfilePicture(rollno: string, imageData: string): Observable<any> {
-  //   // Fetch the current data, update, and then write back (mocked for frontend)
-  //   return new Observable(observer => {
-  //     this.http.get<any>(this.apiUrl).subscribe(data => {
-  //       const user = data.user_details.find((u: any) => u.rollno === rollno);
-  //       if (user) {
-  //         user.profilePicture = imageData;  // Update profile picture
-
-  //         // Ideally, we would send a PUT request to update the JSON file in the backend
-  //         this.http.put(this.apiUrl, data).subscribe(
-  //           () => {
-  //             observer.next(user);
-  //             observer.complete();
-  //           },
-  //           error => observer.error(error)
-  //         );
-  //       } else {
-  //         observer.error('User not found');
-  //       }
-  //     });
-  //   });
-  // }
-
 
   updateProfilePicture(userId: number, formData: FormData): Observable<any> {
     const token = localStorage.getItem('access');
@@ -88,4 +62,17 @@ export class AuthService {
     return this.http.patch(url, { status: newStatusId },{ headers });
   }
 
+  getUsersByRole(roleId: number): Observable<any> {
+
+    const token = localStorage.getItem('access');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.get<any>(`${this.apiUrl}userusers/by-role/${roleId}`,{headers});
+  }
+
+  updateAttendanceStatus(attendanceId: number, newStatusId: number): Observable<any> {
+    const token = localStorage.getItem('access');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.patch<any>(`${this.apiUrl}/Attendancedetail/${attendanceId}/`, { status_id: newStatusId },{headers});
+  }
 }

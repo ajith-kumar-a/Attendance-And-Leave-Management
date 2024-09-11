@@ -16,6 +16,7 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
 import { LeaveStatusComponent } from './components/leave-status/leave-status.component';
 import { DummyComponent } from './components/dummy/dummy.component';
 import { StudentLeaveRequestStatusComponent } from './components/student-leave-request-status/student-leave-request-status.component';
+import { AllUserAttendanceDetailsComponent } from './components/all-user-attendance-details/all-user-attendance-details.component';
 // import { DashboardComponent } from './dashboard/dashboard.component'; // Import your dashboard component
 
 const routes: Routes = [
@@ -43,6 +44,7 @@ const routes: Routes = [
     {path:'Student-Leave-Details',component:StudentLeaveRequestStatusComponent}
   ]},
 
+  {path:'hiiii',component:AllUserAttendanceDetailsComponent},
 
 
   {path:"admin",component:AdminComponent,children:[

@@ -16,7 +16,7 @@ export class TeacherDashboardComponent implements OnInit {  // Implement OnInit 
 
   ngOnInit(): void {
     // Fetch user details and log them
-    this.authService.getUserDetails('userm/e').subscribe(
+    this.authService.getUserDetails('userme/').subscribe(
       (data) => {
         this.user = data.data;
         console.log('Full user object:', this.user);
