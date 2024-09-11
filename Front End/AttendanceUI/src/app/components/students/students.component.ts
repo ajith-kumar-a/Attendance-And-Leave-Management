@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+// import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { ChartData, ChartOptions,TooltipItem } from 'chart.js';
+// import { ChartData, ChartOptions,TooltipItem } from 'chart.js';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-students',
@@ -10,15 +11,19 @@ import { ChartData, ChartOptions,TooltipItem } from 'chart.js';
 
 export class StudentsComponent implements OnInit {
   user: any;
+  img: any;
   attendance: any[] = [];
-  statusMap:  any[] = []; 
+  statusMap: any[] = [];
   leaveRequest: any = {
     leaveType: '',
     reason: '',
     startDate: '',
     endDate: ''
   };
-  
+
+  baseUrl: string = 'http://172.17.7.109:8000';
+  @ViewChild('fileInput') fileInput!: ElementRef; // Non-null assertion operator
+
   constructor(private AuthService: AuthService) {}
 
   ngOnInit(): void {
@@ -66,12 +71,28 @@ export class StudentsComponent implements OnInit {
     );
   }
 
-  fetchStudentDetails(){
+  // fetchStudentDetails(){
+  //   this.AuthService.getUserDetails('userme/').subscribe(
+  //     (data) => {
+  //       this.user = data.data;
+  //       console.log('Full user object:', this.user);
+  //       this.fetchStudentAttendance(this.user.id);
+  //     },
+  //     (error) => {
+  //       console.error('Error fetching user details', error);
+  //     }
+  //   );
+  // }
+
+  fetchStudentDetails() {
     this.AuthService.getUserDetails('userme/').subscribe(
       (data) => {
         this.user = data.data;
         console.log('Full user object:', this.user);
         this.fetchStudentAttendance(this.user.id);
+        this.img = `${this.baseUrl}${this.user.profile_picture}`;
+        console.log(this.img);
+       
       },
       (error) => {
         console.error('Error fetching user details', error);
@@ -95,77 +116,33 @@ export class StudentsComponent implements OnInit {
     console.log('hiiii      :',this.leaveRequest)
   }
 
-}
-
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
-
-@Component({
-  selector: 'app-students',
-  templateUrl: './students.component.html',
-  styleUrls: ['./students.component.css']
-})
-export class StudentsComponent implements OnInit {
-  user: any;
-  img: any;
-  attendance: any[] = [];
-  statusMap: any[] = [];
-  leaveRequest: any = {
-    leaveType: '',
-    reason: '',
-    startDate: '',
-    endDate: ''
-  };
-  baseUrl: string = 'http://172.17.7.109:8000';
-
-  @ViewChild('fileInput') fileInput!: ElementRef; // Non-null assertion operator
-
-  constructor(private AuthService: AuthService) {}
-
-  ngOnInit(): void {
-    this.fetchStudentDetails();
-    this.fetchStatusDetails(); // Fetch status details first
-  }
-
-  fetchStudentDetails() {
-    this.AuthService.getUserDetails('userme/').subscribe(
-      (data) => {
-        this.user = data.data;
-        console.log('Full user object:', this.user);
-        this.fetchStudentAttendance(this.user.id);
-        this.img = `${this.baseUrl}${this.user.profile_picture}`;
-        console.log(this.img);
+  // fetchStatusDetails(): void {
+  //   this.AuthService.getUserDetails('Attendancestatus/').subscribe(
+  //     (data) => {
+  //       this.statusMap = data.data;
+  //       console.log('status', data);
        
-      },
-      (error) => {
-        console.error('Error fetching user details', error);
-      }
-    );
-  }
+  //     },
+  //     (error) => {
+  //       console.error('Error fetching status details', error);
+  //     }
+  //   );
+  // }
+  
 
-  fetchStudentAttendance(userId: number): void {
-    this.AuthService.getUserDetails(`Attendancedetail/by-user/${userId}/`).subscribe(
-      (data) => {
-        this.attendance = data.data;
-      },
-      (error) => {
-        console.error('Error fetching attendance details', error);
-      }
-    );
-  }
 
-  fetchStatusDetails(): void {
-    this.AuthService.getUserDetails('Attendancestatus/').subscribe(
-      (data) => {
-        this.statusMap = data.data;
-        console.log('status', data);
-       
-      },
-      (error) => {
-        console.error('Error fetching status details', error);
-      }
-    );
-  }
+  // fetchStudentAttendance(userId: number): void {
+  //   this.AuthService.getUserDetails(`Attendancedetail/by-user/${userId}/`).subscribe(
+  //     (data) => {
+  //       this.attendance = data.data;
+  //     },
+  //     (error) => {
+  //       console.error('Error fetching attendance details', error);
+  //     }
+  //   );
+  // }
+
+
 
 
   onFileChange(event: any): void {
@@ -188,4 +165,13 @@ export class StudentsComponent implements OnInit {
       );
     }
   }
+
+
 }
+
+
+
+
+
+
+

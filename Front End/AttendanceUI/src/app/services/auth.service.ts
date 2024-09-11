@@ -50,28 +50,28 @@ export class AuthService {
   // Profile pic 
 
   // Update profile picture for a specific user
-  updateProfilePicture(rollno: string, imageData: string): Observable<any> {
-    // Fetch the current data, update, and then write back (mocked for frontend)
-    return new Observable(observer => {
-      this.http.get<any>(this.apiUrl).subscribe(data => {
-        const user = data.user_details.find((u: any) => u.rollno === rollno);
-        if (user) {
-          user.profilePicture = imageData;  // Update profile picture
+  // updateProfilePicture(rollno: string, imageData: string): Observable<any> {
+  //   // Fetch the current data, update, and then write back (mocked for frontend)
+  //   return new Observable(observer => {
+  //     this.http.get<any>(this.apiUrl).subscribe(data => {
+  //       const user = data.user_details.find((u: any) => u.rollno === rollno);
+  //       if (user) {
+  //         user.profilePicture = imageData;  // Update profile picture
 
-          // Ideally, we would send a PUT request to update the JSON file in the backend
-          this.http.put(this.apiUrl, data).subscribe(
-            () => {
-              observer.next(user);
-              observer.complete();
-            },
-            error => observer.error(error)
-          );
-        } else {
-          observer.error('User not found');
-        }
-      });
-    });
-  }
+  //         // Ideally, we would send a PUT request to update the JSON file in the backend
+  //         this.http.put(this.apiUrl, data).subscribe(
+  //           () => {
+  //             observer.next(user);
+  //             observer.complete();
+  //           },
+  //           error => observer.error(error)
+  //         );
+  //       } else {
+  //         observer.error('User not found');
+  //       }
+  //     });
+  //   });
+  // }
 
 
   updateProfilePicture(userId: number, formData: FormData): Observable<any> {
