@@ -81,4 +81,11 @@ export class AuthService {
   }
 
 
+  updateLeaveRequestStatus(leaveRequestId: number, newStatusId: number): Observable<any> {
+    const url = `${this.apiUrl}/LeaveRequestdetails/${leaveRequestId}/`;
+    const token = localStorage.getItem('access');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.patch(url, { status: newStatusId },{ headers });
+  }
+
 }

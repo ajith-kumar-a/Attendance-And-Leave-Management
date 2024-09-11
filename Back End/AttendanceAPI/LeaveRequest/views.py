@@ -357,3 +357,36 @@ class LeaveStatusViewset(ModelViewSet):
                 'status':APIException.status_code
             })
         
+from users.models import User
+
+
+
+class LeaveRequestsByRoleView(APIView):
+    """
+    Retrieve leave requests filtered by role_id.
+    """
+    def get(self, request, role_id=None, *args, **kwargs):
+        try:
+            # Fetch users with the specified role_id
+            users = User.objects.filter(role_id=role_id)
+            
+            if not users.exists():
+                return Response({
+                    'status': status.HTTP_404_NOT_FOUND,
+                    'message': 'No users found for this role_id'
+                })
+            
+            # Get leave requests for these users
+            leave_requests = LeaveRequests.objects.filter(user_id__in=users)
+            serializer = LeaveRequestsSerializer(leave_requests, many=True)
+            
+            return Response({
+                'status': status.HTTP_200_OK,
+                'data': serializer.data
+            })
+        except Exception as e:
+            print(e)
+            return Response({
+                'status': status.HTTP_500_INTERNAL_SERVER_ERROR,
+                'message': 'An error occurred while fetching leave requests by role_id'
+            })
