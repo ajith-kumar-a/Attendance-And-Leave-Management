@@ -1,35 +1,40 @@
+<!-- Ensure the header tag is properly opened and closed -->
 <header class="header">
   <div class="container-fluid">
       <div class="row align-items-center">
           <!-- Logo on the left -->
           <div class="col-4 col-md-3">
               <a class="navbar-brand" href="#">
-                  <img src="your-logo.png" alt="Logo"> <!-- Replace with your logo -->
+                  <img src="assets/logo1.jpg" alt="Logo"> <!-- Replace with your logo -->
               </a>
           </div>
 
           <!-- Centered Company Name -->
           <div class="col-4 col-md-6 text-center">
-              <span class="navbar-text">GAP institutions</span>
+              <span class="navbar-text">GAP Institutions</span>
           </div>
 
-            <!-- Dropdown and Signout Button on the right -->
-            <div class="col-4 col-md-3 d-flex justify-content-end align-items-center">
-                <div class="dropdown me-3">
-                    <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        {{user.first_name}}
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                      <li><a href="/"><button class="dropdown-item" type="button">View Attendance</button></a></li>
-                      <li><a href="/apply-leave"><button class="dropdown-item" type="button">Apply Leave</button></a></li>
-                      <li><a href="/leave-status"><button class="dropdown-item" type="button">Leave Status</button></a></li>
-                   </ul>
-                </div>
-                <button class="btn btn-danger btn-signout d-none d-md-block">Sign Out</button> <!-- Hide on small screens -->
-            </div>
-        </div>
-    </div>
+          <!-- Dropdown and Signout Button on the right -->
+          <div class="col-4 col-md-3 d-flex justify-content-end align-items-center">
+              <div class="dropdown me-3">
+                <button class="btn btn-success dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <!-- Profile Image -->
+                    <img [src]="img || 'https://bootdey.com/img/Content/avatar/avatar7.png'" alt="Profile" class="rounded-circle me-2" height="40" width="40">
+                    <!-- Welcome Message -->
+                    <span>Welcome, {{ user?.first_name || 'Guest' }}</span> <!-- Safely check if user exists -->
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li><a href="/"><button class="dropdown-item" type="button">View Attendance</button></a></li>
+                  <li><a href="/apply-leave"><button class="dropdown-item" type="button">Apply Leave</button></a></li>
+                  <li><a href="/leave-status"><button class="dropdown-item" type="button">Leave Status</button></a></li>
+                  <li><a href=""><button class="dropdown-item log-out" type="button">Log Out</button></a></li>
+              </ul>              
+              </div>
+          </div>
+      </div>
+  </div>
 </header>
+
 
 <div class="container" >
     <div class="main-body" >
@@ -47,8 +52,6 @@
                       <button class="btn btn-primary" (click)="fileInput.click()">Edit Pic</button>
                       <input type="file" #fileInput style="display: none;" (change)="onFileChange($event)" />
                     </div>
-                    
-
                   </div>
                 </div>
               </div>
@@ -82,21 +85,42 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0">First Name</h6>
+                      <h6 class="mb-0">Name of the Student </h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      {{user.first_name}}
+                      {{user.first_name}}  {{user.last_name}}
                     </div>
                     <hr>
                     <div class="col-sm-3">
-                      <h6 class="mb-0">Last Name</h6>
+                      <h6 class="mb-0">UserName of the Student</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      {{user.last_name}}
+                      {{user.username}}
                     </div>
                     <hr>
                     <div class="col-sm-3">
-                      <h6 class="mb-0">User Name</h6>
+                      <h6 class="mb-0">Name of the Mentor </h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{user.username}}
+                    </div>
+                    <hr>
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Institute ID No </h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{user.username}}
+                    </div>
+                    <hr>
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Date of Birth </h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{user.username}}
+                    </div>
+                    <hr>
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Aadhar Number </h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
                       {{user.username}}
@@ -115,9 +139,6 @@
                   <div class="col-sm-9 text-secondary">
                     9988777998
                   </div>
-                  <hr>
-
-                      
                   <!-- </button> -->
                   <!-- <ul class="dropdown-menu dropdown-menu-end">
                     <li><a href="/"><button class="dropdown-item" type="button">View Attendance</button></a></li>

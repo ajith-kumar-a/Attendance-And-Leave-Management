@@ -1,24 +1,108 @@
-
+/* General Header Styling */
 .header {
-    background-color: #573b8a; /* Light background color */
-    padding: 10px 20px;
-    border-bottom: 1px solid #4f6880;
+    background-color: #f8f9fa; /* Light background for the header */
+    padding: 10px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for the header */
 }
-.header .navbar-brand img {
-    height: 40px; /* Adjust logo size */
-    width: auto;
+
+/* Logo Styling */
+.navbar-brand img {
+    height: 60px; /* Adjust logo height */
+    width: auto; /* Keep width proportional to height */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+    border-radius: 50%; /* Optional: Make logo round */
 }
-.header .navbar-text {
-    font-size: 1.5rem; /* Adjust company name font size */
+
+/* Logo Hover Effect */
+.navbar-brand img:hover {
+    transform: rotate(360deg) scale(1.1); /* Rotate and slightly scale up the logo on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow on hover for a floating effect */
+}
+
+/* Responsive Logo Adjustments */
+@media (max-width: 768px) {
+    .navbar-brand img {
+        height: 50px; /* Smaller logo on smaller screens */
+    }
+}
+
+
+.navbar-text {
+    font-size: 24px;
     font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
+    color: #333;
+    animation: colorChange 1s infinite; /* Apply the colorChange animation */
 }
-.header .dropdown-menu {
-    min-width: 150px; /* Adjust dropdown menu width */
+/* Keyframes for Color Change Animation */
+@keyframes colorChange {
+    0% {
+        color: #00bfff; /* Light blue */
+    }
+    50% {
+        color: #000000; /* Black */
+    }
+    100% {
+        color: #00bfff; /* Light blue */
+    }
 }
-.header .btn-signout {
-    margin-left: 10px;
+
+/* Remove underline from links in dropdown */
+.dropdown-menu a {
+    text-decoration: none; /* Remove underline from links */
 }
+
+/* Optional: Adjust text color for links to match the dropdown-item styling */
+.dropdown-menu a {
+    color: inherit; /* Ensure the link color inherits from dropdown-item */
+}
+/* Dropdown Toggle Button Styling */
+.dropdown-toggle {
+    background-color: #1a95ce;
+    color: white;
+    border-radius: 20px;
+}
+
+/* Dropdown Menu Styling */
+.dropdown-menu {
+    min-width: 200px;
+    background-color: #ffffff; /* White background for the dropdown menu */
+    border: 1px solid #ddd; /* Light border for the dropdown menu */
+    border-radius: 5px; /* Slightly rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for the dropdown menu */
+}
+
+/* Dropdown Item Styling */
+.dropdown-item {
+    font-size: 20px;
+    color: #333;
+    padding: 10px 15px; /* Add padding for better spacing */
+    transition: background-color 0.3s ease, color 0.3s ease, font-size 0.3s ease, font-weight 0.3s ease; /* Smooth transitions */
+}
+
+/* Dropdown Item Hover Effect */
+.dropdown-item:hover {
+    background-color: #e9ecef; /* Light grey background on hover */
+    color: #007bff; /* Change text color on hover */
+    cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
+    font-weight: bold; /* Make text bold on hover */
+    font-size: 22px; /* Increase font size on hover */
+}
+
+/* Log Out Button Specific Styles */
+.dropdown-item.log-out {
+    color: #dc3545; /* Default text color for "Log Out" button */
+}
+
+/* Log Out Button Hover Effect */
+.dropdown-item.log-out:hover {
+    background-color: #f8d7da; /* Light red background on hover */
+    color: #dc3545; /* Keep text color red on hover */
+    font-weight: bold; /* Make text bold on hover */
+    font-size: 22px; /* Increase font size on hover */
+}
+
+
+/* //// */
 .profile-container {
     margin: 20px;
     padding: 20px;

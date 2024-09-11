@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Pie Chart</title>
+    <style>
+        .pie-chart {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: conic-gradient(
+                #ff6347 0% 25%,     /* Tomato 25% */
+                #4caf50 25% 50%,    /* Green 25% */
+                #2196f3 50% 75%,    /* Blue 25% */
+                #ffeb3b 75% 100%    /* Yellow 25% */
+            );
+        }
+
+        /* Optional: Add a label inside the pie chart */
+        .pie-chart-label {
+            position: relative;
+            top: -170px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="pie-chart"></div>
+    <div class="pie-chart-label">Pie Chart</div>
+
+</body>
+</html>
