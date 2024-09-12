@@ -8,6 +8,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 // import { NgChartsModule } from 'ng2-charts'; 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { LoginComponent } from './components/login/login.component';
@@ -32,6 +34,7 @@ import { DummyComponent } from './components/dummy/dummy.component';
 import { StudentLeaveRequestStatusComponent } from './components/student-leave-request-status/student-leave-request-status.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { TeacherLeaveRequestStatusComponent } from './components/teacher-leave-request-status/teacher-leave-request-status.component';
+import { GlobalNotificationComponent } from './components/global-notification/global-notification.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +59,7 @@ import { TeacherLeaveRequestStatusComponent } from './components/teacher-leave-r
     DummyComponent,
     StudentLeaveRequestStatusComponent,
     TeacherLeaveRequestStatusComponent,
+    GlobalNotificationComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,6 +69,7 @@ import { TeacherLeaveRequestStatusComponent } from './components/teacher-leave-r
     CommonModule,
     HttpClientModule,
     MatTooltipModule,
+    MatSnackBarModule,
     // NgChartsModule
   ],
   providers: [
