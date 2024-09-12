@@ -1,3 +1,17 @@
+/* leave-status.component.css or global styles.css */
+
+/* Customize Snackbar background color */
+.custom-snackbar .mat-snack-bar-container {
+	background-color: #111113; /* Green background color */
+	color: rgb(12, 12, 12); /* White text color */
+  }
+  
+  /* Customize Snackbar action button color */
+.custom-snackbar .mat-button {
+	color: #bd0f0f; /* White color for the action button */
+}
+  
+
 body{
 	margin: 0;
 	padding: 0;

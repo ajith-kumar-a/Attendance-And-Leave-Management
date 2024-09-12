@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { NotificationServiceService } from '../../services/notification-service.service';
 
 @Component({
   selector: 'app-student-leave-request-status',
@@ -13,7 +14,10 @@ export class StudentLeaveRequestStatusComponent implements OnInit {
   statusMap: any[] = [];
   userMap: { [key: number]: string } = {}; // Map for user ID to username
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private notificationService: NotificationServiceService
+  ) {}
 
   ngOnInit(): void {
     this.getLeaveRequestsByRole(this.roleId);
@@ -39,7 +43,7 @@ export class StudentLeaveRequestStatusComponent implements OnInit {
       (data) => {
         this.leaveTypeMap = data.data;
       },
-      (error: any) => {
+      (error) => {
         console.error('Error fetching leave type details', error);
       }
     );
@@ -50,7 +54,7 @@ export class StudentLeaveRequestStatusComponent implements OnInit {
       (data) => {
         this.statusMap = data.data;
       },
-      (error: any) => {
+      (error) => {
         console.error('Error fetching status details', error);
       }
     );
@@ -91,6 +95,8 @@ export class StudentLeaveRequestStatusComponent implements OnInit {
         const leaveRequest = this.leaveRequests.find(req => req.id === leaveRequestId);
         if (leaveRequest) {
           leaveRequest.status = newStatusId;
+          console.log(`Triggering notification for leave request ${leaveRequestId}`); // Debug log
+          this.notificationService.sendNotification(`Leave request ${leaveRequestId} status updated to ${newStatusId}`);
         }
       },
       (error) => {
@@ -98,4 +104,5 @@ export class StudentLeaveRequestStatusComponent implements OnInit {
       }
     );
   }
+  
 }

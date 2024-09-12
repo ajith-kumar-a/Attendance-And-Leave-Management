@@ -28,7 +28,7 @@ Creating Apps :
 step to connect api 
 
    -  npm install @auth0/angular-jwt
-    - ng generate service services/auth
+    - ng generate service services/NotificationService
     - ng generate interceptor interceptors/auth
     - ng generate component components/login
 
