@@ -229,9 +229,8 @@
                     </div>
                 </div>
                 
-                <!-- Panel Body with Table -->
                 <div class="panel-body table-responsive">
-                  <table class="table">
+                  <table class="table" id="attendanceTable">
                     <thead>
                       <tr>
                         <th>S.No</th>
@@ -242,19 +241,20 @@
                         <th>Logout Time</th>
                       </tr>
                     </thead>
-                    <tbody id="attendanceTable">
-                      <!-- Use *ngFor to iterate over the attendance array -->
+                    <tbody>
                       <tr *ngFor="let entry of attendance; let i = index">
-                        <td>{{ i + 1 }}</td> <!-- Display serial number -->
-                        <td>{{ entry.date }}</td> <!-- Display date -->
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ entry.date }}</td>
                         <td>{{ statusMap[entry.status_id - 1]?.status || 'Unknown' }}</td>
-                        <td>{{ entry.remarks }}</td> <!-- Display remarks -->
-                        <td>{{ entry.login_time }}</td> <!-- Display login time -->
-                        <td>{{ entry.logout_time }}</td> <!-- Display logout time -->
-                
+                        <td>{{ entry.remarks }}</td>
+                        <td>{{ entry.login_time }}</td>
+                        <td>{{ entry.logout_time }}</td>
                       </tr>
                     </tbody>
                   </table>
+              
+                  <!-- Download CSV button -->
+                  <button (click)="downloadCSV()" class="btn btn-success mt-3">Download CSV</button>
                 </div>
                
                  

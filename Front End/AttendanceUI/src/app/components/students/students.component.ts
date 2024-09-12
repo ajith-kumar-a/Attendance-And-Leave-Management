@@ -165,6 +165,38 @@ export class StudentsComponent implements OnInit {
       );
     }
   }
+  downloadCSV() {
+    let csvData = '';
+    const headers = ['S.No', 'Date', 'Status', 'Remarks', 'Login Time', 'Logout Time'];
+  
+    // Adding headers
+    csvData += headers.join(',') + '\n';
+  
+    // Adding attendance data
+    this.attendance.forEach((entry, index) => {
+      const row = [
+        index + 1, // S.No
+        `\t${entry.date}`, // Date prefixed with tab to treat as text in Excel
+        this.statusMap[entry.status_id - 1]?.status || 'Unknown', // Status
+        entry.remarks, // Remarks
+        entry.login_time, // Login Time
+        entry.logout_time // Logout Time
+      ];
+      csvData += row.join(',') + '\n';
+    });
+  
+    // Create a Blob and download it as CSV
+    const blob = new Blob([csvData], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.setAttribute('hidden', '');
+    a.setAttribute('href', url);
+    a.setAttribute('download', 'attendance.csv');
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+  
 
 
 }

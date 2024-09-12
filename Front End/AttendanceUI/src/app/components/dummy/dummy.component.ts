@@ -1,7 +1,9 @@
 /* app.component.ts */
-import { Component } from '@angular/core';
+import { Component,ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
  
 // import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 @Component({
@@ -11,22 +13,24 @@ import { RouterOutlet } from '@angular/router';
   styleUrls: ['./dummy.component.css']
 })
 export class DummyComponent {
-  chartOptions = {
-	  animationEnabled: true,
-	  title: {
-		text: "Sales by Department"
-	  },
-	  data: [{
-		type: "pie",
-		startAngle: -90,
-		indexLabel: "{name}: {y}",
-		yValueFormatString: "#,###.##'%'",
-		dataPoints: [
-		  { y: 14.1, name: "Toys" },
-		  { y: 28.2, name: "Electronics" },
-		  { y: 14.4, name: "Groceries" },
-		  { y: 43.3, name: "Furniture" }
-		]
-	  }]
-	}	
+	@ViewChild('contentToConvert', { static: false }) contentToConvert!: ElementRef;
+
+	downloadPDF() {
+	  const element = this.contentToConvert.nativeElement;
+  
+	  html2canvas(element, {
+		scale: 2, // Increase quality
+		useCORS: true // Ensure cross-origin images are included
+	  }).then(canvas => {
+		const imgData = canvas.toDataURL('image/png');
+		const pdf = new jsPDF('p', 'mm', 'a4');
+		const imgWidth = 210; // Width in mm for A4 page
+		const imgHeight = (canvas.height * imgWidth) / canvas.width;
+  
+		pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+		pdf.save('id-card.pdf');
+	  }).catch(error => {
+		console.error('Error capturing the card:', error);
+	  });
+	}
 }            

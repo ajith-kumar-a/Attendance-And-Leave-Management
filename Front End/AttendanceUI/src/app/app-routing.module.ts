@@ -35,7 +35,7 @@ const routes: Routes = [
   {path: 'apply-leave',component:ApplyleaveComponent},
   {path: 'leave-status',component:LeaveStatusComponent},
   { path: 'leave-status/:userId', component: LeaveStatusComponent },
-  // { path: 'Ajith', component: DummyComponent },
+  { path: 'Ajith', component: DummyComponent },
   // { path: 'a', component: DummyComponent},
 
   {path:'Student-Leave-Details',component:StudentLeaveRequestStatusComponent},
