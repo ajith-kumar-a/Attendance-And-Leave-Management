@@ -68,17 +68,16 @@ class UserImageSerializer(serializers.ModelSerializer):
         fields = ['profile_picture']
 
 
-
 class UserDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['username', 'first_name', 'last_name', 'email',  'role_id', 'created_at', 'updated_at']
+        fields = ['id', 'username', 'first_name', 'last_name', 'email', 'role_id', 'created_at', 'updated_at', 'profile_picture']
         
-        # Include all fields you want to allow updates for
         extra_kwargs = {
             'created_at': {'read_only': True},
             'updated_at': {'read_only': True},
         }
+
 
     def update(self, instance, validated_data):
         # Custom update logic, if needed

@@ -222,3 +222,30 @@ class UserListByRoleAPIView(generics.ListAPIView):
             'data': serializer.data,
             'message': 'Users filtered by role_id retrieved successfully'
         })
+
+
+
+
+from rest_framework import generics, status
+from rest_framework.permissions import IsAuthenticated
+from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework.response import Response
+from django.http import Http404
+from .models import User
+from .serializers import UserDetailSerializer
+
+class UserDetailAPIView(generics.RetrieveAPIView):
+    serializer_class = UserDetailSerializer
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]  # Allow any authenticated user to access
+
+    def get_object(self):
+        user_id = self.kwargs.get('user_id')
+        try:
+            return User.objects.get(pk=user_id)
+        except User.DoesNotExist:
+            raise Http404
+
+    def get(self, request, *args, **kwargs):
+        # No custom permission check; rely on IsAuthenticated
+        return super().get(request, *args, **kwargs)

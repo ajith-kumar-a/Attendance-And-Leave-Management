@@ -1,4 +1,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Dancing+Script&display=swap" rel="stylesheet">
 <!-- Header Section -->
 <header>
     <div class="navbar">
@@ -57,32 +59,54 @@
 </section>
 
 
- <!-- Course Categories Section -->
- <section class="course-categories">
-    <h2>Courses Categories</h2>
-    <div class="categories-container">
-        <div class="category">
-            <img [src]="categoryImages.webDesign" alt="Web Design">
-            <h3>Web Design</h3>
+ <!-- Header -->
+ <h1 class="mx-12 my-10 text-gray-700 text-5xl lg:text-6xl text-center" style="font-family: 'Dancing Script', cursive, sans-serif;">
+    Courses Categories
+</h1>
+
+<!-- Carousel Section -->
+<section class="carousel-section">
+    <div class="container mx-auto w-full overflow-hidden relative">
+        <div class="w-full h-full absolute">
+            <div class="w-1 h-full absolute z-50 left-0 gradient-left"></div>
+            <div class="w-1 h-full absolute z-50 right-0 gradient-right"></div>
         </div>
-        <div class="category">
-            <img [src]="categoryImages.graphicDesign" alt="Graphic Design">
-            <h3>Graphic Design</h3>
-        </div>
-        <div class="category">
-            <img [src]="categoryImages.dataScience" alt="Data Science">
-            <h3>Data Science</h3>
-        </div>
-        <div class="category">
-            <img [src]="categoryImages.onlineMarketing" alt="Online Marketing">
-            <h3>Online Marketing</h3>
-        </div>
-        <div class="category">
-            <img [src]="categoryImages.ai" alt="Artificial Intelligence">
-            <h3>Artificial Intelligence</h3>
+
+        <div class="carousel-items flex items-center justify-center">
+            <div class="carousel-focus flex items-center flex-col relative bg-white mx-5 my-10 px-4 py-3 rounded-lg shadow-lg">
+                <span class="text-teal-400 font-bold text-xl mb-3"></span>
+                <!-- Dynamically bind image source -->
+                <img [src]="categoryImages.webDesign" alt="Web Design">
+                <p class="mt-3 text-gray-600 text-center glow-text">Web Design</p>
+            </div>
+            <div class="carousel-focus flex items-center flex-col relative bg-white mx-5 my-10 px-4 py-3 rounded-lg shadow-lg">
+                <span class="text-teal-400 font-bold text-xl mb-3"></span>
+                <!-- Dynamically bind image source -->
+                <img [src]="categoryImages.graphicDesign" alt="Graphic Design">
+                <p class="mt-3 text-gray-600 text-center glow-text">Graphic Design</p>
+            </div>
+            <div class="carousel-focus flex items-center flex-col relative bg-white mx-5 my-10 px-4 py-3 rounded-lg shadow-lg">
+                <span class="text-teal-400 font-bold text-xl mb-3"></span>
+                <!-- Dynamically bind image source -->
+                <img [src]="categoryImages.dataScience" alt="Data Science">
+                <p class="mt-3 text-gray-600 text-center glow-text">Data Science</p>
+            </div>
+            <div class="carousel-focus flex items-center flex-col relative bg-white mx-5 my-10 px-4 py-3 rounded-lg shadow-lg">
+                <span class="text-teal-400 font-bold text-xl mb-3"></span>
+                <!-- Dynamically bind image source -->
+                <img [src]="categoryImages.onlineMarketing" alt="Online Marketing">
+                <p class="mt-3 text-gray-600 text-center glow-text">Online Marketing</p>
+            </div>
+            <div class="carousel-focus flex items-center flex-col relative bg-white mx-5 my-10 px-4 py-3 rounded-lg shadow-lg">
+                <span class="text-teal-400 font-bold text-xl mb-3"></span>
+                <!-- Dynamically bind image source -->
+                <img [src]="categoryImages.ai" alt="Artificial Intelligence">
+                <p class="mt-3 text-gray-600 text-center glow-text">Artificial Intelligence</p>
+            </div>
         </div>
     </div>
 </section>
+
 
  <!-- Popular Courses Section -->
  <section class="popular-courses">
@@ -159,7 +183,7 @@
             <!-- Column 1: Office Information -->
             <div class="footer-column">
                 <h3 class="footer-heading">
-                    <img src="logo.png" alt="Edification Logo"> EDIFICATION
+                    GAP INSTITUTE
                 </h3>
                 <p class="footer-subheading">Education For Everyone</p>
                 <p class="footer-info">

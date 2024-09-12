@@ -1,0 +1,43 @@
+/* Center the table */
+.table {
+    margin: 0 auto;
+    width: 30%; /* Adjust width as needed */
+    border-collapse: collapse;
+    text-align: center;
+}
+
+/* Add border to the table */
+.table, th, td {
+    border: 8px solid rgb(54, 56, 56); /* Border size */
+    padding: 5px;
+}
+
+/* Table hover - side move effect */
+.table:hover {
+    transform: translateX(50px);
+}
+
+/* Header styling */
+thead th {
+    background-color: #8cb6e0;
+    color: white;
+    font-size: 18px; /* Initial font size */
+    font-weight: bold; /* Initial font weight */
+    padding: 10px;
+    transition: all 0.3s ease; /* Animation transition */
+}
+
+/* Cell text styling */
+td {
+    font-size: 16px; /* Initial font size for table content */
+    font-weight: bold; /* Initial bold text */
+    padding: 10px;
+    transition: all 0.3s ease; /* Smooth animation for hover */
+}
+
+/* Hover effect to make text bold and increase size */
+td:hover, thead th:hover {
+    font-size: 22px; /* Increase size on hover */
+    font-weight: bolder; /* Make text bolder on hover */
+    transition: all 0.3s ease; /* Smooth transition effect */
+}

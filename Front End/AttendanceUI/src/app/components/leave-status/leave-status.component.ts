@@ -4,21 +4,20 @@ import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-leave-status',
   templateUrl: './leave-status.component.html',
-  styleUrls: ['./leave-status.component.css'] // Fixed typo from styleUrl to styleUrls
+  styleUrls: ['./leave-status.component.css']
 })
 export class LeaveStatusComponent implements OnInit {
-  leaveRequestDetails: any;
+  leaveRequestDetails: any[] = [];
   userId: any;
-  statusMap:  any[] = []; 
-  LeaveTypeMap:  any[] = []; 
+  statusMap: any[] = [];
+  leaveTypeMap: any[] = [];
 
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
     this.authService.getUserDetails('userme/').subscribe(
       user => {
-        console.log('User Details:', user.data);
-        this.userId = user.data.id;
+        this.userId = user.data?.id;
         if (this.userId) {
           this.fetchStatusDetails();
         }
@@ -28,44 +27,49 @@ export class LeaveStatusComponent implements OnInit {
       }
     );
     this.fetchLeaveStatusDetails();
-    this.fetchLeavetypeDetails();
+    this.fetchLeaveTypeDetails();
   }
 
   fetchStatusDetails(): void {
     this.authService.getLeaveRequestDetails('LeaveRequestdetails/by-user/', this.userId).subscribe(
-      (data) => {
-        console.log('Leave Request Details:', data);
+      data => {
         this.leaveRequestDetails = data.data || [];
-        console.log("leave request",this.leaveRequestDetails)
       },
-      (error) => {
+      error => {
         console.error('Error fetching leave request details', error);
       }
     );
   }
-  // console.log("gokul.....")
+
   fetchLeaveStatusDetails(): void {
     this.authService.getUserDetails('LeaveRequeststatus/').subscribe(
-      (data) => {
-        this.statusMap = data.data
-        console.log("status " + this.statusMap)
+      data => {
+        this.statusMap = data.data || [];
       },
-      (error:any) => {
-        console.error('Error fetching status details', error);
-      }
-    );
-  }
-  fetchLeavetypeDetails(): void {
-    this.authService.getUserDetails('leaveTypedetails/').subscribe(
-      (data) => {
-        console.log("gofgdf",data.data)
-        this.LeaveTypeMap = data.data
-        console.log("leaveType " + this.LeaveTypeMap)
-      },
-      (error:any) => {
+      error => {
         console.error('Error fetching status details', error);
       }
     );
   }
 
+  fetchLeaveTypeDetails(): void {
+    this.authService.getUserDetails('leaveTypedetails/').subscribe(
+      data => {
+        this.leaveTypeMap = data.data || [];
+      },
+      error => {
+        console.error('Error fetching leave type details', error);
+      }
+    );
+  }
+
+  getLeaveTypeName(typeId: number): string {
+    const type = this.leaveTypeMap.find(t => t.id === typeId);
+    return type ? type.type : 'Unknown';
+  }
+
+  getStatusName(statusId: number): string {
+    const status = this.statusMap.find(s => s.id === statusId);
+    return status ? status.status : 'Unknown';
+  }
 }

@@ -1,3 +1,14 @@
+need to install 
+ng add @angular/material
+
+npx rm -rf node_modules --force
+npx npm install --force
+npx npm install chart.js --force
+npx npm install ng2-charts --force
+
+npx npm install chart.js ng2-charts --force
+npx npm install chart.js
+
 SetUp AttendenceAPi :
     -> mkvirtualenv Attendanceapi
     -> workon Attendanceapi
