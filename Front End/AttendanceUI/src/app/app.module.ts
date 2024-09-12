@@ -8,6 +8,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 // import { NgChartsModule } from 'ng2-charts'; 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { LoginComponent } from './components/login/login.component';
@@ -30,7 +32,13 @@ import { AllUsersDetailsComponent } from './components/all-users-details/all-use
 import { AllUserAttendanceDetailsComponent } from './components/all-user-attendance-details/all-user-attendance-details.component';
 import { DummyComponent } from './components/dummy/dummy.component';
 import { StudentLeaveRequestStatusComponent } from './components/student-leave-request-status/student-leave-request-status.component';
+<<<<<<< HEAD
 import { StudentIdComponent } from './components/student-id/student-id.component';
+=======
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { TeacherLeaveRequestStatusComponent } from './components/teacher-leave-request-status/teacher-leave-request-status.component';
+import { GlobalNotificationComponent } from './components/global-notification/global-notification.component';
+>>>>>>> 9b372fe8867fd695503630298b86fc9c54bd8e27
 
 @NgModule({
   declarations: [
@@ -54,7 +62,12 @@ import { StudentIdComponent } from './components/student-id/student-id.component
     AllUserAttendanceDetailsComponent,
     DummyComponent,
     StudentLeaveRequestStatusComponent,
+<<<<<<< HEAD
     StudentIdComponent,
+=======
+    TeacherLeaveRequestStatusComponent,
+    GlobalNotificationComponent,
+>>>>>>> 9b372fe8867fd695503630298b86fc9c54bd8e27
   ],
   imports: [
     BrowserModule,
@@ -64,6 +77,7 @@ import { StudentIdComponent } from './components/student-id/student-id.component
     CommonModule,
     HttpClientModule,
     MatTooltipModule,
+    MatSnackBarModule,
     // NgChartsModule
   ],
   providers: [
@@ -72,6 +86,7 @@ import { StudentIdComponent } from './components/student-id/student-id.component
       useClass: TokenInterceptorService,
       multi: true
     },
+    provideAnimationsAsync(),
   ],
   bootstrap: [AppComponent]
 })
