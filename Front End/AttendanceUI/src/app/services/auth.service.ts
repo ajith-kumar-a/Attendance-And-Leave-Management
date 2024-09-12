@@ -30,7 +30,16 @@ export class AuthService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.post(`${this.apiUrl}/${tableName}`,data, { headers });
   }
-
+  addRecordput(tableName: string, data: any) {
+    const token = localStorage.getItem('access');
+    if (!token) {
+      console.error('No access token found');
+      return;
+    }
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.put(`${this.apiUrl}/${tableName}`, data, { headers });
+  }
+  
   getLeaveRequestDetails(tableName:string,userId: number): Observable<any> {
 
     const token = localStorage.getItem('access');

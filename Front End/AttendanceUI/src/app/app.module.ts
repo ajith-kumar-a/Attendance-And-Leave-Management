@@ -33,7 +33,7 @@ import { CourseDetailsComponent } from './components/course-details/course-detai
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { AllUsersDetailsComponent } from './components/all-users-details/all-users-details.component';
 import { AllUserAttendanceDetailsComponent } from './components/all-user-attendance-details/all-user-attendance-details.component';
-import { DummyComponent } from './components/dummy/dummy.component';
+// import { DummyComponent } from './components/dummy/dummy.component';
 
 
 @NgModule({
@@ -59,7 +59,7 @@ import { DummyComponent } from './components/dummy/dummy.component';
     ContactUsComponent,
     AllUsersDetailsComponent,
     AllUserAttendanceDetailsComponent,
-    DummyComponent,
+    // DummyComponent,
     
   ],
   imports: [

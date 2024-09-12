@@ -104,7 +104,7 @@ export class StudentsComponent implements OnInit {
     this.AuthService.getUserDetails('Attendancestatus/').subscribe(
       (data) => {
         this.statusMap = data.data
-        console.log("ststus" + data)
+        console.log("ststus" + data.data)
       },
       (error) => {
         console.error('Error fetching status details', error);
