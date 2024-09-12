@@ -30,6 +30,7 @@ import { AllUsersDetailsComponent } from './components/all-users-details/all-use
 import { AllUserAttendanceDetailsComponent } from './components/all-user-attendance-details/all-user-attendance-details.component';
 import { DummyComponent } from './components/dummy/dummy.component';
 import { StudentLeaveRequestStatusComponent } from './components/student-leave-request-status/student-leave-request-status.component';
+import { StudentIdComponent } from './components/student-id/student-id.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { StudentLeaveRequestStatusComponent } from './components/student-leave-r
     AllUserAttendanceDetailsComponent,
     DummyComponent,
     StudentLeaveRequestStatusComponent,
+    StudentIdComponent,
   ],
   imports: [
     BrowserModule,
