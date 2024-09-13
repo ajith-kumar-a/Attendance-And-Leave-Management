@@ -36,9 +36,21 @@ import { StudentIdComponent } from './components/student-id/student-id.component
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { TeacherLeaveRequestStatusComponent } from './components/teacher-leave-request-status/teacher-leave-request-status.component';
 import { GlobalNotificationComponent } from './components/global-notification/global-notification.component';
+<<<<<<< HEAD
 import { StaffDashboardComponent } from './components/staff-dashboard/staff-dashboard.component';
 import { PracticeComponent } from './components/practice/practice.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+=======
+import { ListStudentsComponent } from './components/list-students/list-students.component';
+import { ListTeachersComponent } from './components/list-teachers/list-teachers.component';
+import { ListStaffComponent } from './components/list-staff/list-staff.component';
+import { ListAdminComponent } from './components/list-admin/list-admin.component';
+import { ListStudentAttendanceComponent } from './components/list-student-attendance/list-student-attendance.component';
+import { ListTeacherAttendanceComponent } from './components/list-teacher-attendance/list-teacher-attendance.component';
+import { ListStaffAttendanceComponent } from './components/list-staff-attendance/list-staff-attendance.component';
+import { ListAdminAttendanceComponent } from './components/list-admin-attendance/list-admin-attendance.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
+>>>>>>> a2ac611fce7a23c766ffb36c6214ae895931e528
 
 @NgModule({
   declarations: [
@@ -65,9 +77,21 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
     StudentIdComponent,
     TeacherLeaveRequestStatusComponent,
     GlobalNotificationComponent,
+<<<<<<< HEAD
     StaffDashboardComponent,
     PracticeComponent,
     AdminDashboardComponent,
+=======
+    ListStudentsComponent,
+    ListTeachersComponent,
+    ListStaffComponent,
+    ListAdminComponent,
+    ListStudentAttendanceComponent,
+    ListTeacherAttendanceComponent,
+    ListStaffAttendanceComponent,
+    ListAdminAttendanceComponent,
+    NotificationsComponent,
+>>>>>>> a2ac611fce7a23c766ffb36c6214ae895931e528
   ],
   imports: [
     BrowserModule,

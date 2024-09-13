@@ -1,5 +1,6 @@
 <header class="header">
   <div class="container-fluid">
+<<<<<<< HEAD
       <div class="row align-items-center">
           <!-- Logo on the left -->
           <div class="col-4 col-md-3">
@@ -31,6 +32,48 @@
     </div>
 </header>
 <br>
+=======
+    <div class="row align-items-center">
+      <!-- Logo on the left -->
+      <div class="col-4 col-md-3">
+        <a class="navbar-brand" href="#">
+          <img src="assets/logo1.jpg" alt="Logo">
+        </a>
+      </div>
+
+      <!-- Centered Company Name -->
+      <div class="col-4 col-md-6 text-center">
+        <span class="navbar-text">GAP Institutions</span>
+      </div>
+
+      <!-- Dropdown and Signout Button on the right -->
+     <!-- header in students.component.html -->
+<div class="col-4 col-md-3 d-flex justify-content-end align-items-center">
+  <div class="dropdown me-3">
+    <button class="btn btn-success dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <!-- Profile Image -->
+      <img [src]="img || 'https://bootdey.com/img/Content/avatar/avatar7.png'" alt="Profile" class="rounded-circle me-2" height="40" width="40">
+      <!-- Welcome Message -->
+      <span>Welcome, {{ user?.first_name || 'Guest' }}</span>
+      <!-- Badge Count with Link to Notifications -->
+      <a [routerLink]="['/notifications']" class="badge bg-danger ms-2">{{ badgeCount }}</a>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end">
+      <li><a href="/"><button class="dropdown-item" type="button">View Attendance</button></a></li>
+      <li><a href="/apply-leave"><button class="dropdown-item" type="button">Apply Leave</button></a></li>
+      <li><a href="/leave-status"><button class="dropdown-item" type="button">Leave Status</button></a></li>
+      <li><a href=""><button class="dropdown-item log-out" type="button">Log Out</button></a></li>
+    </ul>
+  </div>
+</div>
+
+    </div>
+  </div>
+</header><br>
+
+
+
+>>>>>>> a2ac611fce7a23c766ffb36c6214ae895931e528
 <div class="container" >
     <div class="main-body" >
           <div class="row gutters-sm">
@@ -122,6 +165,7 @@
                   <div class="col-sm-9 text-secondary">
                     9988777998
                   </div>
+<<<<<<< HEAD
                   <hr>
                   <div class="col-sm-3">
                     <h6 class="mb-0">Aadhar Number</h6>
@@ -171,56 +215,14 @@
                     <li><a href="/apply-leave"><button class="dropdown-item" type="button">Apply Leave</button></a></li>
                     <li><a href="/leave-status"><button class="dropdown-item" type="button">Leave Status</button></a></li>
                  </ul> -->
+=======
+              
+>>>>>>> a2ac611fce7a23c766ffb36c6214ae895931e528
               </div>
               <!-- <button class="btn btn-danger btn-signout d-none d-md-block">Sign Out</button>  -->
           </div>
       </div>
   </div>
-<!-- </header> -->
-<!-- 
-<div class="container">
-  <div class="main-body">
-      <div class="row gutters-sm">
-          <div class="col-md-4 mb-3">
-              <div class="card">
-                  <div class="card-body">
-                      <div class="d-flex flex-column align-items-center text-center">
-                          <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
-                          <div class="mt-3">
-                              <h4>{{user.first_name}}</h4>
-                              <p class="text-secondary mb-1">Full Stack Developer</p>
-                              <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
-                              <button class="btn btn-primary">Follow</button>
-                              <button class="btn btn-outline-primary">Message</button>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="card mt-3">
-                  <ul class="list-group list-group-flush">
-                  </ul>
-              </div>
-          </div> -->
-          <!-- <div class="col-md-8">
-              <div class="card mb-3">
-                  <div class="card-body">
-                  </div>
-              </div> -->
-
-              <!-- Attendance Pie Chart -->
-              <!-- <div class="card mb-3">
-                  <div class="card-body">
-                      <h5 class="card-title">Attendance Overview</h5>
-                      <div style="display: block;">
-                          
-                      </div>
-                  </div>
-              </div> -->
-
-
-
-
-
 
 
 
@@ -255,9 +257,8 @@
                     </div>
                 </div>
                 
-                <!-- Panel Body with Table -->
                 <div class="panel-body table-responsive">
-                  <table class="table">
+                  <table class="table" id="attendanceTable">
                     <thead>
                       <tr>
                         <th>S.No</th>
@@ -268,20 +269,27 @@
                         <th>Logout Time</th>
                       </tr>
                     </thead>
-                    <tbody id="attendanceTable">
-                      <!-- Use *ngFor to iterate over the attendance array -->
+                    <tbody>
                       <tr *ngFor="let entry of attendance; let i = index">
-                        <td>{{ i + 1 }}</td> <!-- Display serial number -->
-                        <td>{{ entry.date }}</td> <!-- Display date -->
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ entry.date }}</td>
                         <td>{{ statusMap[entry.status_id - 1]?.status || 'Unknown' }}</td>
-                        <td>{{ entry.remarks }}</td> <!-- Display remarks -->
-                        <td>{{ entry.login_time }}</td> <!-- Display login time -->
-                        <td>{{ entry.logout_time }}</td> <!-- Display logout time -->
-                
+                        <td>{{ entry.remarks }}</td>
+                        <td>{{ entry.login_time }}</td>
+                        <td>{{ entry.logout_time }}</td>
                       </tr>
                     </tbody>
                   </table>
+<<<<<<< HEAD
                 </div>   
+=======
+              
+                  <!-- Download CSV button -->
+                  <button (click)="downloadCSV()" class="btn btn-success mt-3">Download CSV</button>
+                </div>
+               
+                 
+>>>>>>> a2ac611fce7a23c766ffb36c6214ae895931e528
             </div>
         </div>
     </div>

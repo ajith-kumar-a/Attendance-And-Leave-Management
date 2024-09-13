@@ -49,3 +49,50 @@
                   0 0 50px rgba(0, 123, 255, 0.2);
   }
 }
+/* 
+drop down styles */
+.top-right-corner {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+#roleDropdown {
+  margin-left: 10px;
+  padding: 5px;
+}
+
+/* pop up styles */
+.top-right-corner {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+#roleDropdown {
+  margin-left: 10px;
+  padding: 5px;
+}
+
+.popup {
+  position: fixed;
+  top: 20%;
+  left: 30%;
+  width: 40%;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  padding: 20px;
+  z-index: 1000;
+}
+
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}

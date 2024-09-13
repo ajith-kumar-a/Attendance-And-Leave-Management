@@ -1,18 +1,26 @@
-<p>admin works!</p>
+<div class="top-right-corner">
+  <label for="roleDropdown">Show Users:</label>
+  <select id="roleDropdown" (change)="onRoleChange($event)" default=null>
+    <option value="1">Students</option>
+    <option value="2">Teachers</option>
+    <option value="3">Staff</option>
+    <option value="4">Admin</option>
+  </select>
+</div>
+
 <app-role-show></app-role-show>
 
-<br>
-<br>
+<br><br>
+
 <button class="glowing-button">
-    <a href="/admin/role">Add Role</a>
-  </button>
-  
+  <a href="/admin/role">Add Role</a>
+</button>
 
-<br>
-<br>    
-<app-all-users-details></app-all-users-details>
+<br><br>
 
-<app-all-user-attendance-details></app-all-user-attendance-details>
+
+<!-- <app-all-users-details></app-all-users-details>
+<app-all-user-attendance-details></app-all-user-attendance-details> -->
 
 <router-outlet></router-outlet>
 <app-dummy></app-dummy>

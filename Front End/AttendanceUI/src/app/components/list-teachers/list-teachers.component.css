@@ -1,0 +1,195 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #1e72c7;
+}
+
+.container {
+    margin: 40px auto;
+    width: 90%;
+    max-width: 1200px;
+}
+
+h1, h2 {
+    color: #0e0d0d; /* Text color */
+    text-align: center; /* Center the text */
+    font-size: 2.5rem; /* Adjust the size as needed */
+    text-shadow: 0 0 10px rgba(194, 228, 5, 0.8), /* Soft white glow */
+                 0 0 20px rgba(167, 32, 115, 0.7), /* Outer blue glow */
+                 0 0 30px rgba(190, 16, 30, 0.6), /* Deeper blue glow */
+                 0 0 40px rgba(4, 107, 38, 0.5); /* Farthest blue glow */
+    margin: 20px 0; /* Add spacing above and below */
+    display: block; /* Ensure full width */
+    padding: 10px; /* Optional padding for spacing */
+}
+
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Align items to start */
+    align-items: flex-start; /* Align items to start */
+}
+
+.card {
+    margin: 20px;
+    position: relative;
+    width: 250px; /* Fixed width */
+    height: 350px; /* Fixed height */
+    box-shadow: 0 40px 60px -6px black;
+    background-color: rgb(209, 207, 207);
+    border-radius: 4px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card.role-1-border {
+    background-image: url('/assets/role1-background.jpg'); /* Adjust image path */
+}
+
+.card.role-2-border {
+    background-image: url('/assets/role2-background.jpg'); /* Adjust image path */
+}
+
+.card.role-3-border {
+    background-image: url('/assets/ajith.jpg'); /* Adjust image path */
+}
+
+.card img {
+    width: 100%;
+    height: 300px; /* Adjust height to fit your design */
+    object-fit: cover; /* Ensure the image covers the entire area */
+    display: block;
+}
+
+.card-title {
+    text-align: center;
+    color: #fff;
+    background-color: #6184a8;
+    padding: 10px;
+    font-size: 1.2rem;
+}
+
+.card-desc {
+    font-size: 1rem;
+    padding: 10px;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+    opacity: 0;
+    height: 0;
+    transition: opacity 0.8s ease, height 0.8s ease;
+}
+
+.card:hover .card-desc {
+    opacity: 1;
+    height: auto;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 50px 70px -10px black;
+}
+
+.card:hover img {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.card.role-1-border:hover::before,
+.card.role-2-border:hover::before,
+.card.role-3-border:hover::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.2); /* Light overlay for hover effect */
+    z-index: 1; /* Ensure it stays above the background */
+    transition: opacity 0.3s ease;
+}
+
+.card.role-1-border:hover::before {
+    background-image: url('/assets/role1-background.jpg'); /* Adjust image path */
+}
+
+.card.role-2-border:hover::before {
+    background-image: url('/assets/role2-background.jpg'); /* Adjust image path */
+}
+
+.card.role-3-border:hover::before {
+    background-image: url('/assets/ajith.jpg'); /* Adjust image path */
+}
+
+h3 {
+    color: #0f0e0e;
+    text-align: center;
+    margin: 20px 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    position: relative;
+    animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+
+/* Role-based border styles */
+.role-1-border {
+    border: 5px solid rgb(150, 148, 148); /* Adjust color as needed */
+    border-radius: 15px;
+}
+
+.role-2-border {
+    border: 5px solid rgb(205, 250, 228); /* Adjust color as needed */
+    border-radius: 15px;
+}
+
+.role-3-border {
+    border: 5px solid rgb(252, 169, 214); /* Adjust color as needed */
+    border-radius: 15px;
+}
+
+.user-boder {
+    border: 8px solid transparent; /* Set border width and make it transparent */
+    padding: 10px; /* Space between border and content */
+    border-image: linear-gradient(to bottom right, #33475b, #0033CC, #FF77CC, rgb(255, 122, 89));
+    border-image-slice: 1; /* Stretch the gradient to fill the border area */
+    border-radius: 360px; /* Optional: rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add a subtle shadow for depth */
+    margin-bottom: 20px; /* Add space below the .user-boder */
+   
+}
+
+.role-boder {
+    border: 8px solid black; /* Border style for the outer container */
+    padding: 1px; /* Add padding to ensure content does not touch the border */
+    border-radius: 15px; /* Optional: rounded corners */
+    margin-top: 20px; /* Add space above the .role-boder */
+}
+
+.role-centre {
+    color: #0f0e0e; /* Text color */
+    text-align: center; /* Center-align the text */
+    margin: 20px 0; /* Margin around the heading */
+    font-size: 1.5rem; /* Adjust font size as needed */
+    position: relative; /* Needed for the glowing effect */
+    display: block; /* Ensure the element takes full width */
+    padding: 10px; /* Add padding for better spacing */
+    width: 100%; /* Ensure it spans the full width of its container */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}

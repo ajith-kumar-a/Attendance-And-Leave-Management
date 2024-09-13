@@ -124,14 +124,15 @@ body {
 }
 
 .id-card {
-    width: 1200px; /* Large width */
-    border-radius: 40px; /* Rounded edges */
+    width: 800px; /* Reduced width */
+    border-radius: 20px; /* Adjusted rounded edges */
     background: linear-gradient(to bottom, #0e2d5b 60%, #d94141 40%);
-    padding: 100px; /* Ample padding */
+    padding: 50px; /* Reduced padding */
     color: white;
     text-align: center;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6); /* Deep shadow */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6); /* Adjusted shadow */
 }
+
 
 .header {
     margin-bottom: 60px; /* Space below header */
@@ -176,6 +177,26 @@ body {
 .logo img {
     width: 150px; /* Larger logo size */
     height: auto;
+}
+.download-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000; /* Make sure the button is on top of other elements */
+}
+
+.download-button button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.download-button button:hover {
+    background-color: #0056b3;
 }
 
 

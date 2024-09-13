@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Attendance Details for Students</title>
+  <!-- <link rel="stylesheet" href="all-user-attendance-details.component.css"> -->
+</head>
+<body>
+  <div class="container">
+    <h2 class="heading">Attendance Details for Students</h2>
+
+    <table class="attendance-table" *ngIf="attendanceData.length">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Username</th>
+          <th>Status</th>
+          <th>Remarks</th>
+          <th>Date</th>
+          <th>Login Time</th>
+          <th>Logout Time</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let record of attendanceData">
+          <td>{{ record.id }}</td>
+          <td>{{ getUsername(record.user_id) }}</td>
+          <td>{{ getStatusName(record.status_id) }}</td>
+          <td>{{ record.remarks }}</td>
+          <td>{{ record.date }}</td>
+          <td>{{ record.login_time }}</td>
+          <td>{{ record.logout_time || 'N/A' }}</td>
+          <td>
+            <select (change)="onStatusChange($event, record.id)">
+              <option *ngFor="let status of statusMap | keyvalue" [value]="status.key">
+                {{ status.value }}
+              </option>
+            </select>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="no-records" *ngIf="!attendanceData.length">No attendance records found for students.</p>
+  </div>
+</body>
+</html>

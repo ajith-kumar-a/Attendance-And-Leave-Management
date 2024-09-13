@@ -54,6 +54,8 @@ urlpatterns = [
     path('api/leaveType',include('LeaveTypes.urls')),
     path('api/Attendance',include('Attendance.urls')),
     path('api/LeaveRequest',include('LeaveRequest.urls')),
+    path('api/Notification',include('Notification.urls')),
+    path('api/Details-USer',include('UserDetails.urls')),
     path('api/token/',swagger_auto_schema(method='post',security=[])(TokenObtainPairView.as_view()),name='token_obtain_pair'),
     path('api/token/refresh/',swagger_auto_schema(method='post',security=[])(TokenRefreshView.as_view()),name='token_refresh')
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
