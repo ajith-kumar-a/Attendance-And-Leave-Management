@@ -36,6 +36,14 @@ import { StudentIdComponent } from './components/student-id/student-id.component
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { TeacherLeaveRequestStatusComponent } from './components/teacher-leave-request-status/teacher-leave-request-status.component';
 import { GlobalNotificationComponent } from './components/global-notification/global-notification.component';
+import { ListStudentsComponent } from './components/list-students/list-students.component';
+import { ListTeachersComponent } from './components/list-teachers/list-teachers.component';
+import { ListStaffComponent } from './components/list-staff/list-staff.component';
+import { ListAdminComponent } from './components/list-admin/list-admin.component';
+import { ListStudentAttendanceComponent } from './components/list-student-attendance/list-student-attendance.component';
+import { ListTeacherAttendanceComponent } from './components/list-teacher-attendance/list-teacher-attendance.component';
+import { ListStaffAttendanceComponent } from './components/list-staff-attendance/list-staff-attendance.component';
+import { ListAdminAttendanceComponent } from './components/list-admin-attendance/list-admin-attendance.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +70,14 @@ import { GlobalNotificationComponent } from './components/global-notification/gl
     StudentIdComponent,
     TeacherLeaveRequestStatusComponent,
     GlobalNotificationComponent,
+    ListStudentsComponent,
+    ListTeachersComponent,
+    ListStaffComponent,
+    ListAdminComponent,
+    ListStudentAttendanceComponent,
+    ListTeacherAttendanceComponent,
+    ListStaffAttendanceComponent,
+    ListAdminAttendanceComponent,
   ],
   imports: [
     BrowserModule,

@@ -9,125 +9,96 @@ import { forkJoin } from 'rxjs';
   styleUrls: ['./attendance-marking.component.css']
 })
 export class AttendanceMarkingComponent {
-  selectedDate: string = '';  // To store the selected date
-  students: any[] = [];       // Array to hold the student data
+  selectedDate: string = '';  // Store the selected date for marking attendance
+  students: any[] = [];       // Array to hold all student data
   studentRoleId: number = 1;  // Role ID for students (1 represents students)
-  user_id: number[] = [];
 
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-    // Optionally, fetch initial data if needed
+    // Fetch all students when the component loads
+    this.fetchAllStudents();
   }
 
-  // Apply the filter to fetch student data based on the selected date and role ID
-  applyFilter(): void {
-    if (this.selectedDate) {
-      const apiEndpoint = `Attendanceattendance/by-role/${this.studentRoleId}/`;
-      this.authService.getUserDetails(apiEndpoint)
-        .subscribe(
-          (data: any) => {
-            const selectedDateObj = new Date(this.selectedDate as string);
-            this.user_id = [];
-            this.students = [];  // Clear previous student data
-
-            // Iterate over each student record and check if the date matches
-            for (let i = 0; i < data.data.length; i++) {
-              const entryDateObj = new Date(data.data[i].date);
-
-              if (entryDateObj.getTime() === selectedDateObj.getTime()) {
-                const userId = data.data[i].user_id;
-                
-                // Avoid duplicates and add user_id
-                if (!this.user_id.includes(userId)) {
-                  this.user_id.push(userId);
-                }
-              }
-            }
-
-            // Fetch user details after filtering
-            this.fetchStudentDetails();
-          },
-          (error: any) => {
-            console.error('Error fetching student data:', error);
-          }
-        );
-    } else {
-      alert('Please select a date');
-    }
-  }
-
-  // Fetch student details based on the filtered user_ids
-  fetchStudentDetails(): void {
-    for (let i = 0; i < this.user_id.length; i++) {
-      this.authService.getUserDetails(`useruser/${this.user_id[i]}/`).subscribe(
+  // Fetch all students registered in the system
+  fetchAllStudents(): void {
+    const apiEndpoint = `Attendanceattendance/by-role/${this.studentRoleId}/`;
+    this.authService.getUserDetails(apiEndpoint)
+      .subscribe(
         (data: any) => {
-          console.log('Fetched user details:', data);
-
-          // Push the user data (including name, roll number) into the students array
-          this.students.push({
-            id: data.id,
-            username: data.username,  // Assuming 'username' contains the student's name
-            roll_number: data.roll_number,  // Assuming 'roll_number' contains the roll number
-            attendance: ''  // Placeholder for attendance status
+          console.log("Fetched data:", data.data);
+          
+          // Use a Map to filter out duplicate student IDs
+          const uniqueStudentsMap = new Map();
+          data.data.forEach((student: any) => {
+            if (!uniqueStudentsMap.has(student.user_id)) {
+              uniqueStudentsMap.set(student.user_id, {
+                id: student.id,              // This is the attendance `id` that will be passed
+                user_id: student.user_id,    // This is the student's user ID
+                username: student.username,  // Student's name
+                roll_number: student.roll_number,  // Roll number
+                attendance: '',              // Placeholder for attendance status
+                attendance_date: ''          // Placeholder for attendance date
+              });
+            }
           });
+
+          // Convert the map values to an array
+          this.students = Array.from(uniqueStudentsMap.values());
+          console.log('Fetched all unique students:', this.students);
         },
-        (error) => {
-          console.error('Error fetching user details', error);
+        (error: any) => {
+          console.error('Error fetching student data:', error);
         }
       );
-    }
   }
 
   // Method to mark attendance for each student
   markAttendance(student: any, status: string): void {
-    // Set the attendance status locally
+    // Set the attendance status and the selected date
     student.attendance = status;
-  
-    // Map the status to status_id
-    student.status_id = status === 'Present' ? 1 : 
-                        status === 'Absent' ? 2 : 
-                        null;  // If status is not recognized
-    console.log("this is studnets status",student.status_id)
-    if (student.status_id !== null) {
-      console.log(`Student ID ${student.id} marked as ${status} (status_id: ${student.status_id})`);
-    }
-  }
-  
+    student.status_id = status === 'Present' ? 2 : status === 'Absent' ? 3 : 1;
+    student.attendance_date = this.selectedDate;  // Use the selected date
 
-  // Submit the attendance to the backend
+    console.log(`Student ID ${student.user_id} marked as ${status} on ${this.selectedDate}`);
+  }
+
+  // Submit the attendance for the selected date
   submitAttendance(): void {
+    if (!this.selectedDate) {
+      alert('Please select a date before submitting attendance.');
+      return;
+    }
+
     // Create an array to hold the observables from the API requests
     const requests = this.students
-      .filter(student => student.status_id !== null) // Filter out students without a status_id
+      .filter(student => student.status_id !== null) // Filter out students without a status
       .map(student => {
-        const attendanceData = { 
+        const attendanceData = {
           status_id: student.status_id,
-          user_id: student.id,  // Add user_id to the request
-          remarks: student.remarks || 'No remarks'  // Add remarks to the request, or default to 'No remarks'
+          user_id: student.user_id,  // Send the user ID in the request body
+          remarks: student.remarks || 'No remarks',  // Add remarks or default to 'No remarks'
+          date: this.selectedDate  // Use the selected date for all records
         };
+
+        // Pass the attendance `id` (not the user_id) in the API endpoint
         const apiEndpoint = `Attendancedetail/${student.id}/`;
-        console.log('this is attendance data', attendanceData);
         return this.authService.addRecordput(apiEndpoint, attendanceData);
       });
-  
+
     // Use forkJoin to wait for all requests to complete
     forkJoin(requests).subscribe(
       responses => {
-        // Log successful responses
         responses.forEach((response, index) => {
-          console.log(`Attendance updated successfully for student ID ${this.students[index].id}`, response);
+          console.log(`Attendance updated successfully for attendance ID ${this.students[index].id}`, response);
         });
         alert('Attendance updated successfully');
       },
       error => {
-        // Log any errors from the requests
         console.error('Error updating attendance:', error);
         alert('There was an error updating attendance. Please check the console for details.');
       }
     );
   }
-  
-  
   
 }
