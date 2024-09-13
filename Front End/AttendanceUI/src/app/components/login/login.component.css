@@ -116,3 +116,7 @@ option {
 	font-size: 1em;
 	color: #000 !important;
 }
+/* CSS for red placeholder when there's an error */
+input.ng-invalid.ng-touched::placeholder {
+	color: red;
+}

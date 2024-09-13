@@ -1,12 +1,12 @@
 import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';  // Import OnInit
-import { AuthService } from '../../services/auth.service';  // Assuming you're using an AuthService for user data
+import { AuthService } from '../../services/auth.service'; 
 
 @Component({
-  selector: 'app-teacher-dashboard',
-  templateUrl: './teacher-dashboard.component.html',
-  styleUrls: ['./teacher-dashboard.component.css']
+  selector: 'app-staff-dashboard',
+  templateUrl: './staff-dashboard.component.html',
+  styleUrl: './staff-dashboard.component.css'
 })
-export class TeacherDashboardComponent implements OnInit {  // Implement OnInit lifecycle hook
+export class StaffDashboardComponent {
   user: any;
   img: any;
   attendance: any[] = [];
@@ -165,3 +165,4 @@ export class TeacherDashboardComponent implements OnInit {  // Implement OnInit 
 
 
 }
+

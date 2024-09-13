@@ -32,13 +32,13 @@ import { AllUsersDetailsComponent } from './components/all-users-details/all-use
 import { AllUserAttendanceDetailsComponent } from './components/all-user-attendance-details/all-user-attendance-details.component';
 import { DummyComponent } from './components/dummy/dummy.component';
 import { StudentLeaveRequestStatusComponent } from './components/student-leave-request-status/student-leave-request-status.component';
-<<<<<<< HEAD
 import { StudentIdComponent } from './components/student-id/student-id.component';
-=======
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { TeacherLeaveRequestStatusComponent } from './components/teacher-leave-request-status/teacher-leave-request-status.component';
 import { GlobalNotificationComponent } from './components/global-notification/global-notification.component';
->>>>>>> 9b372fe8867fd695503630298b86fc9c54bd8e27
+import { StaffDashboardComponent } from './components/staff-dashboard/staff-dashboard.component';
+import { PracticeComponent } from './components/practice/practice.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -62,12 +62,12 @@ import { GlobalNotificationComponent } from './components/global-notification/gl
     AllUserAttendanceDetailsComponent,
     DummyComponent,
     StudentLeaveRequestStatusComponent,
-<<<<<<< HEAD
     StudentIdComponent,
-=======
     TeacherLeaveRequestStatusComponent,
     GlobalNotificationComponent,
->>>>>>> 9b372fe8867fd695503630298b86fc9c54bd8e27
+    StaffDashboardComponent,
+    PracticeComponent,
+    AdminDashboardComponent,
   ],
   imports: [
     BrowserModule,
