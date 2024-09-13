@@ -22,6 +22,7 @@ Creating Apps :
     -> django-admin startapp LeaveRequest
     -> django-admin startapp Permissions
     -> django-admin startapp LeaveTypes
+    -> django-admin startapp Notification
   
 
 

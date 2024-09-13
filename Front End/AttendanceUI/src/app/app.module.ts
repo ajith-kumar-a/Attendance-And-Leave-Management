@@ -44,6 +44,7 @@ import { ListStudentAttendanceComponent } from './components/list-student-attend
 import { ListTeacherAttendanceComponent } from './components/list-teacher-attendance/list-teacher-attendance.component';
 import { ListStaffAttendanceComponent } from './components/list-staff-attendance/list-staff-attendance.component';
 import { ListAdminAttendanceComponent } from './components/list-admin-attendance/list-admin-attendance.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +79,7 @@ import { ListAdminAttendanceComponent } from './components/list-admin-attendance
     ListTeacherAttendanceComponent,
     ListStaffAttendanceComponent,
     ListAdminAttendanceComponent,
+    NotificationsComponent,
   ],
   imports: [
     BrowserModule,
