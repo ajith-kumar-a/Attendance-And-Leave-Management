@@ -32,6 +32,7 @@ import { AllUsersDetailsComponent } from './components/all-users-details/all-use
 import { AllUserAttendanceDetailsComponent } from './components/all-user-attendance-details/all-user-attendance-details.component';
 import { DummyComponent } from './components/dummy/dummy.component';
 import { StudentLeaveRequestStatusComponent } from './components/student-leave-request-status/student-leave-request-status.component';
+import { StudentIdComponent } from './components/student-id/student-id.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { TeacherLeaveRequestStatusComponent } from './components/teacher-leave-request-status/teacher-leave-request-status.component';
 import { GlobalNotificationComponent } from './components/global-notification/global-notification.component';
@@ -59,6 +60,7 @@ import { NotificationsComponent } from './components/notifications/notifications
     AllUserAttendanceDetailsComponent,
     DummyComponent,
     StudentLeaveRequestStatusComponent,
+    StudentIdComponent,
     TeacherLeaveRequestStatusComponent,
     GlobalNotificationComponent,
     NotificationsComponent,
