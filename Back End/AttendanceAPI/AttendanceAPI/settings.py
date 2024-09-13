@@ -95,14 +95,14 @@ DATABASES = {
    'default': {
        'ENGINE': 'django.db.backends.mysql',
     #    'NAME': 'AttendanceHub',
-       'NAME': 'dummy',
+       'NAME': 'dummy1',
        'PORT': '3307',
        'USER': 'root',
        'PASSWORD':'',
        'HOST':'localhost'
    }
 }
-ALLOWED_HOSTS = ['172.17.7.109', 'localhost']
+# ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Password validation

@@ -6,11 +6,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://172.17.7.109:8000/api';
+  private apiUrl = 'http://127.0.0.1:8000/api';
   constructor(private http: HttpClient) {}
 
   onLogin(obj: any): Observable<any> {
-    return this.http.post('http://172.17.7.109:8000/api/token/', obj);
+    return this.http.post('http://127.0.0.1:8000/api/token/', obj);
   }
 
   getRoles(tableName: string) {
@@ -25,11 +25,18 @@ export class AuthService {
     return this.http.get(`${this.apiUrl}/${tableName}`, { headers });
   }
 
+  RegisterUser(tableName:string,data:any){
+ 
+    return this.http.post(`${this.apiUrl}/${tableName}`,data, );
+  }
+
   addRecord(tableName:string,data:any){
     const token = localStorage.getItem('access');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.post(`${this.apiUrl}/${tableName}`,data, { headers });
   }
+
+
   addRecordput(tableName: string, data: any) {
     const token = localStorage.getItem('access');
     if (!token) {

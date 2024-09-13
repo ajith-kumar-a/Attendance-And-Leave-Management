@@ -18,6 +18,7 @@ import { DummyComponent } from './components/dummy/dummy.component';
 import { StudentLeaveRequestStatusComponent } from './components/student-leave-request-status/student-leave-request-status.component';
 import { AllUserAttendanceDetailsComponent } from './components/all-user-attendance-details/all-user-attendance-details.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
+import { StaffDashboardComponent } from './components/staff-dashboard/staff-dashboard.component';
 // import { DashboardComponent } from './dashboard/dashboard.component'; // Import your dashboard component
 
 const routes: Routes = [

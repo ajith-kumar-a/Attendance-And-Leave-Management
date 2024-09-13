@@ -11,7 +11,7 @@ import html2canvas from 'html2canvas';
 })
 export class StudentIdComponent {
   userData: any;  // Variable to store fetched user data
-  baseUrl: string = 'http://172.17.7.109:8000';
+  baseUrl: string = 'http://127.0.0.1:8000';
   @ViewChild('contentToConvert', { static: false }) contentToConvert!: ElementRef;
 
   constructor(private userService: AuthService) {}

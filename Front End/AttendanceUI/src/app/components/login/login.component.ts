@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
   }
   onSignUp() {
     console.log('Signup Object:', this.signupObj); // Debugging line
-    this.accService.addRecord('userregister/', this.signupObj).subscribe({
+    this.accService.RegisterUser('userregister/', this.signupObj).subscribe({
       next: () => {
         this.signupObj = {
           first_name: '',

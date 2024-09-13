@@ -21,11 +21,11 @@
     leaveRequests: any[] = [];
     previousLeaveRequests: any[] = []; // Track previous statuses
     previousAttendanceStatuses: any[] = []; // Track previous attendance statuses
-    badgeCount: number = -37; // Initialize to 0
+    badgeCount: number = -12; // Initialize to 0
     private intervalId: any; 
     private leaveRequestSubscription: Subscription | undefined;
 
-    baseUrl: string = 'http://172.17.7.109:8000';
+    baseUrl: string = 'http://127.0.0.1:8000';
     @ViewChild('fileInput') fileInput!: ElementRef;
 
     constructor(
