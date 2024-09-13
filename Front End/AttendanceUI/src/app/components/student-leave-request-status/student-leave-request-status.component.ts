@@ -1,6 +1,8 @@
+// student-leave-request-status.component.ts
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { NotificationServiceService } from '../../services/notification-service.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-student-leave-request-status',
@@ -16,7 +18,7 @@ export class StudentLeaveRequestStatusComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private notificationService: NotificationServiceService
+    private notificationService: NotificationServiceService // Inject the notification service
   ) {}
 
   ngOnInit(): void {
@@ -32,7 +34,7 @@ export class StudentLeaveRequestStatusComponent implements OnInit {
       (response: any) => {
         this.leaveRequests = response.data;
       },
-      (error) => {
+      (error: HttpErrorResponse) => {
         console.error('Error fetching leave requests', error);
       }
     );
@@ -40,10 +42,10 @@ export class StudentLeaveRequestStatusComponent implements OnInit {
 
   getLeaveTypeDetails(): void {
     this.authService.getUserDetails('leaveTypedetails/').subscribe(
-      (data) => {
+      (data: any) => {
         this.leaveTypeMap = data.data;
       },
-      (error) => {
+      (error: HttpErrorResponse) => {
         console.error('Error fetching leave type details', error);
       }
     );
@@ -51,10 +53,10 @@ export class StudentLeaveRequestStatusComponent implements OnInit {
 
   getStatusDetails(): void {
     this.authService.getUserDetails('LeaveRequeststatus/').subscribe(
-      (data) => {
+      (data: any) => {
         this.statusMap = data.data;
       },
-      (error) => {
+      (error: HttpErrorResponse) => {
         console.error('Error fetching status details', error);
       }
     );
@@ -68,7 +70,7 @@ export class StudentLeaveRequestStatusComponent implements OnInit {
           return map;
         }, {});
       },
-      (error) => {
+      (error: HttpErrorResponse) => {
         console.error('Error fetching user details', error);
       }
     );
@@ -96,13 +98,26 @@ export class StudentLeaveRequestStatusComponent implements OnInit {
         if (leaveRequest) {
           leaveRequest.status = newStatusId;
           console.log(`Triggering notification for leave request ${leaveRequestId}`); // Debug log
-          this.notificationService.sendNotification(`Leave request ${leaveRequestId} status updated to ${newStatusId}`);
+
+          // Assuming userId is available from leaveRequest or other sources
+          const userId = leaveRequest.user_id; // Update this based on your actual data structure
+          // this.authService.sendNotification(userId, `Leave request ${leaveRequestId} status updated to ${newStatusId}`)
+          //   .subscribe(
+          //     (notificationResponse: any) => {
+          //       console.log('Notification sent successfully', notificationResponse);
+
+          //       // Notify the shared service to update notification count in StudentsComponent
+          //       this.notificationService.updateNotificationCount(notificationResponse.data.notificationCount);
+          //     },
+          //     (error: HttpErrorResponse) => {
+          //       console.error('Error sending notification', error);
+          //     }
+          //   );
         }
       },
-      (error) => {
+      (error: HttpErrorResponse) => {
         console.error('Error updating leave request status', error);
       }
     );
   }
-  
 }

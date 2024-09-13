@@ -84,4 +84,21 @@ export class AuthService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.patch<any>(`${this.apiUrl}/Attendancedetail/${attendanceId}/`, { status_id: newStatusId },{headers});
   }
+
+  sendNotification(userId: number, message: string): Observable<any> {
+    const url = `${this.apiUrl}/Notificationuser/${userId}/`;
+    const token = localStorage.getItem('access');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post<any>(url, { message }, { headers });
+  }
+
+  getLeaveRequestDetailsByUser(userId: number): Observable<any> {
+    const token = localStorage.getItem('access');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<any>(`${this.apiUrl}/LeaveRequestdetails/by-user/${userId}/`,{headers});
+  }
+
+  getUserNotifications(userId: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/Notificationuser/${userId}/`);
+  }
 }

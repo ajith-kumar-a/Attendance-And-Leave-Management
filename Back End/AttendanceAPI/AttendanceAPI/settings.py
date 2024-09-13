@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'LeaveRequest',
     'LeaveTypes',
     'Permissions',
+    'Notification',
+    'UserDetails',
     'Roles',
     'drf_yasg',
     'rest_framework',

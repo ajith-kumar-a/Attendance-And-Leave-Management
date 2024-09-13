@@ -1,39 +1,43 @@
-<!-- Ensure the header tag is properly opened and closed -->
 <header class="header">
   <div class="container-fluid">
-      <div class="row align-items-center">
-          <!-- Logo on the left -->
-          <div class="col-4 col-md-3">
-              <a class="navbar-brand" href="#">
-                  <img src="assets/logo1.jpg" alt="Logo"> <!-- Replace with your logo -->
-              </a>
-          </div>
-
-          <!-- Centered Company Name -->
-          <div class="col-4 col-md-6 text-center">
-              <span class="navbar-text">GAP Institutions</span>
-          </div>
-
-          <!-- Dropdown and Signout Button on the right -->
-          <div class="col-4 col-md-3 d-flex justify-content-end align-items-center">
-              <div class="dropdown me-3">
-                <button class="btn btn-success dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <!-- Profile Image -->
-                    <img [src]="img || 'https://bootdey.com/img/Content/avatar/avatar7.png'" alt="Profile" class="rounded-circle me-2" height="40" width="40">
-                    <!-- Welcome Message -->
-                    <span>Welcome, {{ user?.first_name || 'Guest' }}</span> <!-- Safely check if user exists -->
-                </button>
-                <ul class="dropdown-menu dropdown-menu-end">
-                  <li><a href="/"><button class="dropdown-item" type="button">View Attendance</button></a></li>
-                  <li><a href="/apply-leave"><button class="dropdown-item" type="button">Apply Leave</button></a></li>
-                  <li><a href="/leave-status"><button class="dropdown-item" type="button">Leave Status</button></a></li>
-                  <li><a href=""><button class="dropdown-item log-out" type="button">Log Out</button></a></li>
-              </ul>              
-              </div>
-          </div>
+    <div class="row align-items-center">
+      <!-- Logo on the left -->
+      <div class="col-4 col-md-3">
+        <a class="navbar-brand" href="#">
+          <img src="assets/logo1.jpg" alt="Logo">
+        </a>
       </div>
+
+      <!-- Centered Company Name -->
+      <div class="col-4 col-md-6 text-center">
+        <span class="navbar-text">GAP Institutions</span>
+      </div>
+
+      <!-- Dropdown and Signout Button on the right -->
+     <!-- header in students.component.html -->
+<div class="col-4 col-md-3 d-flex justify-content-end align-items-center">
+  <div class="dropdown me-3">
+    <button class="btn btn-success dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <!-- Profile Image -->
+      <img [src]="img || 'https://bootdey.com/img/Content/avatar/avatar7.png'" alt="Profile" class="rounded-circle me-2" height="40" width="40">
+      <!-- Welcome Message -->
+      <span>Welcome, {{ user?.first_name || 'Guest' }}</span>
+      <!-- Badge Count with Link to Notifications -->
+      <a [routerLink]="['/notifications']" class="badge bg-danger ms-2">{{ badgeCount }}</a>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end">
+      <li><a href="/"><button class="dropdown-item" type="button">View Attendance</button></a></li>
+      <li><a href="/apply-leave"><button class="dropdown-item" type="button">Apply Leave</button></a></li>
+      <li><a href="/leave-status"><button class="dropdown-item" type="button">Leave Status</button></a></li>
+      <li><a href=""><button class="dropdown-item log-out" type="button">Log Out</button></a></li>
+    </ul>
+  </div>
+</div>
+
+    </div>
   </div>
 </header>
+
 
 
 <div class="container" >
@@ -139,62 +143,12 @@
                   <div class="col-sm-9 text-secondary">
                     9988777998
                   </div>
-                  <!-- </button> -->
-                  <!-- <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a href="/"><button class="dropdown-item" type="button">View Attendance</button></a></li>
-                    <li><a href="/apply-leave"><button class="dropdown-item" type="button">Apply Leave</button></a></li>
-                    <li><a href="/leave-status"><button class="dropdown-item" type="button">Leave Status</button></a></li>
-                 </ul> -->
+              
               </div>
               <!-- <button class="btn btn-danger btn-signout d-none d-md-block">Sign Out</button>  -->
           </div>
       </div>
   </div>
-<!-- </header> -->
-<!-- 
-<div class="container">
-  <div class="main-body">
-      <div class="row gutters-sm">
-          <div class="col-md-4 mb-3">
-              <div class="card">
-                  <div class="card-body">
-                      <div class="d-flex flex-column align-items-center text-center">
-                          <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
-                          <div class="mt-3">
-                              <h4>{{user.first_name}}</h4>
-                              <p class="text-secondary mb-1">Full Stack Developer</p>
-                              <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
-                              <button class="btn btn-primary">Follow</button>
-                              <button class="btn btn-outline-primary">Message</button>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="card mt-3">
-                  <ul class="list-group list-group-flush">
-                  </ul>
-              </div>
-          </div> -->
-          <!-- <div class="col-md-8">
-              <div class="card mb-3">
-                  <div class="card-body">
-                  </div>
-              </div> -->
-
-              <!-- Attendance Pie Chart -->
-              <!-- <div class="card mb-3">
-                  <div class="card-body">
-                      <h5 class="card-title">Attendance Overview</h5>
-                      <div style="display: block;">
-                          
-                      </div>
-                  </div>
-              </div> -->
-
-
-
-
-
 
 
 

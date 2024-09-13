@@ -35,6 +35,7 @@ import { StudentLeaveRequestStatusComponent } from './components/student-leave-r
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { TeacherLeaveRequestStatusComponent } from './components/teacher-leave-request-status/teacher-leave-request-status.component';
 import { GlobalNotificationComponent } from './components/global-notification/global-notification.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { GlobalNotificationComponent } from './components/global-notification/gl
     StudentLeaveRequestStatusComponent,
     TeacherLeaveRequestStatusComponent,
     GlobalNotificationComponent,
+    NotificationsComponent,
   ],
   imports: [
     BrowserModule,
