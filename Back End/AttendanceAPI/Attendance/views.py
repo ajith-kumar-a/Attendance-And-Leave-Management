@@ -327,7 +327,6 @@ from rest_framework.exceptions import APIException
 from .models import Attendance
 from .serializers import AttendanceSerializer
 from datetime import datetime
-
 class AttendanceViewset(ModelViewSet):
     authentication_classes = [JWTAuthentication]
     permission_classes = [permissions.IsAuthenticated]
@@ -362,4 +361,75 @@ class AttendanceViewset(ModelViewSet):
             raise APIException({
                 'message': APIException.default_detail,
                 'status': APIException.status_code
+            })
+
+    # Action to update attendance records by a date (YYYY-MM-DD)
+    @action(detail=False, methods=['put', 'patch'], url_path='update-by-date/(?P<date>\d{4}-\d{2}-\d{2})')
+    def update_by_date(self, request, date=None, *args, **kwargs):
+        try:
+            # Convert string to date object
+            filter_date = datetime.strptime(date, '%Y-%m-%d').date()
+
+            # Filter attendances by the provided date
+            attendances = Attendance.objects.filter(date=filter_date)
+
+            if not attendances.exists():
+                return Response({
+                    'status': status.HTTP_404_NOT_FOUND,
+                    'message': 'No attendance records found for the specified date'
+                })
+
+            # Update each attendance record
+            for attendance in attendances:
+                serializer = self.get_serializer(attendance, data=request.data, partial=True)
+                serializer.is_valid(raise_exception=True)
+                serializer.save()
+
+            return Response({
+                'status': status.HTTP_200_OK,
+                'message': 'Attendance records updated successfully'
+            })
+
+        except ValueError:
+            return Response({
+                'status': status.HTTP_400_BAD_REQUEST,
+                'message': 'Invalid date format, should be YYYY-MM-DD'
+            })
+
+        except Exception as e:
+            print(e)
+            raise APIException({
+                'message': APIException.default_detail,
+                'status': APIException.status_code
+            })
+
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .models import Attendance
+from .serializers import AttendanceSerializer
+
+class AttendanceByUserView(APIView):
+    """
+    API endpoint that filters attendance records by user_id.
+    """
+
+    def get(self, request, user_id, *args, **kwargs):
+        try:
+            # Filter attendance records by user_id
+            attendances = Attendance.objects.filter(user_id=user_id)
+            serializer = AttendanceSerializer(attendances, many=True)
+            
+            return Response({
+                'status': status.HTTP_200_OK,
+                'data': serializer.data,
+                'message': 'Attendance records retrieved successfully'
+            })
+
+        except Exception as e:
+            print(e)
+            return Response({
+                'status': status.HTTP_500_INTERNAL_SERVER_ERROR,
+                'message': 'An error occurred while fetching attendances'
             })
