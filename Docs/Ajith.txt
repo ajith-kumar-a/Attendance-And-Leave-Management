@@ -34,7 +34,7 @@ step to connect api
     - ng generate component components/login
 
 
-
+ng generate component components/UserRegistration
 
 views.py Attendance
     from rest_framework import viewsets, permissions

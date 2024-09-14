@@ -19,6 +19,8 @@ import { StudentLeaveRequestStatusComponent } from './components/student-leave-r
 import { AllUserAttendanceDetailsComponent } from './components/all-user-attendance-details/all-user-attendance-details.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { StaffDashboardComponent } from './components/staff-dashboard/staff-dashboard.component';
+import { UserRegistrationComponent } from './components/user-registration/user-registration.component';
+import { UserDetailupdateComponent } from './components/user-detailupdate/user-detailupdate.component';
 // import { DashboardComponent } from './dashboard/dashboard.component'; // Import your dashboard component
 
 const routes: Routes = [
@@ -54,7 +56,13 @@ const routes: Routes = [
   {path:"admin",component:AdminComponent,children:[
     {path:"role",component:RoleComponent},
    
-  ]}
+  ]},
+
+
+  {path: "user-registration" , component:UserRegistrationComponent},
+  {path: "update-user-registration" , component:UserDetailupdateComponent}
+
+
 
 ];
 

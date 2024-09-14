@@ -363,3 +363,33 @@ class AttendanceViewset(ModelViewSet):
                 'message': APIException.default_detail,
                 'status': APIException.status_code
             })
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .models import Attendance
+from .serializers import AttendanceSerializer
+
+class AttendanceByUserView(APIView):
+    """
+    API endpoint that filters attendance records by user_id.
+    """
+
+    def get(self, request, user_id, *args, **kwargs):
+        try:
+            # Filter attendance records by user_id
+            attendances = Attendance.objects.filter(user_id=user_id)
+            serializer = AttendanceSerializer(attendances, many=True)
+            
+            return Response({
+                'status': status.HTTP_200_OK,
+                'data': serializer.data,
+                'message': 'Attendance records retrieved successfully'
+            })
+
+        except Exception as e:
+            print(e)
+            return Response({
+                'status': status.HTTP_500_INTERNAL_SERVER_ERROR,
+                'message': 'An error occurred while fetching attendances'
+            })

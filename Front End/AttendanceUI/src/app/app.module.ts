@@ -45,6 +45,8 @@ import { ListTeacherAttendanceComponent } from './components/list-teacher-attend
 import { ListStaffAttendanceComponent } from './components/list-staff-attendance/list-staff-attendance.component';
 import { ListAdminAttendanceComponent } from './components/list-admin-attendance/list-admin-attendance.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
+import { UserRegistrationComponent } from './components/user-registration/user-registration.component';
+import { UserDetailupdateComponent } from './components/user-detailupdate/user-detailupdate.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +82,8 @@ import { NotificationsComponent } from './components/notifications/notifications
     ListStaffAttendanceComponent,
     ListAdminAttendanceComponent,
     NotificationsComponent,
+    UserRegistrationComponent,
+    UserDetailupdateComponent,
   ],
   imports: [
     BrowserModule,

@@ -108,14 +108,14 @@
                       <h6 class="mb-0">DOB</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      {{user.dob}}
+                      {{user_details[0].date_of_birth}}
                     </div>
                     <hr>
                     <div class="col-sm-3">
                       <h6 class="mb-0">Mentor Name</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      {{user.mentorname}}
+                      {{user_details[0].mentor_name}}
                     </div>
                     <hr>
                     <div class="col-sm-3">
@@ -129,19 +129,41 @@
                     <h6 class="mb-0">Mobile Num</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
-                    9988777998
+                    {{user_details[0].batch}}
+                  </div>
+                  <hr>
+                    <div class="col-sm-3">
+                    <h6 class="mb-0">Blood Group</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    {{user_details[0].blood_group}}
+                  </div>
+                  <hr>
+                    <div class="col-sm-3">
+                    <h6 class="mb-0">Gender </h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    {{user_details[0].gender}}
+                  </div>
+                  <hr>
+                    <div class="col-sm-3">
+                    <h6 class="mb-0">Batch No</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    {{user_details[0].batch}}
                   </div>
               
               </div>
               <!-- <button class="btn btn-danger btn-signout d-none d-md-block">Sign Out</button>  -->
           </div>
+
       </div>
+      <a href="/user-registration" style="color: aliceblue;"><button class="btn btn-primary" > Edit User Details </button></a>
+      <a href="/update-user-registration" style="color: aliceblue;"><button class="btn btn-primary" > Edit User Details </button></a>
   </div>
-
-
-
-
-
+<br>
+<hr>
+<br><br>
               <!-- Attendance Table and Filter -->
             <div class="panel">
                 <!-- Panel Heading with Filters -->
