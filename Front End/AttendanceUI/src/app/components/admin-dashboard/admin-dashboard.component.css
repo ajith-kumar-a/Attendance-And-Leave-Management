@@ -26,7 +26,7 @@ body {
     justify-content: space-around;
     align-items: center;
     position: relative;
-    width: 500px;
+    width: 800px;
     height: 60px;
     padding: 0 15px 15px;
     border-radius: 10px 10px 30px 30px;
@@ -76,7 +76,7 @@ body {
   }
   .menu .checkbox:before {
     content: "";
-    width: 80px;
+    width: 55px;
     aspect-ratio: 1;
     transform: translate(-50%, -50%);
     top: -30px;
@@ -85,12 +85,12 @@ body {
     border-radius: 100%;
     background-color: #5a9fee;
     transition: all 0.2s linear;
-    border: 4px solid #fff;
+    border: 3px solid #fff;
   }
   .menu .checkbox:after {
     content: "+";
     position: absolute;
-    font-size: 4em;
+    font-size: 5em;
     color: #fff;
     top: -30px;
     left: 0;
@@ -181,3 +181,25 @@ body {
     background-color: #631aee;
     left: -64px;
   }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+  }
+  
+  .nav-item i {
+    font-size: 15px;
+    margin-bottom: 5px;
+  }
+  
+  .checkbox-list {
+    display: none;
+  }
+  
+  .checkbox:checked + .checkbox-list {
+    display: flex;
+  }
+  

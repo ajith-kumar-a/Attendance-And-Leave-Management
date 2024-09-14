@@ -25,17 +25,17 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh; /* Ensure it takes full height for centering */
-    max-width: 800px;
+    min-height: 100vh;
+    max-width: 1200px; /* Increased max-width to fit larger sizes */
     background: #f8f3f7;
-    padding: 25px 40px 10px 40px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    margin: auto; /* Center horizontally */
+    padding: 40px 60px 20px 60px; /* Adjust padding for larger size */
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); /* Increased shadow size */
+    margin: auto;
   }
   
 .container .text{
   text-align: center;
-  font-size: 30px;
+  font-size: 35px; /* Increased font size */
   font-weight: 600;
   font-family: 'Poppins', sans-serif;
   background: -webkit-linear-gradient(right, #56d8e4, #9f01ea, #56d8e4, #9f01ea);
@@ -43,7 +43,7 @@ body {
   -webkit-text-fill-color: transparent;
 }
 .container form{
-  padding: 30px 0 0 0;
+  padding: 40px 0 0 0; /* Increased padding */
 }
 .container form .form-row{
   display: flex;
@@ -51,12 +51,12 @@ body {
 }
 form .form-row .input-data{
   width: 100%;
-  height: 40px;
-  margin: 0 20px;
+  height: 50px; /* Increased input height */
+  margin: 0 30px; /* Increased margin for wider layout */
   position: relative;
 }
 form .form-row .textarea{
-  height: 70px;
+  height: 100px; /* Increased textarea height */
 }
 .input-data input,
 .textarea textarea{
@@ -64,24 +64,24 @@ form .form-row .textarea{
   width: 100%;
   height: 100%;
   border: none;
-  font-size: 17px;
+  font-size: 20px; /* Increased font size */
   border-bottom: 2px solid rgba(0,0,0, 0.12);
 }
 .input-data input:focus ~ label, .textarea textarea:focus ~ label,
 .input-data input:valid ~ label, .textarea textarea:valid ~ label{
   transform: translateY(-20px);
-  font-size: 14px;
+  font-size: 15px;
   color: #3498db;
 }
 .textarea textarea{
   resize: none;
-  padding-top: 10px;
+  padding-top: 15px; /* Increased padding for text area */
 }
 .input-data label{
   position: absolute;
   pointer-events: none;
   bottom: 10px;
-  font-size: 16px;
+  font-size: 17px;
   transition: all 0.3s ease;
 }
 .textarea label{
@@ -113,8 +113,8 @@ form .form-row .textarea{
 }
 .submit-btn .input-data{
   overflow: hidden;
-  height: 45px!important;
-  width: 25%!important;
+  height: 50px!important; /* Increased button height */
+  width: 30%!important; /* Increased button width */
 }
 .submit-btn .input-data .inner{
   height: 100%;
@@ -130,9 +130,9 @@ form .form-row .textarea{
 .submit-btn .input-data input{
   background: none;
   border: none;
-  color: #fff;
-  font-size: 17px;
-  font-weight: 500;
+  color: #66c4f0;
+  font-size: 30px; /* Increased font size */
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
   cursor: pointer;
@@ -141,7 +141,7 @@ form .form-row .textarea{
 }
 @media (max-width: 700px) {
   .container .text{
-    font-size: 30px;
+    font-size: 28px; /* Adjusted for mobile */
   }
   .container form{
     padding: 10px 0 0 0;
@@ -150,11 +150,27 @@ form .form-row .textarea{
     display: block;
   }
   form .form-row .input-data{
-    margin: 35px 0!important;
+    margin: 25px 0!important;
   }
   .submit-btn .input-data{
-    width: 40%!important;
+    width: 50%!important; /* Adjusted for mobile */
   }
 }
+.invalid input, .invalid select, .invalid textarea {
+  border-color: red;
+}
 
+.error-msg small {
+  color: red;
+}
+.error-msg {
+  color: red; /* Error messages in red */
+  font-size: 14px; /* Adjust font size for readability */
+  margin-top: 5px; /* Space between input field and error message */
+}
 
+.input-data.invalid input,
+.input-data.invalid select,
+.input-data.invalid textarea {
+  border-color: red; /* Red border for invalid fields */
+}

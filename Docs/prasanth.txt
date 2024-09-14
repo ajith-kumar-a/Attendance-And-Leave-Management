@@ -1,37 +1,82 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS Pie Chart</title>
-    <style>
-        .pie-chart {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: conic-gradient(
-                #ff6347 0% 25%,     /* Tomato 25% */
-                #4caf50 25% 50%,    /* Green 25% */
-                #2196f3 50% 75%,    /* Blue 25% */
-                #ffeb3b 75% 100%    /* Yellow 25% */
-            );
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
+
+@Component({
+  selector: 'app-applyleave',
+  templateUrl: './applyleave.component.html',
+  styleUrls: ['./applyleave.component.css']
+})
+export class ApplyleaveComponent implements OnInit {
+  leaveData: any = {
+    studentId :''
+  }; 
+  userId: any;
+
+  constructor(private authService: AuthService) {}
+
+  ngOnInit(): void {
+    this.fetchStudentDetails();
+  }
+
+  fetchStudentDetails(): void {
+    this.authService.getUserDetails('userme/').subscribe(
+      (data) => {
+        this.leaveData = {
+          username: data.data.username,
+          studentId: data.data.id,
+          email: data.data.email,
+          leaveType: '',
+          reason: '',
+          startDate: '',
+          endDate: ''
+        };
+        this.userId = data.data.id; // Ensure you have the correct field for user ID
+        console.log('Full user object:', this.leaveData);
+      },
+      (error) => {
+        console.error('Error fetching user details', error);
+      }
+    );
+  }
+
+  onSubmit(): void {
+    if (this.leaveData.username && this.leaveData.studentId && this.leaveData.email &&
+        this.leaveData.leaveType && this.leaveData.reason && this.leaveData.startDate &&
+        this.leaveData.endDate) {
+      const leaveData = {
+        user_id: this.userId,
+        status: 1, // Assuming 1 means approved
+        reason: this.leaveData.reason,
+        start_date: this.leaveData.startDate,
+        end_date: this.leaveData.endDate,
+        leave_type: this.leaveData.leaveType
+      };
+
+      this.authService.postLeaveRequest('LeaveRequestdetails/by-user/', this.userId, leaveData).subscribe(
+        response => {
+          console.log('Leave request submitted:', response);
+          // Handle successful submission
+        },
+        error => {
+          console.error('Error submitting leave request', error);
+          // Handle submission error
         }
+      );
+    } else {
+      console.error('Form is not valid');
+    }
+  }
 
-        /* Optional: Add a label inside the pie chart */
-        .pie-chart-label {
-            position: relative;
-            top: -170px;
-            text-align: center;
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #333;
-        }
-    </style>
-</head>
-<body>
-
-    <div class="pie-chart"></div>
-    <div class="pie-chart-label">Pie Chart</div>
-
-</body>
-</html>
+  onCancel(): void {
+    this.leaveData = {
+      fullName: '',
+      studentId: '',
+      email: '',
+      leaveType: '',
+      reason: '',
+      startDate: '',
+      endDate: ''
+    };
+  }
+}
+leave status ts
