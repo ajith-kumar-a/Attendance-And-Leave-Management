@@ -4,9 +4,9 @@
   <label for="date">Select Date:</label>
   <input type="date" id="date" [(ngModel)]="selectedDate" />
 
-  <div class="col-12 col-md-auto">
+  <!-- <div class="col-12 col-md-auto">
     <button type="button" id="applyFilter" class="btn btn-primary w-100" >Apply</button>
-  </div>
+  </div> -->
 
   <table>
     <thead>
@@ -21,7 +21,7 @@
     <tbody>
       <tr *ngFor="let student of students; let i = index">
         <td>{{ i + 1 }}</td>
-        <td>{{ student.id}}</td>
+        <td>{{ student.user_id}}</td>
         <td>{{ student.username }}</td>
         <td>
           <button class="btn btn-success" (click)="markAttendance(student, 'Present')">Present</button>
