@@ -1,37 +1,176 @@
-.admin-container {
-    border: 2px solid #573b8a; /* Border color */
-    border-radius: 10px;
-    padding: 20px;
-    position: relative;
-    min-height: 300px; /* Adjust based on your content */
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  }
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+.base{
+    background-color: #45324e;
+}
+*{
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
   
-  .admin-content {
-    padding-bottom: 60px; /* Space for buttons */
-  }
-  
-  .admin-buttons {
-    position: absolute;
-    bottom: 10px;
-    left: 20px;
-    right: 20px;
+}
+body {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #d9bee6;
   }
   
-  .admin-buttons button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #573b8a;
-    color: #fff;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    max-width: 1200px; /* Increased max-width to fit larger sizes */
+    background: #f8f3f7;
+    padding: 40px 60px 20px 60px; /* Adjust padding for larger size */
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); /* Increased shadow size */
+    margin: auto;
   }
   
-  .admin-buttons button:hover {
-    background-color: #6d44b8;
+.container .text{
+  text-align: center;
+  font-size: 35px; /* Increased font size */
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  background: -webkit-linear-gradient(right, #56d8e4, #9f01ea, #56d8e4, #9f01ea);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.container form{
+  padding: 40px 0 0 0; /* Increased padding */
+}
+.container form .form-row{
+  display: flex;
+  margin: 32px 0;
+}
+form .form-row .input-data{
+  width: 100%;
+  height: 50px; /* Increased input height */
+  margin: 0 30px; /* Increased margin for wider layout */
+  position: relative;
+}
+form .form-row .textarea{
+  height: 100px; /* Increased textarea height */
+}
+.input-data input,
+.textarea textarea{
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: none;
+  font-size: 20px; /* Increased font size */
+  border-bottom: 2px solid rgba(0,0,0, 0.12);
+}
+.input-data input:focus ~ label, .textarea textarea:focus ~ label,
+.input-data input:valid ~ label, .textarea textarea:valid ~ label{
+  transform: translateY(-20px);
+  font-size: 15px;
+  color: #3498db;
+}
+.textarea textarea{
+  resize: none;
+  padding-top: 15px; /* Increased padding for text area */
+}
+.input-data label{
+  position: absolute;
+  pointer-events: none;
+  bottom: 10px;
+  font-size: 17px;
+  transition: all 0.3s ease;
+}
+.textarea label{
+  width: 100%;
+  bottom: 40px;
+  background: #fff;
+}
+.input-data .underline{
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+}
+.input-data .underline:before{
+  position: absolute;
+  content: "";
+  height: 2px;
+  width: 100%;
+  background: #3498db;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+.input-data input:focus ~ .underline:before,
+.input-data input:valid ~ .underline:before,
+.textarea textarea:focus ~ .underline:before,
+.textarea textarea:valid ~ .underline:before{
+  transform: scale(1);
+}
+.submit-btn .input-data{
+  overflow: hidden;
+  height: 50px!important; /* Increased button height */
+  width: 30%!important; /* Increased button width */
+}
+.submit-btn .input-data .inner{
+  height: 100%;
+  width: 300%;
+  position: absolute;
+  left: -100%;
+  background: -webkit-linear-gradient(right, #56d8e4, #9f01ea, #56d8e4, #9f01ea);
+  transition: all 0.4s;
+}
+.submit-btn .input-data:hover .inner{
+  left: 0;
+}
+.submit-btn .input-data input{
+  background: none;
+  border: none;
+  color: #66c4f0;
+  font-size: 30px; /* Increased font size */
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+}
+@media (max-width: 700px) {
+  .container .text{
+    font-size: 28px; /* Adjusted for mobile */
   }
-  
+  .container form{
+    padding: 10px 0 0 0;
+  }
+  .container form .form-row{
+    display: block;
+  }
+  form .form-row .input-data{
+    margin: 25px 0!important;
+  }
+  .submit-btn .input-data{
+    width: 50%!important; /* Adjusted for mobile */
+  }
+}
+.invalid input, .invalid select, .invalid textarea {
+  border-color: red;
+}
+
+.error-msg small {
+  color: red;
+}
+.error-msg {
+  color: red; /* Error messages in red */
+  font-size: 14px; /* Adjust font size for readability */
+  margin-top: 5px; /* Space between input field and error message */
+}
+
+.input-data.invalid input,
+.input-data.invalid select,
+.input-data.invalid textarea {
+  border-color: red; /* Red border for invalid fields */
+}

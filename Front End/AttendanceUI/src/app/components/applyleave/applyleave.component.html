@@ -3,64 +3,88 @@
     <div class="text">
       <span>Apply Leave</span>
     </div>
-    <form (ngSubmit)="onSubmit()">
+    <form #leaveForm="ngForm" (ngSubmit)="onSubmit(leaveForm)">
       <div class="form-row">
-        <div class="input-data">
-          <input [(ngModel)]="leaveData.username" name="fullName" type="text" >
+        <div class="input-data" [class.invalid]="leaveForm.submitted && !fullName.valid">
+          <input [(ngModel)]="leaveData.username" name="fullName" type="text" #fullName="ngModel" required minlength="3">
           <div class="underline"></div>
           <label for="fullName">Full Name</label>
+          <div class="error-msg" *ngIf="fullName.invalid && (fullName.dirty || leaveForm.submitted)">
+            <small *ngIf="fullName.errors?.['required']">Full name is required</small>
+            <small *ngIf="fullName.errors?.['minlength']">Full name must be at least 3 characters long</small>
+          </div>
         </div>
-        <div class="input-data">
-          <input [(ngModel)]="leaveData.studentId" name="studentId" type="text" >
+        <div class="input-data" [class.invalid]="leaveForm.submitted && !studentId.valid">
+          <input [(ngModel)]="leaveData.studentId" name="studentId" type="text" #studentId="ngModel" required>
           <div class="underline"></div>
           <label for="studentId">Student ID</label>
+          <div class="error-msg" *ngIf="studentId.invalid && (studentId.dirty || leaveForm.submitted)">
+            <small *ngIf="studentId.errors?.['required']">Student ID is required</small>
+          </div>
         </div>
       </div>
 
       <div class="form-row">
-        <div class="input-data">
-          <input [(ngModel)]="leaveData.email" name="email" type="email" >
+        <div class="input-data" [class.invalid]="leaveForm.submitted && !email.valid">
+          <input [(ngModel)]="leaveData.email" name="email" type="email" #email="ngModel" required email>
           <div class="underline"></div>
           <label for="email">Email Address</label>
+          <div class="error-msg" *ngIf="email.invalid && (email.dirty || leaveForm.submitted)">
+            <small *ngIf="email.errors?.['required']">Email is required</small>
+            <small *ngIf="email.errors?.['email']">Please enter a valid email address</small>
+          </div>
         </div>
-        <div class="input-data">
-          <select [(ngModel)]="leaveData.leaveType" name="leaveType" class="form-control" >
+        <div class="input-data" [class.invalid]="leaveForm.submitted && !leaveType.valid">
+          <select [(ngModel)]="leaveData.leaveType" name="leaveType" class="form-control" #leaveType="ngModel" required>
             <option value="" disabled>Select Leave Type</option>
             <option value="1">Sick Leave</option>
             <option value="2">Casual Leave</option>
             <option value="3">Annual Leave</option>
           </select>
           <div class="underline"></div>
+          <div class="error-msg" *ngIf="leaveType.invalid && (leaveType.dirty || leaveForm.submitted)">
+            <small>Leave type is required</small>
+          </div>
         </div>
       </div>
 
       <div class="form-row">
-        <div class="input-data textarea">
-          <textarea [(ngModel)]="leaveData.reason" name="reason" rows="8" cols="80" ></textarea>
+        <div class="input-data textarea" [class.invalid]="leaveForm.submitted && !reason.valid">
+          <textarea [(ngModel)]="leaveData.reason" name="reason" rows="8" cols="80" #reason="ngModel" required minlength="10"></textarea>
           <div class="underline"></div>
           <label for="reason">Write your reason</label>
+          <div class="error-msg" *ngIf="reason.invalid && (reason.dirty || leaveForm.submitted)">
+            <small *ngIf="reason.errors?.['required']">Reason is required</small>
+            <small *ngIf="reason.errors?.['minlength']">Reason must be at least 10 characters long</small>
+          </div>
         </div>
       </div>
 
       <div class="form-row">
-        <div class="input-data">
-          <input [(ngModel)]="leaveData.startDate" name="startDate" type="date" >
+        <div class="input-data" [class.invalid]="leaveForm.submitted && !startDate.valid">
+          <input [(ngModel)]="leaveData.startDate" name="startDate" type="date" #startDate="ngModel" required>
           <div class="underline"></div>
           <label for="startDate">Start Date</label>
+          <div class="error-msg" *ngIf="startDate.invalid && (startDate.dirty || leaveForm.submitted)">
+            <small>Start date is required</small>
+          </div>
         </div>
-        <div class="input-data">
-          <input [(ngModel)]="leaveData.endDate" name="endDate" type="date" >
+        <div class="input-data" [class.invalid]="leaveForm.submitted && !endDate.valid">
+          <input [(ngModel)]="leaveData.endDate" name="endDate" type="date" #endDate="ngModel" required>
           <div class="underline"></div>
           <label for="endDate">End Date</label>
+          <div class="error-msg" *ngIf="endDate.invalid && (endDate.dirty || leaveForm.submitted)">
+            <small>End date is required</small>
+          </div>
         </div>
       </div>
 
       <div class="form-row submit-btn">
         <div class="input-data">
-          <input type="submit" value="Apply">
+          <input type="submit" value="Apply" [disabled]="leaveForm.invalid">
         </div>
         <div class="input-data">
-          <button type="submit" (click)="onCancel()">Cancel</button>
+          <button type="button" (click)="onCancel()">Cancel</button>
         </div>
       </div>
     </form>

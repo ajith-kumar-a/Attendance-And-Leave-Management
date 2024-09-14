@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -39,7 +41,7 @@ export class ApplyleaveComponent implements OnInit {
     );
   }
 
-  onSubmit(): void {
+  onSubmit(form: NgForm): void {
     if (this.leaveData.username && this.leaveData.studentId && this.leaveData.email &&
         this.leaveData.leaveType && this.leaveData.reason && this.leaveData.startDate &&
         this.leaveData.endDate) {
