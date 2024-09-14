@@ -48,4 +48,18 @@ export class AllUsersDetailsComponent implements OnInit {
       );
     });
   }
+  getCardClass(roleId: number): string {
+    switch(roleId) {
+      case 1:
+        return 'role-1-border';
+      case 2:
+        return 'role-2-border';
+      case 3:
+        return 'role-3-border';
+      default:
+        return '';
+    }
+  }
+  
 }
+

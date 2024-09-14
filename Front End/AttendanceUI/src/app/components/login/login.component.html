@@ -1,47 +1,114 @@
-	<!DOCTYPE html>
-	<html>
-	<head>
-		<title>Slide Navbar</title>
-		<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
-	</head>
-	<body>
-		<div class="main">  	
-			<input type="checkbox" id="chk" aria-hidden="true">
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Slide Navbar</title>
+	<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+	<div class="main">
+		<input type="checkbox" id="chk" aria-hidden="true">
 
-			<div class="signup">
-				<form>
-					<label for="chk" aria-hidden="true">Sign up</label>
-					<input type="text" name="txt" placeholder="First name" [(ngModel)]="signupObj.first_name">
-					<input type="text" name="txt" placeholder="Last name" [(ngModel)]="signupObj.last_name">
-					<input type="text" name="txt" placeholder="User name" [(ngModel)]="signupObj.username">
-					<input type="email" name="email" placeholder="Email" [(ngModel)]="signupObj.email">
-					
-					<!-- Role Dropdown with Placeholder -->
-					<select [(ngModel)]="signupObj.role_id" name="role">
-						<option value="" disabled selected>Select Role</option> <!-- Placeholder option -->
-						<option *ngFor="let role of roles"  [value]=role.id  >{{ role.role_name }}</option>
-					</select>
-					
-					
-					<input type="password" name="pswd" placeholder="Password" [(ngModel)]="signupObj.password">
-					<input type="password" name="pswd2" placeholder="Re-enter Password" [(ngModel)]="signupObj.password2">
-					<button (click)="onSignUp()">Sign up</button>
-				</form>
-			</div>
+		<!-- Sign Up Form -->
+		<div class="signup">
+			<form #signUpForm="ngForm" (ngSubmit)="onSignUp()">
+				<label for="chk" aria-hidden="true">Sign up</label>
+				
+				<!-- First Name -->
+				<input 
+					type="text" 
+					name="firstName" 
+					[placeholder]="firstName.invalid && firstName.touched ? 'First name is required' : 'First name'"
+					[(ngModel)]="signupObj.first_name" 
+					required 
+					#firstName="ngModel">
+				
+				<!-- Last Name -->
+				<input 
+					type="text" 
+					name="lastName" 
+					[placeholder]="lastName.invalid && lastName.touched ? ' *Last name is required' : 'Last name'"
+					[(ngModel)]="signupObj.last_name" 
+					required 
+					#lastName="ngModel">
 
-			<div class="login">
-				<form >
-				  <label for="chk" aria-hidden="true">Login</label>
-				  <input type="text" name="email" placeholder="Email" [(ngModel)]="loginObj.username" required>
-				  <input type="password" name="pswd" placeholder="Password" [(ngModel)]="loginObj.password" required>
-				  <!-- Role Dropdown with Placeholder -->
-				  <select [(ngModel)]="loginObj.role_id" name="role" required>
+				<!-- Username -->
+				<input 
+					type="text" 
+					name="username" 
+					[placeholder]="username.invalid && username.touched ? 'Username is required' : 'User name'"
+					[(ngModel)]="signupObj.username" 
+					required 
+					#username="ngModel">
+
+				<!-- Email -->
+				<input 
+					type="email" 
+					name="email" 
+					[placeholder]="email.invalid && email.touched ? 'Valid email is required' : 'Email'"
+					[(ngModel)]="signupObj.email" 
+					required 
+					#email="ngModel">
+
+				<!-- Role Dropdown -->
+				<select [(ngModel)]="signupObj.role_id" name="role" required #role="ngModel">
+					<option value="" disabled selected>Select Role</option>
+					<option *ngFor="let role of roles" [value]="role.id">{{ role.role_name }}</option>
+				</select>
+
+				<!-- Password -->
+				<input 
+					type="password" 
+					name="password" 
+					[placeholder]="password.invalid && password.touched ? 'Password is required' : 'Password'"
+					[(ngModel)]="signupObj.password" 
+					required 
+					#password="ngModel">
+
+				<!-- Confirm Password -->
+				<input 
+					type="password" 
+					name="confirmPassword" 
+					[placeholder]="confirmPassword.invalid && confirmPassword.touched ? 'Confirm password is required' : 'Re-enter Password'"
+					[(ngModel)]="signupObj.password2" 
+					required 
+					#confirmPassword="ngModel">
+
+				<button [disabled]="signUpForm.invalid">Sign up</button>
+			</form>
+		</div>
+
+		<!-- Login Form -->
+		<div class="login">
+			<form #loginForm="ngForm" (ngSubmit)="onLogin()">
+				<label for="chk" aria-hidden="true">Login</label>
+
+				<!-- Email (Username) -->
+				<input 
+					type="text" 
+					name="loginUsername" 
+					[placeholder]="loginUsername.invalid && loginUsername.touched ? 'Username is required' : 'Email'"
+					[(ngModel)]="loginObj.username" 
+					required 
+					#loginUsername="ngModel">
+
+				<!-- Password -->
+				<input 
+					type="password" 
+					name="loginPassword" 
+					[placeholder]="loginPassword.invalid && loginPassword.touched ? 'Password is required' : 'Password'"
+					[(ngModel)]="loginObj.password" 
+					required 
+					#loginPassword="ngModel">
+
+				<!-- Role Dropdown -->
+				<select [(ngModel)]="loginObj.role_id" name="loginRole" required #loginRole="ngModel">
 					<option value="" disabled>Select Role</option>
 					<option *ngFor="let role of roles" [value]="role.id">{{ role.role_name }}</option>
-				  </select>
-				  <button (click)="onLogin()">Login</button>
-				</form>
-			  </div>
+				</select>
+
+				<button [disabled]="loginForm.invalid">Login</button>
+			</form>
 		</div>
-	</body>
-	</html>
+	</div>
+</body>
+</html>

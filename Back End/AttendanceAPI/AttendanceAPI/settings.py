@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'LeaveRequest',
     'LeaveTypes',
     'Permissions',
+    'Notification',
+    'UserDetails',
     'Roles',
     'drf_yasg',
     'rest_framework',
@@ -100,7 +102,7 @@ DATABASES = {
        'HOST':'localhost'
    }
 }
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+# ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Password validation
@@ -203,8 +205,8 @@ REST_FRAMEWORK = {
  
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=55),
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=555),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=3),
     "ROTATE_REFRESH_TOKENS": False,
     "BLACKLIST_AFTER_ROTATION": False,
     "UPDATE_LAST_LOGIN": False,

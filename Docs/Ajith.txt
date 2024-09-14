@@ -1,3 +1,14 @@
+need to install 
+ng add @angular/material
+
+npx rm -rf node_modules --force
+npx npm install --force
+npx npm install chart.js --force
+npx npm install ng2-charts --force
+
+npx npm install chart.js ng2-charts --force
+npx npm install chart.js
+
 SetUp AttendenceAPi :
     -> mkvirtualenv Attendanceapi
     -> workon Attendanceapi
@@ -11,13 +22,14 @@ Creating Apps :
     -> django-admin startapp LeaveRequest
     -> django-admin startapp Permissions
     -> django-admin startapp LeaveTypes
+    -> django-admin startapp Notification
   
 
 
 step to connect api 
 
    -  npm install @auth0/angular-jwt
-    - ng generate service services/auth
+    - ng generate service services/NotificationService
     - ng generate interceptor interceptors/auth
     - ng generate component components/login
 
@@ -266,7 +278,7 @@ export class StudentsComponent implements OnInit {
     startDate: '',
     endDate: ''
   };
-  baseUrl: string = 'http://172.17.7.109:8000';
+  baseUrl: string = 'http://127.0.0.1:8000';
 
   @ViewChild('fileInput') fileInput!: ElementRef; // Non-null assertion operator
 

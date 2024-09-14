@@ -6,11 +6,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://172.17.7.109:8000/api';
+  private apiUrl = 'http://127.0.0.1:8000/api';
   constructor(private http: HttpClient) {}
 
   onLogin(obj: any): Observable<any> {
-    return this.http.post('http://172.17.7.109:8000/api/token/', obj);
+    return this.http.post('http://127.0.0.1:8000/api/token/', obj);
   }
 
   getRoles(tableName: string) {
@@ -25,12 +25,28 @@ export class AuthService {
     return this.http.get(`${this.apiUrl}/${tableName}`, { headers });
   }
 
+  RegisterUser(tableName:string,data:any){
+ 
+    return this.http.post(`${this.apiUrl}/${tableName}`,data, );
+  }
+
   addRecord(tableName:string,data:any){
     const token = localStorage.getItem('access');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.post(`${this.apiUrl}/${tableName}`,data, { headers });
   }
 
+
+  addRecordput(tableName: string, data: any) {
+    const token = localStorage.getItem('access');
+    if (!token) {
+      console.error('No access token found');
+      return;
+    }
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.put(`${this.apiUrl}/${tableName}`, data, { headers });
+  }
+  
   getLeaveRequestDetails(tableName:string,userId: number): Observable<any> {
 
     const token = localStorage.getItem('access');
@@ -47,32 +63,6 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/${endPoint}${userId}/`, leaveData, { headers });
   }
 
-  // Profile pic 
-
-  // Update profile picture for a specific user
-  updateProfilePicture(rollno: string, imageData: string): Observable<any> {
-    // Fetch the current data, update, and then write back (mocked for frontend)
-    return new Observable(observer => {
-      this.http.get<any>(this.apiUrl).subscribe(data => {
-        const user = data.user_details.find((u: any) => u.rollno === rollno);
-        if (user) {
-          user.profilePicture = imageData;  // Update profile picture
-
-          // Ideally, we would send a PUT request to update the JSON file in the backend
-          this.http.put(this.apiUrl, data).subscribe(
-            () => {
-              observer.next(user);
-              observer.complete();
-            },
-            error => observer.error(error)
-          );
-        } else {
-          observer.error('User not found');
-        }
-      });
-    });
-  }
-
 
   updateProfilePicture(userId: number, formData: FormData): Observable<any> {
     const token = localStorage.getItem('access');
@@ -81,4 +71,41 @@ export class AuthService {
   }
 
 
+  updateLeaveRequestStatus(leaveRequestId: number, newStatusId: number): Observable<any> {
+    const url = `${this.apiUrl}/LeaveRequestdetails/${leaveRequestId}/`;
+    const token = localStorage.getItem('access');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.patch(url, { status: newStatusId },{ headers });
+  }
+
+  getUsersByRole(roleId: number): Observable<any> {
+
+    const token = localStorage.getItem('access');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.get<any>(`${this.apiUrl}userusers/by-role/${roleId}`,{headers});
+  }
+
+  updateAttendanceStatus(attendanceId: number, newStatusId: number): Observable<any> {
+    const token = localStorage.getItem('access');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.patch<any>(`${this.apiUrl}/Attendancedetail/${attendanceId}/`, { status_id: newStatusId },{headers});
+  }
+
+  sendNotification(userId: number, message: string): Observable<any> {
+    const url = `${this.apiUrl}/Notificationuser/${userId}/`;
+    const token = localStorage.getItem('access');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post<any>(url, { message }, { headers });
+  }
+
+  getLeaveRequestDetailsByUser(userId: number): Observable<any> {
+    const token = localStorage.getItem('access');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<any>(`${this.apiUrl}/LeaveRequestdetails/by-user/${userId}/`,{headers});
+  }
+
+  getUserNotifications(userId: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/Notificationuser/${userId}/`);
+  }
 }

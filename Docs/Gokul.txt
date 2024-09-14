@@ -4,3 +4,16 @@ git pull origin main
 git add .
 git commit -m 'resolved merge conflicts'
 git push origin main
+
+
+download pdf 
+package -> npm install jspdf --save
+        -> npm install html2canvas --save
+
+how it is working :
+    html2canvas: Captures the HTML content and converts it to a canvas element.
+    jsPDF: Takes the canvas data and adds it to a PDF document.
+    imgWidth and imgHeight: Ensures the image fits within an A4-sized PDF.
+
+ouput:
+    When you click the "Download as PDF" button, the visible HTML content within the contentToConvert div will be captured and downloaded as a PDF.

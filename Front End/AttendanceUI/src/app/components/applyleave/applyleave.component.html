@@ -6,12 +6,12 @@
     <form (ngSubmit)="onSubmit()">
       <div class="form-row">
         <div class="input-data">
-          <input [(ngModel)]="leaveData.fullName" name="fullName" type="text" required>
+          <input [(ngModel)]="leaveData.username" name="fullName" type="text" >
           <div class="underline"></div>
           <label for="fullName">Full Name</label>
         </div>
         <div class="input-data">
-          <input [(ngModel)]="leaveData.studentId" name="studentId" type="text" required>
+          <input [(ngModel)]="leaveData.studentId" name="studentId" type="text" >
           <div class="underline"></div>
           <label for="studentId">Student ID</label>
         </div>
@@ -19,12 +19,12 @@
 
       <div class="form-row">
         <div class="input-data">
-          <input [(ngModel)]="leaveData.email" name="email" type="email" required>
+          <input [(ngModel)]="leaveData.email" name="email" type="email" >
           <div class="underline"></div>
           <label for="email">Email Address</label>
         </div>
         <div class="input-data">
-          <select [(ngModel)]="leaveData.leaveType" name="leaveType" class="form-control" required>
+          <select [(ngModel)]="leaveData.leaveType" name="leaveType" class="form-control" >
             <option value="" disabled>Select Leave Type</option>
             <option value="1">Sick Leave</option>
             <option value="2">Casual Leave</option>
@@ -36,7 +36,7 @@
 
       <div class="form-row">
         <div class="input-data textarea">
-          <textarea [(ngModel)]="leaveData.reason" name="reason" rows="8" cols="80" required></textarea>
+          <textarea [(ngModel)]="leaveData.reason" name="reason" rows="8" cols="80" ></textarea>
           <div class="underline"></div>
           <label for="reason">Write your reason</label>
         </div>
@@ -44,12 +44,12 @@
 
       <div class="form-row">
         <div class="input-data">
-          <input [(ngModel)]="leaveData.startDate" name="startDate" type="date" required>
+          <input [(ngModel)]="leaveData.startDate" name="startDate" type="date" >
           <div class="underline"></div>
           <label for="startDate">Start Date</label>
         </div>
         <div class="input-data">
-          <input [(ngModel)]="leaveData.endDate" name="endDate" type="date" required>
+          <input [(ngModel)]="leaveData.endDate" name="endDate" type="date" >
           <div class="underline"></div>
           <label for="endDate">End Date</label>
         </div>
@@ -60,7 +60,7 @@
           <input type="submit" value="Apply">
         </div>
         <div class="input-data">
-          <button type="button" (click)="onCancel()">Cancel</button>
+          <button type="submit" (click)="onCancel()">Cancel</button>
         </div>
       </div>
     </form>

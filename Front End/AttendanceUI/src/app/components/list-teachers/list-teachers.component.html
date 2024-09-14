@@ -1,0 +1,22 @@
+
+<div class="role-boder">
+    <div class="container">
+      <h2 class="user">Users by Role</h2>
+      <div *ngFor="let user of roleUsers" class="cards">
+        <h3 class="role-centre">Role ID: {{ roleId }}</h3>
+        <div class="card" [ngClass]="getCardClass(user.role_id)">
+          <h2 class="card-title">{{ user.first_name }} {{ user.last_name }}</h2>
+          <img *ngIf="user.profile_picture" [src]="user.profile_picture" alt="Profile Picture">
+          <p class="card-desc">
+            <strong>ID:</strong> {{ user.id }}<br>
+            <strong>Username:</strong> {{ user.username }}<br>
+            <strong>Email:</strong> {{ user.email }}<br>
+            <strong>Created At:</strong> {{ user.created_at }}<br>
+            <strong>Updated At:</strong> {{ user.updated_at }}<br>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  

@@ -22,7 +22,7 @@ export class ApplyleaveComponent implements OnInit {
     this.authService.getUserDetails('userme/').subscribe(
       (data) => {
         this.leaveData = {
-          fullName: data.data.fullName,
+          username: data.data.username,
           studentId: data.data.id,
           email: data.data.email,
           leaveType: '',
@@ -40,7 +40,7 @@ export class ApplyleaveComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (this.leaveData.fullName && this.leaveData.studentId && this.leaveData.email &&
+    if (this.leaveData.username && this.leaveData.studentId && this.leaveData.email &&
         this.leaveData.leaveType && this.leaveData.reason && this.leaveData.startDate &&
         this.leaveData.endDate) {
       const leaveData = {

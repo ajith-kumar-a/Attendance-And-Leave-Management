@@ -15,12 +15,16 @@ import { CourseDetailsComponent } from './components/course-details/course-detai
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { LeaveStatusComponent } from './components/leave-status/leave-status.component';
 import { DummyComponent } from './components/dummy/dummy.component';
+import { StudentLeaveRequestStatusComponent } from './components/student-leave-request-status/student-leave-request-status.component';
+import { AllUserAttendanceDetailsComponent } from './components/all-user-attendance-details/all-user-attendance-details.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
+import { StaffDashboardComponent } from './components/staff-dashboard/staff-dashboard.component';
 // import { DashboardComponent } from './dashboard/dashboard.component'; // Import your dashboard component
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'Student', component: StudentsComponent },
-  { path: 'Teacher', component:TeacherDashboardComponent},
+  { path: 'Staff', component:StaffDashboardComponent},
   { path: 'Admin', component:AdminComponent},
   { path: 'attendance-marking', component: AttendanceMarkingComponent },
   { path: 'attendance-summary', component: AttendanceSummaryComponent },
@@ -35,8 +39,16 @@ const routes: Routes = [
   {path: 'leave-status',component:LeaveStatusComponent},
   { path: 'leave-status/:userId', component: LeaveStatusComponent },
   { path: 'Ajith', component: DummyComponent },
-  { path: 'a', component: DummyComponent},
+  // { path: 'a', component: DummyComponent},
 
+  {path:'Student-Leave-Details',component:StudentLeaveRequestStatusComponent},
+  {path:'notifications',component:NotificationsComponent},
+
+  { path: 'Teacher', component:TeacherDashboardComponent,children :[
+    {path:'Student-Leave-Details',component:StudentLeaveRequestStatusComponent}
+  ]},
+
+  {path:'hiiii',component:AllUserAttendanceDetailsComponent},
 
 
   {path:"admin",component:AdminComponent,children:[

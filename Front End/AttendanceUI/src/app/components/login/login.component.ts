@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
   }
   onSignUp() {
     console.log('Signup Object:', this.signupObj); // Debugging line
-    this.accService.addRecord('userregister/', this.signupObj).subscribe({
+    this.accService.RegisterUser('userregister/', this.signupObj).subscribe({
       next: () => {
         this.signupObj = {
           first_name: '',
@@ -155,7 +155,7 @@ export class LoginComponent implements OnInit {
       
       user_id: userId,
       date: new Date().toISOString().split('T')[0],  // Today's date
-      status_id: 1,  // Adjust based on your API's attendance schema
+      status_id: 3,  // Adjust based on your API's attendance schema
       login_time: new Date().toISOString() , // Current time as login time
       remarks:'welcome to gap '
     };

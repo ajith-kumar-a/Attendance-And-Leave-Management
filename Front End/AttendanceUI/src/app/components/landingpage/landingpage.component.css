@@ -26,6 +26,7 @@ header {
     color: #fff;
 }
 
+/* // */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -45,6 +46,7 @@ header {
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+/* // */
 .navbar nav ul {
     list-style: none;
     display: flex;
@@ -217,6 +219,10 @@ header {
     }
 }
 
+/* wrong */
+
+
+/* wrong */
 /* Another session */
 /* Features Section */
 .features {
@@ -245,44 +251,84 @@ header {
 
 /* /Another session/ */
 /* Course Categories Section */
-.course-categories {
-    text-align: center;
-    padding: 50px 20px;
+body {
+    font-family: 'Dancing Script', cursive, sans-serif;
 }
 
-.categories-container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap; /* Allows for wrapping of items on smaller screens */
+/* Carousel Section */
+.carousel-items {
+    width: fit-content;
+    animation: carouselAnim 10s infinite alternate linear;
 }
 
-.category {
-    text-align: center;
-    max-width: 200px;
-    margin: 10px;
-    flex: 1 1 200px; /* Ensures all categories are of equal size */
+.carousel-focus {
+    border: 2px solid; /* Increase border thickness */
+    width: 190px; /* Increase width */
+    height: auto; /* Maintain aspect ratio */
+    transition: transform 0.3s ease-in-out;
+	border-image: repeating-linear-gradient(to bottom right, #33475b, #0033CC, #FF77CC, rgb(255, 122, 89)) 20;
 }
 
-.category img {
-    width: 100%;
+.carousel-focus:hover {
+    transform: scale(1.1); /* Slightly increase size on hover */
+}
+
+.carousel-focus img {
+    width: 100%; /* Ensure the image covers the container width */
     height: 150px; /* Set a fixed height for uniformity */
     object-fit: cover; /* Ensures images cover the container without distortion */
-    border-radius: 10px;
-    transition: transform 0.3s ease;
+    border-radius: 10px; /* Rounded corners for the image */
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
 }
 
-.category img:hover {
-    transform: scale(1.1); /* Slightly scale up on hover */
+/* Gradient Effect */
+.gradient-left {
+    background: linear-gradient(to right, #f8f6f6 0%, rgba(255, 255, 255, 0) 100%);
 }
 
-.category h3 {
-    font-size: 20px;
-    margin-top: 10px;
+.gradient-right {
+    background: linear-gradient(to left, #080808 0%, rgba(255, 255, 255, 0) 100%);
 }
 
-.category p {
-    font-size: 16px;
-    color: #666;
+@keyframes carouselAnim {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+/* Custom Property for Animation */
+@property --k {
+    syntax: '<number>';
+    initial-value: 0;
+    inherits: false;
+}
+
+/* Glowing Gradient Text for Paragraph */
+.glow-text {
+    --k: 0;
+    position: relative;
+    font-size: 1.25rem; /* Adjust font size as needed */
+	font-weight: bold;
+    color: transparent;
+    background: 
+        linear-gradient(90deg, 
+            hsl(calc(var(--k)*1turn), 95%, 65%), 
+            hsl(calc(var(--k)*1turn + 90deg), 95%, 65%));
+    background-clip: text;
+    -webkit-background-clip: text; /* Ensure text color is transparent in WebKit browsers */
+    text-align: center;
+    animation: glowText 4s linear infinite;
+}
+
+/* Keyframes for Glowing Effect */
+@keyframes glowText {
+    0% {
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 15px rgba(255, 255, 255, 1);
+    }
+    100% {
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
 }
 
 /* Another session  */
