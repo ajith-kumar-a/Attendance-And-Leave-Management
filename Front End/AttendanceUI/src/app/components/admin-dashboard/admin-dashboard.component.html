@@ -9,14 +9,31 @@
 
   </head>
   <body>
+
+	
+<app-role-show></app-role-show>
+
+	  
+
+<div class="dashboard">
   <nav class="menu">
     
 	<a class="nav-item" href=""><i class="fas fa-home"></i><span class="tab-title">Home</span></a>
     <input type="checkbox" name="" class="checkbox">
 	<div class="checkbox-list">
-		<a class="nav-item" href="/Aboutus"><i class="fas fa-user-graduate"></i><span class="tab-title">student profile</span></a>
-		<a class="nav-item" href="#"><i class="fas fa-chalkboard-teacher"></i><span class="tab-title">Teacher Profile</span></a>
-		<a class="nav-item" href="#"><i class="fas fa-users"></i><span class="tab-title">Staff Profile</span></a>
+		<button class="nav-item" (click)="onRoleChange('1')">
+			<i class="fas fa-user-graduate"></i>
+			<span class="tab-title">Student Profile</span>
+		</button>
+		<button class="nav-item" (click)="onRoleChange('2')">
+			<i class="fas fa-chalkboard-teacher"></i>
+			<span class="tab-title">Teacher Profile</span>
+		</button>
+		  
+		<button class="nav-item" (click)="onRoleChange('3')">
+			<i class="fas fa-users"></i>
+			<span class="tab-title">Staff Profile</span>
+		</button>
 	</div>
 	<a class="nav-item" href="/course"><i class="fas fa-book"></i><span class="tab-title">Courses</span></a>
 
@@ -25,11 +42,23 @@
 	<a class="nav-item" href="/contact"><i class="fas fa-envelope"></i><span class="tab-title">contact us</span></a>
     <input type="checkbox" name="" class="checkbox">
 	<div class="checkbox-list">
-		<a class="nav-item" href="#"><i class="fas fa-user-check"></i><span class="tab-title">Student Attendance</span></a>
-		<a class="nav-item" href="#"><i class="fas fa-calendar-check"></i><span class="tab-title">Teacher Attendance</span></a>
-		<a class="nav-item" href="#"><i class="fas fa-clipboard-list"></i><span class="tab-title">Staff Attendance</span></a>
+		<button class="nav-item" (click)="onRoleChange('4')">
+			<i class="fas fa-user-graduate"></i>
+			<span class="tab-title">Student Attendance</span>
+		</button>
+		<button class="nav-item" (click)="onRoleChange('5')">
+			<i class="fas fa-chalkboard-teacher"></i>
+			<span class="tab-title">Teacher Attendance</span>
+		</button>
+		<button class="nav-item" (click)="onRoleChange('6')">
+			<i class="fas fa-book"></i>
+			<span class="tab-title">Staff Attendance</span>
+		</button>
 	</div>
 	<a class="nav-item" href="#"><i class="fas fa-user-shield"></i><span class="tab-title">your profile</span></a>
 </nav>
+
+</div>
+
   </body>
 </html>

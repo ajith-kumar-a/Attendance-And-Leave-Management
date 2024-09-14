@@ -21,6 +21,9 @@ import { NotificationsComponent } from './components/notifications/notifications
 import { StaffDashboardComponent } from './components/staff-dashboard/staff-dashboard.component';
 import { UserRegistrationComponent } from './components/user-registration/user-registration.component';
 import { UserDetailupdateComponent } from './components/user-detailupdate/user-detailupdate.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { ListTeacherAttendanceComponent } from './components/list-teacher-attendance/list-teacher-attendance.component';
+import { ListStudentAttendanceComponent } from './components/list-student-attendance/list-student-attendance.component';
 // import { DashboardComponent } from './dashboard/dashboard.component'; // Import your dashboard component
 
 const routes: Routes = [
@@ -60,8 +63,12 @@ const routes: Routes = [
 
 
   {path: "user-registration" , component:UserRegistrationComponent},
-  {path: "update-user-registration" , component:UserDetailupdateComponent}
+  {path: "update-user-registration" , component:UserDetailupdateComponent},
 
+  {path:"admin-dashboard",component:AdminDashboardComponent},
+  {path:"t-attendance",component:ListTeacherAttendanceComponent},
+  {path:"s-attendance",component:ListStudentAttendanceComponent}
+  
 
 
 ];
