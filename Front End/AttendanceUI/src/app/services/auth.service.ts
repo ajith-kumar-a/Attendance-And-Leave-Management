@@ -117,6 +117,8 @@ export class AuthService {
   }
 
   updateUserDetails(userId: number, userDetails: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/Details-Useruserdetails/update-by-user/${userId}/`, userDetails);
+    const token = localStorage.getItem('access');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.put<any>(`${this.apiUrl}/Details-Useruserdetails/update-by-user/${userId}/`, userDetails,{headers});
   }
 }

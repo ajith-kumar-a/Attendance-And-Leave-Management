@@ -54,7 +54,9 @@ export class UserDetailupdateComponent implements OnInit {
   fetchUserDetails(user_id: any) {
     this.authService.getUserDetailsById(user_id).subscribe({
       next: (res: any) => {
-        this.userDetails = res.data;  // Adjust according to API response structure
+      
+        this.userDetails = res[0];  
+        
         console.log('User details fetched:', this.userDetails);
       },
       error: (err: any) => {
