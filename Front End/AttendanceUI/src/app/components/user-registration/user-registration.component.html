@@ -1,0 +1,50 @@
+<div class="registration-container">
+    <h2>User Registration</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="date_of_birth">Date of Birth</label>
+        <input type="date" id="date_of_birth" [(ngModel)]="userDetails.date_of_birth" name="date_of_birth" required />
+      </div>
+
+      <div class="form-group">
+        <label for="mentor">Mentor</label>
+        <select id="mentor" [(ngModel)]="userDetails.mentor_name" name="mentor" (change)="updateMentorName()" required>
+            <option *ngFor="let mentor of mentors" [value]="mentor.id">
+              {{ mentor.username }}  <!-- Display mentor's username -->
+            </option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="mobile_number">Mobile Number</label>
+        <input type="text" id="mobile_number" [(ngModel)]="userDetails.mobile_number" name="mobile_number" required />
+      </div>
+
+      <div class="form-group">
+        <label for="aadhar_number">Aadhar Number</label>
+        <input type="text" id="aadhar_number" [(ngModel)]="userDetails.aadhar_number" name="aadhar_number" required />
+      </div>
+
+      <div class="form-group">
+        <label for="batch">Batch</label>
+        <input type="text" id="batch" [(ngModel)]="userDetails.batch" name="batch" required />
+      </div>
+
+      <div class="form-group">
+        <label for="blood_group">Blood Group</label>
+        <input type="text" id="blood_group" [(ngModel)]="userDetails.blood_group" name="blood_group" required />
+      </div>
+
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <input type="text" id="gender" [(ngModel)]="userDetails.gender" name="gender" required />
+      </div>
+
+      <div class="form-group">
+        <label for="user_id">User ID</label>
+        <input type="text" id="user_id" [value]="userDetails.user_id" name="user_id" readonly />
+      </div>
+
+      <button type="submit">Register</button>
+    </form>
+</div>

@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
   constructor(private accService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
+    localStorage.clear();
     this.fetchRoles(); // Fetch roles on initialization
   }
 
@@ -60,13 +61,19 @@ export class LoginComponent implements OnInit {
           password: '',
           password2: ''
         };
-        window.alert("Record Added Successfully");
+        window.alert("Record Added Successfully Now You Can Login by Using Crediential");
+
+        // this.router.navigateByUrl("user-registration");
+
       },
       error: (err) => {
         console.error('Signup error', err);
       }
     });
   }
+
+
+  
   onLogin() {
     if (!this.loginObj.role_id) {
       window.alert('Role is not selected');

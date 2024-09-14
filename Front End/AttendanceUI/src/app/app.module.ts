@@ -47,6 +47,8 @@ import { ListAdminAttendanceComponent } from './components/list-admin-attendance
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { PracticeComponent } from './components/practice/practice.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { UserRegistrationComponent } from './components/user-registration/user-registration.component';
+import { UserDetailupdateComponent } from './components/user-detailupdate/user-detailupdate.component';
 
 @NgModule({
   declarations: [
@@ -84,6 +86,8 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
     ListStaffAttendanceComponent,
     ListAdminAttendanceComponent,
     NotificationsComponent,
+    UserRegistrationComponent,
+    UserDetailupdateComponent,
   ],
   imports: [
     BrowserModule,

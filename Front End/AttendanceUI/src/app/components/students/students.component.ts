@@ -9,6 +9,7 @@
   })
   export class StudentsComponent implements OnInit, OnDestroy {
     user: any;
+    user_details:any;
     img: any;
     attendance: any[] = [];
     statusMap: any[] = [];
@@ -38,6 +39,7 @@
       this.fetchStatusDetails();
       this.checkLeaveRequestUpdates(); // Check for leave request updates
       this.checkAttendanceStatusUpdates(); // Check for attendance status updates
+      
 
       // Set up polling for leave request and attendance status updates
       this.intervalId = setInterval(() => {
@@ -82,15 +84,31 @@
         (data) => {
           this.user = data.data;
           this.fetchStudentAttendance(this.user.id);
+          this.fetchStudentallDetails(this.user.id)
           this.img = `${this.baseUrl}${this.user.profile_picture}`;
           this.checkLeaveRequestUpdates(); // Check for leave request updates
           this.checkAttendanceStatusUpdates(); // Check for attendance status updates
+
         },
         (error) => {
           console.error('Error fetching user details', error);
         }
       );
     }
+
+    fetchStudentallDetails(id:any): void {
+      this.AuthService.getUserDetails(`Details-Useruserdetails/by-user/${id}/`).subscribe(
+        (data) => {
+          this.user_details = data;
+          console.log(" this.user_details : ", this.user_details)
+        },
+        (error) => {
+          console.error('Error fetching user details', error);
+        }
+      );
+    }
+
+
 
     fetchStatusDetails(): void {
       this.AuthService.getUserDetails('Attendancestatus/').subscribe(

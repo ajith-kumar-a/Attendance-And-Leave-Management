@@ -1,19 +1,19 @@
-# userdetails/urls.py
-from django.urls import path, re_path
-from .views import UserDetailsViewSet
+# from django.urls import path
+# from .views import UserDetailsListCreateView, UserDetailsRetrieveUpdateDestroyView, UserDetailsByUserView
 
-userdetails_list = UserDetailsViewSet.as_view({
-    'get': 'list',
-    'post': 'create'
-})
+# urlpatterns = [
+#     path('userdetails/', UserDetailsListCreateView.as_view(), name='userdetails-list-create'),
+#     path('userdetails/<int:pk>/', UserDetailsRetrieveUpdateDestroyView.as_view(), name='userdetails-retrieve-update-destroy'),
+#     path('userdetails/by-user/<int:user_id>/', UserDetailsByUserView.as_view(), name='userdetails-by-user'),
+# ]
 
-userdetails_detail = UserDetailsViewSet.as_view({
-    'get': 'retrieve',
-    'put': 'update',
-    'delete': 'destroy'
-})
+
+from django.urls import path
+from .views import UserDetailsListCreateView, UserDetailsRetrieveUpdateDestroyView, UserDetailsByUserView, UserDetailsUpdateByUserView
 
 urlpatterns = [
-    path('userdetails/', userdetails_list, name='userdetails-list'),
-    re_path(r'userdetails/(?P<user_id>\d+)/$', userdetails_detail, name='userdetails-detail'),
+    path('userdetails/', UserDetailsListCreateView.as_view(), name='userdetails-list-create'),
+    path('userdetails/<int:pk>/', UserDetailsRetrieveUpdateDestroyView.as_view(), name='userdetails-retrieve-update-destroy'),
+    path('userdetails/by-user/<int:user_id>/', UserDetailsByUserView.as_view(), name='userdetails-by-user'),
+    path('userdetails/update-by-user/<int:user_id>/', UserDetailsUpdateByUserView.as_view(), name='userdetails-update-by-user'),
 ]

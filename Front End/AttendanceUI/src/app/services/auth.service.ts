@@ -83,7 +83,7 @@ export class AuthService {
     const token = localStorage.getItem('access');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-    return this.http.get<any>(`${this.apiUrl}userusers/by-role/${roleId}`,{headers});
+    return this.http.get<any>(`${this.apiUrl}/userusers/by-role/${roleId}/`,{headers});
   }
 
   updateAttendanceStatus(attendanceId: number, newStatusId: number): Observable<any> {
@@ -107,5 +107,18 @@ export class AuthService {
 
   getUserNotifications(userId: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/Notificationuser/${userId}/`);
+  }
+
+  getUserDetailsById(userId: number): Observable<any> {
+    const token = localStorage.getItem('access');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.get<any>(`${this.apiUrl}/Details-Useruserdetails/by-user/${userId}/`,{headers});
+  }
+
+  updateUserDetails(userId: number, userDetails: any): Observable<any> {
+    const token = localStorage.getItem('access');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.put<any>(`${this.apiUrl}/Details-Useruserdetails/update-by-user/${userId}/`, userDetails,{headers});
   }
 }
