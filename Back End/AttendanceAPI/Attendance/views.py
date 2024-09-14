@@ -318,3 +318,48 @@ class AttendanceByRoleView(APIView):
                 'status': status.HTTP_500_INTERNAL_SERVER_ERROR,
                 'message': 'An error occurred while fetching attendances'
             })
+
+
+from rest_framework.decorators import action
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework.exceptions import APIException
+from .models import Attendance
+from .serializers import AttendanceSerializer
+from datetime import datetime
+
+class AttendanceViewset(ModelViewSet):
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
+    queryset = Attendance.objects.all()
+    serializer_class = AttendanceSerializer
+
+    # Action to filter attendance by a date (YYYY-MM-DD) in the URL
+    @action(detail=False, methods=['get'], url_path='by-date/(?P<date>\d{4}-\d{2}-\d{2})')
+    def get_by_date(self, request, date=None, *args, **kwargs):
+        try:
+            # Convert string to date object
+            filter_date = datetime.strptime(date, '%Y-%m-%d').date()
+
+            # Filter attendances by the provided date
+            attendances = Attendance.objects.filter(date=filter_date)
+            serializer = self.get_serializer(attendances, many=True)
+
+            return Response({
+                'status': status.HTTP_200_OK,
+                'data': serializer.data,
+                'message': 'Attendance records retrieved successfully'
+            })
+
+        except ValueError:
+            return Response({
+                'status': status.HTTP_400_BAD_REQUEST,
+                'message': 'Invalid date format, should be YYYY-MM-DD'
+            })
+
+        except Exception as e:
+            print(e)
+            raise APIException({
+                'message': APIException.default_detail,
+                'status': APIException.status_code
+            })
