@@ -49,6 +49,8 @@ import { PracticeComponent } from './components/practice/practice.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { UserRegistrationComponent } from './components/user-registration/user-registration.component';
 import { UserDetailupdateComponent } from './components/user-detailupdate/user-detailupdate.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -88,6 +90,8 @@ import { UserDetailupdateComponent } from './components/user-detailupdate/user-d
     NotificationsComponent,
     UserRegistrationComponent,
     UserDetailupdateComponent,
+    HeaderComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
