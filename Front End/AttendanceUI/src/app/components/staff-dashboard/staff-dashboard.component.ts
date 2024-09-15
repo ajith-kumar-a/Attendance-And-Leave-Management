@@ -1,13 +1,13 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
-  import { AuthService } from '../../services/auth.service';
-  import { Subscription } from 'rxjs'; 
+import { AuthService } from '../../services/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-staff-dashboard',
   templateUrl: './staff-dashboard.component.html',
   styleUrl: './staff-dashboard.component.css'
 })
-export class StaffDashboardComponent {
+export class StaffDashboardComponent implements OnInit {
   user: any;
     user_details:any;
     img: any;
@@ -19,12 +19,16 @@ export class StaffDashboardComponent {
       startDate: '',
       endDate: ''
     };
+
     leaveRequests: any[] = [];
     previousLeaveRequests: any[] = []; // Track previous statuses
     previousAttendanceStatuses: any[] = []; // Track previous attendance statuses
     badgeCount: number = -12; // Initialize to 0
     private intervalId: any; 
     private leaveRequestSubscription: Subscription | undefined;
+
+    hasUserDetails: boolean = false; 
+    canEditDetails: boolean = false;
 
     baseUrl: string = 'http://127.0.0.1:8000';
     @ViewChild('fileInput') fileInput!: ElementRef;
@@ -101,6 +105,11 @@ export class StaffDashboardComponent {
         (data) => {
           this.user_details = data;
           console.log(" this.user_details : ", this.user_details)
+          this.hasUserDetails = !!data[0].blood_group;
+          this.canEditDetails = !!data[0].blood_group;
+
+          console.log("this.hasUserDetails :" ,this.hasUserDetails)
+          console.log("this.hasUserDetails :" ,this.hasUserDetails)
         },
         (error) => {
           console.error('Error fetching user details', error);

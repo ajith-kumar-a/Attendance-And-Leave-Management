@@ -26,9 +26,13 @@
       <a [routerLink]="['/notifications']" class="badge bg-danger ms-2">{{ badgeCount }}</a>
     </button>
     <ul class="dropdown-menu dropdown-menu-end">
-      <li><a href="/"><button class="dropdown-item" type="button">View Attendance</button></a></li>
+      <!-- <li><a href="/"><button class="dropdown-item" type="button">View Attendance</button></a></li> -->
       <li><a href="/apply-leave"><button class="dropdown-item" type="button">Apply Leave</button></a></li>
       <li><a href="/leave-status"><button class="dropdown-item" type="button">Leave Status</button></a></li>
+      <li><a href="/Student-Leave-Details"><button class="dropdown-item" type="button">Student Leave Status</button></a></li>
+
+      <li><a href="/student-id"><button class="dropdown-item" type="button">E-Id Card </button></a></li>
+
       <li><a href=""><button class="dropdown-item log-out" type="button">Log Out</button></a></li>
     </ul>
   </div>
@@ -151,14 +155,14 @@
                 </div>
               </div>
             
-              <!-- Conditionally render the buttons based on 'blood_group' and 'date_of_birth' -->
-              <a href="/user-registration"  style="color: aliceblue;">
-                <button class="btn btn-primary"> Add User Details </button>
-              </a>
-            
-              <a href="/update-user-registration" *ngIf="user_details[0]?.blood_group && user_details[0]?.date_of_birth" style="color: aliceblue;">
-                <button class="btn btn-primary"> Edit User Details </button>
-              </a>
+                <!-- Conditionally show buttons based on the boolean flags -->
+                <a href="/user-registration" *ngIf="!hasUserDetails" style="color: aliceblue;">
+                  <button class="btn btn-primary">Add User Details</button>
+                </a>
+              
+                <a href="/update-user-registration" *ngIf="canEditDetails" style="color: aliceblue;">
+                  <button class="btn btn-primary">Edit User Details</button>
+                </a>
             </div>
             
 <br>

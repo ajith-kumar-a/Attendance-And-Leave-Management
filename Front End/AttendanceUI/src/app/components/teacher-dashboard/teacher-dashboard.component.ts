@@ -26,6 +26,9 @@ export class TeacherDashboardComponent implements OnInit {  // Implement OnInit 
     private intervalId: any; 
     private leaveRequestSubscription: Subscription | undefined;
 
+    hasUserDetails: boolean = false; 
+    canEditDetails: boolean = false;
+
     baseUrl: string = 'http://127.0.0.1:8000';
     @ViewChild('fileInput') fileInput!: ElementRef;
 
@@ -101,6 +104,11 @@ export class TeacherDashboardComponent implements OnInit {  // Implement OnInit 
         (data) => {
           this.user_details = data;
           console.log(" this.user_details : ", this.user_details)
+          this.hasUserDetails = !!data[0].blood_group;
+          this.canEditDetails = !!data[0].blood_group;
+
+          console.log("this.hasUserDetails :" ,this.hasUserDetails)
+          console.log("this.hasUserDetails :" ,this.hasUserDetails)
         },
         (error) => {
           console.error('Error fetching user details', error);

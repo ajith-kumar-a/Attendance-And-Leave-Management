@@ -25,54 +25,151 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
 import { ListTeacherAttendanceComponent } from './components/list-teacher-attendance/list-teacher-attendance.component';
 import { ListStudentAttendanceComponent } from './components/list-student-attendance/list-student-attendance.component';
 import { StudentIdComponent } from './components/student-id/student-id.component';
-// import { DashboardComponent } from './dashboard/dashboard.component'; // Import your dashboard component
+import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/landing', pathMatch: 'full' },
+  { path: 'landing', component: LandingpageComponent },
+  { path: 'Aboutus', component: AboutusComponent },
+  { path: 'course', component: CourseDetailsComponent },
+  { path: 'contact', component: ContactUsComponent },
+
   { path: 'login', component: LoginComponent },
-  { path: 'Student', component: StudentsComponent },
-  { path: 'Staff', component:StaffDashboardComponent},
-  // { path: 'Admin', component:AdminComponent},
-  { path: 'attendance-marking', component: AttendanceMarkingComponent },
-  { path: 'attendance-summary', component: AttendanceSummaryComponent },
-  { path: 'teacher-leavestatus', component: TeacherLeavestatusComponent},
-  { path: '', component: LandingpageComponent},
-  { path: 'Aboutus', component: AboutusComponent},
-  { path: 'course', component: CourseDetailsComponent},
-  { path: 'contact', component: ContactUsComponent},
-  { path: '', redirectTo: '/landing', pathMatch: 'full' }, // Default route
-  // { path: '', redirectTo: '/login', pathMatch: 'full' }, // Default route
-  {path: 'apply-leave',component:ApplyleaveComponent},
-  {path: 'leave-status',component:LeaveStatusComponent},
-  { path: 'leave-status/:userId', component: LeaveStatusComponent },
-  { path: 'Ajith', component: DummyComponent },
-  // { path: 'a', component: DummyComponent},
 
-  {path:'Student-Leave-Details',component:StudentLeaveRequestStatusComponent},
-  {path:'notifications',component:NotificationsComponent},
+  { 
+    path: 'Student',
+    component: StudentsComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['Student'] }
+  },
+  { 
+    path: 'Teacher',
+    component: TeacherDashboardComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['Teacher'] }
+  },
+  { 
+    path: 'Staff',
+    component: StaffDashboardComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['Staff'] }
+  },
+  { 
+    path: 'Admin',
+    component: AdminDashboardComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['Admin'] }
+  },
 
-  { path: 'Teacher', component:TeacherDashboardComponent,children :[
-    {path:'Student-Leave-Details',component:StudentLeaveRequestStatusComponent}
-  ]},
+  { 
+    path: 'attendance-marking', 
+    component: AttendanceMarkingComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['Student', 'Teacher', 'Staff', 'Admin'] }
+  },
+  { 
+    path: 'attendance-summary',
+    component: AttendanceSummaryComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['Student', 'Teacher', 'Staff', 'Admin'] }
+  },
+  { 
+    path: 'teacher-leavestatus',
+    component: TeacherLeavestatusComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['Teacher', 'Admin'] }
+  },
+  { 
+    path: 'apply-leave',
+    component: ApplyleaveComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['Student', 'Teacher', 'Staff', 'Admin'] }
+  },
+  { 
+    path: 'leave-status',
+    component: LeaveStatusComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['Student', 'Teacher', 'Staff', 'Admin'] }
+  },
+  { 
+    path: 'leave-status/:userId',
+    component: LeaveStatusComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['Admin'] }
+  },
+  { 
+    path: 'Ajith',
+    component: DummyComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['Admin'] }
+  },
 
-  {path:'hiiii',component:AllUserAttendanceDetailsComponent},
+  { 
+    path: 'Student-Leave-Details',
+    component: StudentLeaveRequestStatusComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['Teacher','Admin'] }
+  },
+  { 
+    path: 'notifications',
+    component: NotificationsComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['Student', 'Teacher', 'Staff', 'Admin'] }
+  },
 
+  { 
+    path: 'hiiii',
+    component: AllUserAttendanceDetailsComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['Admin'] }
+  },
 
-  {path:"admin-ddd",component:AdminComponent,children:[
-    {path:"role",component:RoleComponent},
-   
-  ]},
+  { 
+    path: 'admin-ddd',
+    component: AdminComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['Admin'] },
+    children: [
+      { 
+        path: 'role',
+        component: RoleComponent,
+        canActivate: [AuthGuard],
+        data: { roles: ['Admin'] }
+      }
+    ]
+  },
 
+  { 
+    path: 'user-registration',
+    component: UserRegistrationComponent,
+    canActivate: [AuthGuard],
+    data: { roles:  ['Student', 'Teacher', 'Staff', 'Admin'] }
+  },
+  { 
+    path: 'update-user-registration',
+    component: UserDetailupdateComponent,
+    canActivate: [AuthGuard],
+    data: { roles:  ['Student', 'Teacher', 'Staff', 'Admin'] }
+  },
 
-  {path: "user-registration" , component:UserRegistrationComponent},
-  {path: "update-user-registration" , component:UserDetailupdateComponent},
-
-  {path:"Admin",component:AdminDashboardComponent},
-  {path:"t-attendance",component:ListTeacherAttendanceComponent},
-  {path:"s-attendance",component:ListStudentAttendanceComponent},
-  {path:"student-id",component:StudentIdComponent}
-  
-
-
+  { 
+    path: 't-attendance',
+    component: ListTeacherAttendanceComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['Admin'] }
+  },
+  { 
+    path: 's-attendance',
+    component: ListStudentAttendanceComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['Admin'] }
+  },
+  { 
+    path: 'student-id',
+    component: StudentIdComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['Student', 'Teacher', 'Staff', 'Admin']  }
+  }
 ];
 
 @NgModule({
