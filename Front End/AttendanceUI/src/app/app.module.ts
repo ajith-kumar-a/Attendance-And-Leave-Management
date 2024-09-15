@@ -49,6 +49,9 @@ import { PracticeComponent } from './components/practice/practice.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { UserRegistrationComponent } from './components/user-registration/user-registration.component';
 import { UserDetailupdateComponent } from './components/user-detailupdate/user-detailupdate.component';
+import { StaffDashboardComponent } from './components/staff-dashboard/staff-dashboard.component';
+import { RouterModule } from '@angular/router';
+
 
 @NgModule({
   declarations: [
@@ -88,6 +91,7 @@ import { UserDetailupdateComponent } from './components/user-detailupdate/user-d
     NotificationsComponent,
     UserRegistrationComponent,
     UserDetailupdateComponent,
+    StaffDashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -98,6 +102,7 @@ import { UserDetailupdateComponent } from './components/user-detailupdate/user-d
     HttpClientModule,
     MatTooltipModule,
     MatSnackBarModule,
+    RouterModule,
     // NgChartsModule
   ],
   providers: [
