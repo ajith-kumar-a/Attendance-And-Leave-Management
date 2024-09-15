@@ -1,46 +1,111 @@
-<div class="update-container">
-    <h2>Update User Details</h2>
-    <form (ngSubmit)="updateUserDetails()">
-      <div class="form-group">
-        <label for="date_of_birth">Date of Birth</label>
-        <input type="date" id="date_of_birth" [(ngModel)]="userDetails.date_of_birth" name="date_of_birth" required />
-      </div>
-  
-      <div class="form-group">
-        <label for="mentor">Mentor</label>
-        <select id="mentor" [(ngModel)]="userDetails.mentor_name" name="mentor" required>
-          <option *ngFor="let mentor of mentors" [value]="mentor.id">
-            {{ mentor.username }}
-          </option>
-        </select>
-      </div>
-  
-      <div class="form-group">
-        <label for="mobile_number">Mobile Number</label>
-        <input type="text" id="mobile_number" [(ngModel)]="userDetails.mobile_number" name="mobile_number" required />
-      </div>
-  
-      <div class="form-group">
-        <label for="aadhar_number">Aadhar Number</label>
-        <input type="text" id="aadhar_number" [(ngModel)]="userDetails.aadhar_number" name="aadhar_number" required />
-      </div>
-  
-      <div class="form-group">
-        <label for="batch">Batch</label>
-        <input type="text" id="batch" [(ngModel)]="userDetails.batch" name="batch" required />
-      </div>
-  
-      <div class="form-group">
-        <label for="blood_group">Blood Group</label>
-        <input type="text" id="blood_group" [(ngModel)]="userDetails.blood_group" name="blood_group" required />
-      </div>
-  
-      <div class="form-group">
-        <label for="gender">Gender</label>
-        <input type="text" id="gender" [(ngModel)]="userDetails.gender" name="gender" required />
-      </div>
-  
-      <button type="submit">Update</button>
-    </form>
-  </div>
-  
+<div class="registration-container">
+  <h2>Update User Details</h2>
+  <form (ngSubmit)="updateUserDetails()" #userForm="ngForm">
+
+    <div class="form-group">
+      <label for="date_of_birth">Date of Birth</label>
+      <input 
+        type="date" 
+        id="date_of_birth" 
+        [(ngModel)]="userDetails.date_of_birth" 
+        name="date_of_birth" 
+        required 
+        #dateOfBirth="ngModel"
+        [placeholder]="dateOfBirth.invalid && dateOfBirth.touched ? 'Date of Birth is required' : ''"
+        class="form-control input-box"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="mentor">Mentor</label>
+      <select 
+        id="mentor" 
+        [(ngModel)]="userDetails.mentor_name" 
+        name="mentor" 
+        required 
+        #mentor="ngModel"
+        class="form-control input-box"
+      >
+        <option *ngFor="let mentor of mentors" [value]="mentor.id">
+          {{ mentor.username }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="mobile_number">Mobile Number</label>
+      <input 
+        type="text" 
+        id="mobile_number" 
+        [(ngModel)]="userDetails.mobile_number" 
+        name="mobile_number" 
+        required 
+        minlength="10"
+        maxlength="10"
+        #mobileNumber="ngModel"
+        [placeholder]="mobileNumber.invalid && mobileNumber.touched ? 'Enter valid 10 digits' : ''"
+        class="form-control input-box"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="aadhar_number">Aadhar Number</label>
+      <input 
+        type="text" 
+        id="aadhar_number" 
+        [(ngModel)]="userDetails.aadhar_number" 
+        name="aadhar_number" 
+        required 
+        minlength="12" 
+        maxlength="12"
+        #aadharNumber="ngModel"
+        [placeholder]="aadharNumber.invalid && aadharNumber.touched ? 'Must be 12 digits' : ''"
+        class="form-control input-box"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="batch">Batch</label>
+      <input 
+        type="text" 
+        id="batch" 
+        [(ngModel)]="userDetails.batch" 
+        name="batch" 
+        required 
+        #batch="ngModel"
+        [placeholder]="batch.invalid && batch.touched ? 'Batch is required' : ''"
+        class="form-control input-box"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="blood_group">Blood Group</label>
+      <input 
+        type="text" 
+        id="blood_group" 
+        [(ngModel)]="userDetails.blood_group" 
+        name="blood_group" 
+        required 
+        #bloodGroup="ngModel"
+        [placeholder]="bloodGroup.invalid && bloodGroup.touched ? 'Blood group is required' : ''"
+        class="form-control input-box"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="gender">Gender</label>
+      <input 
+        type="text" 
+        id="gender" 
+        [(ngModel)]="userDetails.gender" 
+        name="gender" 
+        required 
+        #gender="ngModel"
+        [placeholder]="gender.invalid && gender.touched ? 'Gender is required' : ''"
+        class="form-control input-box"
+      />
+    </div>
+
+    <button type="submit" [disabled]="userForm.invalid">Update</button>
+  </form>
+</div>

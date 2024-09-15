@@ -49,9 +49,8 @@ import { PracticeComponent } from './components/practice/practice.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { UserRegistrationComponent } from './components/user-registration/user-registration.component';
 import { UserDetailupdateComponent } from './components/user-detailupdate/user-detailupdate.component';
-import { StaffDashboardComponent } from './components/staff-dashboard/staff-dashboard.component';
-import { RouterModule } from '@angular/router';
-
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -91,7 +90,8 @@ import { RouterModule } from '@angular/router';
     NotificationsComponent,
     UserRegistrationComponent,
     UserDetailupdateComponent,
-    StaffDashboardComponent,
+    HeaderComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -102,7 +102,7 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     MatTooltipModule,
     MatSnackBarModule,
-    RouterModule,
+    // RouterModule,
     // NgChartsModule
   ],
   providers: [
