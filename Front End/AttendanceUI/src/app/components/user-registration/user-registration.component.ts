@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';  // Adjust the path based on your project structure
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-user-registration',
@@ -98,7 +99,7 @@ fetchRoles() {
 
 
   // Method to handle form submission
-  onSubmit() {
+  onSubmit(form: NgForm) {
     if (!this.userDetails.mentor_name) {
       window.alert('Mentor name is required.');
       return;

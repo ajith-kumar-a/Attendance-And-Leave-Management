@@ -95,8 +95,8 @@ DATABASES = {
    'default': {
        'ENGINE': 'django.db.backends.mysql',
     #    'NAME': 'AttendanceHub',
-       'NAME': 'dummy1',
-       'PORT': '3307',
+       'NAME': 'dumy',
+       'PORT': '3333',
        'USER': 'root',
        'PASSWORD':'',
        'HOST':'localhost'

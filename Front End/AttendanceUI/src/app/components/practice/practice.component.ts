@@ -1,86 +1,67 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
+
 
 @Component({
   selector: 'app-practice',
   templateUrl: './practice.component.html',
   styleUrls: ['./practice.component.css'] // Fixed the typo from 'styleUrl' to 'styleUrls'
 })
-export class PracticeComponent implements OnInit {
-  leaveData = {
-    username: '',
-    studentId: '',
-    email: '',
-    leaveType: '',
-    reason: '',
-    startDate: '',
-    endDate: ''
-  };
-  userId: any;
-
-  constructor(private authService: AuthService) {}
-
-  ngOnInit(): void {
-    this.fetchStudentDetails();
-  }
-
-  fetchStudentDetails(): void {
-    this.authService.getUserDetails('userme/').subscribe(
-      (data) => {
-        this.leaveData = {
-          username: data.data.username,
-          studentId: data.data.id,
-          email: data.data.email,
-          leaveType: '',
-          reason: '',
-          startDate: '',
-          endDate: ''
-        };
-        this.userId = data.data.id; // Ensure you have the correct field for user ID
-        console.log('Full user object:', this.leaveData);
+export class PracticeComponent {
+    // backgroundImages: string[] = [
+    //   'assets/About-left.jpg',
+    //   'assets/About-right.webp',
+    //   'assets/background.jpg',
+    //   'assets/insitute.jpg'
+    // ];
+  
+  
+    // backgroundImageUrl: string = 'assets/background.jpg';
+  
+    // Define image paths as properties
+    // heroImage = 'assets/hero-bg.jpg';
+    studentImage = 'assets/student.jpg';
+  
+    categoryImages = {
+      webDesign: 'assets/About-right.webp',
+      graphicDesign: 'assets/grapic-design.jpg',
+      dataScience: 'assets/student.jpg',
+      onlineMarketing: 'assets/About-left.jpg',
+      ai: 'assets/insitute.jpg'
+    };
+    courseImages = {
+      pythonFullStack: 'assets/About-left.jpg',
+      javaFullStack: 'assets/About-right.webp',
+      dotnetFullStack: 'assets/insitute.jpg',
+      dataScience: 'assets/student.jpg'
+    };
+    instructorImages = {
+      instructor1: 'assets/ajith.jpg',
+      instructor2: 'assets/prasanth.png',
+      instructor3: 'assets/instructor3.jpg'
+    };
+  
+    testimonials = [
+      {
+        name: 'prasanth',
+        profession: 'Python',
+        image: 'assets/prasanth.png',
+        feedback: 'The best online course I have ever taken. Instructors were highly knowledgeable and the course material was very practical.'
       },
-      (error) => {
-        console.error('Error fetching user details', error);
+      {
+        name: 'ajith',
+        profession: 'Java',
+        image: 'assets/ajith.jpg',
+        feedback: 'Engaging content and really good support from instructors. I could complete the course at my own pace.'
+      },
+      {
+        name: 'gokul',
+        profession: 'Sql',
+        image: 'assets/client3.jpg',
+        feedback: 'The assignments were challenging and rewarding. I would highly recommend this platform to anyone.'
       }
-    );
-  }
-
-  onSubmit(form: NgForm): void {
-    if (form.valid) {
-      const leaveData = {
-        user_id: this.userId,
-        status: 1, // Assuming 1 means approved
-        reason: this.leaveData.reason,
-        start_date: this.leaveData.startDate,
-        end_date: this.leaveData.endDate,
-        leave_type: this.leaveData.leaveType
-      };
-
-      this.authService.postLeaveRequest('LeaveRequestdetails/by-user/', this.userId, leaveData).subscribe(
-        response => {
-          console.log('Leave request submitted:', response);
-          // Handle successful submission
-        },
-        error => {
-          console.error('Error submitting leave request', error);
-          // Handle submission error
-        }
-      );
-    } else {
-      console.error('Form is not valid');
+    ];
+    
+    getImagePath(imageName: string): string {
+      return `assets/${imageName}`;
     }
   }
-
-  onCancel(): void {
-    this.leaveData = {
-      username: '',
-      studentId: '',
-      email: '',
-      leaveType: '',
-      reason: '',
-      startDate: '',
-      endDate: ''
-    };
-  }
-}
