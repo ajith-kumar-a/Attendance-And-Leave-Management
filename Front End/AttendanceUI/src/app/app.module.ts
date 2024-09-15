@@ -102,6 +102,7 @@ import { FooterComponent } from './components/footer/footer.component';
     HttpClientModule,
     MatTooltipModule,
     MatSnackBarModule,
+    // RouterModule,
     // NgChartsModule
   ],
   providers: [

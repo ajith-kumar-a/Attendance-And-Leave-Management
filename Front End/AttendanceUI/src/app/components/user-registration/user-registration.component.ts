@@ -22,11 +22,13 @@ export class UserRegistrationComponent implements OnInit {
 
   mentors: any[] = [];  // List of mentors
   currentUser: any;    // Stores current user data
-
-  role_id:any
+  role_id: any;
   roles: any[] = [];  // Store roles here
 
-  constructor(private authService: AuthService,private router: Router) {}
+  // New flag to disable mentor selection
+  isMentorSelectionDisabled: boolean = false;
+
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.fetchCurrentUser();
@@ -66,37 +68,28 @@ export class UserRegistrationComponent implements OnInit {
     });
   }
 
- // Update mentor_name based on selected mentor ID
-updateMentorName() {
-  console.log("Selected Mentor ID:", this.userDetails.mentor_name);  // Log selected mentor ID
-  console.log("All Mentors:", this.mentors);  // Log all mentors
-
-  // Find the selected mentor
-  const selectedMentor = this.mentors.find(m => m.id == this.userDetails.mentor_name);
-  console.log("All selectedMentor:", selectedMentor);  // Log all mentors
-
-  if (selectedMentor) {
-    console.log("Selected Mentor Username:", selectedMentor.username);  // Log the selected mentor's username
-    this.userDetails.mentor_name = selectedMentor.username;  // Set mentor_name
-  } else {
-    console.log("No mentor found for the selected ID.");
-    this.userDetails.mentor_name = '';  // Clear mentor_name if no mentor is selected
-  }
-}
-
-
-fetchRoles() {
-  this.authService.getRoles('rolepublic-roles/').subscribe({
-    next: (res: any) => {
-      this.roles = res.data;  // Assuming roles are in res.data
-      console.log('Roles fetched:', this.roles);
-    },
-    error: (err) => {
-      console.error('Error fetching roles', err);
+  // Update mentor_name based on selected mentor ID
+  updateMentorName() {
+    const selectedMentor = this.mentors.find(m => m.id == this.userDetails.mentor_name);
+    if (selectedMentor) {
+      this.userDetails.mentor_name = selectedMentor.username;  // Set mentor_name
+    } else {
+      this.userDetails.mentor_name = '';  // Clear mentor_name if no mentor is selected
     }
-  });
-  // this.checkmarkAttendance()
-}
+  }
+
+  // Fetch roles (if necessary for any additional logic)
+  fetchRoles() {
+    this.authService.getRoles('rolepublic-roles/').subscribe({
+      next: (res: any) => {
+        this.roles = res.data;  // Assuming roles are in res.data
+        console.log('Roles fetched:', this.roles);
+      },
+      error: (err) => {
+        console.error('Error fetching roles', err);
+      }
+    });
+  }
 
 
   // Method to handle form submission
@@ -105,11 +98,8 @@ fetchRoles() {
       window.alert('Mentor name is required.');
       return;
     }
-    console.log("this.role_id : " , this.role_id)
-    console.log("this.roles : " ,this.roles)
 
     const selectedRole = this.roles.find(role => role.id == this.role_id);
-console.log("selectedRole : " , selectedRole)
     if (!selectedRole) {
       window.alert('Selected role is invalid');
       return;
@@ -117,7 +107,7 @@ console.log("selectedRole : " , selectedRole)
 
     console.log('Submitting User Details:', this.userDetails);
     
-    // Ensure user_id is an integer and mentor_name is set
+    // Prepare request payload
     const requestPayload = { 
       ...this.userDetails, 
       user_id: this.currentUser.id,  // Ensure user_id is an integer
@@ -127,9 +117,7 @@ console.log("selectedRole : " , selectedRole)
       next: (response: any) => {
         console.log('User registration successful:', response);
         window.alert('User registration successful');
-      
         this.router.navigateByUrl(selectedRole.role_name);  // Navigate based on role_name
-
         this.resetForm();
       },
       error: (err: any) => {
@@ -139,7 +127,7 @@ console.log("selectedRole : " , selectedRole)
     });
   }
 
-  // Reset the form after submission
+  // Reset the form
   resetForm() {
     this.userDetails = {
       date_of_birth: '',

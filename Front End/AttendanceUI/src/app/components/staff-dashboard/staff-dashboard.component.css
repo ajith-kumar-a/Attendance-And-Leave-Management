@@ -1,305 +1,314 @@
+/* Style for the notification badge */
+.badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+
 /* General Header Styling */
 .header {
-    background-color: #f8f9fa; /* Light background for the header */
-    padding: 10px 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for the header */
-  }
-  
-  /* Logo Styling */
+  background-color: #f8f9fa; /* Light background for the header */
+  padding: 10px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for the header */
+}
+
+/* Logo Styling */
+.navbar-brand img {
+  height: 60px; /* Adjust logo height */
+  width: auto; /* Keep width proportional to height */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+  border-radius: 50%; /* Optional: Make logo round */
+}
+
+/* Logo Hover Effect */
+.navbar-brand img:hover {
+  transform: rotate(360deg) scale(1.1); /* Rotate and slightly scale up the logo on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow on hover for a floating effect */
+}
+
+/* Responsive Logo Adjustments */
+@media (max-width: 768px) {
   .navbar-brand img {
-    height: 60px; /* Adjust logo height */
-    width: auto; /* Keep width proportional to height */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
-    border-radius: 50%; /* Optional: Make logo round */
+      height: 50px; /* Smaller logo on smaller screens */
   }
-  
-  /* Logo Hover Effect */
-  .navbar-brand img:hover {
-    transform: rotate(360deg) scale(1.1); /* Rotate and slightly scale up the logo on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow on hover for a floating effect */
+}
+
+
+.navbar-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  animation: colorChange 1s infinite; /* Apply the colorChange animation */
+}
+/* Keyframes for Color Change Animation */
+@keyframes colorChange {
+  0% {
+      color: #00bfff; /* Light blue */
   }
-  
-  /* Responsive Logo Adjustments */
-  @media (max-width: 768px) {
-    .navbar-brand img {
-        height: 50px; /* Smaller logo on smaller screens */
-    }
+  50% {
+      color: #000000; /* Black */
   }
-  
-  
-  .navbar-text {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    animation: colorChange 1s infinite; /* Apply the colorChange animation */
+  100% {
+      color: #00bfff; /* Light blue */
   }
-  /* Keyframes for Color Change Animation */
-  @keyframes colorChange {
-    0% {
-        color: #00bfff; /* Light blue */
-    }
-    50% {
-        color: #000000; /* Black */
-    }
-    100% {
-        color: #00bfff; /* Light blue */
-    }
-  }
-  
-  /* Remove underline from links in dropdown */
-  .dropdown-menu a {
-    text-decoration: none; /* Remove underline from links */
-  }
-  
-  /* Optional: Adjust text color for links to match the dropdown-item styling */
-  .dropdown-menu a {
-    color: inherit; /* Ensure the link color inherits from dropdown-item */
-  }
-  /* Dropdown Toggle Button Styling */
-  .dropdown-toggle {
-    background-color: #1a95ce;
-    color: white;
-    border-radius: 20px;
-  }
-  
-  /* Dropdown Menu Styling */
-  .dropdown-menu {
-    min-width: 200px;
-    background-color: #ffffff; /* White background for the dropdown menu */
-    border: 1px solid #ddd; /* Light border for the dropdown menu */
-    border-radius: 5px; /* Slightly rounded corners */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for the dropdown menu */
-  }
-  
-  /* Dropdown Item Styling */
-  .dropdown-item {
-    font-size: 20px;
-    color: #333;
-    padding: 10px 15px; /* Add padding for better spacing */
-    transition: background-color 0.3s ease, color 0.3s ease, font-size 0.3s ease, font-weight 0.3s ease; /* Smooth transitions */
-  }
-  
-  /* Dropdown Item Hover Effect */
-  .dropdown-item:hover {
-    background-color: #e9ecef; /* Light grey background on hover */
-    color: #007bff; /* Change text color on hover */
-    cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
-    font-weight: bold; /* Make text bold on hover */
-    font-size: 22px; /* Increase font size on hover */
-  }
-  
-  
-  .log-out {
-    color: #dc3545; /* Red text color for "Log Out" button */
-    background-color: transparent; /* No background initially */
-    font-weight: normal; /* Regular font weight by default */
-    border: none; /* Remove default button borders */
-    padding: 10px 15px; /* Add consistent padding */
-    font-size: 20px; /* Set font size */
-    width: 100%; /* Full width for button */
-  }
-  
-  /* Log Out Button Hover Effect */
-  .log-out:hover {
-    background-color: #f8d7da; /* Light red background on hover */
-    color: #dc3545; /* Keep red text color on hover */
-    font-weight: bold; /* Make text bold on hover */
-    font-size: 22px; /* Increase font size on hover */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s ease, font-size 0.3s ease, font-weight 0.3s ease; /* Smooth transitions */
-  }
-  
-  .demo{ font-family: 'Noto Sans', sans-serif; }
-  .panel{
-    background: linear-gradient(to right, #2980b9, #2c3e50);
-    padding: 0;
-    border-radius: 10px;
-    border: none;
-    box-shadow: 0 0 0 5px rgba(0,0,0,0.05),0 0 0 10px rgba(0,0,0,0.05);
-  }
-  .panel .panel-heading{
-    padding: 20px 15px;
-    border-radius: 10px 10px 0 0;
-    margin: 0;
-  }
+}
+
+/* Remove underline from links in dropdown */
+.dropdown-menu a {
+  text-decoration: none; /* Remove underline from links */
+}
+
+/* Optional: Adjust text color for links to match the dropdown-item styling */
+.dropdown-menu a {
+  color: inherit; /* Ensure the link color inherits from dropdown-item */
+}
+/* Dropdown Toggle Button Styling */
+.dropdown-toggle {
+  background-color: #1a95ce;
+  color: white;
+  border-radius: 20px;
+}
+
+/* Dropdown Menu Styling */
+.dropdown-menu {
+  min-width: 200px;
+  background-color: #ffffff; /* White background for the dropdown menu */
+  border: 1px solid #ddd; /* Light border for the dropdown menu */
+  border-radius: 5px; /* Slightly rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for the dropdown menu */
+}
+
+/* Dropdown Item Styling */
+.dropdown-item {
+  font-size: 20px;
+  color: #333;
+  padding: 10px 15px; /* Add padding for better spacing */
+  transition: background-color 0.3s ease, color 0.3s ease, font-size 0.3s ease, font-weight 0.3s ease; /* Smooth transitions */
+}
+
+/* Dropdown Item Hover Effect */
+.dropdown-item:hover {
+  background-color: #e9ecef; /* Light grey background on hover */
+  color: #007bff; /* Change text color on hover */
+  cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
+  font-weight: bold; /* Make text bold on hover */
+  font-size: 22px; /* Increase font size on hover */
+}
+
+
+.log-out {
+  color: #dc3545; /* Red text color for "Log Out" button */
+  background-color: transparent; /* No background initially */
+  font-weight: normal; /* Regular font weight by default */
+  border: none; /* Remove default button borders */
+  padding: 10px 15px; /* Add consistent padding */
+  font-size: 20px; /* Set font size */
+  width: 100%; /* Full width for button */
+}
+
+/* Log Out Button Hover Effect */
+.log-out:hover {
+  background-color: #f8d7da; /* Light red background on hover */
+  color: #dc3545; /* Keep red text color on hover */
+  font-weight: bold; /* Make text bold on hover */
+  font-size: 22px; /* Increase font size on hover */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease, font-size 0.3s ease, font-weight 0.3s ease; /* Smooth transitions */
+}
+
+.demo{ font-family: 'Noto Sans', sans-serif; }
+.panel{
+  background: linear-gradient(to right, #2980b9, #2c3e50);
+  padding: 0;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 0 0 5px rgba(0,0,0,0.05),0 0 0 10px rgba(0,0,0,0.05);
+}
+.panel .panel-heading{
+  padding: 20px 15px;
+  border-radius: 10px 10px 0 0;
+  margin: 0;
+}
+.panel .panel-heading .title{
+  color: #fff;
+  font-size: 28px;
+  font-weight: 500;
+  text-transform: capitalize;
+  line-height: 40px;
+  margin: 0;
+}
+.panel .panel-heading .btn{
+  color: rgba(255,255,255,0.5);
+  background: transparent;
+  font-size: 16px;
+  text-transform: capitalize;
+  border: 2px solid #fff;
+  border-radius: 50px;
+  transition: all 0.3s ease 0s;
+}
+.panel .panel-heading .btn:hover{
+  color: #fff;
+  text-shadow: 3px 3px rgba(255,255,255,0.2);
+}
+.panel .panel-heading .form-control{
+  color: #fff;
+  background-color: transparent;
+  width: 35%;
+  height: 40px;
+  border: 2px solid #fff;
+  border-radius: 20px;
+  display: inline-block;
+  transition: all 0.3s ease 0s;
+}
+.panel .panel-heading .form-control:focus{
+  background-color: rgba(255,255,255,0.2);
+  box-shadow: none;
+  outline: none;
+}
+.panel .panel-heading .form-control::placeholder{
+  color: rgba(255,255,255,0.5);
+  font-size: 15px;
+  font-weight: 500;
+}
+.panel .panel-body{ padding: 0; }
+.panel .panel-body .table thead tr th{
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.2);
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+  padding: 12px;
+  border: none;
+}
+.panel .panel-body .table tbody tr td{
+  color: #060606;
+  font-size: 15px;
+  padding: 10px 12px;
+  vertical-align: middle;
+  border: none;
+}
+.panel .panel-body .table tbody tr:nth-child(even){ background-color: rgba(255,255,255,0.05); }
+.panel .panel-body .table tbody .action-list{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.panel .panel-body .table tbody .action-list li{
+  display: inline-block;
+  margin: 0 5px;
+}
+.panel .panel-body .table tbody .action-list li a{
+  color: #fff;
+  font-size: 15px;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease 0s;
+}
+.panel .panel-body .table tbody .action-list li a:hover{ text-shadow: 3px 3px 0 rgba(255,255,255,0.3); }
+.panel .panel-body .table tbody .action-list li a:before,
+.panel .panel-body .table tbody .action-list li a:after{
+  content: attr(data-tip);
+  color: #fff;
+  background-color: #111;
+  font-size: 12px;
+  padding: 5px 7px;
+  border-radius: 4px;
+  text-transform: capitalize;
+  display: none;
+  transform: translateX(-50%);
+  position: absolute;
+  left: 50%;
+  top: -32px;
+  transition: all 0.3s ease 0s;
+}
+.panel .panel-body .table tbody .action-list li a:after{
+  content: '';
+  height: 15px;
+  width: 15px;
+  padding: 0;
+  border-radius: 0;
+  transform: translateX(-50%) rotate(45deg);
+  top: -18px;
+  z-index: -1;
+}
+.panel .panel-body .table tbody .action-list li a:hover:before,
+.panel .panel-body .table tbody .action-list li a:hover:after{
+  display: block;
+}
+.panel .panel-footer{
+  color: #fff;
+  background-color: transparent;
+  padding: 15px;
+  border: none;
+}
+.panel .panel-footer .col{ line-height: 35px; }
+.pagination{ margin: 0; }
+.pagination li a{
+  color: #fff;
+  background-color: transparent;
+  border: 2px solid transparent;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 31px;
+  width: 35px;
+  height: 35px;
+  padding: 0;
+  margin: 0 3px;
+  border-radius: 50px;
+  transition: all 0.3s ease 0s;
+}
+.pagination li a:hover{
+  color: #fff;
+  background-color: transparent;
+  border-color: rgba(255,255,255,0.2);
+}
+.pagination li a:focus,
+.pagination li.active a,
+.pagination li.active a:hover{
+  color: #fff;
+  background-color: transparent;
+  border-color: #fff;
+}
+.pagination li:first-child a,
+.pagination li:last-child a{
+  border-radius: 50%;
+}
+@media only screen and (max-width:767px){
   .panel .panel-heading .title{
-    color: #fff;
-    font-size: 28px;
-    font-weight: 500;
-    text-transform: capitalize;
-    line-height: 40px;
-    margin: 0;
+      text-align: center;
+      margin: 0 0 10px;
   }
-  .panel .panel-heading .btn{
-    color: rgba(255,255,255,0.5);
-    background: transparent;
-    font-size: 16px;
-    text-transform: capitalize;
-    border: 2px solid #fff;
-    border-radius: 50px;
-    transition: all 0.3s ease 0s;
-  }
-  .panel .panel-heading .btn:hover{
-    color: #fff;
-    text-shadow: 3px 3px rgba(255,255,255,0.2);
-  }
-  .panel .panel-heading .form-control{
-    color: #fff;
-    background-color: transparent;
-    width: 35%;
-    height: 40px;
-    border: 2px solid #fff;
-    border-radius: 20px;
-    display: inline-block;
-    transition: all 0.3s ease 0s;
-  }
-  .panel .panel-heading .form-control:focus{
-    background-color: rgba(255,255,255,0.2);
-    box-shadow: none;
-    outline: none;
-  }
-  .panel .panel-heading .form-control::placeholder{
-    color: rgba(255,255,255,0.5);
-    font-size: 15px;
-    font-weight: 500;
-  }
-  .panel .panel-body{ padding: 0; }
-  .panel .panel-body .table thead tr th{
-    color: #fff;
-    background-color: rgba(255, 255, 255, 0.2);
-    font-size: 16px;
-    font-weight: 500;
-    text-transform: uppercase;
-    padding: 12px;
-    border: none;
-  }
-  .panel .panel-body .table tbody tr td{
-    color: #060606;
-    font-size: 15px;
-    padding: 10px 12px;
-    vertical-align: middle;
-    border: none;
-  }
-  .panel .panel-body .table tbody tr:nth-child(even){ background-color: rgba(255,255,255,0.05); }
-  .panel .panel-body .table tbody .action-list{
-    padding: 0;
-    margin: 0;
-    list-style: none;
-  }
-  .panel .panel-body .table tbody .action-list li{
-    display: inline-block;
-    margin: 0 5px;
-  }
-  .panel .panel-body .table tbody .action-list li a{
-    color: #fff;
-    font-size: 15px;
-    position: relative;
-    z-index: 1;
-    transition: all 0.3s ease 0s;
-  }
-  .panel .panel-body .table tbody .action-list li a:hover{ text-shadow: 3px 3px 0 rgba(255,255,255,0.3); }
-  .panel .panel-body .table tbody .action-list li a:before,
-  .panel .panel-body .table tbody .action-list li a:after{
-    content: attr(data-tip);
-    color: #fff;
-    background-color: #111;
-    font-size: 12px;
-    padding: 5px 7px;
-    border-radius: 4px;
-    text-transform: capitalize;
-    display: none;
-    transform: translateX(-50%);
-    position: absolute;
-    left: 50%;
-    top: -32px;
-    transition: all 0.3s ease 0s;
-  }
-  .panel .panel-body .table tbody .action-list li a:after{
-    content: '';
-    height: 15px;
-    width: 15px;
-    padding: 0;
-    border-radius: 0;
-    transform: translateX(-50%) rotate(45deg);
-    top: -18px;
-    z-index: -1;
-  }
-  .panel .panel-body .table tbody .action-list li a:hover:before,
-  .panel .panel-body .table tbody .action-list li a:hover:after{
-    display: block;
-  }
-  .panel .panel-footer{
-    color: #fff;
-    background-color: transparent;
-    padding: 15px;
-    border: none;
-  }
-  .panel .panel-footer .col{ line-height: 35px; }
-  .pagination{ margin: 0; }
-  .pagination li a{
-    color: #fff;
-    background-color: transparent;
-    border: 2px solid transparent;
-    font-size: 18px;
-    font-weight: 500;
-    text-align: center;
-    line-height: 31px;
-    width: 35px;
-    height: 35px;
-    padding: 0;
-    margin: 0 3px;
-    border-radius: 50px;
-    transition: all 0.3s ease 0s;
-  }
-  .pagination li a:hover{
-    color: #fff;
-    background-color: transparent;
-    border-color: rgba(255,255,255,0.2);
-  }
-  .pagination li a:focus,
-  .pagination li.active a,
-  .pagination li.active a:hover{
-    color: #fff;
-    background-color: transparent;
-    border-color: #fff;
-  }
-  .pagination li:first-child a,
-  .pagination li:last-child a{
-    border-radius: 50%;
-  }
-  @media only screen and (max-width:767px){
-    .panel .panel-heading .title{
-        text-align: center;
-        margin: 0 0 10px;
-    }
-    .panel .panel-heading .btn_group{ text-align: center; }
-  }
-  
-  /* pichart css */
-  /* students.component.css */
-  
-  /* Add animations for pie chart */
-  @keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-  
-  canvas {
-    animation: rotate 10s linear infinite;
-  }
-  /* piechat */
-  .card {
-    margin-bottom: 20px;
-  }
-  
-  .card-title {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-  }
-  
-  canvas {
-    max-width: 100%;
-    height: auto;
-  }
-  /* //side bar css */
-  
+  .panel .panel-heading .btn_group{ text-align: center; }
+}
+
+/* pichart css */
+/* students.component.css */
+
+/* Add animations for pie chart */
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+canvas {
+  animation: rotate 10s linear infinite;
+}
+/* piechat */
+.card {
+  margin-bottom: 20px;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+/* //side bar css */
