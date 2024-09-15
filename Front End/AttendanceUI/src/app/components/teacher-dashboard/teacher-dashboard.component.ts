@@ -8,6 +8,7 @@ import { AuthService } from '../../services/auth.service';  // Assuming you're u
 })
 export class TeacherDashboardComponent implements OnInit {  // Implement OnInit lifecycle hook
   user: any;
+  user_details: any;
   img: any;
   attendance: any[] = [];
   statusMap: any[] = [];
@@ -17,6 +18,9 @@ export class TeacherDashboardComponent implements OnInit {  // Implement OnInit 
     startDate: '',
     endDate: ''
   };
+  hasUserDetails: boolean = false; 
+  canEditDetails: boolean = false;
+
 
   baseUrl: string = 'http://127.0.0.1:8000';
   @ViewChild('fileInput') fileInput!: ElementRef; // Non-null assertion operator
@@ -87,9 +91,29 @@ export class TeacherDashboardComponent implements OnInit {  // Implement OnInit 
         this.user = data.data;
         console.log('Full user object:', this.user);
         this.fetchTeacherAttendance(this.user.id);
+        this.fetchTeacherAlllDetails(this.user.id)
+
         this.img = `${this.baseUrl}${this.user.profile_picture}`;
         console.log(this.img);
+        
        
+      },
+      (error) => {
+        console.error('Error fetching user details', error);
+      }
+    );
+  }
+
+  fetchTeacherAlllDetails(id:any): void {
+    this.AuthService.getUserDetails(`Details-Useruserdetails/by-user/${id}/`).subscribe(
+      (data) => {
+        this.user_details = data;
+        console.log(" this.user_details : ", this.user_details)
+        this.hasUserDetails = !!data[0].blood_group;
+        this.canEditDetails = !!data[0].blood_group;
+
+        console.log("this.hasUserDetails :" ,this.hasUserDetails)
+        console.log("this.hasUserDetails :" ,this.hasUserDetails)
       },
       (error) => {
         console.error('Error fetching user details', error);

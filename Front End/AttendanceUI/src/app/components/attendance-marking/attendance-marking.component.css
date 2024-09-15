@@ -2,7 +2,7 @@
   padding: 20px;
   font-family: Arial, sans-serif;
   width: 60%; /* Half of the width */
-  height: 70vh; /* Half of the viewport height */
+  /* height: 70vh; Half of the viewport height */
   overflow-y: auto;
   box-sizing: border-box;
   margin: 0 auto;
