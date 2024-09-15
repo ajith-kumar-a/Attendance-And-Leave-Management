@@ -6,9 +6,9 @@
   align-items: flex-end;
   padding: 0;
   margin: 0;
-  background: white;
-  background: linear-gradient(236deg, rgba(199, 152, 152, 0.817) 0%, #75a7f3 100%);
-  position: fixed;
+  /* background: white;
+  background: linear-gradient(236deg, rgba(199, 152, 152, 0.817) 0%, #75a7f3 100%); */
+  /* position: fixed; */
   overflow: hidden;
 }
 
@@ -35,8 +35,8 @@ body{
     height: 80px;
     padding: 0 15px 15px;
     border-radius: 10px 10px 30px 30px;
-    background-color: #fff;
-    box-shadow: 0px 6px 18px 0px #9f9f9f;
+    background: linear-gradient(176deg, rgb(26 93 230 / 82%) 0%, #ffffff 100%);
+            box-shadow: 0px 6px 18px 0px #9f9f9f;
     margin: 18px;
     bottom: 0;
 }

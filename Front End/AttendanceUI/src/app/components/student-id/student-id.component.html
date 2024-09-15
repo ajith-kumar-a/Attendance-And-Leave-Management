@@ -8,65 +8,49 @@
     <link href="https://fonts.googleapis.com/css?family=Courgette|Open+Sans&display=swap" rel="stylesheet"> 
 </head>
 <body>
-    <section>
-        <div class="download-button">
-            <button (click)="downloadPDF()">Download PDF</button>
-        </div>
-        <div class="leaf">
-            <div><img src="assets/logo1back.png" height="200px" width="200px"></div>
-            <div><img src="assets/logo1back.png" height="200px" width="200px"></div>
-            <div><img src="assets/logo1back.png" height="200px" width="200px"></div>
-            <div><img src="assets/logo1back.png" height="200px" width="200px"></div>
-            <div><img src="assets/logo1back.png" height="200px" width="200px"></div>
-            <div><img src="assets/logo1back.png" height="200px" width="200px"></div>
-            <div><img src="assets/logo1back.png" height="200px" width="200px"></div>
-        </div>
+    <!-- student-id.component.html -->
+<section>
+    <!-- Download button -->
+    <div class="download-button">
+        <button (click)="downloadPDF()">Download PDF</button>
+    </div>
 
-        <div class="leaf leaf1">
-            <div><img src="assets/logo1back.png" height="200px" width="200px"></div>
-            <div><img src="assets/logo1back.png" height="200px" width="200px"></div>
-            <div><img src="assets/logo1back.png" height="200px" width="200px"></div>
-            <div><img src="assets/logo1back.png" height="200px" width="200px"></div>
-            <div><img src="assets/logo1back.png" height="200px" width="200px"></div>
-            <div><img src="assets/logo1back.png" height="200px" width="200px"></div>
-            <div><img src="assets/logo1back.png" height="200px" width="200px"></div>
-        </div>
+    <!-- Display the content only if userData is available -->
+    <div #contentToConvert *ngIf="userData">
+      
+<div class="container">
+    <div class="card">
+      <div class="pic-container">
+        <img class="pic" [src]="userData.profile_picture || 'https://i.ibb.co/sJKD14w/pro-pic.jpg'" alt="Profile Picture">
+      </div>
+      <div class="name">
+        <span>{{userData.username}}</span>
+      </div>
+      <div class="title">
+        <span>PROGRAMMER</span>
+      </div>
 
-        <div class="leaf leaf2">
-            <div><img src="assets/logo1back.png" height="200px" width="200px"></div>
-            <div><img src="assets/logo1back.png" height="200px" width="200px"></div>
-            <div><img src="assets/logo1back.png" height="200px" width="200px"></div>
-            <div><img src="assets/logo1back.png" height="200px" width="200px"></div>
-            <div><img src="assets/logo1back.png" height="200px" width="200px"></div>
-            <div><img src="assets/logo1back.png" height="200px" width="200px"></div>
-            <div><img src="assets/logo1back.png" height="200px" width="200px"></div>
-        </div>
+      <div class="title">
+        <span>Id No : {{userData.role_id}}04 {{userData.id}}</span>
+      </div>
 
-        <!-- Student Identity Card -->
-       <!-- src/app/components/id-card/id-card.component.html -->
-<div class="id-card" #contentToConvert *ngIf="userData">
-    <div class="header">
-        <h2>GAP Institution</h2>
-        <p>chennai,siruseri</p>
-    </div>
-    <div class="photo">
-        <img [src]="userData.profile_picture || 'assets/default-profile.png'" width="80" height="80" [alt]="userData.first_name + ' ' + userData.last_name">
-    </div>
-    <div class="name">
-        <h3>{{ userData.first_name }} {{ userData.last_name }}</h3>
-    </div>
-    <div class="info">
-        <p>Id: {{ userData.id }}</p>
-        <p>Full Name: {{ userData.first_name }} {{ userData.last_name }}</p>
-        <p>Email: {{ userData.email }}</p>
-    </div>
-    <div class="logo">
-        <img src="assets/logo1.jpg" alt="School Logo">
-    </div>
-</div>
+      <div class="title">
+        <span>DOB :</span>
+      </div>
 
-        
-    </section>
+      <div class="title">
+        <span>Mail : {{userData.email}}</span>
+      </div>
+
+      <div class="links">
+        <div><img src="assets/logo1back.png" width="100" ></div>
+      </div>
+    </div>
+  </div>
+    </div>
+</section>
+
 </body>
-</html>
+            
 
+</html>

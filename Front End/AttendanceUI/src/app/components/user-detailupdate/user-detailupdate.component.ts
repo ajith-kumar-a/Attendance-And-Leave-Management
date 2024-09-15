@@ -32,7 +32,7 @@ export class UserDetailupdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchCurrentUser();
-    this.fetchMentors();
+    // this.fetchMentors();
     this.fetchRoles();
   }
 
@@ -43,6 +43,10 @@ export class UserDetailupdateComponent implements OnInit {
         this.role_id = this.currentUser.role_id;
         this.userId = this.currentUser.id;  // Set the userId to the current user's ID
         this.fetchUserDetails(this.userId);
+
+        this.role_id = this.currentUser.role_id == 2 ? this.currentUser.role_id+2 : this.currentUser.role_id+1
+       
+        this.fetchMentors(this.role_id)
       },
       error: (err: any) => {
         console.error('Error fetching current user:', err);
@@ -66,7 +70,7 @@ export class UserDetailupdateComponent implements OnInit {
   }
 
   // Fetch the list of mentors based on a specific role_id
-  fetchMentors(roleId: number = 2) {  // Provide a default roleId or obtain it dynamically
+  fetchMentors(roleId: number) {  // Provide a default roleId or obtain it dynamically
     this.authService.getUsersByRole(roleId).subscribe({
       next: (res: any) => {
         this.mentors = res.data;  // Adjust according to the API response structure

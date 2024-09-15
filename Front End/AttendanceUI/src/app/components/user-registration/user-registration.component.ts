@@ -32,7 +32,8 @@ export class UserRegistrationComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchCurrentUser();
-    this.fetchRoles();
+    // this.fetchMentors();
+    this.fetchRoles()
   }
 
   // Fetch the current user details
@@ -42,21 +43,16 @@ export class UserRegistrationComponent implements OnInit {
         this.currentUser = res.data;  // Adjust according to the API response structure
         console.log('Current user fetched:', this.currentUser);
         this.userDetails.user_id = this.currentUser.id;  // Set user_id to user's ID (integer)
-        this.role_id = this.currentUser.role_id;
-
-        // Disable mentor selection if role_id is 2 or 3
-        if (this.role_id === 2 || this.role_id === 3) {
-          this.isMentorSelectionDisabled = true;
-        } else {
-          this.isMentorSelectionDisabled = false;
-          this.fetchMentors();  // Only fetch mentors if role_id is 1
-        }
+        this.role_id = this.currentUser.role_id == 2 ? this.currentUser.role_id+2 : this.currentUser.role_id+1
+       
+        this.fetchMentors(this.role_id)
       },
       error: (err: any) => {
         console.error('Error fetching current user:', err);
       }
     });
   }
+
 
   // Fetch the list of mentors based on a specific role_id
   fetchMentors(roleId: number = 2) {  // Provide a default roleId or obtain it dynamically
