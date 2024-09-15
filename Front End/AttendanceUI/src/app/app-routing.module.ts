@@ -24,13 +24,14 @@ import { UserDetailupdateComponent } from './components/user-detailupdate/user-d
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { ListTeacherAttendanceComponent } from './components/list-teacher-attendance/list-teacher-attendance.component';
 import { ListStudentAttendanceComponent } from './components/list-student-attendance/list-student-attendance.component';
+import { StudentIdComponent } from './components/student-id/student-id.component';
 // import { DashboardComponent } from './dashboard/dashboard.component'; // Import your dashboard component
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'Student', component: StudentsComponent },
   { path: 'Staff', component:StaffDashboardComponent},
-  { path: 'Admin', component:AdminComponent},
+  // { path: 'Admin', component:AdminComponent},
   { path: 'attendance-marking', component: AttendanceMarkingComponent },
   { path: 'attendance-summary', component: AttendanceSummaryComponent },
   { path: 'teacher-leavestatus', component: TeacherLeavestatusComponent},
@@ -56,7 +57,7 @@ const routes: Routes = [
   {path:'hiiii',component:AllUserAttendanceDetailsComponent},
 
 
-  {path:"admin",component:AdminComponent,children:[
+  {path:"admin-ddd",component:AdminComponent,children:[
     {path:"role",component:RoleComponent},
    
   ]},
@@ -65,9 +66,10 @@ const routes: Routes = [
   {path: "user-registration" , component:UserRegistrationComponent},
   {path: "update-user-registration" , component:UserDetailupdateComponent},
 
-  {path:"admin-dashboard",component:AdminDashboardComponent},
+  {path:"Admin",component:AdminDashboardComponent},
   {path:"t-attendance",component:ListTeacherAttendanceComponent},
-  {path:"s-attendance",component:ListStudentAttendanceComponent}
+  {path:"s-attendance",component:ListStudentAttendanceComponent},
+  {path:"student-id",component:StudentIdComponent}
   
 
 
