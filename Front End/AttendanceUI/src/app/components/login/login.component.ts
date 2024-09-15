@@ -18,14 +18,14 @@ export class LoginComponent implements OnInit {
     email: '',
     role_id: '', // Store selected role ID here
     password: '',
-    password2: ''
+    password2: '',
+    profile_picture:'https://bootdey.com/img/Content/avatar/avatar7.png',
   };
   loginObj: any = {
     username: '',
     password: '',
     role_id:''
   };
-
   roles: any[] = [];  // Store roles here
 
   constructor(private accService: AuthService, private router: Router) {}

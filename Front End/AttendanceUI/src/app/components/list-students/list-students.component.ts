@@ -8,7 +8,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class ListStudentsComponent implements OnInit {
   users: any[] = []; 
-  roleId: number = 1; // Single role ID to fetch users
+  roleId: number = 1; 
   roleUsers: any[] = [];
 
   constructor(private userService: AuthService) { }

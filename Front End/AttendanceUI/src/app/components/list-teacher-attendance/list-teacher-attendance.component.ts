@@ -48,7 +48,7 @@ export class ListTeacherAttendanceComponent {
   }
 
   loadAttendanceDataForRole(): void {
-    this.authService.getLeaveRequestDetails('Attendanceattendance/by-role/', this.roleId).subscribe(
+    this.authService.getLeaveRequestDetails('Attendancedetail/by-role/', this.roleId).subscribe(
       (data) => {
         if (data && data.data) {
           this.attendanceData = data.data;

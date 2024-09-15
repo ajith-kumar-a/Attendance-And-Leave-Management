@@ -58,7 +58,7 @@ export class AllUserAttendanceDetailsComponent implements OnInit {
 
   loadAttendanceDataForRoles(): void {
     this.roleIds.forEach(roleId => {
-      this.authService.getLeaveRequestDetails('Attendanceattendance/by-role/', roleId).subscribe(
+      this.authService.getLeaveRequestDetails('Attendancedetail/by-role/', roleId).subscribe(
         (data) => {
           if (data && data.data) {
             this.attendanceData[roleId] = data.data;

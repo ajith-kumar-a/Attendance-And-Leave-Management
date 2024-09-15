@@ -22,7 +22,7 @@ export class AttendanceMarkingComponent {
 
   // Fetch all students registered in the system
   fetchAllStudents(): void {
-    const apiEndpoint = `Attendanceattendance/by-role/${this.studentRoleId}/`;
+    const apiEndpoint = `Attendancedetail/by-role/${this.studentRoleId}/`;
     this.authService.getUserDetails(apiEndpoint)
       .subscribe(
         (data: any) => {
