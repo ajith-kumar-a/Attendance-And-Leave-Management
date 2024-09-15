@@ -97,22 +97,23 @@ export class StudentLeaveRequestStatusComponent implements OnInit {
         const leaveRequest = this.leaveRequests.find(req => req.id === leaveRequestId);
         if (leaveRequest) {
           leaveRequest.status = newStatusId;
+          
           console.log(`Triggering notification for leave request ${leaveRequestId}`); // Debug log
 
           // Assuming userId is available from leaveRequest or other sources
           const userId = leaveRequest.user_id; // Update this based on your actual data structure
-          // this.authService.sendNotification(userId, `Leave request ${leaveRequestId} status updated to ${newStatusId}`)
-          //   .subscribe(
-          //     (notificationResponse: any) => {
-          //       console.log('Notification sent successfully', notificationResponse);
+          this.authService.sendNotification(userId, `Leave request ${leaveRequestId} status updated to ${newStatusId}`)
+            .subscribe(
+              (notificationResponse: any) => {
+                console.log('Notification sent successfully', notificationResponse);
 
-          //       // Notify the shared service to update notification count in StudentsComponent
-          //       this.notificationService.updateNotificationCount(notificationResponse.data.notificationCount);
-          //     },
-          //     (error: HttpErrorResponse) => {
-          //       console.error('Error sending notification', error);
-          //     }
-          //   );
+                // Notify the shared service to update notification count in StudentsComponent
+                this.notificationService.updateNotificationCount(notificationResponse.data.notificationCount);
+              },
+              (error: HttpErrorResponse) => {
+                console.error('Error sending notification', error);
+              }
+            );
         }
       },
       (error: HttpErrorResponse) => {

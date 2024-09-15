@@ -127,4 +127,10 @@ export class AuthService {
   }
 
 
+  deleteNotification(userId: number, notificationId: number): Observable<any> {
+    const token = localStorage.getItem('access');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);  
+    return this.http.delete(`${this.apiUrl}/Notificationuser/${userId}/${notificationId}/`,{headers});
+  }
+
 }

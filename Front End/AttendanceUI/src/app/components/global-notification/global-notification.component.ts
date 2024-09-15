@@ -26,7 +26,7 @@ ngOnInit(): void {
       console.error('Notification subscription error:', error);
     }
   );
-  this.openSnackBar("hiii")
+  this.openSnackBar("Welcome to GAP")
 }
 
 
