@@ -1,24 +1,19 @@
 from django.shortcuts import render
- 
-# Create your views here.
-# Create your views here.
- 
 from .serializers import UserSerializer, RegisterSerializer
 from rest_framework.response import Response
 from rest_framework import generics,status
-# from rest_framework import permissions
-# from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.views import APIView
 from drf_yasg.utils import swagger_auto_schema
-
 from rest_framework import permissions
 from rest_framework_simplejwt.authentication import JWTAuthentication
-from rest_framework.views import APIView
 from .models import User  
 from .serializers import UserSerializer
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response
+from django.http import Http404
+from .serializers import UserDetailSerializer
+from .serializers import UserImageSerializer
 
  # Create your views here.
 # @extend_schema(auth=[])
@@ -82,16 +77,7 @@ class ListUsersAPIView(generics.ListAPIView):
     )
     def get(self, request, *args, **kwargs):
         return super().get(request, *args, **kwargs)
-  
 
-from rest_framework import generics, status
-from rest_framework.response import Response
-from rest_framework.parsers import MultiPartParser, FormParser
-from rest_framework.permissions import IsAuthenticated
-# from rest_framework_jwt.authentication import JWTAuthentication
-from django.http import Http404
-from .models import User
-from .serializers import UserImageSerializer
 
 class UpdateUserProfilePictureView(generics.UpdateAPIView):
     serializer_class = UserImageSerializer
@@ -139,14 +125,6 @@ class UpdateUserProfilePictureView(generics.UpdateAPIView):
         serializer.save()
 
 
-from rest_framework import status, generics
-from rest_framework.permissions import IsAuthenticated
-from rest_framework_simplejwt.authentication import JWTAuthentication
-from rest_framework.parsers import MultiPartParser, FormParser
-from rest_framework.response import Response
-from django.http import Http404
-from .models import User
-from .serializers import UserDetailSerializer
 
 class UpdateUserDetailsView(generics.UpdateAPIView):
     serializer_class = UserDetailSerializer
@@ -226,13 +204,7 @@ class UserListByRoleAPIView(generics.ListAPIView):
 
 
 
-from rest_framework import generics, status
-from rest_framework.permissions import IsAuthenticated
-from rest_framework_simplejwt.authentication import JWTAuthentication
-from rest_framework.response import Response
-from django.http import Http404
-from .models import User
-from .serializers import UserDetailSerializer
+
 
 class UserDetailAPIView(generics.RetrieveAPIView):
     serializer_class = UserDetailSerializer
