@@ -18,14 +18,14 @@ export class LandingpageComponent {
 
   // Define image paths as properties
   // heroImage = 'assets/hero-bg.jpg';
-  studentImage = 'assets/student.jpg';
+  hello = 'assets/hello.gif';
 
   categoryImages = {
-    webDesign: 'assets/About-right.webp',
+    webDesign: 'assets/webdesign.jpg',
     graphicDesign: 'assets/grapic-design.jpg',
-    dataScience: 'assets/student.jpg',
-    onlineMarketing: 'assets/About-left.jpg',
-    ai: 'assets/insitute.jpg'
+    dataScience: 'assets/data-science.jpg',
+    DigitalMarketing: 'assets/Digital-marketing.jpg',
+    ai: 'assets/ai.jpg'
   };
   courseImages = {
     pythonFullStack: 'assets/About-left.jpg',
@@ -41,21 +41,21 @@ export class LandingpageComponent {
 
   testimonials = [
     {
-      name: 'prasanth',
-      profession: 'Python',
-      image: 'assets/prasanth.png',
+      name: 'Manoj',
+      profession: 'Fullstack',
+      image: 'assets/pic1.jpg',
       feedback: 'The best online course I have ever taken. Instructors were highly knowledgeable and the course material was very practical.'
     },
     {
-      name: 'ajith',
-      profession: 'Java',
-      image: 'assets/ajith.jpg',
+      name: 'Priya',
+      profession: 'Backend',
+      image: 'assets/pic.jpg',
       feedback: 'Engaging content and really good support from instructors. I could complete the course at my own pace.'
     },
     {
-      name: 'gokul',
+      name: 'John',
       profession: 'Sql',
-      image: 'assets/client3.jpg',
+      image: 'assets/pic3.jpg',
       feedback: 'The assignments were challenging and rewarding. I would highly recommend this platform to anyone.'
     }
   ];

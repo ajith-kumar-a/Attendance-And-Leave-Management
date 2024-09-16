@@ -10,12 +10,12 @@ export class AboutusComponent {
   // Define the image paths
   leftImage = 'assets/About-left.jpg'; // Use your actual path
   rightImage = 'assets/About-right.webp'; // Use your actual path
-  sideImage = 'assets/insitute.jpg'; // Use your actual path
-  tcsLogo = 'assets/tcs-logo.jpg'; // Use your actual path
+  sideImage = 'assets/all.gif'; // Use your actual path
+  changepondLogo = 'assets/changepond-logo.jpg'; // Use your actual path
   cognizantLogo = 'assets/cognizant-logo.png'; // Use your actual path
   atosLogo = 'assets/atos-logo.png'; // Use your actual path
   hexawareLogo = 'assets/hexaware-logo.jpg'; // Use your actual path
-  changepondLogo = 'assets/changepond-logo.jpg'; // Use your actual path
+  tcsLogo = 'assets/tcs-logo.jpg'; // Use your actual path
 
   constructor() {}
 }

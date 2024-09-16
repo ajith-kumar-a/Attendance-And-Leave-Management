@@ -1,0 +1,126 @@
+/* footer session  */
+/* Footer */
+.footer {
+    background-color: #222;
+    padding: 40px 20px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.footer-columns {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-column {
+    width: 30%;
+}
+
+.footer-heading {
+    color: #809fed;
+    font-size: 20px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.footer-heading img {
+    vertical-align: middle;
+    width: 40px;
+    margin-right: 10px;
+}
+
+.footer-subheading {
+    font-size: 14px;
+    color: #bbb;
+    margin-bottom: 20px;
+}
+
+.footer-info {
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.footer-info strong {
+    color: #93aff3;
+}
+
+.locations {
+    list-style: none;
+    font-size: 14px;
+    color: #bbb;
+    padding: 0;
+}
+
+.locations li {
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+.locations li:hover {
+    color: #00bfff;
+}
+
+.working-hours {
+    list-style: none;
+    font-size: 14px;
+    color: #bbb;
+    padding: 0;
+}
+
+.working-hours li {
+    margin-bottom: 10px;
+}
+
+.working-hours strong {
+    color: #93aff3;
+}
+
+/* Footer Social Media Icons */
+/* Social Media Links */
+.footer-social {
+    margin-top: 20px;
+    display: flex;
+    align-items: baseline;
+    gap: 7px;
+    justify-content: flex-start;
+    flex-direction: row;;
+}
+
+.social-icon {
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column; /* Stack icon and text vertically */
+    align-items: center; /* Center align the icon and text */
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icon i {
+    font-size: 24px; /* Adjust size as needed */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icon span {
+    font-size: 14px; /* Adjust text size */
+    margin-top: 5px; /* Space between icon and text */
+}
+
+.social-icon:hover {
+    color: #00bfff;
+    transform: translateY(-5px); /* Move up slightly on hover */
+}
+
+.social-icon:hover i {
+    transform: scale(1.2); /* Enlarge icon on hover */
+}
+.footer-bottom p {
+    margin: 0;
+    font-size: 24px;
+    text-align: center;
+  }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-
+import { NgForm, NgModel } from '@angular/forms';
+import { Location } from '@angular/common'; // Import Location service
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -14,7 +14,9 @@ export class ApplyleaveComponent implements OnInit {
   }; 
   userId: any;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService,
+    private location: Location 
+  ) {}
 
   ngOnInit(): void {
     this.fetchStudentDetails();
@@ -79,5 +81,22 @@ export class ApplyleaveComponent implements OnInit {
       startDate: '',
       endDate: ''
     };
+  }
+  getPlaceholder(control: NgModel): string {
+    if (control.invalid && (control.dirty || control.touched)) {
+      if (control.errors?.['required']) {
+        return 'This field is required';
+      }
+      if (control.errors?.['minlength']) {
+        return `Minimum length is ${control.errors['minlength'].requiredLength}`;
+      }
+      if (control.errors?.['email']) {
+        return 'Invalid email address';
+      }
+    }
+    return '';
+  }
+  back(): void {
+    this.location.back(); // Navigate back to the previous page
   }
 }

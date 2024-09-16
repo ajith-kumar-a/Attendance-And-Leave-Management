@@ -1,10 +1,12 @@
 /* Center the table */
 .table {
-    margin: 0 auto;
-    width: 30%; /* Adjust width as needed */
+    width: 10%; /* Adjust width as needed */
     border-collapse: collapse;
     text-align: center;
+    margin-left: 1500px; /* Pushes the table to the right */
+    margin-right: 0px; /* Removes any default margin on the right */
 }
+
 
 /* Add border to the table */
 .table, th, td {

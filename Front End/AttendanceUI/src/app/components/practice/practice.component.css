@@ -10,7 +10,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 20px;
+  padding: 20px 10px;
   background-color: #e9eef2;
 }
 
@@ -782,4 +782,179 @@ nav ul li a:hover {
   margin: 0;
   font-size: 24px;
   text-align: center;
+}
+/* Default styles for desktop and larger screens */
+body {
+  font-family: 'Dancing Script', cursive, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Mobile: up to 768px */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column; /* Stack the navbar items vertically */
+    padding: 10px;
+  }
+
+  .title {
+    font-size: 20px; /* Reduce title size for smaller screens */
+    text-align: center;
+  }
+
+  .navbar-brand img {
+    height: 50px; /* Reduce logo size */
+  }
+
+  nav ul {
+    flex-direction: column; /* Stack navigation links vertically */
+    align-items: center;
+  }
+
+  .hero-section {
+    padding: 150px 20px; /* Reduce padding */
+    font-size: 16px; /* Reduce font size */
+  }
+
+  .courses-container {
+    flex-direction: column; /* Stack course cards */
+  }
+
+  .course {
+    width: 100%; /* Make course cards full width */
+    margin-bottom: 20px;
+  }
+
+  .about {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-text {
+    padding: 20px;
+  }
+
+  .about-image img {
+    max-width: 100%; /* Make the image responsive */
+    margin-top: 20px;
+  }
+}
+
+/* Tablet: 768px to 1024px */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .navbar {
+    flex-direction: row;
+    padding: 15px;
+  }
+
+  .title {
+    font-size: 25px;
+  }
+
+  .navbar-brand img {
+    height: 55px;
+  }
+
+  nav ul {
+    justify-content: flex-end;
+    gap: 10px;
+  }
+
+  .hero-section {
+    padding: 250px 20px;
+  }
+
+  .courses-container {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .course {
+    width: 45%; /* Two courses side by side */
+  }
+
+  .about {
+    padding: 40px 20px;
+  }
+
+  .about-text {
+    padding: 30px;
+  }
+
+  .about-image img {
+    max-width: 80%;
+  }
+}
+
+/* Laptop: 1024px to 1440px */
+@media (min-width: 1024px) and (max-width: 1440px) {
+  .navbar {
+    padding: 20px;
+  }
+
+  .title {
+    font-size: 30px;
+  }
+
+  .hero-section {
+    padding: 300px 20px;
+  }
+
+  .courses-container {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .course {
+    width: 30%; /* Three courses side by side */
+  }
+
+  .about {
+    padding: 50px 20px;
+  }
+
+  .about-text {
+    padding: 40px;
+  }
+
+  .about-image img {
+    max-width: 70%;
+  }
+}
+
+/* Desktop: 1440px and above */
+@media (min-width: 1440px) {
+  .navbar {
+    padding: 20px 50px;
+  }
+
+  .title {
+    font-size: 36px;
+  }
+
+  .hero-section {
+    padding: 350px 40px;
+  }
+
+  .courses-container {
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+
+  .course {
+    width: 25%; /* Four courses side by side */
+  }
+
+  .about {
+    padding: 60px 40px;
+  }
+
+  .about-text {
+    padding: 50px;
+  }
+
+  .about-image img {
+    max-width: 60%;
+  }
 }
