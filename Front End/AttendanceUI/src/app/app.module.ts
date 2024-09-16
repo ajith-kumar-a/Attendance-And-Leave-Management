@@ -52,6 +52,7 @@ import { UserDetailupdateComponent } from './components/user-detailupdate/user-d
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { StaffLeaveRequestStatusComponent } from './components/staff-leave-request-status/staff-leave-request-status.component';
+import { StaffDashboardComponent } from './components/staff-dashboard/staff-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -94,6 +95,7 @@ import { StaffLeaveRequestStatusComponent } from './components/staff-leave-reque
     HeaderComponent,
     FooterComponent,
     StaffLeaveRequestStatusComponent,
+    StaffDashboardComponent
   ],
   imports: [
     BrowserModule,
