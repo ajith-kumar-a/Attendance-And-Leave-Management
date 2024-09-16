@@ -31,7 +31,7 @@ step to connect api
    -  npm install @auth0/angular-jwt
     - ng generate service services/NotificationService
     - ng generate interceptor interceptors/auth
-    - ng generate component components/login
+    - ng generate component components/StaffLeaveRequestStatus
 
 
 ng generate component components/UserRegistration

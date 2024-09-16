@@ -1,0 +1,33 @@
+<div class="container">
+    <h2 class="heading">Attendance Details for Students</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Username</th>
+          <th>Reason</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Leave Type</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let leaveRequest of leaveRequests">
+          <td>{{ leaveRequest.id }}</td>
+          <td>{{ getUsername(leaveRequest.user_id) }}</td>
+          <td>{{ leaveRequest.reason }}</td>
+          <td>{{ leaveRequest.start_date }}</td>
+          <td>{{ leaveRequest.end_date }}</td>
+          <td>{{ getLeaveTypeName(leaveRequest.leave_type) }}</td>
+          <td>{{ getStatusName(leaveRequest.status) }}</td>
+          <td>
+            <button (click)="updateLeaveRequestStatus(leaveRequest.id, 2)">Approve</button>
+            <button (click)="updateLeaveRequestStatus(leaveRequest.id, 3)">Reject</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

@@ -28,15 +28,15 @@
       <input type="checkbox" id="dropdownToggle" class="checkbox">
       <label for="dropdownToggle" class="dropdown-label">Leave Status</label>
       <div class="dropdown-menu">
-          <button class="nav-item">
+          <button class="nav-item" (click)="onRoleChange('1')">
               <i class="fas fa-user-graduate"></i>
               
           </button>
-          <button class="nav-item">
+          <button class="nav-item" (click)="onRoleChange('2')">
               <i class="fas fa-chalkboard-teacher"></i>
               
           </button>
-          <button class="nav-item" (click)="onRoleChange('6')">
+          <button class="nav-item" (click)="onRoleChange('3')">
               <i class="fas fa-book"></i>
              
           </button>

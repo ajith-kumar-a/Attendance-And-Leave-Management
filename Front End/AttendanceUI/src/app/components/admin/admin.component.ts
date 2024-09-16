@@ -9,6 +9,9 @@ import { ListAdminComponent } from '../list-admin/list-admin.component'; // Adju
 import { ListTeacherAttendanceComponent } from '../list-teacher-attendance/list-teacher-attendance.component';
 import { ListStudentAttendanceComponent } from '../list-student-attendance/list-student-attendance.component';
 import { ListStaffAttendanceComponent } from '../list-staff-attendance/list-staff-attendance.component';
+import { StudentLeaveRequestStatusComponent } from '../student-leave-request-status/student-leave-request-status.component';
+import { TeacherLeaveRequestStatusComponent } from '../teacher-leave-request-status/teacher-leave-request-status.component';
+import { StaffLeaveRequestStatusComponent } from '../staff-leave-request-status/staff-leave-request-status.component';
 
 @Component({
   selector: 'app-admin',
@@ -69,22 +72,13 @@ export class AdminComponent {
   onRoleChange(roleId: string): void {
     switch (roleId) {
       case '1':
-        this.openModal(ListStudentsComponent);
+        this.openModal(StudentLeaveRequestStatusComponent);
         break;
       case '2':
-        this.openModal(ListTeachersComponent);
+        this.openModal(TeacherLeaveRequestStatusComponent);
         break;
       case '3':
-        this.openModal(ListStaffComponent);
-        break;
-      case '4':
-        this.openModal(ListStudentAttendanceComponent);
-        break;
-      case '5':
-        this.openModal(ListTeacherAttendanceComponent);
-        break;
-      case '6':
-          this.openModal(ListStaffAttendanceComponent);
+        this.openModal(StaffLeaveRequestStatusComponent);
         break;
       default:
         console.error('Invalid role selected');
