@@ -1,15 +1,7 @@
+<div class="container">
+  <h2 class="heading">Attendance Details for Teacher</h2>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Attendance Details for Students</title>
-  <!-- <link rel="stylesheet" href="all-user-attendance-details.component.css"> -->
-</head>
-<body>
-  <div class="container">
-    <h2 class="heading">Attendance Details for Students</h2>
-
+  <div class="table-wrapper">
     <table class="attendance-table" *ngIf="attendanceData.length">
       <thead>
         <tr>
@@ -42,8 +34,7 @@
         </tr>
       </tbody>
     </table>
-
-    <p class="no-records" *ngIf="!attendanceData.length">No attendance records found for students.</p>
   </div>
-</body>
-</html>
+
+  <p class="no-records" *ngIf="!attendanceData.length">No attendance records found for students.</p>
+</div>

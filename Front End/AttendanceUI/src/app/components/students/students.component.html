@@ -19,7 +19,7 @@
   <div class="dropdown me-3">
     <button class="btn btn-success dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
       <!-- Profile Image -->
-      <img [src]="img || 'https://bootdey.com/img/Content/avatar/avatar7.png'" alt="Profile" class="rounded-circle me-2" height="40" width="40">
+      <img [src]="img || 'https://bootdey.com/img/Content/avatar/avatar7.png'" alt="Profile img" class="rounded-circle me-2" height="40" width="40">
       <!-- Welcome Message -->
       <span>Welcome, {{ user?.first_name || 'Guest' }}</span>
       <!-- Badge Count with Link to Notifications -->
@@ -29,6 +29,7 @@
       <li><a href="/"><button class="dropdown-item" type="button">View Attendance</button></a></li>
       <li><a href="/apply-leave"><button class="dropdown-item" type="button">Apply Leave</button></a></li>
       <li><a href="/leave-status"><button class="dropdown-item" type="button">Leave Status</button></a></li>
+      <li><a href="/student-id"><button class="dropdown-item" type="button">E-Id Card </button></a></li>
       <li><a href=""><button class="dropdown-item log-out" type="button">Log Out</button></a></li>
     </ul>
   </div>
@@ -90,81 +91,73 @@
               <div class="card mb-3">
                 <div class="card-body">
                   <div class="row">
+                    <!-- Display user details fields -->
                     <div class="col-sm-3">
                       <h6 class="mb-0">Full Name</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
-                      {{user.first_name}} {{user.last_name}}
-                    </div>
+                    <div class="col-sm-9 text-secondary">{{user.first_name}} {{user.last_name}}</div>
                     <hr>
+            
                     <div class="col-sm-3">
                       <h6 class="mb-0">User Name</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
-                      {{user.username}}
-                    </div>
+                    <div class="col-sm-9 text-secondary">{{user.username}}</div>
                     <hr>
+            
                     <div class="col-sm-3">
                       <h6 class="mb-0">DOB</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
-                      {{user_details[0].date_of_birth}}
-                    </div>
+                    <div class="col-sm-9 text-secondary">{{user_details[0]?.date_of_birth}}</div>
                     <hr>
+            
                     <div class="col-sm-3">
                       <h6 class="mb-0">Mentor Name</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
-                      {{user_details[0].mentor_name}}
-                    </div>
+                    <div class="col-sm-9 text-secondary">{{user_details[0]?.mentor_name}}</div>
                     <hr>
+            
                     <div class="col-sm-3">
                       <h6 class="mb-0">Email Id</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
-                      {{user.email}}
-                    </div>
+                    <div class="col-sm-9 text-secondary">{{user.email}}</div>
                     <hr>
+            
                     <div class="col-sm-3">
                       <h6 class="mb-0">Mobile Num</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
-                      {{user_details[0].mobile_number}}
-                    </div>
+                    <div class="col-sm-9 text-secondary">{{user_details[0]?.mobile_number}}</div>
                     <hr>
+            
                     <div class="col-sm-3">
                       <h6 class="mb-0">Blood Group</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
-                      {{user_details[0].blood_group}}
-                    </div>
+                    <div class="col-sm-9 text-secondary">{{user_details[0]?.blood_group}}</div>
                     <hr>
+            
                     <div class="col-sm-3">
                       <h6 class="mb-0">Gender</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
-                      {{user_details[0].gender}}
-                    </div>
+                    <div class="col-sm-9 text-secondary">{{user_details[0]?.gender}}</div>
                     <hr>
+            
                     <div class="col-sm-3">
                       <h6 class="mb-0">Batch No</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
-                      {{user_details[0].batch}}
-                    </div>
+                    <div class="col-sm-9 text-secondary">{{user_details[0]?.batch}}</div>
                   </div>
                 </div>
               </div>
             
-              <!-- Conditionally render the buttons based on 'blood_group' and 'date_of_birth' -->
-              <a href="/user-registration"  style="color: aliceblue;">
-                <button class="btn btn-primary"> Add User Details </button>
+              <!-- Conditionally show buttons based on the boolean flags -->
+              <a href="/user-registration" *ngIf="!hasUserDetails" style="color: aliceblue;">
+                <button class="btn btn-primary">Add User Details</button>
               </a>
             
-              <a href="/update-user-registration" *ngIf="user_details[0]?.blood_group && user_details[0]?.date_of_birth" style="color: aliceblue;">
-                <button class="btn btn-primary"> Edit User Details </button>
+              <a href="/update-user-registration" *ngIf="canEditDetails" style="color: aliceblue;">
+                <button class="btn btn-primary">Edit User Details</button>
               </a>
             </div>
+            
             
 <br>
 <hr>
@@ -223,7 +216,7 @@
                   </table>
               
                   <!-- Download CSV button -->
-                  <button (click)="downloadCSV()" class="btn btn-success mt-3">Download CSV</button>
+                  <button (click)="downloadCSV()" class="btn btn-success mt-3">Download attendance</button>
                 </div>
                
                  

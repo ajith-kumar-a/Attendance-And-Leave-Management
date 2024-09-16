@@ -28,10 +28,10 @@ export class AdminDashboardComponent {
         this.openModal(ListStaffComponent);
         break;
       case '4':
-        this.openModal(ListTeacherAttendanceComponent);
+        this.openModal(ListStudentAttendanceComponent);
         break;
       case '5':
-          this.openModal(ListStudentAttendanceComponent);
+        this.openModal(ListTeacherAttendanceComponent);
         break;
       case '6':
           this.openModal(ListStaffAttendanceComponent);

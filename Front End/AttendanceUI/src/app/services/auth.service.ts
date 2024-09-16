@@ -121,4 +121,16 @@ export class AuthService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.put<any>(`${this.apiUrl}/Details-Useruserdetails/update-by-user/${userId}/`, userDetails,{headers});
   }
+
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('access');
+  }
+
+
+  deleteNotification(userId: number, notificationId: number): Observable<any> {
+    const token = localStorage.getItem('access');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);  
+    return this.http.delete(`${this.apiUrl}/Notificationuser/${userId}/${notificationId}/`,{headers});
+  }
+
 }

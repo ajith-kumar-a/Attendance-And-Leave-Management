@@ -52,12 +52,13 @@ export class AttendanceMarkingComponent {
         }
       );
   }
+  
 
   // Method to mark attendance for each student
   markAttendance(student: any, status: string): void {
     // Set the attendance status and the selected date
     student.attendance = status;
-    student.status_id = status === 'Present' ? 2 : status === 'Absent' ? 3 : 1;
+    student.status_id = status === 'Present' ? 2 : 3; // Assuming 2 for Present and 3 for Absent
     student.attendance_date = this.selectedDate;  // Use the selected date
 
     console.log(`Student ID ${student.user_id} marked as ${status} on ${this.selectedDate}`);
@@ -72,25 +73,27 @@ export class AttendanceMarkingComponent {
 
     // Create an array to hold the observables from the API requests
     const requests = this.students
-      .filter(student => student.status_id !== null) // Filter out students without a status
+      .filter(student => student.status_id !== undefined) // Filter out students without a status
       .map(student => {
         const attendanceData = {
-          status_id: student.status_id,
           user_id: student.user_id,  // Send the user ID in the request body
+          status_id: student.status_id, // Status ID (2 for Present, 3 for Absent)
           remarks: student.remarks || 'No remarks',  // Add remarks or default to 'No remarks'
-          date: this.selectedDate  // Use the selected date for all records
+          logout_time: `${this.selectedDate}T10:07:22.441Z` // Set a default logout time (adjust as needed)
         };
+        // console.log("this is requests",requests)
+        
 
-        // Pass the attendance `id` (not the user_id) in the API endpoint
-        const apiEndpoint = `Attendancedetail/${student.id}/`;
-        return this.authService.addRecordput(apiEndpoint, attendanceData);
+        // API URL with the selected date
+        const apiUrl = `Attendancedetail/update-by-date/${this.selectedDate}/`;
+        return this.authService.addRecordput(apiUrl, attendanceData);
       });
 
     // Use forkJoin to wait for all requests to complete
     forkJoin(requests).subscribe(
       responses => {
         responses.forEach((response, index) => {
-          console.log(`Attendance updated successfully for attendance ID ${this.students[index].id}`, response);
+          console.log(`Attendance updated successfully for student ID ${this.students[index].user_id}`, response);
         });
         alert('Attendance updated successfully');
       },

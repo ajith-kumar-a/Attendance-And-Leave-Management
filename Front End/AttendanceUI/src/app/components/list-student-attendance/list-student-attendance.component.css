@@ -7,15 +7,19 @@ body {
   line-height: 1.42em;
   color: #A7A1AE;
   background-color: #1F2739;
+  margin: 0;
+  padding: 0;
 }
 
 .container {
-  width: 80%;
+  width: 90%;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
   background-color: #1F2739;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow-x: auto; /* Allow horizontal scrolling */
 }
 
 .heading {
@@ -25,41 +29,34 @@ body {
   margin-bottom: 20px;
 }
 
-.role-section {
-  margin-bottom: 40px;
-}
-
-.role-id {
-  font-size: 1.5rem;
-  color: #FB667A;
-  margin-bottom: 10px;
-  text-align: center;
+.table-wrapper {
+  overflow-x: auto; /* Make the table scrollable */
 }
 
 .attendance-table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  table-layout: fixed; /* Prevent columns from expanding beyond the container */
+}
+
+.attendance-table th, .attendance-table td {
+  font-size: 1em;
+  text-align: center;
+  padding: 12px;
+  border: 1px solid #ddd;
+  color: #A7A1AE;
 }
 
 .attendance-table th {
   font-weight: bold;
-  font-size: 1em;
-  text-align: left;
-  color: #185875;
-  background-color: #1F2739;
-  padding: 12px;
-  border: 1px solid #ddd;
+  background-color: #185875;
+  color: white;
 }
 
 .attendance-table td {
-  font-weight: normal;
-  font-size: 1em;
-  padding: 12px;
-  text-align: center;
-  color: #A7A1AE;
-  border: 1px solid #ddd;
-  box-shadow: 0 2px 2px -2px #0E1119;
+  background-color: #1F2739;
+  word-wrap: break-word; /* Handle long text */
 }
 
 .attendance-table tr:nth-child(odd) {
@@ -72,16 +69,13 @@ body {
 
 .attendance-table tr:hover {
   background-color: #464A52;
-  box-shadow: 0 6px 6px -6px #0E1119;
 }
 
 .attendance-table td:hover {
   background-color: #FFF842;
   color: #403E10;
   font-weight: bold;
-  box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
-  transform: translate3d(6px, -6px, 0);
-  transition: all 0.4s ease;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 .no-records {
@@ -93,10 +87,63 @@ body {
 }
 
 @media (max-width: 800px) {
-  .attendance-table td:nth-child(6),
+  .attendance-table th:nth-child(6), .attendance-table td:nth-child(6),
+  .attendance-table th:nth-child(7), .attendance-table td:nth-child(7) {
+    display: none; /* Hide login and logout times on smaller screens */
+  }
+}
+
+@media (max-width: 600px) {
+  .attendance-table th, .attendance-table td {
+    padding: 8px;
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 1200px) {
+  .container {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 800px) {
+  .attendance-table {
+    font-size: 0.9em; /* Adjust font size for smaller screens */
+  }
+
   .attendance-table th:nth-child(6),
-  .attendance-table td:nth-child(7),
-  .attendance-table th:nth-child(7) {
-    display: none;
+  .attendance-table td:nth-child(6),
+  .attendance-table th:nth-child(7),
+  .attendance-table td:nth-child(7) {
+    display: none; /* Hide login and logout times on smaller screens */
+  }
+
+  .attendance-table th,
+  .attendance-table td {
+    padding: 8px;
+  }
+
+  .container {
+    width: 100%;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .attendance-table {
+    font-size: 0.8em; /* Further reduce font size for very small screens */
+  }
+
+  .attendance-table th,
+  .attendance-table td {
+    padding: 6px;
+  }
+
+  .table-wrapper {
+    overflow-x: auto; /* Make table horizontally scrollable on very small screens */
+  }
+
+  .no-records {
+    font-size: 0.9rem;
   }
 }

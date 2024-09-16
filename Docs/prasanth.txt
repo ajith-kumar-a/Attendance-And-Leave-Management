@@ -80,3 +80,16 @@ export class ApplyleaveComponent implements OnInit {
   }
 }
 leave status ts
+
+
+
+
+
+
+
+
+
+
+________________________________________________________
+
+npm install hammerjs
