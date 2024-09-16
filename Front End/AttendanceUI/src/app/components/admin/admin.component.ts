@@ -27,7 +27,7 @@ export class AdminComponent {
   ngOnInit(): void {
     this.fetchStudentDetails();
   }
-  baseUrl: string = 'http://127.0.0.1:8000';
+  baseUrl: string = 'http://172.17.7.109:8000';
 
   constructor(
     private AuthService: AuthService,
