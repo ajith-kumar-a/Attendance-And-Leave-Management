@@ -27,11 +27,30 @@ export class StudentIdComponent {
         this.userData = data.data;  // Assign the fetched data to userData
         this.userData.profile_picture=`${this.baseUrl}${this.userData.profile_picture}`
         console.log('User Data fetched:', this.userData);  // Log the user data
+        this.fetchUserDOB()
       },
       (error) => {
         console.error('Error fetching user details:', error);  // Handle any errors
       }
     );
+  }
+
+  fetchUserDOB(): void {
+    if (this.userData.id) {
+      this.userService.getUserDetails(`Details-Useruserdetails/by-user/${this.userData.id}/`).subscribe(
+        (data: any) => {
+          this.userData.dob = data[0].date_of_birth; 
+          console.log(data) // Assign the fetched DOB to userData
+          console.log('User DOB fetched:', this.userData.dob);  // Log the DOB
+        },
+        (error) => {
+          console.error('Error fetching user DOB:', error);  // Handle any errors
+        }
+      );
+    } else {
+      console.error('User ID not found for fetching DOB.');
+      console.log("this is error massage")
+    }
   }
   
 

@@ -38,6 +38,7 @@ export class TeacherDashboardComponent implements OnInit {  // Implement OnInit 
     ) {}
 
     ngOnInit(): void {
+      this.hasUserDetails = false; 
       this.fetchStudentDetails();
       this.fetchStatusDetails();
       this.checkLeaveRequestUpdates(); // Check for leave request updates
@@ -103,6 +104,9 @@ export class TeacherDashboardComponent implements OnInit {  // Implement OnInit 
       this.AuthService.getUserDetails(`Details-Useruserdetails/by-user/${id}/`).subscribe(
         (data) => {
           this.user_details = data;
+          
+          console.log("this.hasUserDetails :" ,this.hasUserDetails)
+          console.log("this.hasUserDetails :" ,this.hasUserDetails)
           console.log(" this.user_details : ", this.user_details)
           this.hasUserDetails = !!data[0].blood_group;
           this.canEditDetails = !!data[0].blood_group;

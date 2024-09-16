@@ -49,9 +49,54 @@ export class LoginComponent implements OnInit {
     // this.checkmarkAttendance()
   }
   onSignUp() {
+    // Basic validation
+    if (!this.signupObj.first_name || !this.signupObj.last_name || !this.signupObj.username ||
+        !this.signupObj.email || !this.signupObj.password || !this.signupObj.password2) {
+      window.alert("Please fill out all required fields.");
+      return;
+    }
+  
+    // Validate first name and last name length
+    if (this.signupObj.first_name.length < 5) {
+      window.alert("First name must be at least 5 characters long.");
+      return;
+    }
+  
+    if (this.signupObj.last_name.length < 5) {
+      window.alert("Last name must be at least 5 characters long.");
+      return;
+    }
+  
+    // Validate email format
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(this.signupObj.email)) {
+      window.alert("Please enter a valid email address.");
+      return;
+    }
+  
+    // Validate password
+    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    if (this.signupObj.password.length < 8) {
+      window.alert("Password must be at least 8 characters long.");
+      return;
+    }
+  
+    if (!passwordPattern.test(this.signupObj.password)) {
+      window.alert("Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.");
+      return;
+    }
+  
+    // Check if passwords match
+    if (this.signupObj.password !== this.signupObj.password2) {
+      window.alert("Passwords do not match.");
+      return;
+    }
+  
+    // If validation passes, proceed with registration
     console.log('Signup Object:', this.signupObj); // Debugging line
     this.accService.RegisterUser('userregister/', this.signupObj).subscribe({
       next: () => {
+        // Reset form fields
         this.signupObj = {
           first_name: '',
           last_name: '',
@@ -61,17 +106,18 @@ export class LoginComponent implements OnInit {
           password: '',
           password2: ''
         };
-        window.alert("Record Added Successfully Now You Can Login by Using Crediential");
-
+        window.alert("Record Added Successfully. Now you can login using your credentials.");
+  
+        // Optional: Redirect after successful registration
         // this.router.navigateByUrl("user-registration");
-
       },
       error: (err) => {
         console.error('Signup error', err);
+        window.alert("An error occurred during signup. Please try again.");
       }
     });
   }
-
+  
 
   
   onLogin() {
@@ -121,6 +167,7 @@ export class LoginComponent implements OnInit {
       },
       error: (err) => {
         console.error('Login error', err);
+        window.alert("No active account found with the given credentials")
       }
     });
 
