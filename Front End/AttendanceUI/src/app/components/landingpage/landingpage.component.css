@@ -140,7 +140,7 @@ header {
     justify-content: space-around;
     align-items: center;
     padding: 50px 20px;
-    background: linear-gradient(135deg, #f0f0f0, #702c2c); /* Add gradient background */
+    background: linear-gradient(135deg, #f0f0f0, #3a69ce); /* Add gradient background */
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
     border-radius: 20px;
 }
@@ -230,7 +230,7 @@ header {
     display: flex;
     justify-content: space-around;
     padding: 50px 20px;
-    background-color: gray;
+    background-color:whitesmoke;
     border-radius: 20px;
   }
   

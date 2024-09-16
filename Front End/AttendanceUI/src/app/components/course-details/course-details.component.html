@@ -1,100 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="course-details.component.css">
     <title>Courses</title>
 </head>
+
 <body>
-    <div class="container">
-        <div class="wrapper">
-            <div class="banner-image"></div>
-            <h1>Courses</h1>
-            <p>Discover our comprehensive courses, designed to help you master the skills you need for a successful career.</p>
-        </div>
-        
-        <div class="course-wrapper">
-            <div class="course">
-                <img src="assets/html.png" alt="Python Course Image" class="course-image">
-                <h2>Python</h2>
-                <p>Master Python from the basics to advanced concepts.<br>
-                Learn data structures, object-oriented programming, and more.<br>
-                Suitable for beginners and experienced developers alike.</p>
-                <button class="btn outline">VIEW ALL COURSES</button>
-                <button class="btn fill">ENROLL NOW</button>
-            </div>
+    <div class="main">
+        <ul class="cards">
+            <li class="cards_item">
+                <div class="card">
+                    <div class="card_image">
+                        <img src="/assets/react.jpg" alt="mixed vegetable salad in a mason jar." />
+                        <!-- <span class="card_price"><span>$</span>9</span> -->
+                    </div>
+                    <div class="card_content">
+                        <h2 class="card_title">React Js</h2>
+                        <div class="card_text">
+                            <p>React.js is built around the concept of reusable components. Each component encapsulates
+                                its own structure, styling, and behavior, which promotes modularity and reusability.
+                                Components can be composed to create complex UIs from simpler, reusable building blocks.
+                            </p>
+                            <hr />
+                            <p>React implements a Virtual DOM (a lightweight in-memory representation of the real DOM)
+                                to optimize performance. When the state of a component changes, React updates the
+                                Virtual DOM first and then compares it with the previous Virtual DOM. This process,
+                                known as “reconciliation,” allows React to efficiently update only the parts of the
+                                actual DOM that have changed, minimizing costly DOM manipulations.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </li>
 
-            <div class="course">
-                <img src="assets/reactjs.png" alt="React.js Course Image" class="course-image">
-                <h2>React.js</h2>
-                <p>Learn how to build dynamic web applications using React.js.<br>
-                Dive into components, hooks, and modern UI/UX techniques.<br>
-                Perfect for front-end developers looking to upskill.</p>
-                <button class="btn outline">VIEW ALL COURSES</button>
-                <button class="btn fill">ENROLL NOW</button>
-            </div>
+            <li class="cards_item">
+                <div class="card">
+                    <div class="card_image">
+                        <img src="/assets/java.jpg" alt="a Reuben sandwich on wax paper." />
+                        <!-- <span class="card_price"><span>$</span>18</span> -->
+                    </div>
+                    <div class="card_content">
+                        <h2 class="card_title">Java</h2>
+                        <div class="card_text">
+                            <p>Java is designed to be platform-independent at both the source and binary levels. The
+                                principle of "Write Once, Run Anywhere" (WORA) means that Java programs, once compiled
+                                into bytecode, can run on any device equipped with a Java Virtual Machine (JVM),
+                                regardless of the underlying operating system. This is achieved through Java's use of
+                                the JVM to interpret bytecode.
+                            </p>
+                            <p>Java is fundamentally an object-oriented programming language, which means it organizes
+                                software design around data, or objects, rather than functions. Java core concepts
+                                include classes, objects, inheritance, polymorphism, encapsulation, and abstraction.
+                                This approach promotes code reusability, modularity, and easier maintenance. </p>
+                            <hr />
+                            <p>Java comes with a comprehensive standard library, known as the Java Standard Edition (SE)
+                                API, which provides a wide range of built-in classes and methods for tasks such as data
+                                structures, networking, file I/O, and graphical user interface (GUI) development. This
+                                extensive library reduces the need for third-party libraries and speeds up development
+                                by offering well-tested and efficient tools.
 
-            <div class="course">
-                <img src="assets/java.png" alt="Angular Course Image" class="course-image">
-                <h2>Angular</h2>
-                <p>Build powerful web applications with Angular.<br>
-                Understand modules, services, and reactive programming.<br>
-                Ideal for full-stack developers aiming to build complex apps.</p>
-                <button class="btn outline">VIEW ALL COURSES</button>
-                <button class="btn fill">ENROLL NOW</button>
-            </div>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </li>
 
-            <div class="course">
-                <img src="assets/reactjs.png" alt="Python Full Stack Course Image" class="course-image">
-                <h2>Python Full Stack</h2>
-                <p>Learn end-to-end development using Python for the back-end.<br>
-                Master databases, APIs, and front-end integration.<br>
-                Designed for developers aspiring to be full-stack engineers.</p>
-                <button class="btn outline">VIEW ALL COURSES</button>
-                <button class="btn fill">ENROLL NOW</button>
-            </div>
+            <li class="cards_item">
+                <div class="card">
+                    <div class="card_image">
+                        <!-- <span class="note">Seasonal</span> -->
+                        <img src="/assets/c++.jpg"
+                            alt="A side view of a plate of figs and berries." />
+                        <!-- <span class="card_price"><span>$</span>16</span> -->
+                    </div>
+                    <div class="card_content">
+                        <h2 class="card_title">C++</h2>
+                        <div class="card_text">
+                            <p>C++ offers fine-grained control over system resources and memory management, allowing for
+                                high-performance applications. This makes it ideal for system-level programming and
+                                applications requiring optimized performance.
+                            </p>
+                            <hr />
+                            <p>C++ supports both object-oriented programming (OOP) and generic programming. It features
+                                classes, inheritance, and polymorphism, along with templates that enable type-safe
+                                generic programming and code reuse.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </li>
 
-            <div class="course">
-                <img src="assets/java.png" alt="Java Full Stack Course Image" class="course-image">
-                <h2>Java Full Stack</h2>
-                <p>Develop complete web applications using Java.<br>
-                Gain expertise in Spring Boot, Hibernate, and REST APIs.<br>
-                Aimed at those looking to build enterprise-level applications.</p>
-                <button class="btn outline">VIEW ALL COURSES</button>
-                <button class="btn fill">ENROLL NOW</button>
-            </div>
+            <li class="cards_item">
+                <div class="card">
+                    <div class="card_image">
+                        <!-- <span class="note">Seasonal</span> -->
+                        <img src="assets/python.jpg"
+                            alt="A side view of a plate of figs and berries." />
+                        <!-- <span class="card_price"><span>$</span>16</span> -->
+                    </div>
+                    <div class="card_content">
+                        <h2 class="card_title">Python</h2>
+                        <div class="card_text">
+                            <p> Python is known for its clear and readable syntax, which makes it an excellent choice
+                                for beginners. Its simplicity allows developers to write and maintain code more
+                                efficiently.
+                            </p>
+                            <hr />
+                            <p>Python has a large and active community, providing extensive documentation, tutorials,
+                                and third-party modules. This strong support network helps developers solve problems and
+                                stay updated with best practices.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </li>
 
-            <div class="course">
-                <img src="assets/java.png" alt=".NET Full Stack Course Image" class="course-image">
-                <h2>.NET Full Stack</h2>
-                <p>Learn full-stack development with .NET and C#.<br>
-                Understand back-end, front-end, and database management.<br>
-                Ideal for developers targeting enterprise solutions.</p>
-                <button class="btn outline">VIEW ALL COURSES</button>
-                <button class="btn fill">ENROLL NOW</button>
-            </div>
-
-            <div class="course">
-                <img src="assets/javascript.png" alt="PHP Course Image" class="course-image">
-                <h2>PHP</h2>
-                <p>Master back-end development with PHP and MySQL.<br>
-                Create dynamic web applications and handle server-side logic.<br>
-                Great for developers focusing on web development.</p>
-                <button class="btn outline">VIEW ALL COURSES</button>
-                <button class="btn fill">ENROLL NOW</button>
-            </div>
-
-            <div class="course">
-                <img src="assets/java.png" alt="Core Java Course Image" class="course-image">
-                <h2>Core Java</h2>
-                <p>Learn the core fundamentals of Java programming.<br>
-                Focus on object-oriented principles and data structures.<br>
-                Perfect for those looking to build a strong programming foundation.</p>
-                <button class="btn outline">VIEW ALL COURSES</button>
-                <button class="btn fill">ENROLL NOW</button>
-            </div>
-        </div>
+            <li class="cards_item">
+                <div class="card">
+                    <div class="card_image">
+                        <!-- <span class="note">Seasonal</span> -->
+                        <img src="assets/.net.jpg"
+                            alt="A side view of a plate of figs and berries." />
+                        <!-- <span class="card_price"><span>$</span>16</span> -->
+                    </div>
+                    <div class="card_content">
+                        <h2 class="card_title">.Net</h2>
+                        <div class="card_text">
+                            <p> .NET supports multiple programming languages, including C#, F#, and VB.NET, allowing
+                                developers to use their preferred language. It's suitable for building a wide range of
+                                applications, from web to desktop and mobile.
+                            </p>
+                            <hr />
+                            <p>.NET provides powerful frameworks like ASP.NET for web applications and Xamarin for
+                                mobile apps. Integrated development tools, such as Visual Studio, enhance productivity
+                                and streamline the development process.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="cards_item">
+                <div class="card">
+                    <div class="card_image">
+                        <span class="note">Seasonal</span>
+                        <img src="assets/angular.jpg"
+                            alt="A side view of a plate of figs and berries." />
+                        <!-- <span class="card_price"><span>$</span>16</span> -->
+                    </div>
+                    <div class="card_content">
+                        <h2 class="card_title">Angular</h2>
+                        <div class="card_text">
+                            <p> Angular uses a modular approach with components, making it easier to manage and reuse
+                                code across applications. This structure enhances maintainability and scalability of
+                                large projects.
+                            </p>
+                            <hr />
+                            <p> Angular's two-way data binding automatically synchronizes the data between the model and
+                                the view. This simplifies the process of keeping the UI and data model in sync without
+                                requiring additional code.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
     </div>
 </body>
+
 </html>
