@@ -30,7 +30,7 @@ export class StaffDashboardComponent implements OnInit {
     hasUserDetails: boolean = false; 
     canEditDetails: boolean = false;
 
-    baseUrl: string = 'http://127.0.0.1:8000';
+    baseUrl: string = 'http://172.17.7.109:8000';
     @ViewChild('fileInput') fileInput!: ElementRef;
 
     constructor(

@@ -102,7 +102,7 @@ DATABASES = {
        'HOST':'localhost'
    }
 }
-# ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+# ALLOWED_HOSTS = ['172.17.7.109', 'localhost']
 
 
 # Password validation

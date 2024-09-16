@@ -35,7 +35,7 @@ schema_view = get_schema_view(
       title="Attendance API",
       default_version='v1',
       description="Book Store",
-      terms_of_service="https://127.0.0.1:8000/",
+      terms_of_service="https://172.17.7.109:8000/",
       contact=openapi.Contact(email="ajith619006@gmail.com"),
       license=openapi.License(name="BSD License"),
    ),
