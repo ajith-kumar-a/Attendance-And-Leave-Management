@@ -3,6 +3,8 @@ import { AuthService } from '../../services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NotificationServiceService } from '../../services/notification-service.service';
 import { interval, switchMap } from 'rxjs';
+import { Location } from '@angular/common'; // Import Location service
+
 
 @Component({
   selector: 'app-leave-status',
@@ -20,7 +22,8 @@ export class LeaveStatusComponent implements OnInit {
     private authService: AuthService,
     private notificationService: NotificationServiceService,
     private snackBar: MatSnackBar,
-    private cd: ChangeDetectorRef 
+    private cd: ChangeDetectorRef,
+    private location: Location 
   ) {}
 
   ngOnInit(): void {
@@ -138,5 +141,8 @@ export class LeaveStatusComponent implements OnInit {
         this.notificationService.sendNotification(`New leave request ${newRequest.id} status is ${this.getStatusName(newRequest.status)}`);
       }
     });
+  }
+  back(): void {
+    this.location.back(); // Navigate back to the previous page
   }
 }
