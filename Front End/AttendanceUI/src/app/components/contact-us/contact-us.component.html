@@ -1,54 +1,86 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- Font Awesome Kit -->
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="contact-us.component.css">
-</head>
-<body>
-    <div class="container">
-        <div class="contact-parent">
-            <div class="contact-child child1">
-                <p>
-                    <i class="fas fa-map-marker-alt"></i> Address <br />
-                    <span>Ash Lane 110<br />London, UK</span>
-                </p>
-                <p>
-                    <i class="fas fa-phone-alt"></i> Let's Talk <br />
-                    <span>0787878787</span>
-                </p>
-                <p>
-                    <i class="far fa-envelope"></i> General Support <br />
-                    <!-- <mailto:span>contact@example.com</span> -->
-                </p>
-            </div>
-            <div class="contact-child child2">
-                <div class="inside-contact">
-                    <h2>Contact Us</h2>
-                    <h3>
-                        <span id="confirm"></span>
-                    </h3>
+<!-- contact-us.component.html -->
+<div class="container">
+    <div class="contact-parent">
+        <div class="contact-child child1">
+            <p>
+                <i class="fas fa-map-marker-alt"></i> Address <br />
+                <span>Omr, Siruseri<br />Chennai, India</span>
+            </p>
+            <p>
+                <i class="fas fa-phone-alt"></i> Let's Talk <br />
+                <span>0787878787</span>
+            </p>
+            <p>
+                <i class="far fa-envelope"></i> General Support <br />
+            </p>
+        </div>
+        <div class="contact-child child2">
+            <div class="inside-contact">
+                <h2>Contact Us</h2>
+                <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
                     <p>Name *</p>
-                    <input id="txt_name" type="text" required="required">
+                    <input
+                        id="txt_name"
+                        type="text"
+                        formControlName="name"
+                        [class.is-invalid]="contactForm.get('name')?.invalid && contactForm.get('name')?.touched"
+                    />
+                    <div *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched" class="error-message">
+                        <small *ngIf="contactForm.get('name')?.errors?.['required']">Name is required.</small>
+                        <small *ngIf="contactForm.get('name')?.errors?.['minlength']">Minimum 3 characters.</small>
+                    </div>
+
                     <p>Email *</p>
-                    <input id="txt_email" type="email" required="required">
+                    <input
+                        id="txt_email"
+                        type="email"
+                        formControlName="email"
+                        [class.is-invalid]="contactForm.get('email')?.invalid && contactForm.get('email')?.touched"
+                    />
+                    <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched" class="error-message">
+                        <small *ngIf="contactForm.get('email')?.errors?.['required']">Email is required.</small>
+                        <small *ngIf="contactForm.get('email')?.errors?.['email']">Enter a valid email address.</small>
+                    </div>
+
                     <p>Phone *</p>
-                    <input id="txt_phone" type="text" required="required">
+                    <input
+                        id="txt_phone"
+                        type="text"
+                        formControlName="phone"
+                        [class.is-invalid]="contactForm.get('phone')?.invalid && contactForm.get('phone')?.touched"
+                    />
+                    <div *ngIf="contactForm.get('phone')?.invalid && contactForm.get('phone')?.touched" class="error-message">
+                        <small *ngIf="contactForm.get('phone')?.errors?.['required']">Phone number is required.</small>
+                        <small *ngIf="contactForm.get('phone')?.errors?.['pattern']">Enter a valid 10-digit phone number.</small>
+                    </div>
+
                     <p>Subject *</p>
-                    <input id="txt_subject" type="text" required="required">
+                    <input
+                        id="txt_subject"
+                        type="text"
+                        formControlName="subject"
+                        [class.is-invalid]="contactForm.get('subject')?.invalid && contactForm.get('subject')?.touched"
+                    />
+                    <div *ngIf="contactForm.get('subject')?.invalid && contactForm.get('subject')?.touched" class="error-message">
+                        <small>Subject is required.</small>
+                    </div>
+
                     <p>Message *</p>
-                    <textarea id="txt_message" rows="4" cols="20" required="required"></textarea>
-                    <input type="submit" id="btn_send" value="SEND">
-                </div>
+                    <textarea
+                        id="txt_message"
+                        rows="4"
+                        cols="20"
+                        formControlName="message"
+                        [class.is-invalid]="contactForm.get('message')?.invalid && contactForm.get('message')?.touched"
+                    ></textarea>
+                    <div *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched" class="error-message">
+                        <small *ngIf="contactForm.get('message')?.errors?.['required']">Message is required.</small>
+                        <small *ngIf="contactForm.get('message')?.errors?.['minlength']">Minimum 10 characters.</small>
+                    </div>
+
+                    <input type="submit" id="btn_send" value="SEND" [disabled]="contactForm.invalid" />
+                </form>
             </div>
         </div>
     </div>
-</body>
-</html>
-
+</div>
