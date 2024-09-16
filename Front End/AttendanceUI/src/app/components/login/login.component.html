@@ -19,7 +19,7 @@
 					name="firstName" 
 					[placeholder]="firstName.invalid && firstName.touched ? 'First name is required' : 'First name'"
 					[(ngModel)]="signupObj.first_name" 
-					required 
+					 
 					#firstName="ngModel">
 				
 				<!-- Last Name -->
@@ -28,7 +28,7 @@
 					name="lastName" 
 					[placeholder]="lastName.invalid && lastName.touched ? ' *Last name is required' : 'Last name'"
 					[(ngModel)]="signupObj.last_name" 
-					required 
+					 
 					#lastName="ngModel">
 
 				<!-- Username -->
@@ -37,7 +37,7 @@
 					name="username" 
 					[placeholder]="username.invalid && username.touched ? 'Username is required' : 'User name'"
 					[(ngModel)]="signupObj.username" 
-					required 
+					 
 					#username="ngModel">
 
 				<!-- Email -->
@@ -46,7 +46,7 @@
 					name="email" 
 					[placeholder]="email.invalid && email.touched ? 'Valid email is required' : 'Email'"
 					[(ngModel)]="signupObj.email" 
-					required 
+					 
 					#email="ngModel">
 
 				<!-- Role Dropdown -->
@@ -61,7 +61,7 @@
 					name="password" 
 					[placeholder]="password.invalid && password.touched ? 'Password is required' : 'Password'"
 					[(ngModel)]="signupObj.password" 
-					required 
+					 
 					#password="ngModel">
 
 				<!-- Confirm Password -->
@@ -70,10 +70,10 @@
 					name="confirmPassword" 
 					[placeholder]="confirmPassword.invalid && confirmPassword.touched ? 'Confirm password is required' : 'Re-enter Password'"
 					[(ngModel)]="signupObj.password2" 
-					required 
+					 
 					#confirmPassword="ngModel">
 
-				<button [disabled]="signUpForm.invalid">Sign up</button>
+				<button type="submit">Sign up</button>
 			</form>
 		</div>
 
@@ -88,7 +88,7 @@
 					name="loginUsername" 
 					[placeholder]="loginUsername.invalid && loginUsername.touched ? 'Username is required' : 'Username'"
 					[(ngModel)]="loginObj.username" 
-					required 
+					 
 					#loginUsername="ngModel">
 
 				<!-- Password -->
@@ -97,7 +97,7 @@
 					name="loginPassword" 
 					[placeholder]="loginPassword.invalid && loginPassword.touched ? 'Password is required' : 'Password'"
 					[(ngModel)]="loginObj.password" 
-					required 
+					 
 					#loginPassword="ngModel">
 
 				<!-- Role Dropdown -->
@@ -106,7 +106,7 @@
 					<option *ngFor="let role of roles" [value]="role.id">{{ role.role_name }}</option>
 				</select>
 
-				<button [disabled]="loginForm.invalid">Login</button>
+				<button type="submit">Login</button>
 			</form>
 		</div>
 	</div>

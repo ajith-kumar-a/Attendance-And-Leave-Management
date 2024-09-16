@@ -119,16 +119,43 @@ export class LoginComponent implements OnInit {
   }
   
 
-  
   onLogin() {
+    // Validate if role_id is selected
     if (!this.loginObj.role_id) {
       window.alert('Role is not selected');
       return;
     }
   
+    // Validate if username is provided and meets the pattern and length requirements
+    const usernamePattern = /^[a-zA-Z0-9._-]{3,}$/; // Pattern allows letters, numbers, dots, underscores, and hyphens, with a minimum length of 3 characters
+  
+    if (!this.loginObj.username || this.loginObj.username.length < 3) {
+      window.alert('Username must be at least 3 characters long');
+      return;
+    }
+  
+    if (!usernamePattern.test(this.loginObj.username)) {
+      window.alert('Username contains invalid characters. Only letters, numbers, dots, underscores, and hyphens are allowed.');
+      return;
+    }
+  
+    // Validate if password is provided and meets complexity requirements
+    const passwordPattern = /^(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[a-z\d@$!%*?&]{8,}$/; 
+    // Password pattern: at least 8 characters long, includes at least one uppercase letter, one lowercase letter, one digit, and one special character
+  
+    if (!this.loginObj.password) {
+      window.alert('Password is required');
+      return;
+    }
+  
+    if (!passwordPattern.test(this.loginObj.password)) {
+      window.alert('Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one digit, and one special character.');
+      return;
+    }
+  
     // Find the selected role object based on selected role_id
     const selectedRole = this.roles.find(role => role.id == this.loginObj.role_id);
-    
+  
     if (!selectedRole) {
       window.alert('Selected role is invalid');
       return;
@@ -139,40 +166,51 @@ export class LoginComponent implements OnInit {
       next: (res: any) => {
         console.log('Login response:', res);
   
-        
+        // Check if the response contains an access token
+        if (!res.access) {
+          window.alert('Login failed. No access token received');
+          return;
+        }
+  
         localStorage.setItem('access', res.access);
   
         // Step 2: Use the token to get user profile (which contains role_id)
         this.accService.getUserDetails('userme/').subscribe({
           next: (userRes: any) => {
-            console.log('User profile response:', userRes.data.id,);
-            this.userId=userRes.data.id
+            console.log('User profile response:', userRes.data.id);
+  
+            // Check if user profile contains necessary fields
+            if (!userRes.data || !userRes.data.role_id) {
+              window.alert('User profile is incomplete');
+              return;
+            }
+  
             // Assuming the user data contains role_id (e.g., userRes.role_id)
             if (userRes.data.role_id == this.loginObj.role_id) {
               console.log('Role matches');
               this.router.navigateByUrl(selectedRole.role_name);  // Navigate based on role_name
-              
-              // this.checkmarkAttendance( userRes.data.id)
-              // this.markAttendance( userRes.data.id)
-              this.handleAttendance(userRes.data.id)
+  
+              // Handle attendance actions
+              this.handleAttendance(userRes.data.id);
             } else {
               window.alert('Selected role does not match the user role');
             }
           },
           error: (err) => {
             console.error('User profile retrieval error', err);
+            window.alert('Error retrieving user profile');
           }
         });
-        // this.markAttendance(this.userId)
       },
       error: (err) => {
         console.error('Login error', err);
-        window.alert("No active account found with the given credentials")
+        window.alert('No active account found with the given credentials');
       }
     });
-
-
   }
+  
+
+
   checkmarkAttendance(userId: any): Promise<boolean> {
     const today: string = new Date().toISOString().split('T')[0];
   
