@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';  // Adjust the path based on your project structure
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { Location } from '@angular/common'; // Import Location service
+
 
 @Component({
   selector: 'app-user-registration',
@@ -28,7 +30,10 @@ export class UserRegistrationComponent implements OnInit {
   // New flag to disable mentor selection
   isMentorSelectionDisabled: boolean = false;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router,
+    private location: Location 
+
+  ) {}
 
   ngOnInit(): void {
     this.fetchCurrentUser();
@@ -140,4 +145,8 @@ export class UserRegistrationComponent implements OnInit {
       user_id: null  // Reset user_id
     };
   }
+  back(): void {
+    this.location.back(); // Navigate back to the previous page
+  }
+  
 }

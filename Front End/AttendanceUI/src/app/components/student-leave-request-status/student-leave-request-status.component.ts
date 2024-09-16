@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { NotificationServiceService } from '../../services/notification-service.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Location } from '@angular/common'; // Import Location service
+
 
 @Component({
   selector: 'app-student-leave-request-status',
@@ -18,7 +20,9 @@ export class StudentLeaveRequestStatusComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private notificationService: NotificationServiceService // Inject the notification service
+    private notificationService: NotificationServiceService, // Inject the notification service
+    private location: Location 
+
   ) {}
 
   ngOnInit(): void {
@@ -121,4 +125,8 @@ export class StudentLeaveRequestStatusComponent implements OnInit {
       }
     );
   }
+  back(): void {
+    this.location.back(); // Navigate back to the previous page
+  }
+  
 }
