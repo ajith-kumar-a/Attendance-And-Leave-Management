@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm, NgModel } from '@angular/forms';
 import { Location } from '@angular/common'; // Import Location service
 import { AuthService } from '../../services/auth.service';
+import { NotificationServiceService } from '../../services/notification-service.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-applyleave',
@@ -15,7 +17,8 @@ export class ApplyleaveComponent implements OnInit {
   userId: any;
 
   constructor(private authService: AuthService,
-    private location: Location 
+    private location: Location ,
+    private notificationService: NotificationServiceService
   ) {}
 
   ngOnInit(): void {
@@ -60,6 +63,18 @@ export class ApplyleaveComponent implements OnInit {
         response => {
           console.log('Leave request submitted:', response);
           // Handle successful submission
+          this.authService.sendNotification(this.userId, `your Leave request `)
+          .subscribe(
+            (notificationResponse: any) => {
+              console.log('Notification sent successfully', notificationResponse);
+
+              // Notify the shared service to update notification count in StudentsComponent
+              this.notificationService.updateNotificationCount(notificationResponse.data.notificationCount);
+            },
+            (error: HttpErrorResponse) => {
+              console.error('Error sending notification', error);
+            }
+          );
         },
         error => {
           console.error('Error submitting leave request', error);

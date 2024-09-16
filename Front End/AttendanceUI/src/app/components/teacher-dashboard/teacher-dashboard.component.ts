@@ -22,7 +22,7 @@ export class TeacherDashboardComponent implements OnInit {  // Implement OnInit 
     leaveRequests: any[] = [];
     previousLeaveRequests: any[] = []; // Track previous statuses
     previousAttendanceStatuses: any[] = []; // Track previous attendance statuses
-    badgeCount: number = -12; // Initialize to 0
+    badgeCount: number = -1; // Initialize to 0
     private intervalId: any; 
     private leaveRequestSubscription: Subscription | undefined;
 
