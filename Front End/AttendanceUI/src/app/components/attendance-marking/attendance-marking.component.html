@@ -4,10 +4,6 @@
   <label for="date">Select Date:</label>
   <input type="date" id="date" [(ngModel)]="selectedDate" />
 
-  <!-- <div class="col-12 col-md-auto">
-    <button type="button" id="applyFilter" class="btn btn-primary w-100" >Apply</button>
-  </div> -->
-
   <table>
     <thead>
       <tr>
@@ -15,20 +11,20 @@
         <th>Roll Number</th>
         <th>Student Name</th>
         <th>Attendance</th>
-        <th>Status</th> <!-- New Status Column -->
+        <th>Status</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let student of students; let i = index">
         <td>{{ i + 1 }}</td>
-        <td>{{ student.user_id}}</td>
+        <td>{{ student.user_id }}</td>
         <td>{{ student.username }}</td>
         <td>
           <button class="btn btn-success" (click)="markAttendance(student, 'Present')">Present</button>
           <button class="btn btn-danger" (click)="markAttendance(student, 'Absent')">Absent</button>
         </td>
         <td>
-          {{ student.attendance || 'Not Marked' }} <!-- Display attendance status -->
+          {{ student.attendance || 'Not Marked' }}
         </td>
       </tr>
     </tbody>

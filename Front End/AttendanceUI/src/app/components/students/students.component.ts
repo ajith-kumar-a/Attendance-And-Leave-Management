@@ -22,7 +22,7 @@
     leaveRequests: any[] = [];
     previousLeaveRequests: any[] = []; // Track previous statuses
     previousAttendanceStatuses: any[] = []; // Track previous attendance statuses
-    badgeCount: number = -12; // Initialize to 0
+    badgeCount: number = 0; // Initialize to 0
     private intervalId: any; 
     private leaveRequestSubscription: Subscription | undefined;
 
@@ -48,7 +48,7 @@
       this.intervalId = setInterval(() => {
         this.checkLeaveRequestUpdates();
         this.checkAttendanceStatusUpdates();
-      }, 55000); // Poll every 15 seconds
+      }, 5000); // Poll every 15 seconds
     }
 
     ngOnDestroy(): void {
