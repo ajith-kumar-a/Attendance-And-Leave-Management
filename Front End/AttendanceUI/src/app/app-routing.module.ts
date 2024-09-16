@@ -65,7 +65,7 @@ const routes: Routes = [
     path: 'attendance-marking', 
     component: AttendanceMarkingComponent,
     canActivate: [AuthGuard],
-    data: { roles: ['Student', 'Teacher', 'Staff', 'Admin'] }
+    data: { roles: ['Teacher',, 'Admin'] }
   },
   { 
     path: 'attendance-summary',
