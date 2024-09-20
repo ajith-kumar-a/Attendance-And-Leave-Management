@@ -20,8 +20,9 @@
         <td>{{ student.user_id }}</td>
         <td>{{ student.username }}</td>
         <td>
-          <button class="btn btn-success" (click)="markAttendance(student, 'Present')">Present</button>
+          <button class="btn btn-success" (click)="markAttendance(student, 'Present')">Present</button><br>
           <button class="btn btn-danger" (click)="markAttendance(student, 'Absent')">Absent</button>
+
         </td>
         <td>
           {{ student.attendance || 'Not Marked' }}
@@ -30,5 +31,8 @@
     </tbody>
   </table>
 
-  <button (click)="submitAttendance()">Submit Attendance</button>
+  <button class="btn-custom" (click)="submitAttendance()">Submit Attendance</button>
+</div>
+<div class="input-back">
+  <button type="button" (click)="back()">Back</button>
 </div>

@@ -65,3 +65,44 @@ button {
 button:hover {
   background-color: #218838;
 }
+.btn-custom {
+  background: #9797e4;   /* Green background */
+  color: white; /* White text */
+  border: none; /* Remove border */
+  padding: 10px 20px; /* Add padding */
+  font-size: 16px; /* Font size */
+  border-radius: 25px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor */
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+.btn-custom:hover {
+  background-color: #73cce2 !important; /* Darker color on hover */
+}
+/* Centering the 'Back' button */
+.input-back {
+  display: flex;
+  justify-content: center; /* Center the button horizontally */
+  align-items: center; /* Center the button vertically (if needed) */
+  margin-top: 20px; /* Adjust margin as needed */
+}
+
+/* 'Back' button style */
+.input-back button {
+  background: #9797e4; /* Background color */
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 65px; /* Reduced width */
+  height: 45px; /* Reduced height */
+  border-radius: 20px; /* Adjusted for circular shape */
+  transition: background-color 0.3s;
+}
+
+
+/* 'Back' button hover effect */
+.input-back button:hover {
+  background-color: #73cce2; /* Darker color on hover */
+}

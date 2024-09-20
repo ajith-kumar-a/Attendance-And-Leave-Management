@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { forkJoin } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Location } from '@angular/common'; // Import Location service
+
 
 @Component({
   selector: 'app-attendance-marking',
@@ -14,7 +16,10 @@ export class AttendanceMarkingComponent implements OnInit {
   studentRoleId: number = 1;  // Role ID for students (1 represents students)
   userDetailsMap: Map<number, any> = new Map(); // Map to store user details by user_id
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,
+    private location: Location 
+
+  ) { }
 
   ngOnInit(): void {
     // Fetch all students and user details when the component loads
@@ -125,5 +130,8 @@ export class AttendanceMarkingComponent implements OnInit {
         alert('There was an error updating attendance. Please check the console for details.');
       }
     );
+  }
+  back(): void {
+    this.location.back(); // Navigate back to the previous page
   }
 }

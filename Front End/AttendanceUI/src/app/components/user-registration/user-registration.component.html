@@ -13,8 +13,10 @@
         required
         class="form-control"
         [ngClass]="{'is-invalid': date_of_birth.invalid && date_of_birth.touched}"
-        [placeholder]="date_of_birth.invalid && date_of_birth.touched ? 'Date of Birth is required' : ''"
       />
+      <div *ngIf="date_of_birth.invalid && date_of_birth.touched" class="error-message">
+        Date of Birth is required
+      </div>
     </div>
 
     <!-- Mentor -->
@@ -35,9 +37,12 @@
           {{ mentor.username }}
         </option>
       </select>
+      <div *ngIf="mentor.invalid && mentor.touched" class="error-message">
+        Mentor is required
+      </div>
     </div>
 
-    <!-- Mobile Number -->
+    <!-- Mobile Number (only numbers) -->
     <div class="form-group">
       <label for="mobile_number">Mobile Number</label>
       <input
@@ -47,13 +52,17 @@
         name="mobile_number"
         #mobile_number="ngModel"
         required
+        pattern="^[0-9]{10}$"
         class="form-control"
         [ngClass]="{'is-invalid': mobile_number.invalid && mobile_number.touched}"
-        [placeholder]="mobile_number.invalid && mobile_number.touched ? 'Mobile Number is required' : ''"
+        placeholder="Enter 10-digit mobile number"
       />
+      <div *ngIf="mobile_number.invalid && mobile_number.touched" class="error-message">
+        Mobile number must be 10 digits and contain only numbers.
+      </div>
     </div>
 
-    <!-- Aadhar Number -->
+    <!-- Aadhar Number (only numbers) -->
     <div class="form-group">
       <label for="aadhar_number">Aadhar Number</label>
       <input
@@ -63,33 +72,41 @@
         name="aadhar_number"
         #aadhar_number="ngModel"
         required
+        pattern="^[0-9]{12}$"
         class="form-control"
         [ngClass]="{'is-invalid': aadhar_number.invalid && aadhar_number.touched}"
-        [placeholder]="aadhar_number.invalid && aadhar_number.touched ? 'Aadhar Number is required' : ''"
+        placeholder="Enter 12-digit Aadhar number"
       />
+      <div *ngIf="aadhar_number.invalid && aadhar_number.touched" class="error-message">
+        Aadhar number must be 12 digits and contain only numbers.
+      </div>
     </div>
 
-    <!-- Batch -->
-    <div class="form-group">
-      <label for="batch">Batch</label>
-      <input
-        type="text"
-        id="batch"
-        [(ngModel)]="userDetails.batch"
-        name="batch"
-        #batch="ngModel"
-        required
-        class="form-control"
-        [ngClass]="{'is-invalid': batch.invalid && batch.touched}"
-        [placeholder]="batch.invalid && batch.touched ? 'Batch is required' : ''"
-      />
-    </div>
+    <!-- Batch (only numbers) -->
+<div class="form-group">
+  <label for="batch">Batch</label>
+  <input
+    type="text"
+    id="batch"
+    [(ngModel)]="userDetails.batch"
+    name="batch"
+    #batch="ngModel"
+    required
+    pattern="^[0-9]+$"
+    class="form-control"
+    [ngClass]="{'is-invalid': batch.invalid && batch.touched}"
+    placeholder="Enter Batch (only numbers)"
+  />
+  <div *ngIf="batch.invalid && batch.touched" class="error-message">
+    Batch must contain only numbers.
+  </div>
+</div>
+
 
     <!-- Blood Group -->
     <div class="form-group">
       <label for="blood_group">Blood Group</label>
-      <input
-        type="text"
+      <select
         id="blood_group"
         [(ngModel)]="userDetails.blood_group"
         name="blood_group"
@@ -97,15 +114,26 @@
         required
         class="form-control"
         [ngClass]="{'is-invalid': blood_group.invalid && blood_group.touched}"
-        [placeholder]="blood_group.invalid && blood_group.touched ? 'Blood Group is required' : ''"
-      />
+      >
+        <option value="" [disabled]="true" [selected]="true" [hidden]="true">Select Blood Group</option>
+        <option value="A+">A+</option>
+        <option value="A-">A-</option>
+        <option value="B+">B+</option>
+        <option value="B-">B-</option>
+        <option value="AB+">AB+</option>
+        <option value="AB-">AB-</option>
+        <option value="O+">O+</option>
+        <option value="O-">O-</option>
+      </select>
+      <div *ngIf="blood_group.invalid && blood_group.touched" class="error-message">
+        Blood Group is required.
+      </div>
     </div>
 
-    <!-- Gender -->
+    <!-- Gender (Dropdown) -->
     <div class="form-group">
       <label for="gender">Gender</label>
-      <input
-        type="text"
+      <select
         id="gender"
         [(ngModel)]="userDetails.gender"
         name="gender"
@@ -113,8 +141,15 @@
         required
         class="form-control"
         [ngClass]="{'is-invalid': gender.invalid && gender.touched}"
-        [placeholder]="gender.invalid && gender.touched ? 'Gender is required' : ''"
-      />
+      >
+        <option value="" disabled selected hidden>Select Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Others">Others</option>
+      </select>
+      <div *ngIf="gender.invalid && gender.touched" class="error-message">
+        Gender is required.
+      </div>
     </div>
 
     <!-- User ID (Read-Only) -->
@@ -130,9 +165,10 @@
       />
     </div>
 
-    <button type="submit" [disabled]="registrationForm.invalid">Register</button>
+    <button type="submit" [disabled]="registrationForm.invalid">Register</button><br>
   </form>
-  <div class="input-Back">
+  
+  <div class="input-back">
     <button type="button" (click)="back()">Back</button>
-    </div>
+  </div>
 </div>

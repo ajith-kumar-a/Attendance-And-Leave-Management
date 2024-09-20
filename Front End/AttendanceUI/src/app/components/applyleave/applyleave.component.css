@@ -1,258 +1,124 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
-
+/* Container for the leave application form */
 .base {
-  background-color: #45324e;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.1); /* Black background with transparency */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Light black shadow effect */
+  color: #fff; /* Text color to contrast with the black background */
 }
 
-* {
-  margin: 13px;
-  padding: 2px;
-  outline: none;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-
-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  margin: 0;
-  background-color: #d9bee6;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  max-width: 1200px;
-  background: #f8f3f7;
-  padding: 40px 60px 20px 60px;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-  margin: auto;
-}
-
-.container .text {
-  text-align: center;
-  font-size: 35px;
-  font-weight: 600;
-  background: -webkit-linear-gradient(right, #56d8e4, #9f01ea, #56d8e4, #9f01ea);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  height: 30px;
-}
-
-.container form {
-  padding: 40px 0 0 0;
-}
-
-.container form .form-row {
-  display: flex;
-  margin: 32px 0;
-}
-
-form .form-row .input-data {
-  width: 100%;
-  height: 50px;
-  margin: 0 30px;
-  position: relative;
-
-}
-
-form .form-row .textarea {
-  height: 100px;
-}
-
-.input-data input,
-.textarea textarea {
+/* Heading style */
+.text span {
   display: block;
-  width: 100%;
-  height: 100%;
-  border: none;
-  font-size: 20px;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.12);
-  background: #fff;
-  padding: 0 10px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px; /* Adjust font size */
+  color: #2b2525; /* Adjust color to be visible on the dark background */
 }
 
-.input-data input::placeholder,
-.textarea textarea::placeholder {
-  color: red; /* Placeholder text color for error messages */
-  font-size: 14px;
+/* Form row style */
+.form-row {
+  margin-bottom: 15px;
 }
 
-.input-data input:focus ~ label,
-.textarea textarea:focus ~ label,
-.input-data input:valid ~ label,
-.textarea textarea:valid ~ label {
-  transform: translateY(-20px);
-  font-size: 15px;
-  color: #3498db;
-}
-
-.textarea textarea {
-  resize: none;
-  padding-top: 15px;
-}
-
-.input-data label {
-  position: absolute;
-  pointer-events: none;
-  bottom: 10px;
-  font-size: 17px;
-  transition: all 0.3s ease;
-}
-
-.textarea label {
-  width: 100%;
-  bottom: 40px;
-  background: #fff;
-}
-
-.input-data .underline {
-  position: absolute;
-  bottom: 0;
-  height: 2px;
-  width: 100%;
-}
-
-.input-data .underline:before {
-  position: absolute;
-  content: "";
-  height: 2px;
-  width: 100%;
-  background: #3498db;
-  transform: scaleX(0);
-  transform-origin: center;
-  transition: transform 0.3s ease;
-}
-
-.input-data input:focus ~ .underline:before,
-.input-data input:valid ~ .underline:before,
-.textarea textarea:focus ~ .underline:before,
-.textarea textarea:valid ~ .underline:before {
-  transform: scale(1);
-}
-
-.submit-btn .input-data {
-  overflow: hidden;
-  height: 50px !important;
-  width: 30% !important;
-}
-
-.submit-btn .input-data .inner {
-  height: 100%;
-  width: 300%;
-  position: absolute;
-  left: -100%;
-  background: -webkit-linear-gradient(right, #56d8e4, #9f01ea, #56d8e4, #9f01ea);
-  transition: all 0.4s;
-}
-
-.submit-btn .input-data:hover .inner {
-  left: 0;
-}
-
-.submit-btn .input-data input {
-  background: none;
-  border: none;
-  font-size: 30px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  cursor: pointer;
+/* Input data style */
+.input-data {
   position: relative;
-  z-index: 2;
-  background: -webkit-linear-gradient(right, #56d8e4, #9f01ea, #56d8e4, #9f01ea);
-
 }
 
-.input-apply{
-  background: -webkit-linear-gradient(right, #56d8e4, #9f01ea, #56d8e4, #9f01ea);
-  color: white;
-  border: none;
-  padding: 11px 7px; /* Reduced padding for smaller button */
-  font-size: 26px; /* Smaller font size */
-  cursor: pointer;
-  border-radius: 50px; /* Slightly smaller border-radius */
-  transition: background-color 0.3s;
-}
-.input-cancel button{
-  background: -webkit-linear-gradient(right, #56d8e4, #9f01ea, #56d8e4, #9f01ea);
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-  width: 127px;
-  height: 50px;
-  border-radius: 25px;
-
+/* Label style */
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #131111; /* Adjust color to be visible on the dark background */
 }
 
-@media (max-width: 700px) {
-  .container .text {
-    font-size: 28px;
-  }
-
-  .container form {
-    padding: 10px 0 0 0;
-  }
-
-  .container form .form-row {
-    display: block;
-  }
-
-  form .form-row .input-data {
-    margin: 25px 0 !important;
-  }
-
-  .submit-btn .input-data {
-    width: 50% !important;
-  }
+/* Input control style */
+input[type="text"],
+input[type="email"],
+input[type="date"],
+textarea,
+select {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #444; /* Darker border to stand out on the dark background */
+  border-radius: 4px;
+  background: #f7f3f3; /* Light background for input fields */
+  color: #1d1c1c; /* Text color inside input fields */
 }
 
+/* Invalid input styling */
 .invalid input,
-.invalid select,
-.invalid textarea {
-  border-color: red;
+.invalid textarea,
+.invalid select {
+  border-color: red; /* Red border for invalid inputs */
 }
 
-.error-msg small {
-  color: red;
+/* Button style */
+input[type="submit"],
+button {
+  width: 100%;
+  padding: 10px;
+  background: #56d8e4; /* Default background color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
+
+/* Button hover effect */
+input[type="submit"]:hover,
+button:hover {
+  background-color: #4ba3c4; /* Slightly darker blue on hover */
+}
+
+/* Disabled button styling */
+button:disabled,
+input[type="submit"]:disabled {
+  background-color: rgb(116, 108, 230); /* Disable button styling */
+  cursor: not-allowed; /* Show not-allowed cursor */
+}
+
+/* Error message styling */
+.error-msg {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+/* Specific styles for Cancel and Back buttons */
+.input-cancel,
+.input-Back {
+  display: flex;
+  justify-content: center; /* Center the buttons horizontally */
+  margin-top: 20px; /* Space above the buttons */
+}
+
+/* Button style specifically for Cancel and Back */
+.input-cancel button,
+.input-Back button {
+  width: auto; /* Allow buttons to auto-size */
+  padding: 10px 20px; /* Adjust padding as needed */
+  background: #9797e4; /* Background color for Cancel and Back buttons */
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* 'Cancel' and 'Back' button hover effect */
+.input-cancel button:hover,
+.input-Back button:hover {
+  background-color: #73cce2; /* Darker color on hover */
+}
+
 
 .error-msg {
   color: red;
-  font-size: 14px;
+  font-size: 12px;
   margin-top: 5px;
 }
-
-.input-data.invalid input::placeholder,
-.input-data.invalid textarea::placeholder {
-  color: red;
-  font-size: 14px;
-}
-.input-Back {
-  margin-top: 20px; /* Adjust margin as needed */
-}
-
-.input-Back button {
-  background: -webkit-linear-gradient(right, #56d8e4, #9f01ea, #56d8e4, #9f01ea);
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-  width: 127px;
-  height: 50px;
-  border-radius: 25px;
-}
-
-
