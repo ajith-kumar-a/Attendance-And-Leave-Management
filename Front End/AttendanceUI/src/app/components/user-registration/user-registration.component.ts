@@ -26,9 +26,9 @@ export class UserRegistrationComponent implements OnInit {
   currentUser: any;    // Stores current user data
   role_id: any;
   roles: any[] = [];  // Store roles here
-
-  // New flag to disable mentor selection
   isMentorSelectionDisabled: boolean = false;
+  isLoading: boolean = false; // Loading state
+  isCursorVisible: boolean = true; // Cursor visibility state
 
   constructor(private authService: AuthService, private router: Router,
     private location: Location 
@@ -147,6 +147,13 @@ export class UserRegistrationComponent implements OnInit {
   }
   back(): void {
     this.location.back(); // Navigate back to the previous page
+  }
+  hideCursor() {
+    this.isCursorVisible = false;
+  }
+
+  resetCursor() {
+    this.isCursorVisible = true;
   }
   
 }

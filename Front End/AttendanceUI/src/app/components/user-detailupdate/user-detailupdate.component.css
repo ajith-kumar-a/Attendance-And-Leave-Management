@@ -1,74 +1,107 @@
+/* Container for the registration form */
 .registration-container {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
   border-radius: 16px;
-  background: linear-gradient(to right, #67c8f9, #ed953d);
+  background: rgba(0, 0, 0, 0.1); /* Black background with transparency */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Light black shadow effect */
+  color: #fff; /* Text color to contrast with the black background */
 }
 
+/* Heading style */
 h2 {
   text-align: center;
   margin-bottom: 20px;
-  color: #fff;
+  color: #2b2525; /* Adjust color to be visible on the dark background */
 }
 
+/* Form group style */
 .form-group {
   margin-bottom: 15px;
 }
 
+/* Label style */
 .form-group label {
   display: block;
   margin-bottom: 5px;
-  color: #fff;
+  color: #131111; /* Adjust color to be visible on the dark background */
 }
 
+/* Form control style */
 .form-control {
   width: 100%;
   padding: 8px;
   box-sizing: border-box;
-  border: 1px solid #ccc;
+  border: 1px solid #444; /* Darker border to stand out on the dark background */
   border-radius: 4px;
+  background: #f7f3f3; /* Dark background for input fields */
+  color: #1d1c1c; /* Text color inside input fields */
 }
 
-.input-box.ng-touched.ng-invalid {
-  border-color: red;
-  background-color: #ffe6e6;
+/* Invalid input styling */
+.is-invalid {
+  border-color: red; /* Red border for invalid inputs */
+  background-color: #533333; /* Dark red background for invalid input */
 }
 
-.input-box.ng-touched.ng-invalid::placeholder {
-  color: red;
-}
-
-button {
+/* Button style for Update */
+button.update {
   width: 100%;
   padding: 10px;
-  background: linear-gradient(to right, #36d1dc, #5b86e5);
+  background-color: rgb(116, 108, 230); /* Disable button styling */
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-button:disabled {
-  background-color: grey;
+/* Button hover effect for Update */
+button.update:hover {
+  background-color: #4ba3c4; /* Slightly darker blue on hover */
 }
 
-.input-Back {
+/* Disabled button styling */
+button.update:disabled {
+  background-color: rgb(116, 108, 230); /* Color for disabled state */
+  cursor: not-allowed; /* Show not-allowed cursor */
+  opacity: 0.6; /* Slightly fade the button */
+}
+
+/* Centering the 'Back' button */
+.input-back {
   display: flex;
   justify-content: center; /* Center the button horizontally */
   align-items: center; /* Center the button vertically (if needed) */
   margin-top: 20px; /* Adjust margin as needed */
 }
 
-.input-Back button {
-  background: linear-gradient(to right, #67c8f9, #ed953d);
+/* 'Back' button style */
+.input-back button {
+  background: #9797e4; /* Background color */
   color: white;
   border: none;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
-  width: 127px;
-  height: 50px;
+  width: 100px; /* Reduced width */
+  height: 40px; /* Adjust height as needed */
   border-radius: 25px;
   transition: background-color 0.3s;
+}
+
+/* 'Back' button hover effect */
+.input-back button:hover {
+  background-color: #73cce2; /* Darker color on hover */
+}
+
+/* Error message styling */
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+.hide-cursor {
+  cursor: none; /* Hide cursor */
 }

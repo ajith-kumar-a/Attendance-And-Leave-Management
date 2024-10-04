@@ -1,70 +1,103 @@
+/* Container for the registration form */
 .registration-container {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
   border-radius: 16px;
-  background: linear-gradient(to right, #67c8f9, #ed953d); /* Gradient background */
+  background: rgba(0, 0, 0, 0.1); /* Black background with transparency */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Light black shadow effect */
+  color: #fff; /* Text color to contrast with the black background */
 }
 
+/* Heading style */
 h2 {
   text-align: center;
   margin-bottom: 20px;
-  color: #fff;
+  color: #2b2525; /* Adjust color to be visible on the dark background */
 }
 
+/* Form group style */
 .form-group {
   margin-bottom: 15px;
 }
 
+/* Label style */
 .form-group label {
   display: block;
   margin-bottom: 5px;
-  color: #fff;
+  color: #131111; /* Adjust color to be visible on the dark background */
 }
 
+/* Form control style */
 .form-control {
   width: 100%;
   padding: 8px;
   box-sizing: border-box;
-  border: 1px solid #ccc;
+  border: 1px solid #444; /* Darker border to stand out on the dark background */
   border-radius: 4px;
+  background: #f7f3f3; /* Dark background for input fields */
+  color: #1d1c1c; /* Text color inside input fields */
 }
 
+/* Invalid input styling */
 .is-invalid {
-  border-color: red; /* Red border for invalid inputs */
-  background-color: #ffe6e6; /* Light red background for invalid input */
+  border-color: red; /*ed R border for invalid inputs */
 }
 
+/* Button style */
 button {
   width: 100%;
   padding: 10px;
-  background: linear-gradient(to right, #36d1dc, #5b86e5); /* Gradient button */
+  background: #56d8e4; /* Default background color */
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
+/* Button hover effect */
+button:hover {
+  background-color: #4ba3c4; /* Slightly darker blue on hover */
+}
+
+/* Disabled button styling */
 button:disabled {
-  background-color: grey; /* Disable button styling */
+  background-color: rgb(116, 108, 230); /* Disable button styling */
+  cursor: not-allowed; /* Show not-allowed cursor */
 }
 
-.input-Back {
+/* Centering the 'Back' button */
+.input-back {
   display: flex;
   justify-content: center; /* Center the button horizontally */
   align-items: center; /* Center the button vertically (if needed) */
   margin-top: 20px; /* Adjust margin as needed */
 }
 
-.input-Back button {
-  background: linear-gradient(to right, #67c8f9, #ed953d);
+/* 'Back' button style */
+.input-back button {
+  background: #9797e4; /* Background color */
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 10px;
   font-size: 16px;
   cursor: pointer;
-  width: 127px;
-  height: 50px;
-  border-radius: 25px;
+  width: 65px; /* Reduced width */
+  height: 45px; /* Reduced height */
+  border-radius: 20px; /* Adjusted for circular shape */
   transition: background-color 0.3s;
+}
+
+
+/* 'Back' button hover effect */
+.input-back button:hover {
+  background-color: #73cce2; /* Darker color on hover */
+}
+
+/* Error message styling */
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
 }

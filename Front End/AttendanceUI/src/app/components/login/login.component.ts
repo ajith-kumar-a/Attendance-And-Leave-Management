@@ -143,15 +143,15 @@ export class LoginComponent implements OnInit {
     const passwordPattern = /^(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[a-z\d@$!%*?&]{8,}$/; 
     // Password pattern: at least 8 characters long, includes at least one uppercase letter, one lowercase letter, one digit, and one special character
   
-    if (!this.loginObj.password) {
-      window.alert('Password is required');
-      return;
-    }
+    // if (!this.loginObj.password) {
+    //   window.alert('Password is required');
+    //   return;
+    // }
   
-    if (!passwordPattern.test(this.loginObj.password)) {
-      window.alert('Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one digit, and one special character.');
-      return;
-    }
+    // if (!passwordPattern.test(this.loginObj.password)) {
+    //   window.alert('Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one digit, and one special character.');
+    //   return;
+    // }
   
     // Find the selected role object based on selected role_id
     const selectedRole = this.roles.find(role => role.id == this.loginObj.role_id);

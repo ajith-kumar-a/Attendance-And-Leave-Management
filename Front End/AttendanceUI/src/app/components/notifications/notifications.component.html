@@ -3,8 +3,7 @@
   <ul>
     <li *ngFor="let notification of notifications" 
         [ngClass]="{'deleting': notification.deleting}"
-        (touchstart)="onTouchStart($event)"
-        (touchend)="onTouchEnd($event, notification)">
+        (swipeleft)="onSwipeRight(notification)">  <!-- Listen for right swipe -->
         
       <div [ngClass]="{
         'notice': true, 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';  // Adjust the path based on your project structure
 import { Location } from '@angular/common'; // Import Location service
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-user-detailupdate',
@@ -24,6 +25,10 @@ export class UserDetailupdateComponent implements OnInit {
   role_id: any;  // Current user's role_id
   currentUser: any;  // Stores current user data
   userId: any;  // The ID of the user to be updated
+  isMentorSelectionDisabled: boolean = false;
+  isLoading: boolean = false; // Loading state
+  isCursorVisible: boolean = true; // Cursor visibility state
+  submitted: boolean = false;
 
   constructor(
     private authService: AuthService,
@@ -127,6 +132,28 @@ export class UserDetailupdateComponent implements OnInit {
   }
   back(): void {
     this.location.back(); // Navigate back to the previous page
+  }
+  onSubmit(userForm: NgForm) {
+    this.submitted = true; // Set submitted to true on form submit
+    if (userForm.invalid) {
+      // Mark all fields as touched to show validation errors
+      Object.keys(userForm.controls).forEach(field => {
+        const control = userForm.controls[field];
+        control.markAsTouched({ onlySelf: true });
+      });
+  
+      alert("Please enter all the details.");
+    } else {
+      this.updateUserDetails();
+    }
+  }
+
+  hideCursor() {
+    this.isCursorVisible = false;
+  }
+
+  resetCursor() {
+    this.isCursorVisible = true;
   }
   
 }
