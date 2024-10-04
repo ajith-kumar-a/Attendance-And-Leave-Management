@@ -253,7 +253,7 @@ p {
   }
   .profile-card header {
         width: auto;
-        height: auto;
+        height: 106%;
         padding: 24px 20px;
         display: block;
         float: none;

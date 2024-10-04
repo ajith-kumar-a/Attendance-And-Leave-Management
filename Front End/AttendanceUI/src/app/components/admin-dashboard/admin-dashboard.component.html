@@ -1,65 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Bottom Tab Bar Navigation</title>
+<head>
+    <title>Admin Dashboard</title>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="admin-dashboard.component.css" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard">
+        <nav class="sidebar">
+            <div class="sidebar-item" (click)="onRoleChange('home')"><i class="fas fa-home"></i> Home</div>
 
-  </head>
-  <body>
-
-	
-<app-admin></app-admin>
-
-	  
-
-<div class="dashboard">
-  <nav class="menu">
-    
-	<a class="nav-item" href=""><i class="fas fa-home"></i><span class="tab-title">Home</span></a>
-    <input type="checkbox" name="" class="checkbox">
-	<div class="checkbox-list">
-		<button class="nav-item" (click)="onRoleChange('1')">
-			<i class="fas fa-user-graduate"></i>
-			<span class="tab-title">Student Profile</span>
-		</button>
-		<button class="nav-item" (click)="onRoleChange('2')">
-			<i class="fas fa-chalkboard-teacher"></i>
-			<span class="tab-title">Teacher Profile</span>
-		</button>
-		  
-		<button class="nav-item" (click)="onRoleChange('3')">
-			<i class="fas fa-users"></i>
-			<span class="tab-title">Staff Profile</span>
-		</button>
-	</div>
-	<a class="nav-item" href="/course"><i class="fas fa-book"></i><span class="tab-title">Courses</span></a>
-
-	
-
-	<a class="nav-item" href="/contact"><i class="fas fa-envelope"></i><span class="tab-title">contact us</span></a>
-    <input type="checkbox" name="" class="checkbox">
-	<div class="checkbox-list">
-		<button class="nav-item" (click)="onRoleChange('4')">
-			<i class="fas fa-user-graduate"></i>
-			<span class="tab-title">Student Attendance</span>
-		</button>
-		<button class="nav-item" (click)="onRoleChange('5')">
-			<i class="fas fa-chalkboard-teacher"></i>
-			<span class="tab-title">Teacher Attendance</span>
-		</button>
-		<button class="nav-item" (click)="onRoleChange('6')">
-			<i class="fas fa-book"></i>
-			<span class="tab-title">Staff Attendance</span>
-		</button>
-	</div>
-	
-	<a class="nav-item" href="#"><i class="fas fa-user-shield"></i><span class="tab-title">your profile</span></a>
-</nav>
-
-</div>
-
-  </body>
+            <div class="dropdown" *ngFor="let role of roles">
+                <button class="sidebar-item dropdown-toggle" (click)="toggleDropdown(role.id)">
+                    <i [ngClass]="role.icon"></i> {{ role.name }}
+                </button>
+                <div class="dropdown-menu" [ngClass]="{'show': isDropdownOpen === role.id}">
+                    <a *ngFor="let item of role.items" class="dropdown-item" (click)="onRoleChange(item.id)">{{ item.label }}</a>
+                </div>
+            </div>
+        </nav>
+        
+        <main>
+				<img [src]="img || 'https://assets.codepen.io/307305/internal/avatars/users/default.png?fit=crop&format=auto&height=80&version=1&width=80'" />
+			<h1>{{ user.username || 'David Jones' }}</h1>
+			 <p>{{ user.email || 'Even when everything is perfect, you can always make it better. Break barriers in your head, create something crazy and don\'t forget Code is Poetry...' }}</p>
+			<h2>{{ user.profession || 'Web Developer' }}</h2>
+			<button class="btn btn-primary" (click)="fileInput.click()">Edit Pic</button>
+		<input type="file" #fileInput style="display: none;" (change)="onFileChange($event)" />
+        </main>
+    </div>
+</body>
 </html>

@@ -165,7 +165,7 @@ const routes: Routes = [
     data: { roles: ['Admin'] }
   },
   { 
-    path: 'student-id',
+    path: 'E-id',
     component: StudentIdComponent,
     canActivate: [AuthGuard],
     data: { roles: ['Student', 'Teacher', 'Staff', 'Admin']  }
